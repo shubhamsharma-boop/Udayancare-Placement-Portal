@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Jobs | Udayan Care Placement Portal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="images/logo.png" alt="Logo">
+
+            <h3>Employer Panel</h3>
+
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="employer-dashboard.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="company-profile.html">
+                    <i class="fa-solid fa-building"></i>
+                    Company Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="post-job.html">
+                    <i class="fa-solid fa-plus"></i>
+                    Post Job
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="#">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Manage Jobs
+                </a>
+            </li>
+
+            <li>
+                <a href="applications.html">
+                    <i class="fa-solid fa-users"></i>
+                    Applications
+                </a>
+            </li>
+
+            <li>
+                <a href="shortlisted.html">
+                    <i class="fa-solid fa-user-check"></i>
+                    Shortlisted
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="dashboard-content">
+
+        <!-- Header -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h2>Manage Jobs</h2>
+
+                <p>View, edit and manage all posted jobs.</p>
+
+            </div>
+
+            <div>
+
+                <a href="post-job.html" class="btn btn-primary">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Post New Job
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="dashboard-box">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    placeholder="Search Job Title">
+
+                <select>
+
+                    <option>All Status</option>
+
+                    <option>Active</option>
+
+                    <option>Draft</option>
+
+                    <option>Closed</option>
+
+                </select>
+
+                <button class="btn btn-primary">
+
+                    Search
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Jobs Table -->
+
+        <div class="dashboard-box">
+
+            <table class="dashboard-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Job ID</th>
+
+                        <th>Job Title</th>
+
+                        <th>Location</th>
+
+                        <th>Applications</th>
+
+                        <th>Status</th>
+
+                        <th>Posted On</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>JOB000001</td>
+
+                        <td>Customer Support Executive</td>
+
+                        <td>Noida</td>
+
+                        <td>45</td>
+
+                        <td>
+
+                            <span class="status shortlisted">
+
+                                Active
+
+                            </span>
+
+                        </td>
+
+                        <td>20 Jul 2026</td>
+
+                        <td>
+
+                            <a href="job-details.html" title="View">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </a>
+
+                            &nbsp;
+
+                            <a href="post-job.html" title="Edit">
+
+                                <i class="fa-solid fa-pen-to-square"></i>
+
+                            </a>
+
+                            &nbsp;
+
+                            <a href="#" title="Close">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                            </a>
+
+                            &nbsp;
+
+                            <a href="#" title="Delete">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>JOB000002</td>
+
+                        <td>HR Executive</td>
+
+                        <td>Delhi</td>
+
+                        <td>26</td>
+
+                        <td>
+
+                            <span class="status pending">
+
+                                Draft
+
+                            </span>
+
+                        </td>
+
+                        <td>18 Jul 2026</td>
+
+                        <td>
+
+                            <a href="job-details.html">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </a>
+
+                            &nbsp;
+
+                            <a href="post-job.html">
+
+                                <i class="fa-solid fa-pen-to-square"></i>
+
+                            </a>
+
+                            &nbsp;
+
+                            <a href="#">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                            </a>
+
+                            &nbsp;
+
+                            <a href="#">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Pagination -->
+
+        <div class="pagination text-center mt-50">
+
+            <button class="btn btn-outline">
+
+                Previous
+
+            </button>
+
+            <button class="btn btn-primary">
+
+                1
+
+            </button>
+
+            <button class="btn btn-outline">
+
+                2
+
+            </button>
+
+            <button class="btn btn-outline">
+
+                Next
+
+            </button>
+
+        </div>
+
+        <!-- Empty State -->
+
+        <div
+            class="dashboard-box text-center d-none"
+            id="noJobs">
+
+            <img
+                src="images/no-job.svg"
+                alt="No Jobs"
+                style="max-width:250px;">
+
+            <h3>No Jobs Posted Yet</h3>
+
+            <p>
+
+                Click on "Post New Job" to publish your first opportunity.
+
+            </p>
+
+            <a
+                href="post-job.html"
+                class="btn btn-primary">
+
+                Post Job
+
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
