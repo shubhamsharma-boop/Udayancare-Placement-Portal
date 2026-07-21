@@ -11,22 +11,26 @@
 
 :root{
 
-    --primary:#0056D2;
-    --primary-dark:#003E99;
-    --secondary:#00A8E8;
+--primary:#2563EB;
+--primary-dark:#1D4ED8;
 
-    --dark:#0F172A;
-    --text:#475569;
+--secondary:#06B6D4;
 
-    --light:#F8FAFC;
-    --white:#FFFFFF;
+--success:#10B981;
 
-    --border:#E2E8F0;
+--warning:#F59E0B;
 
-    --shadow:0 10px 30px rgba(0,0,0,.08);
-    --shadow-lg:0 18px 45px rgba(0,0,0,.12);
+--danger:#EF4444;
 
-    --radius:16px;
+--dark:#0F172A;
+
+--gray:#64748B;
+
+--light:#F8FAFC;
+
+--white:#FFFFFF;
+
+--border:#E5E7EB;
 
 }
 
