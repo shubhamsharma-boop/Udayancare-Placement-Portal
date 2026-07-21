@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Applications | Udayan Care Placement Portal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="images/logo.png" alt="Logo">
+
+            <h3>Employer Panel</h3>
+
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="employer-dashboard.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="company-profile.html">
+                    <i class="fa-solid fa-building"></i>
+                    Company Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="post-job.html">
+                    <i class="fa-solid fa-plus"></i>
+                    Post Job
+                </a>
+            </li>
+
+            <li>
+                <a href="manage-jobs.html">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Manage Jobs
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    Applications
+                </a>
+            </li>
+
+            <li>
+                <a href="shortlisted.html">
+                    <i class="fa-solid fa-user-check"></i>
+                    Shortlisted
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard-content">
+
+        <!-- Header -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h2>Job Applications</h2>
+
+                <p>Review candidates and manage the hiring process.</p>
+
+            </div>
+
+        </div>
+
+        <!-- Filters -->
+
+        <div class="dashboard-box">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    placeholder="Search Candidate Name">
+
+                <select>
+
+                    <option>All Jobs</option>
+
+                </select>
+
+                <select>
+
+                    <option>All Status</option>
+
+                    <option>Applied</option>
+
+                    <option>Shortlisted</option>
+
+                    <option>Rejected</option>
+
+                    <option>Selected</option>
+
+                </select>
+
+                <button class="btn btn-primary">
+
+                    Search
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Applications Table -->
+
+        <div class="dashboard-box">
+
+            <table class="dashboard-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Application ID</th>
+
+                        <th>Candidate</th>
+
+                        <th>Job Title</th>
+
+                        <th>Applied On</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>APP000001</td>
+
+                        <td>Shubham Sharma</td>
+
+                        <td>Customer Support Executive</td>
+
+                        <td>21 Jul 2026</td>
+
+                        <td>
+
+                            <span class="status pending">
+
+                                Applied
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a href="candidate-profile-view.html"
+                                class="btn btn-outline btn-sm">
+
+                                View Profile
+
+                            </a>
+
+                            <button
+                                class="btn btn-primary btn-sm">
+
+                                Shortlist
+
+                            </button>
+
+                            <button
+                                class="btn btn-danger btn-sm">
+
+                                Reject
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>APP000002</td>
+
+                        <td>Rahul Kumar</td>
+
+                        <td>HR Executive</td>
+
+                        <td>20 Jul 2026</td>
+
+                        <td>
+
+                            <span class="status shortlisted">
+
+                                Shortlisted
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a href="candidate-profile-view.html"
+                                class="btn btn-outline btn-sm">
+
+                                View Profile
+
+                            </a>
+
+                            <button
+                                class="btn btn-success btn-sm">
+
+                                Select
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>APP000003</td>
+
+                        <td>Priya Singh</td>
+
+                        <td>Data Entry Operator</td>
+
+                        <td>18 Jul 2026</td>
+
+                        <td>
+
+                            <span class="status rejected">
+
+                                Rejected
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a href="candidate-profile-view.html"
+                                class="btn btn-outline btn-sm">
+
+                                View Profile
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Empty State -->
+
+        <div
+            class="dashboard-box text-center d-none"
+            id="noApplications">
+
+            <img
+                src="images/no-data.svg"
+                alt="No Applications"
+                style="max-width:250px;">
+
+            <h3>No Applications Received</h3>
+
+            <p>
+
+                Applications from candidates will appear here once they apply.
+
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
