@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Applications | Udayan Care Placement Portal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="images/logo.png" alt="Logo">
+
+            <h3>Candidate Panel</h3>
+
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="candidate-dashboard.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="candidate-profile.html">
+                    <i class="fa-solid fa-user"></i>
+                    My Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="available-jobs.html">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Available Jobs
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="#">
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    My Applications
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard-content">
+
+        <!-- Header -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h2>My Applications</h2>
+
+                <p>
+                    Track all your job applications in one place.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Summary Cards -->
+
+        <div class="dashboard-cards">
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                <h3>Total Applied</h3>
+
+                <h2>12</h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <h3>Pending</h3>
+
+                <h2>06</h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h3>Shortlisted</h3>
+
+                <h2>04</h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-circle-xmark"></i>
+
+                <h3>Rejected</h3>
+
+                <h2>02</h2>
+
+            </div>
+
+        </div>
+
+        <!-- Filter -->
+
+        <div class="dashboard-box">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    placeholder="Search Job Title">
+
+                <select>
+
+                    <option>All Status</option>
+
+                    <option>Pending</option>
+
+                    <option>Shortlisted</option>
+
+                    <option>Interview Scheduled</option>
+
+                    <option>Selected</option>
+
+                    <option>Rejected</option>
+
+                </select>
+
+                <button class="btn btn-primary">
+
+                    Filter
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Applications Table -->
+
+        <div class="dashboard-box">
+
+            <table class="dashboard-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Application ID</th>
+
+                        <th>Job Title</th>
+
+                        <th>Company</th>
+
+                        <th>Applied On</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>APP000001</td>
+
+                        <td>Customer Support Executive</td>
+
+                        <td>ABC Pvt. Ltd.</td>
+
+                        <td>20 Jul 2026</td>
+
+                        <td>
+
+                            <span class="status pending">
+
+                                Pending
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a href="job-details.html">
+
+                                View
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>APP000002</td>
+
+                        <td>HR Executive</td>
+
+                        <td>XYZ Solutions</td>
+
+                        <td>18 Jul 2026</td>
+
+                        <td>
+
+                            <span class="status shortlisted">
+
+                                Shortlisted
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a href="job-details.html">
+
+                                View
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>APP000003</td>
+
+                        <td>Data Entry Operator</td>
+
+                        <td>Tech Services</td>
+
+                        <td>15 Jul 2026</td>
+
+                        <td>
+
+                            <span class="status rejected">
+
+                                Rejected
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a href="job-details.html">
+
+                                View
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Empty State -->
+
+        <div
+            class="dashboard-box text-center d-none"
+            id="noApplications">
+
+            <img
+                src="images/no-data.svg"
+                alt="No Applications"
+                style="max-width:250px;margin:auto;">
+
+            <h3>No Applications Yet</h3>
+
+            <p>
+
+                Start applying for jobs to track your application status here.
+
+            </p>
+
+            <a
+                href="available-jobs.html"
+                class="btn btn-primary mt-20">
+
+                Browse Jobs
+
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
