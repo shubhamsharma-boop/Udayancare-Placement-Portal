@@ -17,57 +17,44 @@
    ROOT VARIABLES
 ================================ */
 
-:root {
+:root{
 
-    --primary: #0A7C66;
+--primary:#0F766E;
+--primary-light:#14B8A6;
 
-    --primary-light: #16A085;
+--secondary:#F59E0B;
 
-    --secondary: #F4B400;
+--accent:#2563EB;
 
-    --dark: #1F2937;
+--success:#16A34A;
 
-    --text: #6B7280;
+--danger:#DC2626;
 
-    --white: #ffffff;
+--dark:#0F172A;
 
-    --bg: #F8FAFC;
+--text:#334155;
 
-    --border: #E5E7EB;
+--light:#F8FAFC;
 
-    --success: #22C55E;
+--white:#FFFFFF;
 
-    --danger: #EF4444;
+--border:#E2E8F0;
 
-    --warning: #F59E0B;
+--shadow:0 15px 40px rgba(15,23,42,.08);
 
+--radius:18px;
 
-    --shadow-sm:
-    0 5px 15px rgba(0,0,0,0.05);
+--transition:.35s ease;
 
+--gradient:
 
-    --shadow:
-    0 10px 30px rgba(0,0,0,0.08);
-
-
-    --shadow-lg:
-    0 20px 50px rgba(0,0,0,0.12);
-
-
-    --radius-sm: 8px;
-
-    --radius:
-    16px;
-
-    --radius-lg:
-    24px;
-
-
-    --transition:
-    all .3s ease;
+linear-gradient(
+135deg,
+#0F766E,
+#14B8A6
+);
 
 }
-
 
 
 /* ===============================
@@ -94,63 +81,24 @@ html {
 
 
 
-body {
+body{
 
-    font-family:
-    'Poppins',
-    sans-serif;
+font-family:
 
-    background:
-    var(--bg);
+"Segoe UI",
+sans-serif;
 
-    color:
-    var(--dark);
+background:#F8FAFC;
 
-    line-height:
-    1.6;
+color:var(--text);
 
-}
+font-size:16px;
 
+line-height:1.6;
 
-
-img {
-
-    max-width:100%;
-
-    display:block;
+overflow-x:hidden;
 
 }
-
-
-
-a {
-
-    text-decoration:none;
-
-    color:inherit;
-
-}
-
-
-
-ul {
-
-    list-style:none;
-
-}
-
-
-
-button,
-input,
-textarea,
-select {
-
-    font-family:
-    inherit;
-
-}
-
 
 
 /* ===============================
@@ -175,55 +123,47 @@ select {
 ================================ */
 
 
-h1 {
+h1{
 
-    font-size:
-    48px;
+font-size:58px;
 
-    font-weight:
-    700;
+line-height:1.15;
 
-    line-height:
-    1.2;
+font-weight:800;
 
-}
+color:var(--dark);
 
-
-
-h2 {
-
-    font-size:
-    36px;
-
-    font-weight:
-    700;
+margin-bottom:20px;
 
 }
 
+h2{
 
+font-size:42px;
 
-h3 {
+font-weight:700;
 
-    font-size:
-    22px;
+color:var(--dark);
 
-    font-weight:
-    600;
-
-}
-
-
-
-p {
-
-    color:
-    var(--text);
-
-    font-size:
-    15px;
+margin-bottom:18px;
 
 }
 
+h3{
+
+font-size:24px;
+
+font-weight:700;
+
+color:var(--dark);
+
+}
+
+p{
+
+color:#64748B;
+
+}
 
 
 /* ===============================
@@ -231,10 +171,9 @@ p {
 ================================ */
 
 
-.section {
+.section{
 
-    padding:
-    80px 0;
+padding:90px 0;
 
 }
 
@@ -295,115 +234,69 @@ p {
 ================================ */
 
 
-.btn {
+.btn{
 
-    display:
-    inline-flex;
+display:inline-flex;
 
-    align-items:center;
+align-items:center;
 
-    justify-content:center;
+gap:10px;
 
-    gap:
-    8px;
+padding:16px 34px;
 
-    padding:
-    12px 28px;
+border-radius:14px;
 
-    border-radius:
-    50px;
+font-weight:600;
 
-    border:none;
+cursor:pointer;
 
-    cursor:pointer;
+transition:.35s;
 
-    font-weight:
-    600;
-
-    transition:
-    var(--transition);
+text-decoration:none;
 
 }
 
 
+.btn-primary{
 
-.btn-primary {
+background:var(--gradient);
 
-    background:
-    linear-gradient(
-    135deg,
-    var(--primary),
-    var(--primary-light)
-    );
+color:white;
 
-    color:
-    var(--white);
+box-shadow:
 
-}
+0 15px 35px
 
-
-
-.btn-primary:hover {
-
-    transform:
-    translateY(-3px);
-
-    box-shadow:
-    var(--shadow);
+rgba(20,184,166,.35);
 
 }
 
 
+.btn-primary:hover{
 
-.btn-outline {
-
-    border:
-    1px solid var(--primary);
-
-    color:
-    var(--primary);
-
-    background:
-    transparent;
+transform:translateY(-5px);
 
 }
 
 
+.btn-outline{
 
-.btn-outline:hover {
+border:2px solid var(--primary);
 
-    background:
-    var(--primary);
+color:var(--primary);
 
-    color:
-    var(--white);
-
-}
-
-
-
-.btn-danger {
-
-    background:
-    var(--danger);
-
-    color:
-    white;
+background:white;
 
 }
 
 
+.btn-outline:hover{
 
-.btn-success {
+background:var(--gradient);
 
-    background:
-    var(--success);
-
-    color:
-    white;
+color:white;
 
 }
-
 
 
 /* ===============================
@@ -2412,12 +2305,15 @@ textarea:focus {
 @media(max-width:768px){
 
 
-    .container {
+    .container{
 
-        width:
-        92%;
+width:90%;
 
-    }
+max-width:1320px;
+
+margin:auto;
+
+}
 
 
     .hero {
