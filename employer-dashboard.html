@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employer Dashboard | Udayan Care Placement Portal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="images/logo.png" alt="Logo">
+
+            <h3>Employer Panel</h3>
+
+        </div>
+
+        <ul>
+
+            <li class="active">
+                <a href="#">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="company-profile.html">
+                    <i class="fa-solid fa-building"></i>
+                    Company Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="post-job.html">
+                    <i class="fa-solid fa-plus"></i>
+                    Post Job
+                </a>
+            </li>
+
+            <li>
+                <a href="manage-jobs.html">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Manage Jobs
+                </a>
+            </li>
+
+            <li>
+                <a href="applications.html">
+                    <i class="fa-solid fa-users"></i>
+                    Applications
+                </a>
+            </li>
+
+            <li>
+                <a href="shortlisted.html">
+                    <i class="fa-solid fa-user-check"></i>
+                    Shortlisted
+                </a>
+            </li>
+
+            <li>
+                <a href="employer-settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard-content">
+
+        <!-- Dashboard Header -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h2>Welcome, ABC Pvt. Ltd. 👋</h2>
+
+                <p>
+                    Manage your recruitment activities from one dashboard.
+                </p>
+
+            </div>
+
+            <div>
+
+                <a href="post-job.html" class="btn btn-primary">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Post New Job
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Statistics -->
+
+        <div class="dashboard-cards">
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <h3>Active Jobs</h3>
+
+                <h2>08</h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h3>Total Applications</h3>
+
+                <h2>126</h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-user-check"></i>
+
+                <h3>Shortlisted</h3>
+
+                <h2>34</h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h3>Positions Filled</h3>
+
+                <h2>12</h2>
+
+            </div>
+
+        </div>
+
+        <!-- Quick Actions -->
+
+        <div class="dashboard-box">
+
+            <h3>Quick Actions</h3>
+
+            <div class="quick-actions">
+
+                <a href="post-job.html" class="btn btn-primary">
+
+                    Post Job
+
+                </a>
+
+                <a href="manage-jobs.html" class="btn btn-secondary">
+
+                    Manage Jobs
+
+                </a>
+
+                <a href="applications.html" class="btn btn-outline">
+
+                    View Applications
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Recent Jobs -->
+
+        <div class="dashboard-box">
+
+            <h3>Recent Job Posts</h3>
+
+            <table class="dashboard-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Job ID</th>
+
+                        <th>Job Title</th>
+
+                        <th>Location</th>
+
+                        <th>Applications</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>JOB000001</td>
+
+                        <td>Customer Support Executive</td>
+
+                        <td>Noida</td>
+
+                        <td>45</td>
+
+                        <td>
+                            <span class="status shortlisted">
+                                Active
+                            </span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>JOB000002</td>
+
+                        <td>HR Executive</td>
+
+                        <td>Delhi</td>
+
+                        <td>28</td>
+
+                        <td>
+                            <span class="status pending">
+                                Active
+                            </span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>JOB000003</td>
+
+                        <td>Data Entry Operator</td>
+
+                        <td>Gurugram</td>
+
+                        <td>12</td>
+
+                        <td>
+                            <span class="status rejected">
+                                Closed
+                            </span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Recent Applications -->
+
+        <div class="dashboard-box">
+
+            <h3>Latest Candidate Applications</h3>
+
+            <table class="dashboard-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Candidate</th>
+
+                        <th>Job</th>
+
+                        <th>Applied On</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Shubham Sharma</td>
+
+                        <td>Customer Support Executive</td>
+
+                        <td>21 Jul 2026</td>
+
+                        <td>
+                            <span class="status pending">
+                                Under Review
+                            </span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Rahul Kumar</td>
+
+                        <td>HR Executive</td>
+
+                        <td>20 Jul 2026</td>
+
+                        <td>
+                            <span class="status shortlisted">
+                                Shortlisted
+                            </span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
