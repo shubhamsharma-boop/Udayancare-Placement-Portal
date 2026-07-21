@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shortlisted Candidates | Udayan Care Placement Portal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="images/logo.png" alt="Logo">
+
+            <h3>Employer Panel</h3>
+
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="employer-dashboard.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="company-profile.html">
+                    <i class="fa-solid fa-building"></i>
+                    Company Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="post-job.html">
+                    <i class="fa-solid fa-plus"></i>
+                    Post Job
+                </a>
+            </li>
+
+            <li>
+                <a href="manage-jobs.html">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Manage Jobs
+                </a>
+            </li>
+
+            <li>
+                <a href="applications.html">
+                    <i class="fa-solid fa-users"></i>
+                    Applications
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="#">
+                    <i class="fa-solid fa-user-check"></i>
+                    Shortlisted
+                </a>
+            </li>
+
+            <li>
+                <a href="employer-settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard-content">
+
+        <!-- Header -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h2>Shortlisted Candidates</h2>
+
+                <p>Manage shortlisted candidates and finalize hiring.</p>
+
+            </div>
+
+        </div>
+
+        <!-- Summary Cards -->
+
+        <div class="dashboard-cards">
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-user-check"></i>
+
+                <h3>Shortlisted</h3>
+
+                <h2>34</h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h3>Selected</h3>
+
+                <h2>12</h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                <h3>Interviews</h3>
+
+                <h2>08</h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <h3>Active Jobs</h3>
+
+                <h2>06</h2>
+
+            </div>
+
+        </div>
+
+        <!-- Filters -->
+
+        <div class="dashboard-box">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    placeholder="Search Candidate">
+
+                <select>
+
+                    <option>All Jobs</option>
+
+                </select>
+
+                <button class="btn btn-primary">
+
+                    Search
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Candidates Table -->
+
+        <div class="dashboard-box">
+
+            <table class="dashboard-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Candidate</th>
+
+                        <th>Job Title</th>
+
+                        <th>Shortlisted On</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Shubham Sharma</td>
+
+                        <td>Customer Support Executive</td>
+
+                        <td>21 Jul 2026</td>
+
+                        <td>
+
+                            <span class="status shortlisted">
+
+                                Shortlisted
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="candidate-profile-view.html"
+                                class="btn btn-outline btn-sm">
+
+                                View Profile
+
+                            </a>
+
+                            <button
+                                class="btn btn-success btn-sm">
+
+                                Mark Selected
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Rahul Kumar</td>
+
+                        <td>HR Executive</td>
+
+                        <td>20 Jul 2026</td>
+
+                        <td>
+
+                            <span class="status pending">
+
+                                Interview Scheduled
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="candidate-profile-view.html"
+                                class="btn btn-outline btn-sm">
+
+                                View Profile
+
+                            </a>
+
+                            <button
+                                class="btn btn-success btn-sm">
+
+                                Mark Selected
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Priya Singh</td>
+
+                        <td>Data Entry Operator</td>
+
+                        <td>18 Jul 2026</td>
+
+                        <td>
+
+                            <span class="status selected">
+
+                                Selected
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="candidate-profile-view.html"
+                                class="btn btn-outline btn-sm">
+
+                                View Profile
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Empty State -->
+
+        <div
+            class="dashboard-box text-center d-none"
+            id="noShortlisted">
+
+            <img
+                src="images/no-data.svg"
+                alt="No Candidates"
+                style="max-width:250px;">
+
+            <h3>No Shortlisted Candidates</h3>
+
+            <p>
+
+                Shortlisted candidates will appear here after reviewing applications.
+
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
