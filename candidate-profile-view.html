@@ -3,22 +3,37 @@
 
 <head>
 
+
 <meta charset="UTF-8">
+
 
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
 
+
 <title>
+
 Candidate Profile | Udayan Care Placement Portal
+
 </title>
 
 
+
+
 <meta name="description"
-content="Manage your Digital Resume profile on Udayan Care Placement Portal.">
+content="View candidate digital profile and resume details.">
 
 
-<link rel="stylesheet" href="css/style.css">
+
+
+
+
+<link rel="stylesheet"
+href="css/style.css">
+
+
+
 
 
 <link rel="preconnect"
@@ -30,8 +45,13 @@ href="https://fonts.gstatic.com"
 crossorigin>
 
 
+
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
+
+
+
 
 
 <link rel="stylesheet"
@@ -41,7 +61,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 </head>
 
 
+
+
+
+
+
 <body>
+
+
+
+
+
 
 
 
@@ -52,6 +82,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 
 
+
+
+
+
+
 <!-- ================= SIDEBAR ================= -->
 
 
@@ -59,14 +94,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 
 
+
+
 <div class="sidebar-logo">
 
 
 <img src="images/logo.png"
-alt="Udayan Care">
+alt="Udayan Care Logo">
 
 
 </div>
+
+
+
+
 
 
 
@@ -75,10 +116,12 @@ alt="Udayan Care">
 
 
 
-<a href="candidate-dashboard.html">
 
 
-<i class="fa-solid fa-house"></i>
+<a href="employer-dashboard.html">
+
+
+<i class="fa-solid fa-chart-line"></i>
 
 
 Dashboard
@@ -90,14 +133,17 @@ Dashboard
 
 
 
-<a href="candidate-profile.html"
+
+
+
+<a href="applications.html"
 class="active">
 
 
-<i class="fa-solid fa-user"></i>
+<i class="fa-solid fa-users"></i>
 
 
-My Profile
+Applications
 
 
 </a>
@@ -106,13 +152,34 @@ My Profile
 
 
 
-<a href="available-jobs.html">
+
+
+
+<a href="shortlisted.html">
+
+
+<i class="fa-solid fa-user-check"></i>
+
+
+Shortlisted Candidates
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="manage-jobs.html">
 
 
 <i class="fa-solid fa-briefcase"></i>
 
 
-Available Jobs
+Manage Jobs
 
 
 </a>
@@ -121,31 +188,40 @@ Available Jobs
 
 
 
-<a href="my-applications.html">
 
 
-<i class="fa-solid fa-file-lines"></i>
+
+<a href="post-job.html">
 
 
-My Applications
+<i class="fa-solid fa-plus"></i>
+
+
+Post Job
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="company-profile.html">
+
+
+<i class="fa-solid fa-building"></i>
+
+
+Company Profile
 
 
 </a>
 
 
 
-
-
-<a href="#">
-
-
-<i class="fa-solid fa-bookmark"></i>
-
-
-Saved Jobs
-
-
-</a>
 
 
 
@@ -166,7 +242,10 @@ Settings
 
 
 
-<a href="candidate-login.html">
+
+
+
+<a href="employer-login.html">
 
 
 <i class="fa-solid fa-right-from-bracket"></i>
@@ -180,11 +259,20 @@ Logout
 
 
 
+
+
 </nav>
 
 
 
+
+
+
 </aside>
+
+
+
+
 
 
 
@@ -197,10 +285,17 @@ Logout
 
 
 
-<!-- ================= PROFILE HEADER ================= -->
+
+
+
+
+<!-- ================= HEADER ================= -->
 
 
 <div class="dashboard-header">
+
+
+
 
 
 <div>
@@ -208,19 +303,26 @@ Logout
 
 <h1>
 
-My Digital Profile
+Candidate Profile
 
 </h1>
 
 
+
 <p>
 
-Your profile works as your professional resume.
+Digital Resume View
 
 </p>
 
 
+
 </div>
+
+
+
+
+
 
 
 
@@ -228,24 +330,27 @@ Your profile works as your professional resume.
 <div class="user-profile">
 
 
-<img src="images/user-placeholder.png"
-alt="Profile Image">
+
+<img src="images/company-placeholder.png"
+alt="Company">
+
+
 
 
 
 <div>
 
 
-<h4 id="candidateName">
+<h4>
 
-Priya Sharma
+ABC Technologies
 
 </h4>
 
 
 <span>
 
-Shalini Fellow
+Employer
 
 </span>
 
@@ -253,45 +358,63 @@ Shalini Fellow
 </div>
 
 
+
+</div>
+
+
+
+
+
+
 </div>
 
 
 
-</div>
 
-    <!-- ================= PROFILE SUMMARY CARD ================= -->
+
+
+
+
+
+<!-- ================= PROFILE HEADER ================= -->
 
 
 <section class="card"
-style="padding:35px;">
+style="padding:40px;">
 
 
 
-<div class="d-flex align-center gap-30">
+
+
+<div style="
+display:flex;
+align-items:center;
+gap:30px;
+flex-wrap:wrap;
+">
 
 
 
-<div>
+
 
 
 <img src="images/user-placeholder.png"
-alt="Candidate Photo"
+alt="Candidate"
 style="
-width:120px;
-height:120px;
+width:130px;
+height:130px;
 border-radius:50%;
 object-fit:cover;
 ">
 
 
 
-</div>
-
 
 
 
 
 <div>
+
 
 
 <h2>
@@ -301,33 +424,34 @@ Priya Sharma
 </h2>
 
 
+
+
 <p>
 
-Digital Marketing | Customer Support | Communication Skills
+Shalini ID: CAND000101
 
 </p>
+
+
 
 
 <p>
 
 <i class="fa-solid fa-location-dot"></i>
 
-Noida, Uttar Pradesh
+Delhi, India
 
 </p>
 
 
 
-<a href="#"
-class="btn btn-primary mt-20">
 
 
-<i class="fa-solid fa-pen"></i>
+<span class="status status-approved">
 
-Edit Profile
+Profile Verified
 
-
-</a>
+</span>
 
 
 
@@ -335,94 +459,39 @@ Edit Profile
 
 
 
+
+
+
+
 </div>
+
+
 
 
 
 </section>
 
+    <!-- ================= PERSONAL DETAILS ================= -->
+
+
+<section class="section">
+
+
+
+<div class="container">
 
 
 
 
 
-
-<!-- ================= PROFILE COMPLETION ================= -->
-
-
-<section class="card mt-30"
-style="padding:30px;">
+<div class="section-title">
 
 
+<span>
 
-<div class="d-flex justify-between align-center">
+PROFILE DETAILS
 
-
-<div>
-
-
-<h3>
-
-Profile Completion
-
-</h3>
-
-
-<p>
-
-Complete your profile to improve employer visibility.
-
-</p>
-
-
-</div>
-
-
-
-<strong id="profileCompletion">
-
-80%
-
-</strong>
-
-
-
-</div>
-
-
-
-
-<div class="progress mt-20">
-
-
-<div class="progress-bar"
-style="width:80%;">
-
-</div>
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ================= BASIC INFORMATION ================= -->
-
-
-<section class="section"
-style="padding:40px 0;">
-
-
-
-<div class="card"
-style="padding:35px;">
+</span>
 
 
 
@@ -434,32 +503,32 @@ Personal Information
 
 
 
-<div class="dashboard-grid"
-style="margin-top:30px;">
+<p>
 
-
-
-
-
-<div>
-
-
-<h4>
-
-Shalini ID
-
-</h4>
-
-
-<p id="shaliniId">
-
-CAND000001
+Candidate basic information and contact details.
 
 </p>
 
 
+
 </div>
 
+
+
+
+
+
+
+
+
+<div class="card"
+style="padding:35px;">
+
+
+
+
+
+<div class="dashboard-grid">
 
 
 
@@ -475,7 +544,7 @@ Full Name
 </h4>
 
 
-<p id="fullName">
+<p>
 
 Priya Sharma
 
@@ -490,24 +559,28 @@ Priya Sharma
 
 
 
+
+
 <div>
 
 
 <h4>
 
-Email Address
+Email
 
 </h4>
 
 
-<p id="email">
+<p>
 
-priya@example.com
+priya.sharma@email.com
 
 </p>
 
 
 </div>
+
+
 
 
 
@@ -525,7 +598,7 @@ Mobile Number
 </h4>
 
 
-<p id="mobile">
+<p>
 
 +91 9876543210
 
@@ -539,7 +612,45 @@ Mobile Number
 
 
 
+
+
+
+<div>
+
+
+<h4>
+
+Date Of Birth
+
+</h4>
+
+
+<p>
+
+15 August 2000
+
+</p>
+
+
 </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
 
 
 </div>
@@ -548,11 +659,18 @@ Mobile Number
 
 </section>
 
-    <!-- ================= EDUCATION DETAILS ================= -->
 
 
-<section class="section light-bg"
-style="padding:40px 0;">
+
+
+
+
+
+
+<!-- ================= EDUCATION DETAILS ================= -->
+
+
+<section class="section light-bg">
 
 
 
@@ -560,42 +678,25 @@ style="padding:40px 0;">
 
 
 
-<div class="card"
-style="padding:35px;">
+
+
+<div class="section-title">
+
+
+<span>
+
+EDUCATION
+
+</span>
 
 
 
 <h2>
 
-Education Details
+Academic Background
 
 </h2>
 
-
-
-
-<div class="dashboard-grid"
-style="margin-top:30px;">
-
-
-
-
-
-<div>
-
-
-<h4>
-
-Highest Qualification
-
-</h4>
-
-
-<p id="qualification">
-
-Bachelor of Commerce (B.Com)
-
-</p>
 
 
 </div>
@@ -605,23 +706,45 @@ Bachelor of Commerce (B.Com)
 
 
 
-<div>
 
 
-<h4>
 
-Institute Name
-
-</h4>
+<div class="card"
+style="padding:35px;">
 
 
-<p id="institute">
+
+
+
+
+<div class="timeline-item">
+
+
+
+<h3>
+
+Bachelor of Commerce (B.Com)
+
+</h3>
+
+
+
+<p>
 
 Delhi University
 
 </p>
 
 
+
+<span>
+
+2021
+
+</span>
+
+
+
 </div>
 
 
@@ -629,58 +752,52 @@ Delhi University
 
 
 
-<div>
 
 
-<h4>
 
-Passing Year
-
-</h4>
+<div class="timeline-item">
 
 
-<p id="passingYear">
 
-2025
+<h3>
+
+12th Standard
+
+</h3>
+
+
+
+<p>
+
+CBSE Board
 
 </p>
 
 
-</div>
 
+<span>
 
+2018
 
-
-
-
-<div>
-
-
-<h4>
-
-Education Status
-
-</h4>
-
-
-<p id="educationStatus">
-
-Completed
-
-</p>
-
-
-</div>
+</span>
 
 
 
 </div>
 
 
+
+
+
+
+
 </div>
 
 
+
+
 </div>
+
 
 
 </section>
@@ -692,11 +809,46 @@ Completed
 
 
 
-<!-- ================= SKILLS SECTION ================= -->
+
+<!-- ================= SKILLS ================= -->
 
 
-<section class="section"
-style="padding:40px 0;">
+<section class="section">
+
+
+
+<div class="container">
+
+
+
+
+
+<div class="section-title">
+
+
+<span>
+
+SKILLS
+
+</span>
+
+
+
+<h2>
+
+Professional Skills
+
+</h2>
+
+
+
+</div>
+
+
+
+
+
+
 
 
 
@@ -705,36 +857,32 @@ style="padding:35px;">
 
 
 
-<h2>
-
-Skills & Expertise
-
-</h2>
 
 
 
-<div class="d-flex gap-10"
-style="flex-wrap:wrap;margin-top:25px;">
+<div class="skill-tags">
 
 
 
-<span class="badge">
 
-Communication
+
+<span>
+
+Communication Skills
 
 </span>
 
 
 
-<span class="badge">
+<span>
 
-MS Office
+MS Excel
 
 </span>
 
 
 
-<span class="badge">
+<span>
 
 Customer Handling
 
@@ -742,7 +890,15 @@ Customer Handling
 
 
 
-<span class="badge">
+<span>
+
+Computer Knowledge
+
+</span>
+
+
+
+<span>
 
 Team Work
 
@@ -750,23 +906,18 @@ Team Work
 
 
 
-<span class="badge">
-
-Problem Solving
-
-</span>
-
-
-
-<span class="badge">
-
-Digital Skills
-
-</span>
 
 
 
 </div>
+
+
+
+
+
+
+</div>
+
 
 
 
@@ -782,16 +933,29 @@ Digital Skills
 
 
 
-<!-- ================= WORK EXPERIENCE ================= -->
 
 
-<section class="section light-bg"
-style="padding:40px 0;">
+<!-- ================= EXPERIENCE ================= -->
+
+
+<section class="section light-bg">
 
 
 
-<div class="card"
-style="padding:35px;">
+<div class="container">
+
+
+
+
+
+<div class="section-title">
+
+
+<span>
+
+EXPERIENCE
+
+</span>
 
 
 
@@ -803,14 +967,26 @@ Work Experience
 
 
 
-
-<div style="margin-top:25px;">
-
+</div>
 
 
-<h3 id="experienceTitle">
 
-Customer Support Intern
+
+
+
+
+
+
+<div class="card"
+style="padding:35px;">
+
+
+
+
+
+<h3>
+
+Customer Support Executive
 
 </h3>
 
@@ -818,7 +994,7 @@ Customer Support Intern
 
 <p>
 
-ABC Technologies
+ABC Services Pvt. Ltd.
 
 </p>
 
@@ -826,27 +1002,16 @@ ABC Technologies
 
 <p>
 
-Duration:
-
-<span id="experienceDuration">
-
-6 Months
-
-</span>
+Duration: 1 Year
 
 </p>
 
 
-
-<p>
-
-Handled customer queries, maintained records and supported daily operations.
-
-</p>
 
 
 
 </div>
+
 
 
 
@@ -857,17 +1022,53 @@ Handled customer queries, maintained records and supported daily operations.
 
 </section>
 
+    <!-- ================= CAREER PREFERENCE ================= -->
+
+
+<section class="section">
+
+
+
+<div class="container">
+
+
+
+
+
+<div class="section-title">
+
+
+<span>
+
+CAREER PREFERENCE
+
+</span>
+
+
+
+<h2>
+
+Job Preferences
+
+</h2>
+
+
+
+<p>
+
+Candidate preferred roles and employment preferences.
+
+</p>
+
+
+
+</div>
 
 
 
 
 
 
-<!-- ================= CAREER PREFERENCE ================= -->
-
-
-<section class="section"
-style="padding:40px 0;">
 
 
 
@@ -876,17 +1077,41 @@ style="padding:35px;">
 
 
 
-<h2>
-
-Career Preference
-
-</h2>
 
 
 
+<div class="dashboard-grid">
 
-<div class="dashboard-grid"
-style="margin-top:30px;">
+
+
+
+
+<div>
+
+
+<h4>
+
+Preferred Role
+
+</h4>
+
+
+
+<p>
+
+Customer Support Executive
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
 
 
 
@@ -900,14 +1125,20 @@ Preferred Location
 </h4>
 
 
-<p id="preferredLocation">
 
-Noida / Delhi NCR
+<p>
+
+Delhi / Noida / Gurugram
 
 </p>
 
 
+
 </div>
+
+
+
+
 
 
 
@@ -923,14 +1154,20 @@ Employment Type
 </h4>
 
 
-<p id="employmentType">
+
+<p>
 
 Full Time
 
 </p>
 
 
+
 </div>
+
+
+
+
 
 
 
@@ -946,41 +1183,33 @@ Expected Salary
 </h4>
 
 
-<p id="expectedSalary">
 
-₹25,000 Per Month
+<p>
 
-</p>
-
-
-</div>
-
-
-
-
-
-<div>
-
-
-<h4>
-
-Availability
-
-</h4>
-
-
-<p id="availability">
-
-Immediately Available
+₹20,000 - ₹25,000
 
 </p>
 
 
+
+</div>
+
+
+
+
+
+
+
 </div>
 
 
 
+
+
+
+
 </div>
+
 
 
 
@@ -990,40 +1219,45 @@ Immediately Available
 
 </section>
 
-    <!-- ================= RESUME PREVIEW ================= -->
 
 
-<section class="section light-bg"
-style="padding:50px 0;">
+
+
+
+
+
+
+<!-- ================= PROFILE SUMMARY ================= -->
+
+
+<section class="section light-bg">
 
 
 
 <div class="container">
+
+
 
 
 
 <div class="section-title">
 
+
 <span>
 
-DIGITAL RESUME
+ABOUT CANDIDATE
 
 </span>
+
 
 
 <h2>
 
-Profile Preview
+Professional Summary
 
 </h2>
 
 
-<p>
-
-Your UCPP profile can be viewed by verified employers as your professional resume.
-
-</p>
-
 
 </div>
 
@@ -1032,100 +1266,19 @@ Your UCPP profile can be viewed by verified employers as your professional resum
 
 
 
-<div class="job-details">
 
 
 
-<div class="d-flex justify-between align-center"
-style="flex-wrap:wrap;gap:20px;">
+<div class="card"
+style="padding:35px;">
 
 
-
-<div>
-
-
-<h1 id="resumeName">
-
-Priya Sharma
-
-</h1>
-
-
-<p>
-
-Candidate ID:
-
-<strong id="resumeId">
-
-CAND000001
-
-</strong>
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-<div>
-
-
-<a href="#"
-class="btn btn-outline">
-
-
-<i class="fa-solid fa-print"></i>
-
-Print Profile
-
-</a>
-
-
-
-<a href="#"
-class="btn btn-primary">
-
-
-<i class="fa-solid fa-file-pdf"></i>
-
-Download PDF
-
-</a>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-<hr style="margin:30px 0;border:0;border-top:1px solid #E2E8F0;">
-
-
-
-
-
-<h3>
-
-Professional Summary
-
-</h3>
 
 
 
 <p>
 
-Motivated Shalini Fellow with strong communication skills, willingness to learn and interest in building a professional career.
+Motivated and hardworking candidate with good communication skills and basic computer knowledge. Looking for an opportunity to build a successful career and contribute to organizational growth.
 
 </p>
 
@@ -1134,57 +1287,13 @@ Motivated Shalini Fellow with strong communication skills, willingness to learn 
 
 
 
-<h3 style="margin-top:30px;">
-
-Key Skills
-
-</h3>
-
-
-
-<div class="d-flex gap-10"
-style="flex-wrap:wrap;margin-top:20px;">
-
-
-<span class="badge">
-
-Communication
-
-</span>
-
-
-<span class="badge">
-
-Customer Service
-
-</span>
-
-
-<span class="badge">
-
-MS Office
-
-</span>
-
-
-<span class="badge">
-
-Team Collaboration
-
-</span>
-
-
 </div>
-
 
 
 
 
 </div>
 
-
-
-</div>
 
 
 </section>
@@ -1195,11 +1304,12 @@ Team Collaboration
 
 
 
-<!-- ================= PROFILE SHARING ================= -->
 
 
-<section class="section"
-style="padding:40px 0;">
+<!-- ================= PORTFOLIO / DOCUMENTS ================= -->
+
+
+<section class="section">
 
 
 
@@ -1207,53 +1317,243 @@ style="padding:40px 0;">
 
 
 
-<div class="cta-box">
+
+
+<div class="section-title">
+
+
+<span>
+
+DOCUMENTS
+
+</span>
 
 
 
 <h2>
 
-Share Your Professional Profile
+Profile Sharing Options
 
 </h2>
 
 
 
+</div>
+
+
+
+
+
+
+
+
+
+<div class="action-buttons"
+style="display:flex;gap:15px;flex-wrap:wrap;">
+
+
+
+
+
+
+<button
+class="btn btn-primary"
+onclick="downloadProfile()">
+
+
+
+<i class="fa-solid fa-file-pdf"></i>
+
+
+Download PDF
+
+
+</button>
+
+
+
+
+
+
+
+
+
+<button
+class="btn"
+onclick="emailProfile()">
+
+
+
+<i class="fa-solid fa-envelope"></i>
+
+
+Email Profile
+
+
+</button>
+
+
+
+
+
+
+
+
+
+<button
+class="btn"
+onclick="shareWhatsApp()">
+
+
+
+<i class="fa-brands fa-whatsapp"></i>
+
+
+WhatsApp Share
+
+
+</button>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= EMPLOYER ACTION ================= -->
+
+
+<section class="section light-bg">
+
+
+
+<div class="container">
+
+
+
+
+
+<div class="card"
+style="padding:40px;">
+
+
+
+
+
+
+<h2>
+
+Candidate Hiring Action
+
+</h2>
+
+
+
+
+
+
 <p>
 
-Share your UCPP Digital Resume with recruiters through Email or WhatsApp.
+Update candidate status based on your recruitment decision.
 
 </p>
 
 
 
 
-<div class="hero-buttons"
-style="justify-content:center;">
 
 
 
-<a href="#"
-class="btn">
-
-
-<i class="fa-solid fa-envelope"></i>
-
-Email Profile
-
-</a>
+<div style="
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+">
 
 
 
-<a href="#"
-class="btn">
 
 
-<i class="fa-brands fa-whatsapp"></i>
 
-WhatsApp Share
+<button
+class="btn btn-primary"
+onclick="shortlistCandidate()">
 
-</a>
+
+
+<i class="fa-solid fa-user-check"></i>
+
+
+Shortlist
+
+
+</button>
+
+
+
+
+
+
+
+
+<button
+class="btn"
+onclick="scheduleInterview()">
+
+
+
+<i class="fa-solid fa-calendar"></i>
+
+
+Schedule Interview
+
+
+</button>
+
+
+
+
+
+
+
+
+<button
+class="btn"
+onclick="rejectCandidate()">
+
+
+
+<i class="fa-solid fa-xmark"></i>
+
+
+Reject
+
+
+</button>
+
+
+
+
 
 
 
@@ -1261,11 +1561,17 @@ WhatsApp Share
 
 
 
+
+
+
+
 </div>
 
 
 
+
 </div>
+
 
 
 </section>
@@ -1294,9 +1600,11 @@ style="height:60px;">
 
 <p>
 
-Udayan Care Placement Portal connects Shalini Fellows with verified employers and supports career growth through meaningful employment opportunities.
+Udayan Care Placement Portal creates meaningful employment opportunities by connecting employers with talented candidates.
 
 </p>
+
+
 
 
 
@@ -1334,10 +1642,16 @@ Udayan Care Placement Portal connects Shalini Fellows with verified employers an
 </a>
 
 
+
 </div>
 
 
+
 </div>
+
+
+
+
 
 
 
@@ -1348,118 +1662,34 @@ Udayan Care Placement Portal connects Shalini Fellows with verified employers an
 
 <h3>
 
-Quick Links
+Employer
 
 </h3>
 
 
-<a href="index.html">
 
-Home
-
-</a>
-
-
-<a href="about.html">
-
-About
-
-</a>
-
-
-<a href="jobs.html">
-
-Jobs
-
-</a>
-
-
-<a href="contact.html">
-
-Contact
-
-</a>
-
-
-</div>
-
-
-
-
-
-<div>
-
-
-<h3>
-
-Candidates
-
-</h3>
-
-
-<a href="candidate-dashboard.html">
+<a href="employer-dashboard.html">
 
 Dashboard
 
 </a>
 
 
-<a href="candidate-profile.html">
 
-My Profile
-
-</a>
-
-
-<a href="available-jobs.html">
-
-Available Jobs
-
-</a>
-
-
-<a href="my-applications.html">
+<a href="applications.html">
 
 Applications
 
 </a>
 
 
-</div>
 
+<a href="shortlisted.html">
 
-
-
-
-<div>
-
-
-<h3>
-
-Employers
-
-</h3>
-
-
-<a href="employer-register.html">
-
-Register
+Shortlisted
 
 </a>
 
-
-<a href="employer-login.html">
-
-Login
-
-</a>
-
-
-<a href="post-job.html">
-
-Post Job
-
-</a>
 
 
 <a href="manage-jobs.html">
@@ -1469,11 +1699,125 @@ Manage Jobs
 </a>
 
 
+
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Candidate
+
+</h3>
+
+
+
+<a href="candidate-register.html">
+
+Registration
+
+</a>
+
+
+
+<a href="candidate-login.html">
+
+Login
+
+</a>
+
+
+
+<a href="candidate-dashboard.html">
+
+Dashboard
+
+</a>
+
+
+
+<a href="candidate-profile.html">
+
+Profile
+
+</a>
+
+
+
 </div>
 
 
 
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Support
+
+</h3>
+
+
+
+<a href="contact.html">
+
+Contact
+
+</a>
+
+
+
+<a href="#">
+
+Help Center
+
+</a>
+
+
+
+<a href="#">
+
+Privacy Policy
+
+</a>
+
+
+
+<a href="#">
+
+Terms
+
+</a>
+
+
+
 </div>
+
+
+
+
+
+
+</div>
+
+
+
+
 
 
 
@@ -1494,10 +1838,14 @@ Manage Jobs
 
 
 
+
 </div>
 
 
 </footer>
+
+
+
 
 
 
@@ -1520,6 +1868,9 @@ Manage Jobs
 
 
 
+
+
+
 <!-- ================= JAVASCRIPT ================= -->
 
 
@@ -1527,39 +1878,316 @@ Manage Jobs
 
 
 
+
+
+
+
+
 <script>
 
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
 
-console.log("Candidate Profile Loaded");
+
+console.log(
+"Candidate Profile View Loaded"
+);
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// Download Profile
+
+
+function downloadProfile(){
+
+
+
+alert(
+"Candidate profile PDF generation started."
+);
+
+
+
 
 
 
 /*
 
-Future Google Apps Script Integration:
+Future Integration:
 
 
-1. Load Candidate Profile Data
 
-2. Update Personal Information
+Generate Digital Resume PDF
 
-3. Update Education Details
-
-4. Update Skills
-
-5. Generate Resume PDF
-
-6. Share Profile
+Using Candidate_Master Data
 
 
 */
 
 
 
-});
+}
+
+
+
+
+
+
+
+
+
+// Email Profile
+
+
+function emailProfile(){
+
+
+
+alert(
+"Candidate profile sent through email."
+);
+
+
+
+
+
+
+/*
+
+Future Integration:
+
+
+
+Send profile email
+
+Employer email service
+
+
+*/
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// WhatsApp Share
+
+
+function shareWhatsApp(){
+
+
+
+alert(
+"WhatsApp sharing link generated."
+);
+
+
+
+
+
+
+/*
+
+Future Integration:
+
+
+
+Generate WhatsApp Share URL
+
+
+*/
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// Shortlist Candidate
+
+
+function shortlistCandidate(){
+
+
+
+let action =
+confirm(
+"Shortlist this candidate?"
+);
+
+
+
+
+
+
+if(action){
+
+
+
+alert(
+"Candidate shortlisted successfully."
+);
+
+
+
+
+
+/*
+
+Update Applications Sheet:
+
+Status = Shortlisted
+
+
+*/
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// Schedule Interview
+
+
+function scheduleInterview(){
+
+
+
+let action =
+confirm(
+"Schedule interview?"
+);
+
+
+
+
+
+
+if(action){
+
+
+
+alert(
+"Interview scheduling initiated."
+);
+
+
+
+
+
+/*
+
+Update:
+
+Interview_Date
+
+Interview_Status
+
+
+*/
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// Reject Candidate
+
+
+function rejectCandidate(){
+
+
+
+let action =
+confirm(
+"Reject this candidate?"
+);
+
+
+
+
+
+
+if(action){
+
+
+
+alert(
+"Candidate rejected."
+);
+
+
+
+
+
+/*
+
+Update:
+
+Status = Rejected
+
+
+*/
+
+
+
+}
+
+
+
+}
+
+
 
 
 
@@ -1569,11 +2197,6 @@ Future Google Apps Script Integration:
 
 
 
-
-</main>
-
-
-</div>
 
 
 
