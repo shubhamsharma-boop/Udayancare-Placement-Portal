@@ -3,561 +3,1360 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>Available Jobs | Udayan Care Placement Portal</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<title>
+
+Available Jobs | Udayan Care Placement Portal
+
+</title>
+
+
+<meta name="description"
+content="Explore verified job opportunities through Udayan Care Placement Portal.">
+
+
+
+<link rel="stylesheet"
+href="css/style.css">
+
+
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 
 </head>
 
-<body>
-
-<div class="dashboard">
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="sidebar">
-
-        <div class="sidebar-logo">
-
-            <img src="images/logo.png" alt="Logo">
-
-            <h3>Candidate Panel</h3>
-
-        </div>
-
-        <ul>
-
-            <li>
-                <a href="candidate-dashboard.html">
-                    <i class="fa-solid fa-house"></i>
-                    Dashboard
-                </a>
-            </li>
-
-            <li>
-                <a href="candidate-profile.html">
-                    <i class="fa-solid fa-user"></i>
-                    My Profile
-                </a>
-            </li>
-
-            <li class="active">
-                <a href="#">
-                    <i class="fa-solid fa-briefcase"></i>
-                    Available Jobs
-                </a>
-            </li>
-
-            <li>
-                <a href="my-applications.html">
-                    <i class="fa-solid fa-file-circle-check"></i>
-                    My Applications
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-gear"></i>
-                    Settings
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    Logout
-                </a>
-            </li>
-
-        </ul>
-
-    </aside>
-
-    <!-- ================= MAIN CONTENT ================= -->
-
-    <main class="dashboard-content">
-
-        <!-- Header -->
-
-        <div class="dashboard-header">
-
-            <div>
-
-                <h2>Available Jobs</h2>
-
-                <p>Browse verified job opportunities matching your profile.</p>
-
-            </div>
-
-        </div>
-
-        <!-- Search -->
-
-        <div class="dashboard-box">
-
-            <div class="search-box">
-
-                <input
-                    type="text"
-                    id="searchJob"
-                    placeholder="Search by Job Title, Company or Skill">
-
-                <select id="jobLocation">
-
-                    <option value="">All Locations</option>
-
-                    <option>Delhi</option>
-                    <option>Noida</option>
-                    <option>Gurugram</option>
-                    <option>Faridabad</option>
-
-                </select>
-
-                <select id="jobExperience">
-
-                    <option value="">Experience</option>
-
-                    <option>Fresher</option>
-                    <option>0-1 Year</option>
-                    <option>1-3 Years</option>
-
-                </select>
-
-                <button class="btn btn-primary">
-
-                    <i class="fa-solid fa-magnifying-glass"></i>
-
-                    Search
-
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- Jobs -->
-
-        <div class="jobs-grid">
-
-            <!-- Job Card -->
-
-            <div class="job-card">
-
-                <div class="job-header">
-
-                    <h3>Customer Support Executive</h3>
-
-                    <span class="job-type">
-
-                        Full Time
-
-                    </span>
-
-                </div>
-
-                <ul class="job-details">
-
-                    <li>
-
-                        <i class="fa-solid fa-building"></i>
-
-                        ABC Pvt. Ltd.
-
-                    </li>
-
-                    <li>
-
-                        <i class="fa-solid fa-location-dot"></i>
-
-                        Noida
-
-                    </li>
-
-                    <li>
-
-                        <i class="fa-solid fa-indian-rupee-sign"></i>
-
-                        ₹18,000 - ₹22,000
-
-                    </li>
-
-                    <li>
-
-                        <i class="fa-solid fa-briefcase"></i>
-
-                        Fresher
-
-                    </li>
-
-                </ul>
-
-                <div class="job-actions">
-
-                    <a
-                        href="job-details.html"
-                        class="btn btn-outline">
-
-                        View Details
-
-                    </a>
-
-                    <button
-                        class="btn btn-primary">
-
-                        Apply Now
-
-                    </button>
-
-                </div>
-
-            </div>
-
-            <!-- Repeat dynamically from API -->
-
-        </div>
-
-        <!-- Pagination -->
-
-        <div class="pagination text-center mt-50">
-
-            <button class="btn btn-outline">
-
-                Previous
-
-            </button>
-
-            <button class="btn btn-primary">
-
-                1
-
-            </button>
-
-            <button class="btn btn-outline">
-
-                2
-
-            </button>
-
-            <button class="btn btn-outline">
-
-                3
-
-            </button>
-
-            <button class="btn btn-outline">
-
-                Next
-
-            </button>
-
-        </div>
-
-        <!-- Empty State -->
-
-        <div
-            class="dashboard-box text-center d-none"
-            id="noJobs">
-
-            <img
-                src="images/no-job.svg"
-                alt="No Jobs"
-                style="max-width:250px;margin:auto;">
-
-            <h3>No Jobs Found</h3>
-
-            <p>
-
-                Try changing your search filters.
-
-            </p>
-
-        </div>
-
-    </main>
-
-</div>
-
-<script src="js/app.js"></script>
-
-</body>
-
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Job Details | Udayan Care Placement Portal</title>
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-</head>
 
 <body>
 
+
+
+<!-- ================= DASHBOARD ================= -->
+
+
 <div class="dashboard">
 
-    <!-- ================= SIDEBAR ================= -->
 
-    <aside class="sidebar">
 
-        <div class="sidebar-logo">
 
-            <img src="images/logo.png" alt="Logo">
 
-            <h3>Candidate Panel</h3>
+<!-- ================= SIDEBAR ================= -->
 
-        </div>
 
-        <ul>
+<aside class="sidebar">
 
-            <li>
-                <a href="candidate-dashboard.html">
-                    <i class="fa-solid fa-house"></i>
-                    Dashboard
-                </a>
-            </li>
 
-            <li>
-                <a href="candidate-profile.html">
-                    <i class="fa-solid fa-user"></i>
-                    My Profile
-                </a>
-            </li>
 
-            <li class="active">
-                <a href="available-jobs.html">
-                    <i class="fa-solid fa-briefcase"></i>
-                    Available Jobs
-                </a>
-            </li>
+<div class="sidebar-logo">
 
-            <li>
-                <a href="my-applications.html">
-                    <i class="fa-solid fa-file-circle-check"></i>
-                    My Applications
-                </a>
-            </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-gear"></i>
-                    Settings
-                </a>
-            </li>
+<img src="images/logo.png"
+alt="Udayan Care">
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    Logout
-                </a>
-            </li>
-
-        </ul>
-
-    </aside>
-
-    <!-- ================= MAIN CONTENT ================= -->
-
-    <main class="dashboard-content">
-
-        <!-- Header -->
-
-        <div class="dashboard-header">
-
-            <div>
-
-                <h2>Job Details</h2>
-
-                <p>Review the opportunity before applying.</p>
-
-            </div>
-
-        </div>
-
-        <!-- Job Information -->
-
-        <div class="dashboard-box">
-
-            <div class="job-header">
-
-                <div>
-
-                    <h2>Customer Support Executive</h2>
-
-                    <p>
-                        <strong>Company:</strong> ABC Pvt. Ltd.
-                    </p>
-
-                </div>
-
-                <span class="job-type">
-                    Full Time
-                </span>
-
-            </div>
-
-            <div class="jobs-grid" style="grid-template-columns:repeat(2,1fr);margin-top:30px;">
-
-                <div class="job-card">
-
-                    <ul class="job-details">
-
-                        <li>
-                            <i class="fa-solid fa-location-dot"></i>
-                            <strong>Location:</strong> Noida
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-indian-rupee-sign"></i>
-                            <strong>Salary:</strong> ₹18,000 - ₹22,000
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-briefcase"></i>
-                            <strong>Experience:</strong> Fresher
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-user-group"></i>
-                            <strong>Vacancies:</strong> 20
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <div class="job-card">
-
-                    <ul class="job-details">
-
-                        <li>
-                            <i class="fa-solid fa-graduation-cap"></i>
-                            <strong>Qualification:</strong> Graduate
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-business-time"></i>
-                            <strong>Industry:</strong> BPO
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-calendar-days"></i>
-                            <strong>Last Date:</strong> 31 Jul 2026
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-clock"></i>
-                            <strong>Posted:</strong> 21 Jul 2026
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- Job Description -->
-
-        <div class="dashboard-box">
-
-            <h3>Job Description</h3>
-
-            <p>
-
-                We are looking for enthusiastic candidates to join our customer
-                support team. The selected candidates will handle customer
-                queries, maintain service quality, and provide timely resolutions.
-
-            </p>
-
-        </div>
-
-        <!-- Key Responsibilities -->
-
-        <div class="dashboard-box">
-
-            <h3>Key Responsibilities</h3>
-
-            <ul class="job-details">
-
-                <li><i class="fa-solid fa-check"></i> Handle customer calls and emails.</li>
-
-                <li><i class="fa-solid fa-check"></i> Resolve customer complaints professionally.</li>
-
-                <li><i class="fa-solid fa-check"></i> Maintain CRM records accurately.</li>
-
-                <li><i class="fa-solid fa-check"></i> Follow company SOPs.</li>
-
-            </ul>
-
-        </div>
-
-        <!-- Required Skills -->
-
-        <div class="dashboard-box">
-
-            <h3>Required Skills</h3>
-
-            <ul class="job-details">
-
-                <li><i class="fa-solid fa-check"></i> Good Communication Skills</li>
-
-                <li><i class="fa-solid fa-check"></i> Basic Computer Knowledge</li>
-
-                <li><i class="fa-solid fa-check"></i> MS Office</li>
-
-                <li><i class="fa-solid fa-check"></i> Positive Attitude</li>
-
-            </ul>
-
-        </div>
-
-        <!-- Apply -->
-
-        <div class="dashboard-box text-center">
-
-            <button
-                id="applyJobBtn"
-                class="btn btn-primary">
-
-                <i class="fa-solid fa-paper-plane"></i>
-
-                Apply for this Job
-
-            </button>
-
-            <a
-                href="available-jobs.html"
-                class="btn btn-outline">
-
-                Back to Jobs
-
-            </a>
-
-        </div>
-
-    </main>
 
 </div>
 
+
+
+
+
+<nav class="sidebar-menu">
+
+
+<a href="candidate-dashboard.html">
+
+
+<i class="fa-solid fa-house"></i>
+
+
+Dashboard
+
+
+</a>
+
+
+
+
+
+<a href="candidate-profile.html">
+
+
+<i class="fa-solid fa-user"></i>
+
+
+My Profile
+
+
+</a>
+
+
+
+
+
+<a href="available-jobs.html"
+class="active">
+
+
+<i class="fa-solid fa-briefcase"></i>
+
+
+Available Jobs
+
+
+</a>
+
+
+
+
+
+<a href="my-applications.html">
+
+
+<i class="fa-solid fa-file-lines"></i>
+
+
+My Applications
+
+
+</a>
+
+
+
+
+
+<a href="#">
+
+
+<i class="fa-solid fa-bookmark"></i>
+
+
+Saved Jobs
+
+
+</a>
+
+
+
+
+
+<a href="#">
+
+
+<i class="fa-solid fa-gear"></i>
+
+
+Settings
+
+
+</a>
+
+
+
+
+
+<a href="candidate-login.html">
+
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+
+Logout
+
+
+</a>
+
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+
+<main class="dashboard-content">
+
+
+
+
+
+<!-- ================= PAGE HEADER ================= -->
+
+
+<div class="dashboard-header">
+
+
+
+<div>
+
+
+<h1>
+
+Available Jobs
+
+</h1>
+
+
+<p>
+
+Find verified opportunities matching your skills and preferences.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="user-profile">
+
+
+<img src="images/user-placeholder.png"
+alt="Candidate">
+
+
+
+<div>
+
+
+<h4>
+
+Priya Sharma
+
+</h4>
+
+
+<span>
+
+Candidate
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+    <!-- ================= JOB SEARCH & FILTER ================= -->
+
+
+<section class="card"
+style="padding:30px;">
+
+
+
+<form id="jobSearchForm">
+
+
+
+<div class="dashboard-grid">
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Search Job
+
+</label>
+
+
+<input
+type="text"
+id="jobKeyword"
+class="form-control"
+placeholder="Job title, company or skill">
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Location
+
+</label>
+
+
+<select
+id="jobLocation"
+class="form-control">
+
+
+<option>
+
+All Locations
+
+</option>
+
+
+<option>
+
+Delhi
+
+</option>
+
+
+<option>
+
+Noida
+
+</option>
+
+
+<option>
+
+Gurugram
+
+</option>
+
+
+<option>
+
+Faridabad
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Experience
+
+</label>
+
+
+<select
+id="jobExperience"
+class="form-control">
+
+
+<option>
+
+All Experience
+
+</option>
+
+
+<option>
+
+Fresher
+
+</option>
+
+
+<option>
+
+0-1 Year
+
+</option>
+
+
+<option>
+
+1-3 Years
+
+</option>
+
+
+<option>
+
+3+ Years
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Job Type
+
+</label>
+
+
+<select
+id="jobType"
+class="form-control">
+
+
+<option>
+
+All Types
+
+</option>
+
+
+<option>
+
+Full Time
+
+</option>
+
+
+<option>
+
+Part Time
+
+</option>
+
+
+<option>
+
+Work From Home
+
+</option>
+
+
+<option>
+
+Internship
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<button
+type="submit"
+class="btn btn-primary">
+
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+
+Search Jobs
+
+
+</button>
+
+
+
+</form>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= JOB LISTING ================= -->
+
+
+<section class="section"
+style="padding:40px 0;">
+
+
+
+<div class="section-title">
+
+
+<span>
+
+JOB OPPORTUNITIES
+
+</span>
+
+
+
+<h2>
+
+Latest Available Jobs
+
+</h2>
+
+
+
+<p>
+
+Apply for verified opportunities from trusted employers.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="jobs-grid"
+id="availableJobs">
+
+
+
+
+
+
+
+<!-- JOB CARD 1 -->
+
+
+<div class="job-card">
+
+
+
+<span class="badge">
+
+Full Time
+
+</span>
+
+
+
+
+<h3>
+
+Customer Support Executive
+
+</h3>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-building"></i>
+
+
+ABC Technologies
+
+</p>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-location-dot"></i>
+
+
+Noida
+
+</p>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+
+₹22,000 / Month
+
+</p>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-briefcase"></i>
+
+
+Fresher
+
+</p>
+
+
+
+
+<a href="job-details.html"
+class="btn btn-primary">
+
+
+View Details
+
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- JOB CARD 2 -->
+
+
+<div class="job-card">
+
+
+
+<span class="badge">
+
+Work From Office
+
+</span>
+
+
+
+
+<h3>
+
+HR Associate
+
+</h3>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-building"></i>
+
+
+XYZ Solutions
+
+</p>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-location-dot"></i>
+
+
+Gurugram
+
+</p>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+
+₹25,000 / Month
+
+</p>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-briefcase"></i>
+
+
+1-2 Years
+
+</p>
+
+
+
+
+<a href="job-details.html"
+class="btn btn-primary">
+
+
+View Details
+
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- JOB CARD 3 -->
+
+
+<div class="job-card">
+
+
+
+<span class="badge">
+
+Full Time
+
+</span>
+
+
+
+
+<h3>
+
+Operations Executive
+
+</h3>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-building"></i>
+
+
+ABC Services
+
+</p>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-location-dot"></i>
+
+
+Delhi
+
+</p>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+
+₹20,000 / Month
+
+</p>
+
+
+
+
+<p>
+
+<i class="fa-solid fa-briefcase"></i>
+
+
+Fresher
+
+</p>
+
+
+
+
+<a href="job-details.html"
+class="btn btn-primary">
+
+
+View Details
+
+
+</a>
+
+
+
+</div>
+
+
+
+
+</div>
+
+    <!-- ================= PAGINATION ================= -->
+
+
+<div class="pagination">
+
+
+<a href="#"
+class="active">
+
+1
+
+</a>
+
+
+<a href="#">
+
+2
+
+</a>
+
+
+<a href="#">
+
+3
+
+</a>
+
+
+<a href="#">
+
+<i class="fa-solid fa-angle-right"></i>
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+<!-- ================= NO JOB FOUND ================= -->
+
+
+<section class="section text-center"
+id="noJobs"
+style="display:none;">
+
+
+<div class="container">
+
+
+<img src="images/empty-state.png"
+alt="No Jobs"
+style="max-width:250px;margin:auto;">
+
+
+
+<h2>
+
+No Jobs Available
+
+</h2>
+
+
+
+<p>
+
+We couldn't find any job matching your search criteria.
+
+New opportunities will be added soon.
+
+</p>
+
+
+
+<a href="jobs.html"
+class="btn btn-primary mt-20">
+
+Browse All Jobs
+
+</a>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ================= CAREER SUPPORT CTA ================= -->
+
+
+<section class="cta">
+
+
+
+<div class="container">
+
+
+
+<div class="cta-box">
+
+
+
+<h2>
+
+Need Help Finding The Right Opportunity?
+
+</h2>
+
+
+
+<p>
+
+Our placement team supports candidates with career guidance, interview preparation and employer connections.
+
+</p>
+
+
+
+<a href="contact.html"
+class="btn">
+
+
+Contact Placement Team
+
+
+</a>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+    <!-- ================= FOOTER ================= -->
+
+
+<footer class="footer">
+
+
+<div class="container">
+
+
+<div class="footer-grid">
+
+
+
+<div>
+
+
+<img src="images/logo.png"
+alt="Udayan Care Logo"
+style="height:60px;">
+
+
+
+<p>
+
+Udayan Care Placement Portal connects Shalini Fellows with verified employers and creates meaningful employment opportunities.
+
+</p>
+
+
+
+
+<div class="social-links">
+
+
+<a href="#">
+
+<i class="fab fa-facebook-f"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-linkedin-in"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Quick Links
+
+</h3>
+
+
+<a href="index.html">
+
+Home
+
+</a>
+
+
+<a href="about.html">
+
+About
+
+</a>
+
+
+<a href="jobs.html">
+
+Jobs
+
+</a>
+
+
+<a href="contact.html">
+
+Contact
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Candidates
+
+</h3>
+
+
+<a href="candidate-dashboard.html">
+
+Dashboard
+
+</a>
+
+
+<a href="candidate-profile.html">
+
+My Profile
+
+</a>
+
+
+<a href="available-jobs.html">
+
+Available Jobs
+
+</a>
+
+
+<a href="my-applications.html">
+
+Applications
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Employers
+
+</h3>
+
+
+<a href="employer-register.html">
+
+Register
+
+</a>
+
+
+<a href="employer-login.html">
+
+Login
+
+</a>
+
+
+<a href="post-job.html">
+
+Post Job
+
+</a>
+
+
+<a href="manage-jobs.html">
+
+Manage Jobs
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="footer-bottom">
+
+
+<p>
+
+© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</footer>
+
+
+
+
+
+
+
+
+
+<!-- ================= BACK TO TOP ================= -->
+
+
+<div class="back-top">
+
+
+<i class="fa-solid fa-arrow-up"></i>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+
 <script src="js/app.js"></script>
 
+
+
+<script>
+
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+
+
+console.log(
+"Available Jobs Page Loaded"
+);
+
+
+
+
+
+/*
+
+Future Google Apps Script Integration
+
+
+1. Fetch Jobs from Jobs Sheet
+
+2. Apply Candidate Preference Matching
+
+3. Search & Filter Jobs
+
+4. Pagination
+
+5. Apply Job API
+
+
+*/
+
+
+const searchForm =
+document.getElementById("jobSearchForm");
+
+
+
+if(searchForm){
+
+
+searchForm.addEventListener(
+"submit",
+function(e){
+
+
+e.preventDefault();
+
+
+console.log(
+"Searching Jobs..."
+);
+
+
+});
+
+
+}
+
+
+
+});
+
+
+
+</script>
+
+
+
+
+
+
+</main>
+
+
+</div>
+
+
 </body>
+
 
 </html>
