@@ -3,375 +3,1954 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Manage Jobs | Udayan Care Placement Portal</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+
+<title>
+
+Manage Jobs | Udayan Care Placement Portal
+
+</title>
+
+
+
+
+<meta name="description"
+content="Manage employer job postings through Udayan Care Placement Portal.">
+
+
+
+
+
+
+<link rel="stylesheet"
+href="css/style.css">
+
+
+
+
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 
 </head>
 
+
+
+
+
+
+
 <body>
+
+
+
+
+
+
+
+
+<!-- ================= DASHBOARD ================= -->
+
 
 <div class="dashboard">
 
-    <!-- ================= SIDEBAR ================= -->
 
-    <aside class="sidebar">
 
-        <div class="sidebar-logo">
 
-            <img src="images/logo.png" alt="Logo">
 
-            <h3>Employer Panel</h3>
 
-        </div>
 
-        <ul>
 
-            <li>
-                <a href="employer-dashboard.html">
-                    <i class="fa-solid fa-house"></i>
-                    Dashboard
-                </a>
-            </li>
+<!-- ================= SIDEBAR ================= -->
 
-            <li>
-                <a href="company-profile.html">
-                    <i class="fa-solid fa-building"></i>
-                    Company Profile
-                </a>
-            </li>
 
-            <li>
-                <a href="post-job.html">
-                    <i class="fa-solid fa-plus"></i>
-                    Post Job
-                </a>
-            </li>
+<aside class="sidebar">
 
-            <li class="active">
-                <a href="#">
-                    <i class="fa-solid fa-briefcase"></i>
-                    Manage Jobs
-                </a>
-            </li>
 
-            <li>
-                <a href="applications.html">
-                    <i class="fa-solid fa-users"></i>
-                    Applications
-                </a>
-            </li>
 
-            <li>
-                <a href="shortlisted.html">
-                    <i class="fa-solid fa-user-check"></i>
-                    Shortlisted
-                </a>
-            </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-gear"></i>
-                    Settings
-                </a>
-            </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    Logout
-                </a>
-            </li>
+<div class="sidebar-logo">
 
-        </ul>
 
-    </aside>
+<img src="images/logo.png"
+alt="Udayan Care">
 
-    <!-- ================= MAIN CONTENT ================= -->
-
-    <main class="dashboard-content">
-
-        <!-- Header -->
-
-        <div class="dashboard-header">
-
-            <div>
-
-                <h2>Manage Jobs</h2>
-
-                <p>View, edit and manage all posted jobs.</p>
-
-            </div>
-
-            <div>
-
-                <a href="post-job.html" class="btn btn-primary">
-
-                    <i class="fa-solid fa-plus"></i>
-
-                    Post New Job
-
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- Search -->
-
-        <div class="dashboard-box">
-
-            <div class="search-box">
-
-                <input
-                    type="text"
-                    placeholder="Search Job Title">
-
-                <select>
-
-                    <option>All Status</option>
-
-                    <option>Active</option>
-
-                    <option>Draft</option>
-
-                    <option>Closed</option>
-
-                </select>
-
-                <button class="btn btn-primary">
-
-                    Search
-
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- Jobs Table -->
-
-        <div class="dashboard-box">
-
-            <table class="dashboard-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th>Job ID</th>
-
-                        <th>Job Title</th>
-
-                        <th>Location</th>
-
-                        <th>Applications</th>
-
-                        <th>Status</th>
-
-                        <th>Posted On</th>
-
-                        <th>Actions</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>JOB000001</td>
-
-                        <td>Customer Support Executive</td>
-
-                        <td>Noida</td>
-
-                        <td>45</td>
-
-                        <td>
-
-                            <span class="status shortlisted">
-
-                                Active
-
-                            </span>
-
-                        </td>
-
-                        <td>20 Jul 2026</td>
-
-                        <td>
-
-                            <a href="job-details.html" title="View">
-
-                                <i class="fa-solid fa-eye"></i>
-
-                            </a>
-
-                            &nbsp;
-
-                            <a href="post-job.html" title="Edit">
-
-                                <i class="fa-solid fa-pen-to-square"></i>
-
-                            </a>
-
-                            &nbsp;
-
-                            <a href="#" title="Close">
-
-                                <i class="fa-solid fa-lock"></i>
-
-                            </a>
-
-                            &nbsp;
-
-                            <a href="#" title="Delete">
-
-                                <i class="fa-solid fa-trash"></i>
-
-                            </a>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>JOB000002</td>
-
-                        <td>HR Executive</td>
-
-                        <td>Delhi</td>
-
-                        <td>26</td>
-
-                        <td>
-
-                            <span class="status pending">
-
-                                Draft
-
-                            </span>
-
-                        </td>
-
-                        <td>18 Jul 2026</td>
-
-                        <td>
-
-                            <a href="job-details.html">
-
-                                <i class="fa-solid fa-eye"></i>
-
-                            </a>
-
-                            &nbsp;
-
-                            <a href="post-job.html">
-
-                                <i class="fa-solid fa-pen-to-square"></i>
-
-                            </a>
-
-                            &nbsp;
-
-                            <a href="#">
-
-                                <i class="fa-solid fa-lock"></i>
-
-                            </a>
-
-                            &nbsp;
-
-                            <a href="#">
-
-                                <i class="fa-solid fa-trash"></i>
-
-                            </a>
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <!-- Pagination -->
-
-        <div class="pagination text-center mt-50">
-
-            <button class="btn btn-outline">
-
-                Previous
-
-            </button>
-
-            <button class="btn btn-primary">
-
-                1
-
-            </button>
-
-            <button class="btn btn-outline">
-
-                2
-
-            </button>
-
-            <button class="btn btn-outline">
-
-                Next
-
-            </button>
-
-        </div>
-
-        <!-- Empty State -->
-
-        <div
-            class="dashboard-box text-center d-none"
-            id="noJobs">
-
-            <img
-                src="images/no-job.svg"
-                alt="No Jobs"
-                style="max-width:250px;">
-
-            <h3>No Jobs Posted Yet</h3>
-
-            <p>
-
-                Click on "Post New Job" to publish your first opportunity.
-
-            </p>
-
-            <a
-                href="post-job.html"
-                class="btn btn-primary">
-
-                Post Job
-
-            </a>
-
-        </div>
-
-    </main>
 
 </div>
 
+
+
+
+
+
+
+
+<nav class="sidebar-menu">
+
+
+
+
+
+<a href="employer-dashboard.html">
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
+Dashboard
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="company-profile.html">
+
+
+<i class="fa-solid fa-building"></i>
+
+
+Company Profile
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="post-job.html">
+
+
+<i class="fa-solid fa-circle-plus"></i>
+
+
+Post New Job
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="manage-jobs.html"
+class="active">
+
+
+<i class="fa-solid fa-briefcase"></i>
+
+
+Manage Jobs
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="applications.html">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+Applications
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="shortlisted.html">
+
+
+<i class="fa-solid fa-user-check"></i>
+
+
+Shortlisted Candidates
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="#">
+
+
+<i class="fa-solid fa-gear"></i>
+
+
+Settings
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="employer-login.html">
+
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+
+Logout
+
+
+</a>
+
+
+
+
+
+
+</nav>
+
+
+
+
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+
+<main class="dashboard-content">
+
+
+
+
+
+
+
+<!-- ================= HEADER ================= -->
+
+
+<div class="dashboard-header">
+
+
+
+
+
+<div>
+
+
+<h1>
+
+Manage Jobs
+
+</h1>
+
+
+
+<p>
+
+View and manage all your posted opportunities.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="user-profile">
+
+
+
+<img src="images/company-placeholder.png"
+alt="Company">
+
+
+
+
+
+<div>
+
+
+<h4>
+
+ABC Technologies
+
+</h4>
+
+
+<span>
+
+Employer
+
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= SEARCH & FILTER ================= -->
+
+
+<section class="card"
+style="padding:30px;">
+
+
+
+
+
+<div class="search-box">
+
+
+
+
+<input
+type="text"
+id="jobSearch"
+placeholder="Search job title...">
+
+
+
+
+
+
+
+<select id="jobStatusFilter">
+
+
+<option value="all">
+
+All Status
+
+</option>
+
+
+<option value="active">
+
+Active
+
+</option>
+
+
+<option value="pending">
+
+Pending Approval
+
+</option>
+
+
+<option value="closed">
+
+Closed
+
+</option>
+
+
+</select>
+
+
+
+
+
+
+<button
+class="btn btn-primary">
+
+
+<i class="fa-solid fa-search"></i>
+
+
+Search
+
+
+</button>
+
+
+
+
+</div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+<!-- ================= JOB LIST TABLE ================= -->
+
+
+<section class="section"
+style="padding:50px 0;">
+
+
+
+<div class="table-wrapper">
+
+
+
+
+
+
+<table class="table">
+
+
+
+
+
+<thead>
+
+
+<tr>
+
+
+
+<th>
+
+Job Title
+
+</th>
+
+
+
+
+<th>
+
+Location
+
+</th>
+
+
+
+
+<th>
+
+Applications
+
+</th>
+
+
+
+
+<th>
+
+Status
+
+</th>
+
+
+
+
+<th>
+
+Posted Date
+
+</th>
+
+
+
+
+<th>
+
+Action
+
+</th>
+
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+
+
+
+<tbody id="jobTableBody">
+
+
+
+
+
+<tr>
+
+
+
+
+<td>
+
+Customer Support Executive
+
+</td>
+
+
+
+
+
+<td>
+
+Noida
+
+</td>
+
+
+
+
+
+<td>
+
+85
+
+</td>
+
+
+
+
+
+<td>
+
+
+<span class="status status-approved">
+
+Active
+
+</span>
+
+
+</td>
+
+
+
+
+
+<td>
+
+20 July 2026
+
+</td>
+
+
+
+
+
+<td>
+
+
+
+<div style="display:flex;gap:10px;">
+
+
+
+
+
+<a href="job-details.html"
+class="btn btn-primary">
+
+
+<i class="fa-solid fa-eye"></i>
+
+
+View
+
+
+</a>
+
+
+
+
+
+
+
+
+
+<a href="edit-job.html"
+class="btn">
+
+
+<i class="fa-solid fa-pen"></i>
+
+
+Edit
+
+
+</a>
+
+
+
+
+
+
+
+</div>
+
+
+</td>
+
+
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+
+<td>
+
+HR Associate
+
+</td>
+
+
+
+
+
+<td>
+
+Gurugram
+
+</td>
+
+
+
+
+
+<td>
+
+62
+
+</td>
+
+
+
+
+
+<td>
+
+
+<span class="status status-pending">
+
+Pending
+
+</span>
+
+
+</td>
+
+
+
+
+
+<td>
+
+18 July 2026
+
+</td>
+
+
+
+
+
+<td>
+
+
+
+<div style="display:flex;gap:10px;">
+
+
+
+
+
+<a href="job-details.html"
+class="btn btn-primary">
+
+
+<i class="fa-solid fa-eye"></i>
+
+
+View
+
+
+</a>
+
+
+
+
+
+
+
+
+
+<a href="edit-job.html"
+class="btn">
+
+
+<i class="fa-solid fa-pen"></i>
+
+
+Edit
+
+
+</a>
+
+
+
+
+
+
+
+</div>
+
+
+</td>
+
+
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+
+<td>
+
+Operations Executive
+
+</td>
+
+
+
+
+
+<td>
+
+Delhi
+
+</td>
+
+
+
+
+
+<td>
+
+99
+
+</td>
+
+
+
+
+
+<td>
+
+
+<span class="status status-rejected">
+
+Closed
+
+</span>
+
+
+</td>
+
+
+
+
+
+<td>
+
+10 July 2026
+
+</td>
+
+
+
+
+
+<td>
+
+
+
+<div style="display:flex;gap:10px;">
+
+
+
+
+
+<a href="job-details.html"
+class="btn btn-primary">
+
+
+<i class="fa-solid fa-eye"></i>
+
+
+View
+
+
+</a>
+
+
+
+
+
+
+
+
+
+<a href="edit-job.html"
+class="btn">
+
+
+<i class="fa-solid fa-pen"></i>
+
+
+Edit
+
+
+</a>
+
+
+
+
+
+
+
+</div>
+
+
+</td>
+
+
+
+
+
+</tr>
+
+
+
+
+
+
+
+</tbody>
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</section>
+
+    <!-- ================= JOB ACTION SECTION ================= -->
+
+
+<section class="section light-bg">
+
+
+
+<div class="container">
+
+
+
+
+
+<div class="section-title">
+
+
+<span>
+
+JOB ACTIONS
+
+</span>
+
+
+
+<h2>
+
+Manage Your Opportunities
+
+</h2>
+
+
+
+<p>
+
+Update job status and control your recruitment activities.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="why-grid">
+
+
+
+
+
+<!-- ACTIVE JOB -->
+
+
+<div class="why-card">
+
+
+<i class="fa-solid fa-circle-check"></i>
+
+
+
+<h3>
+
+Active Jobs
+
+</h3>
+
+
+
+<p>
+
+Jobs currently visible to eligible candidates.
+
+</p>
+
+
+
+
+<button
+class="btn btn-primary">
+
+
+View Active Jobs
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- CLOSE JOB -->
+
+
+<div class="why-card">
+
+
+<i class="fa-solid fa-lock"></i>
+
+
+
+<h3>
+
+Close Job
+
+</h3>
+
+
+
+<p>
+
+Stop receiving applications for completed hiring requirements.
+
+</p>
+
+
+
+
+<button
+class="btn"
+onclick="closeJob()">
+
+
+
+Close Selected Job
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- DELETE JOB -->
+
+
+<div class="why-card">
+
+
+<i class="fa-solid fa-trash"></i>
+
+
+
+<h3>
+
+Delete Job
+
+</h3>
+
+
+
+<p>
+
+Remove outdated job postings from your dashboard.
+
+</p>
+
+
+
+
+<button
+class="btn"
+onclick="deleteJob()">
+
+
+
+Delete Job
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= JOB SUMMARY ================= -->
+
+
+<section class="section">
+
+
+
+<div class="container">
+
+
+
+
+
+<div class="dashboard-grid">
+
+
+
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-briefcase"></i>
+
+
+
+<h3>
+
+15
+
+</h3>
+
+
+
+<p>
+
+Total Jobs
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-eye"></i>
+
+
+
+<h3>
+
+540
+
+</h3>
+
+
+
+<p>
+
+Total Views
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+
+<h3>
+
+246
+
+</h3>
+
+
+
+<p>
+
+Applications
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-user-check"></i>
+
+
+
+<h3>
+
+32
+
+</h3>
+
+
+
+<p>
+
+Shortlisted
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= EMPTY STATE ================= -->
+
+
+<section class="section light-bg"
+style="display:none;"
+id="noJobs">
+
+
+
+<div class="container text-center">
+
+
+
+
+
+<img src="images/no-job.svg"
+alt="No Jobs"
+style="max-width:250px;">
+
+
+
+
+
+<h2>
+
+No Jobs Found
+
+</h2>
+
+
+
+
+<p>
+
+You have not posted any job opportunities yet.
+
+</p>
+
+
+
+
+
+<a href="post-job.html"
+class="btn btn-primary">
+
+
+Create Your First Job
+
+
+</a>
+
+
+
+
+
+
+</div>
+
+
+
+</section>
+
+    <!-- ================= FOOTER ================= -->
+
+
+<footer class="footer">
+
+
+<div class="container">
+
+
+<div class="footer-grid">
+
+
+
+<div>
+
+
+<img src="images/logo.png"
+alt="Udayan Care Logo"
+style="height:60px;">
+
+
+
+<p>
+
+Udayan Care Placement Portal helps employers manage recruitment, job postings and candidate hiring efficiently.
+
+</p>
+
+
+
+
+
+<div class="social-links">
+
+
+<a href="#">
+
+<i class="fab fa-facebook-f"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-linkedin-in"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Employer
+
+</h3>
+
+
+
+<a href="employer-dashboard.html">
+
+Dashboard
+
+</a>
+
+
+
+<a href="company-profile.html">
+
+Company Profile
+
+</a>
+
+
+
+<a href="post-job.html">
+
+Post Job
+
+</a>
+
+
+
+<a href="manage-jobs.html">
+
+Manage Jobs
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Candidates
+
+</h3>
+
+
+
+<a href="jobs.html">
+
+Browse Jobs
+
+</a>
+
+
+
+<a href="candidate-register.html">
+
+Register
+
+</a>
+
+
+
+<a href="candidate-login.html">
+
+Login
+
+</a>
+
+
+
+<a href="my-applications.html">
+
+Applications
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Support
+
+</h3>
+
+
+
+<a href="contact.html">
+
+Contact
+
+</a>
+
+
+
+<a href="#">
+
+Help Center
+
+</a>
+
+
+
+<a href="#">
+
+Privacy Policy
+
+</a>
+
+
+
+<a href="#">
+
+Terms
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="footer-bottom">
+
+
+<p>
+
+© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.
+
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</footer>
+
+
+
+
+
+
+
+
+
+<!-- ================= BACK TO TOP ================= -->
+
+
+<div class="back-top">
+
+
+<i class="fa-solid fa-arrow-up"></i>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+
 <script src="js/app.js"></script>
 
+
+
+
+
+
+
+
+<script>
+
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+
+
+console.log(
+"Manage Jobs Page Loaded"
+);
+
+
+
+
+
+// Search Function
+
+
+const searchInput =
+document.getElementById(
+"jobSearch"
+);
+
+
+
+const tableRows =
+document.querySelectorAll(
+"#jobTableBody tr"
+);
+
+
+
+
+
+if(searchInput){
+
+
+
+searchInput.addEventListener(
+"keyup",
+function(){
+
+
+
+let value =
+this.value.toLowerCase();
+
+
+
+
+
+tableRows.forEach(
+row => {
+
+
+
+let text =
+row.innerText.toLowerCase();
+
+
+
+
+if(text.includes(value)){
+
+
+row.style.display="";
+
+
+}
+
+else{
+
+
+row.style.display="none";
+
+
+}
+
+
+
+});
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// Close Job
+
+
+function closeJob(){
+
+
+let confirmClose =
+confirm(
+"Are you sure you want to close this job?"
+);
+
+
+
+
+
+if(confirmClose){
+
+
+
+alert(
+"Job closed successfully."
+);
+
+
+
+
+/*
+
+Future GAS:
+
+Update Jobs Sheet
+
+Status = Closed
+
+
+*/
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// Delete Job
+
+
+function deleteJob(){
+
+
+
+let confirmDelete =
+confirm(
+"Are you sure you want to delete this job?"
+);
+
+
+
+
+
+
+if(confirmDelete){
+
+
+
+alert(
+"Job deleted successfully."
+);
+
+
+
+
+/*
+
+Future GAS:
+
+Delete Job Record
+
+Update Dashboard
+
+
+*/
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
 </body>
+
 
 </html>
