@@ -5,169 +5,527 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>
+
 Candidate Login | Udayan Care Placement Portal
+
 </title>
 
+<meta name="description"
+content="Login to the Udayan Care Placement Portal and access your Digital Resume, jobs and applications.">
 
 <link rel="stylesheet" href="css/style.css">
 
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-
 </head>
-
 
 <body>
 
+<!-- ================= TOP BAR ================= -->
 
-<!-- HEADER -->
+<div class="topbar">
+
+<div class="container topbar-content">
+
+<div class="top-left">
+
+<span>
+
+<i class="fa-solid fa-phone"></i>
+
++91-11-27821333
+
+</span>
+
+<span>
+
+<i class="fa-solid fa-envelope"></i>
+
+placement@udayancare.org
+
+</span>
+
+</div>
+
+<div class="top-right">
+
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-whatsapp"></i></a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= HEADER ================= -->
 
 <header class="header">
 
 <div class="container navbar">
 
+<a href="index.html" class="logo">
 
-<div class="logo">
+<img src="images/logo.png" alt="Udayan Care">
 
-<img src="images/logo.png">
-
-<h2>
-UCPP
-</h2>
-
-</div>
-
+</a>
 
 <nav class="nav-menu">
 
-<a href="index.html">
-Home
+<a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
+<a href="jobs.html">Jobs</a>
+
+<a href="contact.html">Contact</a>
+
+<a href="candidate-login.html" class="active">
+
+Candidate Login
+
 </a>
 
+<a href="employer-login.html">
 
-<a href="jobs.html">
-Jobs
+Employer Login
+
 </a>
 
+<a href="candidate-register.html" class="btn btn-primary">
 
-<a href="candidate-register.html">
 Register
-</a>
 
+</a>
 
 </nav>
 
+<button class="menu-toggle">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
 
 </div>
 
 </header>
 
+<!-- ================= LOGIN HERO ================= -->
 
+<section class="auth-section">
 
+<div class="container auth-wrapper">
 
+<div class="auth-image">
 
-<!-- LOGIN SECTION -->
+<img src="images/login.png"
+alt="Candidate Login">
 
+</div>
 
-<section class="login-section">
+<div>
 
+<div class="auth-title">
 
-<div class="container">
+<span class="badge">
 
+Candidate Login
 
-
-<div class="login-card">
-
-
-
-<div class="section-title">
-
-
-<span>
-Candidate Portal
 </span>
 
+<h1>
 
-<h2>
 Welcome Back
-</h2>
 
+</h1>
 
 <p>
-Login to access your profile and job opportunities.
+
+Login to access your Digital Resume, browse verified jobs, apply online and track your applications.
+
 </p>
 
-
 </div>
 
+  <!-- ================= LOGIN FORM ================= -->
 
-
-
-<form>
-
-
+<form id="candidateLoginForm" class="form-container">
 
 <div class="form-group">
 
+<label for="loginEmail">
 
-<label>
-Mobile Number / Email
+Email Address
+
 </label>
 
-
-<input 
-type="text"
-placeholder="Enter mobile number or email"
->
-
+<input
+type="email"
+id="loginEmail"
+name="email"
+class="form-control"
+placeholder="Enter registered email"
+required>
 
 </div>
 
 
-
-
-
 <div class="form-group">
 
+<label for="loginPassword">
 
-<label>
 Password
+
 </label>
 
+<div class="password-box">
 
-<input 
+<input
 type="password"
+id="loginPassword"
+name="password"
+class="form-control"
 placeholder="Enter password"
->
+required>
 
+<i class="fa-solid fa-eye password-toggle"></i>
+
+</div>
 
 </div>
 
 
+<div class="checkbox-group">
 
+<input
+type="checkbox"
+id="rememberMe"
+name="rememberMe">
 
-
-<div class="login-options">
-
-
-<label>
-
-<input type="checkbox">
+<label for="rememberMe">
 
 Remember me
 
 </label>
 
+</div>
 
 
-<a href="#">
+<div class="form-group">
+
+<a href="#"
+class="text-right">
+
 Forgot Password?
+
 </a>
+
+</div>
+
+
+<button
+type="submit"
+class="btn btn-primary"
+style="width:100%;">
+
+Login
+
+</button>
+
+
+<p class="text-center mt-30">
+
+Don't have an account?
+
+<a href="candidate-register.html">
+
+<strong>
+
+Register Now
+
+</strong>
+
+</a>
+
+</p>
+
+
+</form>
+
+
+</div>
+
+</div>
+
+</section>
+
+  <!-- ================= LOGIN BENEFITS ================= -->
+
+<section class="section light-bg">
+
+<div class="container">
+
+
+<div class="section-title">
+
+<span>
+
+WHY LOGIN
+
+</span>
+
+<h2>
+
+Manage Your Career Journey
+
+</h2>
+
+<p>
+
+Access all placement services from one professional platform.
+
+</p>
+
+</div>
+
+
+
+<div class="why-grid">
+
+
+<div class="why-card">
+
+<i class="fa-solid fa-id-card"></i>
+
+<h3>
+
+Digital Profile
+
+</h3>
+
+<p>
+
+Update your professional profile and use it as your digital resume.
+
+</p>
+
+</div>
+
+
+
+<div class="why-card">
+
+<i class="fa-solid fa-briefcase"></i>
+
+<h3>
+
+Find Jobs
+
+</h3>
+
+<p>
+
+Explore verified job opportunities matching your skills and preferences.
+
+</p>
+
+</div>
+
+
+
+<div class="why-card">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+<h3>
+
+Apply Online
+
+</h3>
+
+<p>
+
+Apply to multiple opportunities and manage your applications easily.
+
+</p>
+
+</div>
+
+
+
+<div class="why-card">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h3>
+
+Track Progress
+
+</h3>
+
+<p>
+
+Monitor your application status from applied to selected.
+
+</p>
+
+</div>
+
+
+
+<div class="why-card">
+
+<i class="fa-solid fa-user-tie"></i>
+
+<h3>
+
+Placement Support
+
+</h3>
+
+<p>
+
+Get continuous guidance from the Udayan Care placement team.
+
+</p>
+
+</div>
+
+
+
+<div class="why-card">
+
+<i class="fa-solid fa-award"></i>
+
+<h3>
+
+Career Growth
+
+</h3>
+
+<p>
+
+Connect with employers and build a successful career.
+
+</p>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= CAREER JOURNEY ================= -->
+
+
+<section class="section">
+
+
+<div class="container">
+
+
+<div class="section-title">
+
+<span>
+
+YOUR JOURNEY
+
+</span>
+
+<h2>
+
+From Profile To Placement
+
+</h2>
+
+<p>
+
+A simple and transparent hiring journey.
+
+</p>
+
+</div>
+
+
+
+<div class="journey-grid">
+
+
+<div class="journey-box">
+
+
+<h3>
+
+Candidate Journey
+
+</h3>
+
+
+<div class="step">
+
+Login Account
+
+</div>
+
+
+<div class="step">
+
+Complete Profile
+
+</div>
+
+
+<div class="step">
+
+Explore Jobs
+
+</div>
+
+
+<div class="step">
+
+Apply Online
+
+</div>
+
+
+<div class="step">
+
+Attend Interview
+
+</div>
+
+
+<div class="step">
+
+Get Selected
+
+</div>
 
 
 </div>
@@ -175,44 +533,59 @@ Forgot Password?
 
 
 
-
-<button 
-type="button"
-class="btn btn-primary login-btn"
-onclick="candidateLogin()"
->
+<div class="journey-box">
 
 
-<i class="fa-solid fa-right-to-bracket"></i>
+<h3>
 
-Login
+Need Help?
 
-
-</button>
-
+</h3>
 
 
-</form>
+<div class="step">
+
+Update Profile
+
+</div>
 
 
+<div class="step">
+
+Contact Placement Team
+
+</div>
 
 
+<div class="step">
 
-<p class="mt-20 text-center">
+Get Career Guidance
 
-
-New Candidate?
-
-<a href="candidate-register.html"
-style="color:#0A7C66;font-weight:600;">
-
-Create Account
-
-</a>
+</div>
 
 
-</p>
+<div class="step">
 
+Improve Employability Skills
+
+</div>
+
+
+<div class="step">
+
+Prepare For Interviews
+
+</div>
+
+
+<div class="step">
+
+Achieve Career Goals
+
+</div>
+
+
+</div>
 
 
 </div>
@@ -224,30 +597,264 @@ Create Account
 </section>
 
 
+<!-- ================= CTA ================= -->
+
+
+<section class="cta">
+
+
+<div class="container">
+
+
+<div class="cta-box">
+
+
+<h2>
+
+Start Your Career Journey Today
+
+</h2>
+
+
+<p>
+
+Login to your UCPP account and explore new employment opportunities.
+
+</p>
+
+
+<a href="jobs.html" class="btn">
+
+Browse Jobs
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+  <!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-grid">
+
+
+<div>
+
+<img src="images/logo.png"
+alt="Udayan Care Logo"
+style="height:60px;">
+
+
+<p>
+
+Udayan Care Placement Portal connects Shalini Fellows with verified employers and supports career growth through meaningful employment opportunities.
+
+</p>
+
+
+<div class="social-links">
+
+
+<a href="#">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+
+<a href="#">
+<i class="fab fa-linkedin-in"></i>
+</a>
+
+
+<a href="#">
+<i class="fab fa-instagram"></i>
+</a>
+
+
+<a href="#">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+
+</div>
+
+
+</div>
 
 
 
-<script>
+<div>
 
 
-function candidateLogin(){
+<h3>
 
-alert(
-"Login API will be connected with Google Apps Script."
-);
+Quick Links
 
-
-// Future redirect after authentication
-
-// window.location.href="candidate-dashboard.html";
+</h3>
 
 
-}
+<a href="index.html">
+
+Home
+
+</a>
+
+
+<a href="about.html">
+
+About
+
+</a>
+
+
+<a href="jobs.html">
+
+Jobs
+
+</a>
+
+
+<a href="contact.html">
+
+Contact
+
+</a>
+
+
+</div>
 
 
 
-</script>
+<div>
 
+
+<h3>
+
+Candidates
+
+</h3>
+
+
+<a href="candidate-register.html">
+
+Register
+
+</a>
+
+
+<a href="candidate-login.html">
+
+Login
+
+</a>
+
+
+<a href="available-jobs.html">
+
+Available Jobs
+
+</a>
+
+
+<a href="my-applications.html">
+
+My Applications
+
+</a>
+
+
+</div>
+
+
+
+<div>
+
+
+<h3>
+
+Employers
+
+</h3>
+
+
+<a href="employer-register.html">
+
+Register
+
+</a>
+
+
+<a href="employer-login.html">
+
+Login
+
+</a>
+
+
+<a href="post-job.html">
+
+Post Job
+
+</a>
+
+
+<a href="manage-jobs.html">
+
+Manage Jobs
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+
+<p>
+
+© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</footer>
+
+
+
+<!-- ================= BACK TO TOP ================= -->
+
+
+<div class="back-top">
+
+<i class="fa-solid fa-arrow-up"></i>
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+
+<script src="js/app.js"></script>
 
 
 </body>
