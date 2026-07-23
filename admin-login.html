@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+
+<title>
+
+Admin Login | Udayan Care Placement Portal
+
+</title>
+
+
+
+
+<meta name="description"
+content="Admin login portal for Udayan Care Placement Portal.">
+
+
+
+
+
+
+<link rel="stylesheet"
+href="css/style.css">
+
+
+
+
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+
+
+
+
+
+
+<body>
+
+
+
+
+
+
+
+
+<!-- ================= ADMIN LOGIN ================= -->
+
+
+
+<section class="login-section">
+
+
+
+
+
+
+<div class="login-container">
+
+
+
+
+
+
+
+<!-- LEFT BRAND AREA -->
+
+
+<div class="login-info">
+
+
+
+
+
+<img src="images/logo.png"
+alt="Udayan Care Logo">
+
+
+
+
+
+<h1>
+
+Udayan Care Placement Portal
+
+</h1>
+
+
+
+
+
+<h2>
+
+Admin Control Center
+
+</h2>
+
+
+
+
+
+<p>
+
+Manage candidates, employers, jobs and placement operations from one centralized dashboard.
+
+</p>
+
+
+
+
+
+
+
+<div class="login-points">
+
+
+
+
+
+<div>
+
+
+<i class="fa-solid fa-user-shield"></i>
+
+
+Secure Admin Access
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<i class="fa-solid fa-database"></i>
+
+
+Placement Data Management
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
+Reports & Analytics
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- RIGHT LOGIN FORM -->
+
+
+<div class="login-card">
+
+
+
+
+
+
+<div class="login-header">
+
+
+
+<i class="fa-solid fa-user-lock"></i>
+
+
+
+<h2>
+
+Admin Login
+
+</h2>
+
+
+
+<p>
+
+Enter your credentials to continue.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<form id="adminLoginForm">
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Email Address
+
+</label>
+
+
+
+
+<div class="input-icon">
+
+
+
+<i class="fa-solid fa-envelope"></i>
+
+
+
+
+<input
+
+type="email"
+
+id="adminEmail"
+
+placeholder="Enter admin email"
+
+required>
+
+
+</div>
+
+
+
+</div>
+
+  <!-- PASSWORD FIELD -->
+
+
+<div class="form-group">
+
+
+<label>
+
+Password
+
+</label>
+
+
+
+
+<div class="input-icon">
+
+
+
+<i class="fa-solid fa-lock"></i>
+
+
+
+
+<input
+
+type="password"
+
+id="adminPassword"
+
+placeholder="Enter password"
+
+required>
+
+
+
+
+<span
+class="password-toggle"
+onclick="togglePassword()">
+
+
+
+<i class="fa-solid fa-eye"></i>
+
+
+
+</span>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- REMEMBER ME -->
+
+
+<div class="login-options">
+
+
+
+
+
+<label>
+
+
+<input
+
+type="checkbox"
+
+id="rememberAdmin">
+
+
+Remember Me
+
+
+</label>
+
+
+
+
+
+
+
+<a href="#">
+
+Forgot Password?
+
+</a>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- LOGIN BUTTON -->
+
+
+
+<button
+
+type="submit"
+
+class="btn btn-primary login-btn">
+
+
+
+<i class="fa-solid fa-right-to-bracket"></i>
+
+
+
+Login To Dashboard
+
+
+
+</button>
+
+
+
+
+
+
+
+
+
+<!-- ERROR MESSAGE -->
+
+
+<div
+
+id="loginMessage"
+
+class="login-message">
+
+</div>
+
+
+
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+<!-- SECURITY NOTICE -->
+
+
+<div class="security-box">
+
+
+
+<i class="fa-solid fa-shield-halved"></i>
+
+
+
+
+<div>
+
+
+
+<h4>
+
+Secure Access
+
+</h4>
+
+
+
+
+<p>
+
+This area is restricted to authorized UCPP administrators only.
+
+</p>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</section>
+
+  <!-- ================= FOOTER ================= -->
+
+
+<footer class="footer">
+
+
+<div class="container">
+
+
+
+<div class="footer-bottom">
+
+
+<p>
+
+© 2026 Udayan Care Placement Portal | Admin Panel | An Initiative of Udayan Care
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</footer>
+
+
+
+
+
+
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+
+<script src="js/app.js"></script>
+
+
+
+
+
+
+
+
+<script>
+
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+
+
+console.log(
+"Admin Login Page Loaded"
+);
+
+
+
+
+
+const form =
+document.getElementById(
+"adminLoginForm"
+);
+
+
+
+
+
+
+if(form){
+
+
+
+form.addEventListener(
+"submit",
+function(e){
+
+
+
+e.preventDefault();
+
+
+
+
+
+
+const email =
+document.getElementById(
+"adminEmail"
+).value;
+
+
+
+
+
+
+const password =
+document.getElementById(
+"adminPassword"
+).value;
+
+
+
+
+
+
+
+const message =
+document.getElementById(
+"loginMessage"
+);
+
+
+
+
+
+
+
+
+if(
+email === "" ||
+password === ""
+){
+
+
+
+message.innerHTML = `
+
+<div class="status status-rejected">
+
+Please enter email and password.
+
+</div>
+
+`;
+
+
+
+return;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+
+Future Google Apps Script Authentication:
+
+
+
+1. Send Email + Password
+
+2. Verify Admin_Master Sheet
+
+3. Create Session
+
+4. Redirect Admin Dashboard
+
+
+
+*/
+
+
+
+
+
+
+
+message.innerHTML = `
+
+<div class="status status-approved">
+
+Login successful. Redirecting...
+
+</div>
+
+`;
+
+
+
+
+
+
+
+setTimeout(
+function(){
+
+
+
+window.location.href =
+"admin-dashboard.html";
+
+
+
+},
+1500
+);
+
+
+
+
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// Show / Hide Password
+
+
+function togglePassword(){
+
+
+
+const password =
+document.getElementById(
+"adminPassword"
+);
+
+
+
+
+
+
+if(
+password.type === "password"
+){
+
+
+
+password.type="text";
+
+
+
+}
+
+else{
+
+
+password.type="password";
+
+
+}
+
+
+
+}
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>
