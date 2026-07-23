@@ -3,335 +3,2228 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Applications | Udayan Care Placement Portal</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+
+<title>
+
+Applications | Udayan Care Placement Portal
+
+</title>
+
+
+
+
+<meta name="description"
+content="Manage candidate applications received for employer job postings.">
+
+
+
+
+
+
+<link rel="stylesheet"
+href="css/style.css">
+
+
+
+
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 
 </head>
 
+
+
+
+
+
+
 <body>
+
+
+
+
+
+
+
+
+<!-- ================= DASHBOARD ================= -->
+
 
 <div class="dashboard">
 
-    <!-- ================= SIDEBAR ================= -->
 
-    <aside class="sidebar">
 
-        <div class="sidebar-logo">
 
-            <img src="images/logo.png" alt="Logo">
 
-            <h3>Employer Panel</h3>
 
-        </div>
 
-        <ul>
 
-            <li>
-                <a href="employer-dashboard.html">
-                    <i class="fa-solid fa-house"></i>
-                    Dashboard
-                </a>
-            </li>
+<!-- ================= SIDEBAR ================= -->
 
-            <li>
-                <a href="company-profile.html">
-                    <i class="fa-solid fa-building"></i>
-                    Company Profile
-                </a>
-            </li>
 
-            <li>
-                <a href="post-job.html">
-                    <i class="fa-solid fa-plus"></i>
-                    Post Job
-                </a>
-            </li>
+<aside class="sidebar">
 
-            <li>
-                <a href="manage-jobs.html">
-                    <i class="fa-solid fa-briefcase"></i>
-                    Manage Jobs
-                </a>
-            </li>
 
-            <li class="active">
-                <a href="#">
-                    <i class="fa-solid fa-users"></i>
-                    Applications
-                </a>
-            </li>
 
-            <li>
-                <a href="shortlisted.html">
-                    <i class="fa-solid fa-user-check"></i>
-                    Shortlisted
-                </a>
-            </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-gear"></i>
-                    Settings
-                </a>
-            </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    Logout
-                </a>
-            </li>
+<div class="sidebar-logo">
 
-        </ul>
 
-    </aside>
+<img src="images/logo.png"
+alt="Udayan Care Logo">
 
-    <!-- ================= MAIN ================= -->
-
-    <main class="dashboard-content">
-
-        <!-- Header -->
-
-        <div class="dashboard-header">
-
-            <div>
-
-                <h2>Job Applications</h2>
-
-                <p>Review candidates and manage the hiring process.</p>
-
-            </div>
-
-        </div>
-
-        <!-- Filters -->
-
-        <div class="dashboard-box">
-
-            <div class="search-box">
-
-                <input
-                    type="text"
-                    placeholder="Search Candidate Name">
-
-                <select>
-
-                    <option>All Jobs</option>
-
-                </select>
-
-                <select>
-
-                    <option>All Status</option>
-
-                    <option>Applied</option>
-
-                    <option>Shortlisted</option>
-
-                    <option>Rejected</option>
-
-                    <option>Selected</option>
-
-                </select>
-
-                <button class="btn btn-primary">
-
-                    Search
-
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- Applications Table -->
-
-        <div class="dashboard-box">
-
-            <table class="dashboard-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th>Application ID</th>
-
-                        <th>Candidate</th>
-
-                        <th>Job Title</th>
-
-                        <th>Applied On</th>
-
-                        <th>Status</th>
-
-                        <th>Actions</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>APP000001</td>
-
-                        <td>Shubham Sharma</td>
-
-                        <td>Customer Support Executive</td>
-
-                        <td>21 Jul 2026</td>
-
-                        <td>
-
-                            <span class="status pending">
-
-                                Applied
-
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <a href="candidate-profile-view.html"
-                                class="btn btn-outline btn-sm">
-
-                                View Profile
-
-                            </a>
-
-                            <button
-                                class="btn btn-primary btn-sm">
-
-                                Shortlist
-
-                            </button>
-
-                            <button
-                                class="btn btn-danger btn-sm">
-
-                                Reject
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>APP000002</td>
-
-                        <td>Rahul Kumar</td>
-
-                        <td>HR Executive</td>
-
-                        <td>20 Jul 2026</td>
-
-                        <td>
-
-                            <span class="status shortlisted">
-
-                                Shortlisted
-
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <a href="candidate-profile-view.html"
-                                class="btn btn-outline btn-sm">
-
-                                View Profile
-
-                            </a>
-
-                            <button
-                                class="btn btn-success btn-sm">
-
-                                Select
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>APP000003</td>
-
-                        <td>Priya Singh</td>
-
-                        <td>Data Entry Operator</td>
-
-                        <td>18 Jul 2026</td>
-
-                        <td>
-
-                            <span class="status rejected">
-
-                                Rejected
-
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <a href="candidate-profile-view.html"
-                                class="btn btn-outline btn-sm">
-
-                                View Profile
-
-                            </a>
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <!-- Empty State -->
-
-        <div
-            class="dashboard-box text-center d-none"
-            id="noApplications">
-
-            <img
-                src="images/no-data.svg"
-                alt="No Applications"
-                style="max-width:250px;">
-
-            <h3>No Applications Received</h3>
-
-            <p>
-
-                Applications from candidates will appear here once they apply.
-
-            </p>
-
-        </div>
-
-    </main>
 
 </div>
 
+
+
+
+
+
+
+
+<nav class="sidebar-menu">
+
+
+
+
+
+<a href="employer-dashboard.html">
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
+Dashboard
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="company-profile.html">
+
+
+<i class="fa-solid fa-building"></i>
+
+
+Company Profile
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="post-job.html">
+
+
+<i class="fa-solid fa-circle-plus"></i>
+
+
+Post New Job
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="manage-jobs.html">
+
+
+<i class="fa-solid fa-briefcase"></i>
+
+
+Manage Jobs
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="applications.html"
+class="active">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+Applications
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="shortlisted.html">
+
+
+<i class="fa-solid fa-user-check"></i>
+
+
+Shortlisted Candidates
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="#">
+
+
+<i class="fa-solid fa-gear"></i>
+
+
+Settings
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="employer-login.html">
+
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+
+Logout
+
+
+</a>
+
+
+
+
+
+
+</nav>
+
+
+
+
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+
+<main class="dashboard-content">
+
+
+
+
+
+
+
+<!-- ================= HEADER ================= -->
+
+
+<div class="dashboard-header">
+
+
+
+
+
+<div>
+
+
+<h1>
+
+Candidate Applications
+
+</h1>
+
+
+
+<p>
+
+Review and manage candidates who applied for your jobs.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="user-profile">
+
+
+
+<img src="images/company-placeholder.png"
+alt="Company">
+
+
+
+
+
+<div>
+
+
+<h4>
+
+ABC Technologies
+
+</h4>
+
+
+<span>
+
+Employer
+
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= FILTER SECTION ================= -->
+
+
+<section class="card"
+style="padding:30px;">
+
+
+
+
+
+
+<div class="dashboard-grid">
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Select Job
+
+</label>
+
+
+
+
+<select id="jobFilter"
+class="form-control">
+
+
+
+<option>
+
+All Jobs
+
+</option>
+
+
+
+<option>
+
+Customer Support Executive
+
+</option>
+
+
+
+<option>
+
+HR Associate
+
+</option>
+
+
+
+<option>
+
+Operations Executive
+
+</option>
+
+
+
+</select>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Application Status
+
+</label>
+
+
+
+
+<select id="statusFilter"
+class="form-control">
+
+
+
+<option>
+
+All Status
+
+</option>
+
+
+
+<option>
+
+Applied
+
+</option>
+
+
+
+<option>
+
+Shortlisted
+
+</option>
+
+
+
+<option>
+
+Interview
+
+</option>
+
+
+
+<option>
+
+Selected
+
+</option>
+
+
+
+<option>
+
+Rejected
+
+</option>
+
+
+
+</select>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+<!-- ================= APPLICATION TABLE ================= -->
+
+
+<section class="section"
+style="padding:50px 0;">
+
+
+
+
+
+<div class="table-wrapper">
+
+
+
+
+
+<table class="table">
+
+
+
+
+
+<thead>
+
+
+<tr>
+
+
+
+<th>
+
+Candidate
+
+</th>
+
+
+
+
+<th>
+
+Applied For
+
+</th>
+
+
+
+
+<th>
+
+Experience
+
+</th>
+
+
+
+
+<th>
+
+Applied Date
+
+</th>
+
+
+
+
+<th>
+
+Status
+
+</th>
+
+
+
+
+<th>
+
+Action
+
+</th>
+
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+
+
+
+<tbody id="applicationTableBody">
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+
+<div class="client">
+
+
+
+<img src="images/user-placeholder.png"
+alt="Candidate">
+
+
+
+
+
+<div>
+
+
+<h4>
+
+Priya Sharma
+
+</h4>
+
+
+
+<p>
+
+CAND000101
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+Customer Support Executive
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+Fresher
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+23 July 2026
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+
+<span class="status status-pending">
+
+Applied
+
+</span>
+
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+
+
+<div style="display:flex;gap:8px;flex-wrap:wrap;">
+
+
+
+
+
+
+<a href="candidate-profile-view.html"
+class="btn btn-primary">
+
+
+<i class="fa-solid fa-eye"></i>
+
+
+View
+
+
+</a>
+
+
+
+
+
+
+
+<button
+class="btn"
+onclick="shortlistCandidate()">
+
+
+
+<i class="fa-solid fa-user-check"></i>
+
+
+Shortlist
+
+
+</button>
+
+
+
+
+
+
+
+<button
+class="btn"
+onclick="rejectCandidate()">
+
+
+
+<i class="fa-solid fa-xmark"></i>
+
+
+Reject
+
+
+</button>
+
+
+
+
+
+</div>
+
+
+
+</td>
+
+
+
+
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+
+<div class="client">
+
+
+
+<img src="images/user-placeholder.png"
+alt="Candidate">
+
+
+
+
+
+<div>
+
+
+<h4>
+
+Neha Verma
+
+</h4>
+
+
+
+<p>
+
+CAND000102
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+HR Associate
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+1 Year
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+22 July 2026
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+
+<span class="status status-approved">
+
+Shortlisted
+
+</span>
+
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+
+
+<div style="display:flex;gap:8px;flex-wrap:wrap;">
+
+
+
+
+
+
+<a href="candidate-profile-view.html"
+class="btn btn-primary">
+
+
+<i class="fa-solid fa-eye"></i>
+
+
+View
+
+
+</a>
+
+
+
+
+
+
+
+<button
+class="btn">
+
+
+
+<i class="fa-solid fa-calendar"></i>
+
+
+Interview
+
+
+</button>
+
+
+
+
+
+
+
+</div>
+
+
+
+</td>
+
+
+
+
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+
+<td>
+
+
+<div class="client">
+
+
+
+<img src="images/user-placeholder.png"
+alt="Candidate">
+
+
+
+
+
+<div>
+
+
+<h4>
+
+Anjali Singh
+
+</h4>
+
+
+
+<p>
+
+CAND000103
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+Operations Executive
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+2 Years
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+21 July 2026
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+
+<span class="status status-rejected">
+
+Rejected
+
+</span>
+
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+
+
+<a href="candidate-profile-view.html"
+class="btn btn-primary">
+
+
+View Profile
+
+
+</a>
+
+
+
+</td>
+
+
+
+
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+</tbody>
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</section>
+
+    <!-- ================= APPLICATION PIPELINE ================= -->
+
+
+<section class="section light-bg">
+
+
+
+<div class="container">
+
+
+
+
+
+<div class="section-title">
+
+
+<span>
+
+HIRING PIPELINE
+
+</span>
+
+
+
+<h2>
+
+Candidate Progress Tracking
+
+</h2>
+
+
+
+<p>
+
+Track candidates through different hiring stages.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="dashboard-grid">
+
+
+
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-file-circle-check"></i>
+
+
+
+<h3>
+
+246
+
+</h3>
+
+
+
+<p>
+
+Total Applications
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-user-check"></i>
+
+
+
+<h3>
+
+32
+
+</h3>
+
+
+
+<p>
+
+Shortlisted
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-calendar-check"></i>
+
+
+
+<h3>
+
+18
+
+</h3>
+
+
+
+<p>
+
+Interviews Scheduled
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-trophy"></i>
+
+
+
+<h3>
+
+12
+
+</h3>
+
+
+
+<p>
+
+Selected
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= INTERVIEW MANAGEMENT ================= -->
+
+
+<section class="section">
+
+
+
+<div class="container">
+
+
+
+
+
+<div class="section-title">
+
+
+<span>
+
+INTERVIEW TRACKING
+
+</span>
+
+
+
+<h2>
+
+Upcoming Interviews
+
+</h2>
+
+
+
+<p>
+
+Manage candidate interview schedules and hiring decisions.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper">
+
+
+
+
+
+<table class="table">
+
+
+
+
+
+<thead>
+
+
+<tr>
+
+
+
+<th>
+
+Candidate
+
+</th>
+
+
+
+
+<th>
+
+Position
+
+</th>
+
+
+
+
+<th>
+
+Interview Date
+
+</th>
+
+
+
+
+<th>
+
+Mode
+
+</th>
+
+
+
+
+<th>
+
+Status
+
+</th>
+
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+
+
+
+<tbody>
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+Priya Sharma
+
+</td>
+
+
+
+
+<td>
+
+Customer Support Executive
+
+</td>
+
+
+
+
+<td>
+
+25 July 2026
+
+</td>
+
+
+
+
+<td>
+
+Online
+
+</td>
+
+
+
+
+<td>
+
+
+<span class="status status-approved">
+
+Scheduled
+
+</span>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+Neha Verma
+
+</td>
+
+
+
+
+<td>
+
+HR Associate
+
+</td>
+
+
+
+
+<td>
+
+27 July 2026
+
+</td>
+
+
+
+
+<td>
+
+Offline
+
+</td>
+
+
+
+
+<td>
+
+
+<span class="status status-pending">
+
+Pending
+
+</span>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+</tbody>
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= EMPLOYER NOTES ================= -->
+
+
+<section class="section light-bg">
+
+
+
+<div class="container">
+
+
+
+
+
+<div class="card"
+style="padding:35px;">
+
+
+
+
+
+<h2>
+
+Recruitment Notes
+
+</h2>
+
+
+
+
+<p>
+
+Add internal notes regarding candidate evaluation and interview feedback.
+
+</p>
+
+
+
+
+
+
+<textarea
+class="form-control"
+rows="5"
+placeholder="Write your notes here...">
+
+</textarea>
+
+
+
+
+
+
+<br>
+
+
+
+
+<button
+class="btn btn-primary">
+
+
+<i class="fa-solid fa-save"></i>
+
+
+Save Notes
+
+
+</button>
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</section>
+
+    <!-- ================= FOOTER ================= -->
+
+
+<footer class="footer">
+
+
+<div class="container">
+
+
+<div class="footer-grid">
+
+
+
+<div>
+
+
+<img src="images/logo.png"
+alt="Udayan Care Logo"
+style="height:60px;">
+
+
+
+<p>
+
+Udayan Care Placement Portal helps employers connect with talented candidates and manage recruitment efficiently.
+
+</p>
+
+
+
+
+
+<div class="social-links">
+
+
+<a href="#">
+
+<i class="fab fa-facebook-f"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-linkedin-in"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Employer
+
+</h3>
+
+
+
+<a href="employer-dashboard.html">
+
+Dashboard
+
+</a>
+
+
+
+<a href="company-profile.html">
+
+Company Profile
+
+</a>
+
+
+
+<a href="post-job.html">
+
+Post Job
+
+</a>
+
+
+
+<a href="manage-jobs.html">
+
+Manage Jobs
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Candidates
+
+</h3>
+
+
+
+<a href="jobs.html">
+
+Browse Jobs
+
+</a>
+
+
+
+<a href="candidate-register.html">
+
+Register
+
+</a>
+
+
+
+<a href="candidate-login.html">
+
+Login
+
+</a>
+
+
+
+<a href="my-applications.html">
+
+Applications
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Support
+
+</h3>
+
+
+
+<a href="contact.html">
+
+Contact
+
+</a>
+
+
+
+<a href="#">
+
+Help Center
+
+</a>
+
+
+
+<a href="#">
+
+Privacy Policy
+
+</a>
+
+
+
+<a href="#">
+
+Terms
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="footer-bottom">
+
+
+<p>
+
+© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.
+
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</footer>
+
+
+
+
+
+
+
+
+
+<!-- ================= BACK TO TOP ================= -->
+
+
+<div class="back-top">
+
+
+<i class="fa-solid fa-arrow-up"></i>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+
 <script src="js/app.js"></script>
 
+
+
+
+
+
+
+
+<script>
+
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+
+
+console.log(
+"Applications Page Loaded"
+);
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// Shortlist Candidate
+
+
+function shortlistCandidate(){
+
+
+
+let confirmAction =
+confirm(
+"Move this candidate to shortlist?"
+);
+
+
+
+
+
+
+if(confirmAction){
+
+
+
+alert(
+"Candidate shortlisted successfully."
+);
+
+
+
+
+
+/*
+
+Future Google Apps Script:
+
+
+
+Update Applications Sheet
+
+Status = Shortlisted
+
+
+*/
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// Reject Candidate
+
+
+function rejectCandidate(){
+
+
+
+let confirmAction =
+confirm(
+"Reject this candidate?"
+);
+
+
+
+
+
+
+if(confirmAction){
+
+
+
+alert(
+"Candidate rejected."
+);
+
+
+
+
+
+
+/*
+
+Future Google Apps Script:
+
+
+
+Update Applications Sheet
+
+Status = Rejected
+
+
+*/
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
 </body>
+
 
 </html>
