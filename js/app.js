@@ -1,199 +1,992 @@
-/*=========================================
-UCPP - app.js
-Version : 1.0
-=========================================*/
+/*=========================================================
+ UDAYAN CARE PLACEMENT PORTAL (UCPP)
 
-document.addEventListener("DOMContentLoaded", () => {
+ app.js v2.0
 
-    /*==============================
-    Mobile Menu
-    ==============================*/
+ Frontend Controller
+ HTML + CSS + Google Apps Script API Ready
 
-    const mobileMenu = document.querySelector(".mobile-menu");
-    const navbar = document.querySelector(".navbar");
+==========================================================*/
 
-    if (mobileMenu && navbar) {
 
-        mobileMenu.addEventListener("click", () => {
+document.addEventListener("DOMContentLoaded",()=>{
 
-            navbar.classList.toggle("active");
 
-            mobileMenu.innerHTML = navbar.classList.contains("active")
-                ? '<i class="fa-solid fa-xmark"></i>'
-                : '<i class="fa-solid fa-bars"></i>';
+/*=========================================================
+ GLOBAL CONFIGURATION
+==========================================================*/
 
-        });
 
-    }
+const API_URL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL";
 
-    /*==============================
-    Mobile Dropdown
-    ==============================*/
 
-    const dropdowns = document.querySelectorAll(".dropdown");
 
-    dropdowns.forEach(dropdown => {
+/*=========================================================
+ API REQUEST FUNCTION
 
-        dropdown.addEventListener("click", function (e) {
+ Used For:
+ - Candidate Registration
+ - Login
+ - Jobs
+ - Applications
 
-            if (window.innerWidth <= 768) {
+==========================================================*/
 
-                e.preventDefault();
 
-                this.classList.toggle("active");
+window.apiRequest = async function(action,data={}){
 
-            }
 
-        });
+try{
 
-    });
 
-    /*==============================
-    Sticky Header
-    ==============================*/
+const response = await fetch(API_URL,{
 
-    const header = document.querySelector(".header");
+method:"POST",
 
-    window.addEventListener("scroll", () => {
+headers:{
 
-        if (window.scrollY > 50) {
+"Content-Type":"text/plain"
 
-            header.style.boxShadow = "0 5px 20px rgba(0,0,0,.10)";
+},
 
-        } else {
+body:JSON.stringify({
 
-            header.style.boxShadow = "0 2px 10px rgba(0,0,0,.08)";
+action:action,
 
-        }
+data:data
 
-    });
+})
 
-    /*==============================
-    Active Navigation
-    ==============================*/
-
-    const currentPage = window.location.pathname.split("/").pop();
-
-    document.querySelectorAll(".navbar a").forEach(link => {
-
-        const href = link.getAttribute("href");
-
-        if (href === currentPage || (currentPage === "" && href === "index.html")) {
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-    /*==============================
-    Counter Animation
-    ==============================*/
-
-    const counters = document.querySelectorAll(".counter");
-
-    const animateCounter = (counter) => {
-
-        const target = parseInt(counter.innerText.replace(/\D/g, ""));
-
-        let count = 0;
-
-        const speed = target / 80;
-
-        const update = () => {
-
-            if (count < target) {
-
-                count += speed;
-
-                counter.innerText = Math.ceil(count) + "+";
-
-                requestAnimationFrame(update);
-
-            } else {
-
-                counter.innerText = target + "+";
-
-            }
-
-        };
-
-        update();
-
-    };
-
-    const observer = new IntersectionObserver(entries => {
-
-        entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-                animateCounter(entry.target);
-
-                observer.unobserve(entry.target);
-
-            }
-
-        });
-
-    }, {
-        threshold: 0.5
-    });
-
-    counters.forEach(counter => {
-
-        observer.observe(counter);
-
-    });
-
-    /*==============================
-    Smooth Scroll
-    ==============================*/
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-        anchor.addEventListener("click", function (e) {
-
-            const target = document.querySelector(this.getAttribute("href"));
-
-            if (target) {
-
-                e.preventDefault();
-
-                target.scrollIntoView({
-
-                    behavior: "smooth"
-
-                });
-
-            }
-
-        });
-
-    });
-
-    /*==============================
-    Close Mobile Menu After Click
-    ==============================*/
-
-    document.querySelectorAll(".navbar a").forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            if (window.innerWidth <= 768) {
-
-                navbar.classList.remove("active");
-
-                mobileMenu.innerHTML = '<i class="fa-solid fa-bars"></i>';
-
-            }
-
-        });
-
-    });
 
 });
 
-/*=========================================
-End of app.js
-=========================================*/
+
+
+const result = await response.json();
+
+
+return result;
+
+
+
+}
+
+catch(error){
+
+
+console.error(
+"API Error:",
+error
+);
+
+
+
+return {
+
+success:false,
+
+message:"Server connection failed"
+
+};
+
+
+}
+
+
+
+};
+
+
+
+
+/*=========================================================
+ MOBILE MENU
+==========================================================*/
+
+
+const menuToggle =
+document.querySelector(".menu-toggle");
+
+
+const navMenu =
+document.querySelector(".nav-menu");
+
+
+
+if(menuToggle && navMenu){
+
+
+menuToggle.addEventListener("click",()=>{
+
+
+navMenu.classList.toggle("active");
+
+
+
+menuToggle.innerHTML =
+navMenu.classList.contains("active")
+
+?
+'<i class="fa-solid fa-xmark"></i>'
+
+:
+'<i class="fa-solid fa-bars"></i>';
+
+
+
+});
+
+
+}
+
+
+
+/*=========================================================
+ CLOSE MOBILE MENU
+==========================================================*/
+
+
+document.querySelectorAll(".nav-menu a")
+.forEach(link=>{
+
+
+link.addEventListener("click",()=>{
+
+
+if(window.innerWidth<=992){
+
+
+navMenu?.classList.remove("active");
+
+
+if(menuToggle){
+
+menuToggle.innerHTML =
+'<i class="fa-solid fa-bars"></i>';
+
+}
+
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+/*=========================================================
+ STICKY HEADER
+==========================================================*/
+
+
+const header =
+document.querySelector(".header");
+
+
+
+window.addEventListener("scroll",()=>{
+
+
+if(!header) return;
+
+
+
+if(window.scrollY>50){
+
+
+header.classList.add("scrolled");
+
+
+}
+
+else{
+
+
+header.classList.remove("scrolled");
+
+
+}
+
+
+
+});
+
+
+
+
+
+/*=========================================================
+ ACTIVE PAGE
+==========================================================*/
+
+
+const currentPage =
+window.location.pathname
+.split("/")
+.pop();
+
+
+
+document.querySelectorAll(".nav-menu a")
+.forEach(link=>{
+
+
+const href =
+link.getAttribute("href");
+
+
+
+if(
+href===currentPage ||
+(currentPage==="" && href==="index.html")
+){
+
+
+link.classList.add("active");
+
+
+}
+
+
+});
+
+
+
+
+
+/*=========================================================
+ COUNTER ANIMATION
+==========================================================*/
+
+
+const counters =
+document.querySelectorAll(".counter");
+
+
+
+function animateCounter(counter){
+
+
+const target =
+parseInt(counter.innerText);
+
+
+
+let count=0;
+
+
+const speed =
+target/80;
+
+
+
+function update(){
+
+
+if(count<target){
+
+
+count += speed;
+
+
+counter.innerText =
+Math.ceil(count)+"+";
+
+
+requestAnimationFrame(update);
+
+
+}
+
+else{
+
+
+counter.innerText =
+target+"+";
+
+
+}
+
+
+}
+
+
+
+update();
+
+
+
+}
+
+
+
+const counterObserver =
+new IntersectionObserver(entries=>{
+
+
+entries.forEach(entry=>{
+
+
+if(entry.isIntersecting){
+
+
+animateCounter(entry.target);
+
+
+counterObserver.unobserve(
+entry.target
+);
+
+
+}
+
+
+
+});
+
+
+});
+
+
+
+counters.forEach(counter=>{
+
+
+counterObserver.observe(counter);
+
+
+});
+
+
+
+
+
+/*=========================================================
+ SMOOTH SCROLL
+==========================================================*/
+
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(anchor=>{
+
+
+anchor.addEventListener("click",function(e){
+
+
+const target =
+document.querySelector(
+this.getAttribute("href")
+);
+
+
+
+if(target){
+
+
+e.preventDefault();
+
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+
+}
+
+
+});
+
+
+});
+
+/*=========================================================
+ FORM HANDLER
+==========================================================*/
+
+
+const forms = document.querySelectorAll("form");
+
+
+
+forms.forEach(form=>{
+
+
+form.addEventListener("submit",async(e)=>{
+
+
+if(form.dataset.api){
+
+
+e.preventDefault();
+
+
+
+const action =
+form.dataset.api;
+
+
+
+const formData =
+new FormData(form);
+
+
+
+const data =
+Object.fromEntries(formData);
+
+
+
+showLoader(form);
+
+
+
+const response =
+await apiRequest(
+action,
+data
+);
+
+
+
+hideLoader(form);
+
+
+
+if(response.success){
+
+
+showToast(
+response.message || "Success",
+"success"
+);
+
+
+
+form.reset();
+
+
+
+}
+
+else{
+
+
+showToast(
+response.message || "Something went wrong",
+"error"
+);
+
+
+}
+
+
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+/*=========================================================
+ PASSWORD TOGGLE
+==========================================================*/
+
+
+const passwordButtons =
+document.querySelectorAll(".password-toggle");
+
+
+
+passwordButtons.forEach(btn=>{
+
+
+btn.addEventListener("click",()=>{
+
+
+const input =
+btn.parentElement
+.querySelector("input");
+
+
+
+if(!input) return;
+
+
+
+if(input.type==="password"){
+
+
+input.type="text";
+
+
+btn.innerHTML =
+'<i class="fa-solid fa-eye-slash"></i>';
+
+
+}
+
+else{
+
+
+input.type="password";
+
+
+btn.innerHTML =
+'<i class="fa-solid fa-eye"></i>';
+
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+/*=========================================================
+ LOADING STATE
+==========================================================*/
+
+
+function showLoader(form){
+
+
+const button =
+form.querySelector("button[type='submit']");
+
+
+if(button){
+
+
+button.dataset.text =
+button.innerHTML;
+
+
+button.innerHTML =
+`
+<i class="fa-solid fa-spinner fa-spin"></i>
+Please Wait...
+`;
+
+
+button.disabled=true;
+
+
+}
+
+
+}
+
+
+
+
+function hideLoader(form){
+
+
+const button =
+form.querySelector("button[type='submit']");
+
+
+
+if(button){
+
+
+button.innerHTML =
+button.dataset.text || "Submit";
+
+
+button.disabled=false;
+
+
+}
+
+
+}
+
+
+
+
+
+/*=========================================================
+ TOAST NOTIFICATION
+==========================================================*/
+
+
+window.showToast=function(message,type="success"){
+
+
+
+const toast =
+document.createElement("div");
+
+
+
+toast.className =
+"toast "+type;
+
+
+
+toast.innerHTML =
+message;
+
+
+
+document.body.appendChild(toast);
+
+
+
+setTimeout(()=>{
+
+
+toast.classList.add("show");
+
+
+},100);
+
+
+
+setTimeout(()=>{
+
+
+toast.remove();
+
+
+},3500);
+
+
+
+};
+
+
+
+
+
+/*=========================================================
+ JOB LOAD FUNCTION
+==========================================================*/
+
+
+window.loadJobs = async function(){
+
+
+
+const jobContainer =
+document.querySelector("#jobList");
+
+
+
+if(!jobContainer) return;
+
+
+
+jobContainer.innerHTML =
+`
+<div class="loading">
+
+<div class="spinner"></div>
+
+</div>
+`;
+
+
+
+const response =
+await apiRequest(
+"getJobs",
+{}
+);
+
+
+
+if(response.success){
+
+
+
+jobContainer.innerHTML="";
+
+
+
+response.data.forEach(job=>{
+
+
+
+jobContainer.innerHTML +=
+`
+
+<div class="job-card">
+
+
+<span class="badge">
+${job.Job_Type || "Full Time"}
+</span>
+
+
+<h3>
+${job.Job_Title}
+</h3>
+
+
+<p>
+<i class="fa-solid fa-building"></i>
+${job.Company_Name}
+</p>
+
+
+<p>
+<i class="fa-solid fa-location-dot"></i>
+${job.Location}
+</p>
+
+
+<p>
+<i class="fa-solid fa-indian-rupee-sign"></i>
+${job.Salary}
+</p>
+
+
+<a href="job-details.html?id=${job.Job_ID}"
+class="btn btn-primary">
+
+View Details
+
+</a>
+
+
+</div>
+
+`;
+
+
+
+});
+
+
+
+}
+
+else{
+
+
+jobContainer.innerHTML =
+`
+<p>No jobs available.</p>
+`;
+
+}
+
+
+};
+
+
+
+
+
+
+/*=========================================================
+ APPLY JOB FUNCTION
+==========================================================*/
+
+
+window.applyJob = async function(jobId){
+
+
+
+const user =
+JSON.parse(
+localStorage.getItem("candidate")
+);
+
+
+
+if(!user){
+
+
+showToast(
+"Please login first",
+"error"
+);
+
+
+return;
+
+
+}
+
+
+
+
+const response =
+await apiRequest(
+
+"applyJob",
+
+{
+
+Job_ID:jobId,
+
+Candidate_ID:user.Candidate_ID
+
+}
+
+);
+
+
+
+if(response.success){
+
+
+showToast(
+"Application submitted",
+"success"
+);
+
+
+}
+
+else{
+
+
+showToast(
+response.message,
+"error"
+);
+
+
+}
+
+
+
+};
+
+
+
+
+
+/*=========================================================
+ LOGIN SESSION
+==========================================================*/
+
+
+window.saveSession=function(user){
+
+
+localStorage.setItem(
+
+"user",
+
+JSON.stringify(user)
+
+);
+
+
+};
+
+
+
+
+
+window.logout=function(){
+
+
+localStorage.removeItem("user");
+
+localStorage.removeItem("candidate");
+
+localStorage.removeItem("employer");
+
+
+
+window.location.href =
+"index.html";
+
+
+};
+
+
+
+
+
+/*=========================================================
+ BACK TO TOP
+==========================================================*/
+
+
+const backTop =
+document.querySelector(".back-top");
+
+
+
+if(backTop){
+
+
+window.addEventListener("scroll",()=>{
+
+
+if(window.scrollY>300){
+
+
+backTop.classList.add("show");
+
+
+}
+
+else{
+
+
+backTop.classList.remove("show");
+
+
+}
+
+
+});
+
+
+
+backTop.addEventListener("click",()=>{
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+
+});
+
+
+}
+
+
+
+
+}); 
+
+
+/*=========================================================
+ END app.js v2.0
+==========================================================*/
