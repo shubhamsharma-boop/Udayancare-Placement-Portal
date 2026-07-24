@@ -184,22 +184,6 @@ const Candidate = {
 
 
 // ======================================
-// START MODULE
-// ======================================
-
-document.addEventListener(
-
-    "DOMContentLoaded",
-
-    () => {
-
-        Candidate.init();
-
-    }
-
-);
-
-// ======================================
 // CANDIDATE LOGIN
 // ======================================
 
@@ -460,7 +444,7 @@ Candidate.init;
 
 Candidate.init = function(){
 
-    oldCandidateInit();
+    this.bindRegisterForm();
 
     this.bindLoginForm();
 
@@ -471,7 +455,6 @@ Candidate.init = function(){
     this.initProfile();
 
 };
-
 
 
 // ======================================
@@ -1226,3 +1209,13 @@ Candidate.initProfile = function(){
 
 
 };
+
+// ======================================
+// START MODULE
+// ======================================
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+    Candidate.init();
+});
