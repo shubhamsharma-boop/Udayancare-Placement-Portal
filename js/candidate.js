@@ -224,118 +224,68 @@ Candidate.bindLoginForm = function(){
 // LOGIN
 // ======================================
 
+Candidate.login = async function () {
 
-Candidate.login = async function(){
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
 
+    if (!email || !password) {
 
-    const email =
-    document.getElementById("email").value.trim();
-
-
-
-    const password =
-    document.getElementById("password").value;
-
-
-
-    if(!email || !password){
-
-
-        alert(
-            "Please enter email and password."
-        );
-
+        alert("Please enter Email and Password.");
 
         return;
 
+    }
+
+    const button =
+        document.querySelector("#candidateLoginForm button[type='submit']");
+
+    const oldText = button.innerHTML;
+
+    button.disabled = true;
+    button.innerHTML = "Logging In...";
+
+    const response =
+        await API.loginCandidate({
+
+            email: email,
+            password: password
+
+        });
+
+    button.disabled = false;
+    button.innerHTML = oldText;
+
+    if (!response.success) {
+
+        alert(response.message);
+
+        return;
 
     }
 
+    // ==============================
+    // SAVE COMPLETE SESSION
+    // ==============================
 
+    Storage.saveCandidate({
 
-    const button =
-    document.querySelector(
-        "#candidateLoginForm button[type='submit']"
-    );
+        candidateID: response.candidateID,
+        shaliniID: response.shaliniID,
+        fullName: response.fullName,
+        email: email,
 
-
-
-    const oldText =
-    button.innerHTML;
-
-
-
-    button.disabled = true;
-
-
-    button.innerHTML =
-    "Logging in...";
-
-
-
-
-    const response =
-    await API.loginCandidate({
-
-
-        email,
-
-        password
-
+        profileStatus: response.profileStatus,
+        accountStatus: response.accountStatus
 
     });
 
+    alert("Login Successful");
 
-
-
-
-    button.disabled = false;
-
-
-    button.innerHTML =
-    oldText;
-
-
-
-
-    if(response.success){
-
-
-
-        // SAVE SESSION
-
-        Storage.saveCandidate(
-            response.data
-        );
-
-
-
-        alert(
-            "Login Successful!"
-        );
-
-
-
-        window.location.href =
+    window.location.href =
         "candidate-dashboard.html";
 
-
-
-    }
-
-    else{
-
-
-        alert(
-            response.message
-        );
-
-
-    }
-
-
 };
-
 
 
 
