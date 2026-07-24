@@ -1,473 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+
+<title>
+
+Company Profile | Udayan Care Placement Portal
+
+</title>
+
+
+
+
+<meta name="description"
+content="Manage your company profile and hiring details through Udayan Care Placement Portal.">
+
+
+
+
+
+
+<link rel="stylesheet"
+href="css/style.css">
+
+
+
+
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+
+
+
+
+
 <body>
+
+
+
+
+
+
+<!-- ================= DASHBOARD ================= -->
+
+
 
 <div class="dashboard">
 
+
+
+
+
+
+
+
+
+<!-- ================= SIDEBAR ================= -->
+
+
 <aside class="sidebar">
 
+
+
+
+
 <div class="sidebar-logo">
-<img src="images/logo.png" alt="Udayan Care">
+
+
+<img src="images/logo.png"
+alt="Udayan Care">
+
+
 </div>
+
+
+
+
+
+
+
 
 <nav class="sidebar-menu">
 
-<a href="candidate-dashboard.html">
-<i class="fa-solid fa-house"></i>
+
+
+
+
+<a href="employer-dashboard.html">
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
 Dashboard
+
+
 </a>
 
-<a href="candidate-profile.html" class="active">
-<i class="fa-solid fa-user"></i>
-My Profile
+
+
+
+
+
+
+
+<a href="company-profile.html"
+class="active">
+
+
+<i class="fa-solid fa-building"></i>
+
+
+Company Profile
+
+
 </a>
 
-<a href="available-jobs.html">
+
+
+
+
+
+
+
+<a href="post-job.html">
+
+
+<i class="fa-solid fa-circle-plus"></i>
+
+
+Post New Job
+
+
+</a>
+
+
+
+
+
+
+
+
+<a href="manage-jobs.html">
+
+
 <i class="fa-solid fa-briefcase"></i>
-Available Jobs
+
+
+Manage Jobs
+
+
 </a>
 
-<a href="my-applications.html">
-<i class="fa-solid fa-file-lines"></i>
-My Applications
+
+
+
+
+
+
+
+<a href="applications.html">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+Applications
+
+
 </a>
+
+
+
+
+
+
+
+
+<a href="shortlisted.html">
+
+
+<i class="fa-solid fa-user-check"></i>
+
+
+Shortlisted Candidates
+
+
+</a>
+
+
+
+
+
+
+
 
 <a href="#">
-<i class="fa-solid fa-bookmark"></i>
-Saved Jobs
-</a>
 
-<a href="#">
+
 <i class="fa-solid fa-gear"></i>
+
+
 Settings
+
+
 </a>
 
-<a href="#" onclick="Candidate.logout();return false;">
+
+
+
+
+
+
+
+<a href="employer-login.html">
+
+
 <i class="fa-solid fa-right-from-bracket"></i>
+
+
 Logout
+
+
 </a>
+
+
+
+
+
 
 </nav>
 
+
+
+
+
+
 </aside>
+
+
+
+
+
+
+
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
 
 <main class="dashboard-content">
 
+
+
+
+
+
+
+
+<!-- ================= HEADER ================= -->
+
+
 <div class="dashboard-header">
+
+
+
+
 
 <div>
 
-<h1>My Profile</h1>
 
-<p>Complete your Digital Resume to get better job opportunities.</p>
+<h1>
+
+Company Profile
+
+</h1>
+
+
+
+<p>
+
+Manage your organization information.
+
+</p>
+
+
 
 </div>
+
+
+
+
+
+
+
+
 
 <div class="user-profile">
 
-<img id="profilePhoto"
-src="images/user-placeholder.png"
-alt="Candidate">
+
+
+<img src="images/company-placeholder.png"
+alt="Company">
+
+
+
+
 
 <div>
 
-<h4 id="candidateName">
-Loading...
+
+<h4>
+
+ABC Technologies
+
 </h4>
 
-<span id="candidateID">
-Candidate
+
+<span>
+
+Verified Employer
+
 </span>
 
-</div>
 
 </div>
 
+
+
 </div>
 
-<section class="card" style="padding:35px;margin-bottom:30px;">
 
-<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= PROFILE OVERVIEW ================= -->
+
+
+<section class="card"
+style="padding:40px;">
+
+
+
+
+
+<div class="d-flex align-center"
+style="gap:25px;flex-wrap:wrap;">
+
+
+
+
+
+
+<img src="images/company-placeholder.png"
+alt="Company Logo"
+style="
+width:120px;
+height:120px;
+border-radius:20px;
+object-fit:cover;
+">
+
+
+
+
+
+
 
 <div>
 
-<h2 style="margin-bottom:10px;">
-Profile Completion
+
+<h2>
+
+ABC Technologies
+
 </h2>
+
+
 
 <p>
-Complete your profile to improve employer visibility.
+
+IT & Software Industry
+
 </p>
 
+
+
+<span class="status status-approved">
+
+Verified Employer
+
+</span>
+
+
+
 </div>
 
-<div style="min-width:240px;">
 
-<div style="background:#e9ecef;height:14px;border-radius:50px;overflow:hidden;">
 
-<div id="profileProgressBar"
-style="width:0%;height:100%;background:#0A7C3A;transition:.4s;">
-</div>
+
+
+
 
 </div>
 
-<p id="profileCompletion"
-style="margin-top:10px;font-weight:700;color:#0A7C3A;">
-0% Complete
+    <!-- ================= COMPANY INFORMATION FORM ================= -->
+
+
+<div style="margin-top:45px;">
+
+
+
+
+
+<h2>
+
+Company Information
+
+</h2>
+
+
+
+<p>
+
+Update your organization details.
+
 </p>
 
-</div>
+
+
+
 
 </div>
 
-</section>
 
-<form id="candidateProfileForm">
 
-<section class="card" style="padding:35px;margin-bottom:30px;">
 
-<h2 style="margin-bottom:25px;">
-Personal Information
-</h2>
 
-<div class="dashboard-grid">
 
-<div class="form-group">
-<label>Candidate ID</label>
-<input type="text" id="candidateIDField" class="form-control" readonly>
-</div>
 
-<div class="form-group">
-<label>Shalini ID</label>
-<input type="text" id="profileShaliniID" class="form-control" readonly>
-</div>
 
-<div class="form-group">
-<label>Full Name</label>
-<input type="text" id="profileFullName" class="form-control">
-</div>
+<div class="form-container"
+style="max-width:100%;margin-top:30px;">
 
-<div class="form-group">
-<label>Gender</label>
-<select id="gender" class="form-control">
-<option value="">Select Gender</option>
-<option>Female</option>
-<option>Male</option>
-<option>Other</option>
-</select>
-</div>
 
-<div class="form-group">
-<label>Date of Birth</label>
-<input type="date" id="dob" class="form-control">
-</div>
 
-<div class="form-group">
-<label>Mobile Number</label>
-<input type="text" id="profileMobile" class="form-control">
-</div>
 
-<div class="form-group">
-<label>Email Address</label>
-<input type="email" id="profileEmail" class="form-control" readonly>
-</div>
 
-    <div class="form-group">
-<label>Profile Photo URL</label>
-<input type="text" id="profilePhotoUrl" class="form-control" placeholder="https://example.com/photo.jpg">
-</div>
 
-</div>
+<form id="companyProfileForm">
 
-</section>
 
-<!-- ================= EDUCATION ================= -->
 
-<section class="card" style="padding:35px;margin-bottom:30px;">
 
-<h2 style="margin-bottom:25px;">
-Education
-</h2>
 
-<div class="dashboard-grid">
 
-<div class="form-group">
-<label>Education</label>
-<input type="text" id="education" class="form-control" placeholder="Graduate / Undergraduate">
-</div>
 
-<div class="form-group">
-<label>Qualification</label>
-<input type="text" id="qualification" class="form-control" placeholder="B.Com / B.Tech / MBA">
-</div>
+<!-- COMPANY NAME -->
 
-<div class="form-group">
-<label>Passing Year</label>
-<input type="number" id="passingYear" class="form-control" placeholder="2025">
-</div>
-
-</div>
-
-</section>
-
-<!-- ================= PROFESSIONAL DETAILS ================= -->
-
-<section class="card" style="padding:35px;margin-bottom:30px;">
-
-<h2 style="margin-bottom:25px;">
-Professional Details
-</h2>
-
-<div class="dashboard-grid">
-
-<div class="form-group">
-<label>Skills</label>
-<textarea id="skills" class="form-control" rows="4" placeholder="Communication, Excel, Tally, Computer Skills"></textarea>
-</div>
-
-<div class="form-group">
-<label>Experience</label>
-<textarea id="experience" class="form-control" rows="4" placeholder="Describe your work experience"></textarea>
-</div>
-
-<div class="form-group">
-<label>Employment Status</label>
-<select id="employmentStatus" class="form-control">
-<option value="">Select</option>
-<option>Student</option>
-<option>Unemployed</option>
-<option>Employed</option>
-<option>Self Employed</option>
-</select>
-</div>
-
-</div>
-
-</section>
-
-<!-- ================= CAREER PREFERENCES ================= -->
-
-<section class="card" style="padding:35px;margin-bottom:30px;">
-
-<h2 style="margin-bottom:25px;">
-Career Preferences
-</h2>
-
-<div class="dashboard-grid">
-
-<div class="form-group">
-<label>Preferred Location</label>
-<input type="text" id="preferredLocation" class="form-control" placeholder="Delhi, Noida, Gurugram">
-</div>
-
-<div class="form-group">
-<label>Expected Salary</label>
-<input type="text" id="expectedSalary" class="form-control" placeholder="₹20,000 - ₹25,000">
-</div>
-
-</div>
-
-</section>
-
-    <!-- ================= ABOUT CANDIDATE ================= -->
-
-<section class="card" style="padding:35px;margin-bottom:30px;">
-
-<h2 style="margin-bottom:25px;">
-About Candidate
-</h2>
 
 <div class="form-group">
 
-<label>Professional Summary</label>
 
-<textarea
-id="aboutCandidate"
-class="form-control"
-rows="8"
-placeholder="Write a short professional summary about yourself..."></textarea>
+<label>
 
-</div>
+Company Name *
 
-</section>
+</label>
 
-<!-- ================= PROFILE PHOTO ================= -->
 
-<section class="card" style="padding:35px;margin-bottom:30px;">
-
-<h2 style="margin-bottom:25px;">
-Profile Photo
-</h2>
-
-<div style="display:flex;align-items:center;gap:30px;flex-wrap:wrap;">
-
-<img
-id="photoPreview"
-src="images/user-placeholder.png"
-alt="Profile Photo"
-style="width:140px;height:140px;border-radius:50%;object-fit:cover;border:5px solid #f3f3f3;box-shadow:0 10px 25px rgba(0,0,0,.1);">
-
-<div style="flex:1;">
-
-<label>Profile Photo URL</label>
 
 <input
 type="text"
-id="profilePhotoUrl"
+id="companyName"
 class="form-control"
-placeholder="https://example.com/photo.jpg">
+value="ABC Technologies"
+required>
 
-<p style="margin-top:12px;color:#777;font-size:14px;">
-Paste your image URL. Live preview will appear instantly.
+
+</div>
+
+
+
+
+
+
+
+
+<!-- INDUSTRY -->
+
+
+<div class="form-group">
+
+
+<label>
+
+Industry *
+
+</label>
+
+
+
+<select
+id="industry"
+class="form-control">
+
+
+
+<option>
+
+IT & Software
+
+</option>
+
+
+
+<option>
+
+BPO / Customer Support
+
+</option>
+
+
+
+<option>
+
+Banking & Finance
+
+</option>
+
+
+
+<option>
+
+Education
+
+</option>
+
+
+
+<option>
+
+Healthcare
+
+</option>
+
+
+
+<option>
+
+Retail
+
+</option>
+
+
+
+<option>
+
+Manufacturing
+
+</option>
+
+
+
+</select>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- WEBSITE -->
+
+
+<div class="form-group">
+
+
+<label>
+
+Company Website
+
+</label>
+
+
+
+
+<input
+type="url"
+id="website"
+class="form-control"
+value="https://example.com">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- COMPANY SIZE -->
+
+
+<div class="form-group">
+
+
+<label>
+
+Company Size *
+
+</label>
+
+
+
+
+<select
+id="companySize"
+class="form-control">
+
+
+
+<option>
+
+1-10 Employees
+
+</option>
+
+
+
+<option selected>
+
+51-200 Employees
+
+</option>
+
+
+
+<option>
+
+201-500 Employees
+
+</option>
+
+
+
+<option>
+
+500+ Employees
+
+</option>
+
+
+
+</select>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ================= HR DETAILS ================= -->
+
+
+
+<h3 style="margin:35px 0 20px;">
+
+Hiring Contact Details
+
+</h3>
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+HR / Recruiter Name *
+
+</label>
+
+
+
+<input
+type="text"
+id="hrName"
+class="form-control"
+value="Rahul Sharma">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Designation *
+
+</label>
+
+
+
+<input
+type="text"
+id="designation"
+class="form-control"
+value="HR Manager">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Official Email *
+
+</label>
+
+
+
+<input
+type="email"
+id="email"
+class="form-control"
+value="hr@company.com">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Contact Number *
+
+</label>
+
+
+
+<input
+type="tel"
+id="mobile"
+class="form-control"
+value="+91 9876543210">
+
+
+
+</div>
+
+    <!-- ================= ADDRESS DETAILS ================= -->
+
+
+<h3 style="margin:35px 0 20px;">
+
+Company Address
+
+</h3>
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Complete Address *
+
+</label>
+
+
+
+
+<textarea
+id="address"
+class="form-control"
+placeholder="Enter company address">Sector 62, Noida, Uttar Pradesh</textarea>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="dashboard-grid">
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+City *
+
+</label>
+
+
+
+<input
+type="text"
+id="city"
+class="form-control"
+value="Noida">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+State *
+
+</label>
+
+
+
+
+<select
+id="state"
+class="form-control">
+
+
+
+<option selected>
+
+Uttar Pradesh
+
+</option>
+
+
+
+<option>
+
+Delhi
+
+</option>
+
+
+
+<option>
+
+Haryana
+
+</option>
+
+
+
+<option>
+
+Maharashtra
+
+</option>
+
+
+
+<option>
+
+Karnataka
+
+</option>
+
+
+
+</select>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= ABOUT COMPANY ================= -->
+
+
+<h3 style="margin:35px 0 20px;">
+
+About Company
+
+</h3>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+
+<label>
+
+Company Description
+
+</label>
+
+
+
+
+<textarea
+id="aboutCompany"
+class="form-control"
+placeholder="Describe your organization">
+
+ABC Technologies is a growing organization focused on technology solutions and creating career opportunities for talented professionals.
+
+</textarea>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= COMPANY LOGO ================= -->
+
+
+<h3 style="margin:35px 0 20px;">
+
+Company Logo
+
+</h3>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+
+Upload Logo
+
+</label>
+
+
+
+
+<input
+type="file"
+id="companyLogo"
+class="form-control"
+accept="image/*">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card"
+style="
+padding:20px;
+background:#F8FAFC;
+margin-bottom:25px;
+">
+
+
+
+<p>
+
+
+<i class="fa-solid fa-circle-info"
+style="color:var(--primary);"></i>
+
+
+Recommended size: 300x300 px. Maximum file size: 2MB.
+
+
 </p>
 
-</div>
+
 
 </div>
 
-</section>
 
-<!-- ================= ACTION BUTTONS ================= -->
 
-<section class="card" style="padding:35px;">
 
-<div style="display:flex;justify-content:flex-end;gap:15px;flex-wrap:wrap;">
 
-<button
-type="reset"
-class="btn">
 
-Reset
 
-</button>
+
+
+<!-- ================= MESSAGE ================= -->
+
+
+<div id="profileMessage"></div>
+
+
+
+
+
+
+
+
+
+<!-- ================= SAVE BUTTON ================= -->
+
 
 <button
 type="submit"
 class="btn btn-primary">
 
+
+
 <i class="fa-solid fa-floppy-disk"></i>
 
-Save Profile
+
+
+Save Changes
+
+
 
 </button>
 
-</div>
 
-</section>
+
+
+
 
 </form>
 
-</main>
+
 
 </div>
+
+
+
+</section>
 
     <!-- ================= FOOTER ================= -->
 
+
 <footer class="footer">
+
 
 <div class="container">
 
+
 <div class="footer-grid">
+
+
 
 <div>
 
-<img src="images/logo.png" alt="Udayan Care" style="height:60px;">
+
+<img src="images/logo.png"
+alt="Udayan Care Logo"
+style="height:60px;">
+
+
 
 <p>
-Udayan Care Placement Portal connects Shalini Fellows with verified employers and meaningful career opportunities.
+
+Udayan Care Placement Portal connects employers with talented candidates and supports meaningful employment opportunities.
+
 </p>
+
+
+
+
 
 <div class="social-links">
 
-<a href="#"><i class="fab fa-facebook-f"></i></a>
-<a href="#"><i class="fab fa-linkedin-in"></i></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
-<a href="#"><i class="fab fa-whatsapp"></i></a>
+
+<a href="#">
+
+<i class="fab fa-facebook-f"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-linkedin-in"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+
 
 </div>
 
+
 </div>
+
+
+
+
+
+
+
+
 
 <div>
 
-<h3>Quick Links</h3>
 
-<a href="candidate-dashboard.html">Dashboard</a>
-<a href="candidate-profile.html">My Profile</a>
-<a href="available-jobs.html">Available Jobs</a>
-<a href="my-applications.html">My Applications</a>
+<h3>
+
+Employer
+
+</h3>
+
+
+
+<a href="employer-dashboard.html">
+
+Dashboard
+
+</a>
+
+
+
+<a href="company-profile.html">
+
+Company Profile
+
+</a>
+
+
+
+<a href="post-job.html">
+
+Post Job
+
+</a>
+
+
+
+<a href="manage-jobs.html">
+
+Manage Jobs
+
+</a>
+
+
 
 </div>
+
+
+
+
+
+
+
+
 
 <div>
 
-<h3>Support</h3>
 
-<a href="contact.html">Contact</a>
-<a href="#">Privacy Policy</a>
-<a href="#">Terms & Conditions</a>
+<h3>
+
+Hiring
+
+</h3>
+
+
+
+<a href="applications.html">
+
+Applications
+
+</a>
+
+
+
+<a href="shortlisted.html">
+
+Shortlisted
+
+</a>
+
+
+
+<a href="#">
+
+Interview
+
+</a>
+
+
+
+<a href="#">
+
+Reports
+
+</a>
+
+
 
 </div>
 
+
+
+
+
+
+
+
+
+<div>
+
+
+<h3>
+
+Support
+
+</h3>
+
+
+
+<a href="contact.html">
+
+Contact
+
+</a>
+
+
+
+<a href="#">
+
+Help Center
+
+</a>
+
+
+
+<a href="#">
+
+Privacy Policy
+
+</a>
+
+
+
+<a href="#">
+
+Terms
+
+</a>
+
+
+
 </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
 
 <div class="footer-bottom">
 
+
 <p>
-© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care
+
+© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.
+
 </p>
 
-</div>
+
 
 </div>
+
+
+
+
+
+</div>
+
 
 </footer>
 
+
+
+
+
+
+
+
+
 <!-- ================= BACK TO TOP ================= -->
 
+
 <div class="back-top">
+
+
 <i class="fa-solid fa-arrow-up"></i>
+
+
 </div>
+
+
+
+
+
+
+
+
 
 <!-- ================= JAVASCRIPT ================= -->
 
-<script src="js/config.js"></script>
-<script src="js/api.js"></script>
-<script src="js/storage.js"></script>
-<script src="js/auth.js"></script>
+
 <script src="js/app.js"></script>
-<script src="js/candidate.js"></script>
+
+
+
+
+
+
 
 <script>
 
-document.addEventListener("DOMContentLoaded",()=>{
 
-const candidate=Storage.getCandidate();
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
-if(candidate){
 
-Candidate.loadProfile();
 
-Candidate.updateProfileStatus();
 
-}
 
-const photo=document.getElementById("profilePhotoUrl");
+console.log(
+"Company Profile Page Loaded"
+);
 
-const preview=document.getElementById("photoPreview");
 
-if(photo&&preview){
 
-photo.addEventListener("input",()=>{
 
-preview.src=photo.value || "images/user-placeholder.png";
+
+
+const form =
+document.getElementById(
+"companyProfileForm"
+);
+
+
+
+
+
+
+
+if(form){
+
+
+
+form.addEventListener(
+"submit",
+function(e){
+
+
+
+e.preventDefault();
+
+
+
+
+
+
+const message =
+document.getElementById(
+"profileMessage"
+);
+
+
+
+
+
+message.innerHTML = `
+
+<div class="status status-approved">
+
+Company profile updated successfully.
+
+</div>
+
+`;
+
+
+
+
+
+
+console.log(
+
+"Profile Update Ready For GAS Integration"
+
+);
+
+
+
+
+
+
+/*
+
+Future Google Apps Script Integration:
+
+
+
+1. Get Employer ID From Session
+
+2. Validate Company Details
+
+3. Upload Logo
+
+4. Update Employer_Master Sheet
+
+5. Update Timestamp
+
+6. Show Success Message
+
+
+
+*/
+
+
+
+
 
 });
 
+
+
 }
 
+
+
+
+
 });
+
+
 
 </script>
 
+
+
+
+
+
+
+
+
 </body>
+
 
 </html>
