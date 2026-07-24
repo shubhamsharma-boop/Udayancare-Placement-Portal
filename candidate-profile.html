@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
 <title>My Profile | Udayan Care Placement Portal</title>
-
-<meta name="description" content="Manage your candidate profile and digital resume.">
+<meta name="description" content="Manage your Digital Resume and Candidate Profile.">
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -83,48 +80,80 @@ Logout
 
 <!--================ HERO ================-->
 
-<section class="hero" style="padding:70px 0;">
+<section class="hero profile-hero">
 
-<div class="container text-center">
+<div class="container">
+
+<div class="hero-content">
 
 <span class="hero-tag">
 <i class="fa-solid fa-user"></i>
 Candidate Profile
 </span>
 
-<h1>Manage Your Digital Resume</h1>
+<h1>Complete Your Digital Resume</h1>
 
 <p>
-Keep your profile updated so employers can easily discover your skills and hire you.
+A complete profile improves your visibility to employers and increases your placement opportunities.
 </p>
+
+</div>
 
 </div>
 
 </section>
 
-<!--================ PROFILE FORM ================-->
+<!--================ PROFILE SECTION ================-->
 
 <section class="section">
 
 <div class="container">
 
-<div class="form-container">
-
 <form id="candidateProfileForm">
 
-<div class="section-title" style="margin-bottom:40px;">
+<!--================ PROFILE PROGRESS ================-->
 
-<span>PERSONAL INFORMATION</span>
+<div class="profile-progress-card">
 
-<h2>Candidate Profile</h2>
+<div class="progress-top">
+
+<div>
+
+<h3>Profile Completion</h3>
 
 <p>
-Update your information to complete your professional digital resume.
+Complete all mandatory details to reach 100%.
 </p>
 
 </div>
 
-<!--================ BASIC DETAILS ================-->
+<h2 id="profilePercent">0%</h2>
+
+</div>
+
+<div class="progress-bar">
+
+<div id="profileProgress"></div>
+
+</div>
+
+</div>
+
+<!--================ PERSONAL INFORMATION ================-->
+
+<div class="form-container">
+
+<div class="section-title">
+
+<span>PERSONAL INFORMATION</span>
+
+<h2>Basic Details</h2>
+
+<p>
+Keep your personal information updated.
+</p>
+
+</div>
 
 <div class="dashboard-grid">
 
@@ -144,7 +173,7 @@ Update your information to complete your professional digital resume.
 </div>
 
 <div class="form-group">
-<label>Email</label>
+<label>Email Address</label>
 <input type="email" id="email" class="form-control" readonly>
 </div>
 
@@ -154,7 +183,7 @@ Update your information to complete your professional digital resume.
 </div>
 
 <div class="form-group">
-<label>Gender</label>
+<label>Gender *</label>
 
 <select id="gender" class="form-control">
 
@@ -175,9 +204,28 @@ Update your information to complete your professional digital resume.
 <input type="date" id="dob" class="form-control">
 </div>
 
+<div class="form-group">
+<label>Current City</label>
+<input type="text" id="city" class="form-control" placeholder="Delhi">
+</div>
+
+</div>
+
     <!--================ EDUCATION DETAILS ================-->
 
-<h3 style="margin:35px 0 20px;">Education Details</h3>
+<div class="form-container" style="margin-top:40px;">
+
+<div class="section-title">
+
+<span>EDUCATION DETAILS</span>
+
+<h2>Academic Information</h2>
+
+<p>
+Tell employers about your educational background.
+</p>
+
+</div>
 
 <div class="dashboard-grid">
 
@@ -188,10 +236,10 @@ Update your information to complete your professional digital resume.
 <option>10th</option>
 <option>12th</option>
 <option>Diploma</option>
-<option>Graduation</option>
-<option>Post Graduation</option>
 <option>ITI</option>
 <option>Polytechnic</option>
+<option>Graduation</option>
+<option>Post Graduation</option>
 <option>Other</option>
 </select>
 </div>
@@ -206,9 +254,11 @@ Update your information to complete your professional digital resume.
 <option>BBA</option>
 <option>BCA</option>
 <option>B.Tech</option>
+<option>BE</option>
 <option>MBA</option>
-<option>M.Com</option>
 <option>MCA</option>
+<option>M.Com</option>
+<option>MA</option>
 <option>Other</option>
 </select>
 </div>
@@ -246,9 +296,23 @@ Update your information to complete your professional digital resume.
 
 </div>
 
+</div>
+
 <!--================ PROFESSIONAL DETAILS ================-->
 
-<h3 style="margin:35px 0 20px;">Professional Details</h3>
+<div class="form-container" style="margin-top:40px;">
+
+<div class="section-title">
+
+<span>PROFESSIONAL DETAILS</span>
+
+<h2>Career Preferences</h2>
+
+<p>
+Help employers understand your career interests.
+</p>
+
+</div>
 
 <div class="dashboard-grid">
 
@@ -256,10 +320,10 @@ Update your information to complete your professional digital resume.
 <label>Employment Status *</label>
 <select id="employmentStatus" class="form-control" required>
 <option value="">Select Status</option>
+<option>Student</option>
 <option>Unemployed</option>
 <option>Employed</option>
 <option>Intern</option>
-<option>Student</option>
 <option>Freelancer</option>
 <option>Self Employed</option>
 </select>
@@ -267,87 +331,66 @@ Update your information to complete your professional digital resume.
 
 <div class="form-group">
 <label>Preferred Location *</label>
-<input type="text" id="preferredLocation" class="form-control" placeholder="Delhi / Noida / Gurugram">
+<input
+type="text"
+id="preferredLocation"
+class="form-control"
+placeholder="Delhi / Noida / Gurugram">
 </div>
 
 <div class="form-group">
 <label>Expected Salary *</label>
-<input type="text" id="expectedSalary" class="form-control" placeholder="₹20,000">
+<input
+type="text"
+id="expectedSalary"
+class="form-control"
+placeholder="₹20,000">
 </div>
 
-<div class="form-group">
+<div class="form-group full-width">
 <label>Skills *</label>
-<input type="text" id="skills" class="form-control" placeholder="Communication, Excel, Computer, Tally">
+<input
+type="text"
+id="skills"
+class="form-control"
+placeholder="Excel, Communication, Tally, Computer, Sales">
+</div>
+
 </div>
 
 </div>
 
     <!--================ ABOUT CANDIDATE ================-->
 
-<h3 style="margin:35px 0 20px;">Professional Summary</h3>
+<div class="form-container" style="margin-top:40px;">
+
+<div class="section-title">
+
+<span>PROFILE SUMMARY</span>
+
+<h2>About Candidate</h2>
+
+<p>
+Write a short professional summary to introduce yourself to employers.
+</p>
+
+</div>
 
 <div class="form-group">
 
-<label>About Candidate</label>
+<label>Professional Summary *</label>
 
 <textarea
 id="aboutCandidate"
 class="form-control"
 rows="6"
-placeholder="Write a short professional summary about yourself..."></textarea>
+placeholder="Example: Motivated and hardworking candidate with good communication skills, computer knowledge and willingness to learn. Looking for opportunities to build a successful career."></textarea>
 
 </div>
 
-<!--================ PROFILE COMPLETION ================-->
+<div id="profileMessage" style="margin-top:20px;"></div>
 
-<div class="card" style="margin-top:40px;padding:30px;">
-
-<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;">
-
-<div>
-
-<h3 style="margin-bottom:8px;">Profile Completion</h3>
-
-<p style="margin:0;color:#666;">
-Complete your profile to improve visibility for employers.
-</p>
-
-</div>
-
-<div style="text-align:right;">
-
-<h2 id="profilePercent" style="color:var(--primary);margin:0;">
-0%
-</h2>
-
-</div>
-
-</div>
-
-<div style="margin-top:20px;background:#ececec;height:12px;border-radius:50px;overflow:hidden;">
-
-<div
-id="profileProgress"
-style="
-width:0%;
-height:12px;
-background:linear-gradient(90deg,var(--primary),#3cb371);
-border-radius:50px;
-transition:.4s;
-">
-</div>
-
-</div>
-
-</div>
-
-<!--================ MESSAGE ================-->
-
-<div id="profileMessage" style="margin-top:25px;"></div>
-
-<!--================ BUTTONS ================-->
-
-<div style="display:flex;gap:15px;flex-wrap:wrap;margin-top:35px;">
+<div style="display:flex;gap:15px;flex-wrap:wrap;margin-top:30px;">
 
 <button
 type="submit"
@@ -367,9 +410,11 @@ style="flex:1;min-width:220px;">
 
 <i class="fa-solid fa-rotate-left"></i>
 
-Reset
+Reset Form
 
 </button>
+
+</div>
 
 </div>
 
@@ -377,11 +422,9 @@ Reset
 
 </div>
 
-</div>
-
 </section>
 
-<!--================ PREMIUM CTA ================-->
+<!--================ CTA SECTION ================-->
 
 <section class="cta">
 
@@ -389,12 +432,10 @@ Reset
 
 <div class="cta-box">
 
-<h2>
-Keep Your Profile Updated
-</h2>
+<h2>Ready To Apply For Jobs?</h2>
 
 <p>
-A complete profile increases your chances of getting shortlisted by employers.
+Your profile works as your Digital Resume. Keep it updated and start applying for verified opportunities.
 </p>
 
 <a href="available-jobs.html" class="btn">
@@ -411,64 +452,89 @@ Explore Jobs
 
 </section>
 
-    <!--================ FOOTER ================-->
+<!--================ FOOTER ================-->
 
 <footer class="footer">
+
 <div class="container">
 
 <div class="footer-grid">
 
 <div>
+
 <img src="images/logo.png" alt="Udayan Care Logo" style="height:60px;">
-<p>Udayan Care Placement Portal connects Shalini Fellows with verified employers and meaningful career opportunities.</p>
+
+<p>
+Udayan Care Placement Portal connects talented Shalini Fellows with verified employers across India.
+</p>
+
 <div class="social-links">
+
 <a href="#"><i class="fab fa-facebook-f"></i></a>
 <a href="#"><i class="fab fa-linkedin-in"></i></a>
 <a href="#"><i class="fab fa-instagram"></i></a>
 <a href="#"><i class="fab fa-whatsapp"></i></a>
+
 </div>
+
 </div>
 
 <div>
+
 <h3>Quick Links</h3>
+
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="jobs.html">Jobs</a>
 <a href="contact.html">Contact</a>
+
 </div>
 
 <div>
+
 <h3>Candidate</h3>
+
 <a href="candidate-dashboard.html">Dashboard</a>
 <a href="candidate-profile.html">My Profile</a>
 <a href="available-jobs.html">Available Jobs</a>
 <a href="my-applications.html">My Applications</a>
+
 </div>
 
 <div>
+
 <h3>Support</h3>
-<a href="contact.html">Contact Us</a>
+
+<a href="contact.html">Contact</a>
 <a href="#">Help Center</a>
 <a href="#">Privacy Policy</a>
 <a href="#">Terms & Conditions</a>
+
 </div>
 
 </div>
 
 <div class="footer-bottom">
-<p>© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.</p>
+
+<p>
+© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.
+</p>
+
 </div>
 
 </div>
+
 </footer>
 
 <!--================ BACK TO TOP ================-->
 
 <div class="back-top">
+
 <i class="fa-solid fa-arrow-up"></i>
+
 </div>
 
-<!--================ JAVASCRIPT ================-->
+<!--================ JAVASCRIPT FILES ================-->
 
 <script src="js/config.js"></script>
 <script src="js/api.js"></script>
@@ -478,11 +544,16 @@ Explore Jobs
 <script src="js/candidate.js"></script>
 
 <script>
+/* Candidate Profile JS - Part 4 */
 
-document.addEventListener("DOMContentLoaded",async()=>{
+    document.addEventListener("DOMContentLoaded",async()=>{
 
 const c=Storage.getCandidate();
-if(!c){location.href="candidate-login.html";return;}
+
+if(!c){
+window.location.href="candidate-login.html";
+return;
+}
 
 document.getElementById("candidateID").value=c.Candidate_ID||"";
 document.getElementById("shaliniID").value=c.Shalini_ID||"";
@@ -491,45 +562,57 @@ document.getElementById("email").value=c.Email||"";
 document.getElementById("mobile").value=c.Mobile||"";
 document.getElementById("gender").value=c.Gender||"";
 document.getElementById("dob").value=c.DOB||"";
+document.getElementById("city").value=c.City||"";
+
 document.getElementById("education").value=c.Education||"";
 document.getElementById("qualification").value=c.Qualification||"";
 document.getElementById("passingYear").value=c.Passing_Year||"";
+document.getElementById("skills").value=c.Skills||"";
 document.getElementById("experience").value=c.Experience||"";
 document.getElementById("employmentStatus").value=c.Employment_Status||"";
 document.getElementById("preferredLocation").value=c.Preferred_Location||"";
 document.getElementById("expectedSalary").value=c.Expected_Salary||"";
-document.getElementById("skills").value=c.Skills||"";
 document.getElementById("aboutCandidate").value=c.About_Candidate||"";
 
 calculateProfile();
 
-document.querySelectorAll("#candidateProfileForm input,#candidateProfileForm select,#candidateProfileForm textarea").forEach(e=>{
-e.addEventListener("input",calculateProfile);
+document.querySelectorAll("#candidateProfileForm input,#candidateProfileForm select,#candidateProfileForm textarea").forEach(el=>{
+el.addEventListener("input",calculateProfile);
+el.addEventListener("change",calculateProfile);
 });
 
 });
 
 function calculateProfile(){
 
-let ids=[
-"fullName","mobile","gender","dob",
-"education","qualification","passingYear",
-"experience","employmentStatus",
-"preferredLocation","expectedSalary",
-"skills","aboutCandidate"
+const fields=[
+"fullName",
+"mobile",
+"gender",
+"dob",
+"city",
+"education",
+"qualification",
+"passingYear",
+"skills",
+"experience",
+"employmentStatus",
+"preferredLocation",
+"expectedSalary",
+"aboutCandidate"
 ];
 
 let filled=0;
 
-ids.forEach(id=>{
-let v=document.getElementById(id).value.trim();
-if(v!=="")filled++;
+fields.forEach(id=>{
+const value=document.getElementById(id).value.trim();
+if(value!=="") filled++;
 });
 
-let p=Math.round((filled/ids.length)*100);
+const percent=Math.round((filled/fields.length)*100);
 
-document.getElementById("profilePercent").innerHTML=p+"%";
-document.getElementById("profileProgress").style.width=p+"%";
+document.getElementById("profilePercent").innerHTML=percent+"%";
+document.getElementById("profileProgress").style.width=percent+"%";
 
 }
 
@@ -537,7 +620,12 @@ document.getElementById("candidateProfileForm").addEventListener("submit",async 
 
 e.preventDefault();
 
+const btn=this.querySelector("button[type='submit']");
+btn.disabled=true;
+btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+
 const data={
+
 Candidate_ID:document.getElementById("candidateID").value,
 Shalini_ID:document.getElementById("shaliniID").value,
 Full_Name:document.getElementById("fullName").value,
@@ -554,7 +642,10 @@ Employment_Status:document.getElementById("employmentStatus").value,
 Preferred_Location:document.getElementById("preferredLocation").value,
 Expected_Salary:document.getElementById("expectedSalary").value,
 About_Candidate:document.getElementById("aboutCandidate").value
+
 };
+
+try{
 
 const res=await API.updateCandidateProfile(data);
 
@@ -562,15 +653,31 @@ const msg=document.getElementById("profileMessage");
 
 if(res.success){
 
-Storage.saveCandidate({...Storage.getCandidate(),...data});
+Storage.saveCandidate({
+...Storage.getCandidate(),
+...data
+});
 
-msg.innerHTML='<div class="alert alert-success">Profile updated successfully.</div>';
+msg.innerHTML='<div class="alert alert-success"><i class="fa-solid fa-circle-check"></i> Profile updated successfully.</div>';
+
+calculateProfile();
 
 }else{
 
-msg.innerHTML='<div class="alert alert-danger">'+res.message+'</div>';
+msg.innerHTML='<div class="alert alert-danger"><i class="fa-solid fa-circle-xmark"></i> '+res.message+'</div>';
 
 }
+
+}catch(err){
+
+document.getElementById("profileMessage").innerHTML='<div class="alert alert-danger">Unable to connect with server.</div>';
+
+console.error(err);
+
+}
+
+btn.disabled=false;
+btn.innerHTML='<i class="fa-solid fa-floppy-disk"></i> Save Profile';
 
 });
 
