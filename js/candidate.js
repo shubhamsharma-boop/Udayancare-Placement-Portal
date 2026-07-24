@@ -15,7 +15,7 @@ const Candidate = {
 
     },
 
-
+    
 
     // =================================
     // REGISTER FORM
