@@ -442,20 +442,23 @@ Candidate.logout = function(){
 const oldCandidateInit =
 Candidate.init;
 
-Candidate.init = function(){
+Candidate.init=function(){
 
-    this.bindRegisterForm();
+ this.bindRegisterForm();
 
-    this.bindLoginForm();
+ this.bindLoginForm();
 
-    this.checkLogin();
+ this.checkLogin();
 
-    this.initDashboard();
+ this.initDashboard();
 
-    this.initProfile();
+ this.initProfile();
+
+ this.initJobs();
+
+ this.initJobDetails();
 
 };
-
 
 // ======================================
 // CANDIDATE DASHBOARD
@@ -1206,6 +1209,276 @@ Candidate.initProfile = function(){
 
 
     }
+
+
+};
+
+// ======================================
+// CANDIDATE JOB MODULE
+// ======================================
+
+
+Candidate.loadJobs=async function(){
+
+ const response=await API.getAvailableJobs();
+
+ if(response.success){
+
+   const container=document.getElementById("jobsContainer");
+
+   if(!container) return;
+
+   container.innerHTML="";
+
+
+   response.jobs.forEach(job=>{
+
+    container.innerHTML+=`
+
+    <div class="job-card">
+
+        <h3>${job.jobTitle}</h3>
+
+        <h4>${job.companyName}</h4>
+
+        <p>
+        <b>Location:</b> ${job.location}
+        </p>
+
+        <p>
+        <b>Salary:</b>
+        ${job.salaryMin} -
+        ${job.salaryMax}
+        </p>
+
+        <p>
+        <b>Experience:</b>
+        ${job.experience}
+        </p>
+
+        <button 
+        class="btn btn-primary"
+        onclick="Candidate.viewJob('${job.jobID}')">
+
+        View Details
+
+        </button>
+
+    </div>
+
+    `;
+
+   });
+
+ }
+
+};
+
+
+
+
+// ======================================
+// JOB DETAILS
+// ======================================
+
+
+Candidate.viewJob=async function(jobID){
+
+
+ const response=
+ await API.getJobDetails(jobID);
+
+
+ if(response.success){
+
+
+  Storage.saveJob(response.job);
+
+
+  window.location.href=
+  "job-details.html";
+
+
+ }
+
+ else{
+
+  alert(response.message);
+
+ }
+
+};
+
+
+
+
+// ======================================
+// APPLY JOB
+// ======================================
+
+
+Candidate.applyJob=async function(jobID){
+
+
+ const candidate=
+ Storage.getCandidate();
+
+
+ if(!candidate){
+
+   window.location.href=
+   "candidate-login.html";
+
+   return;
+
+ }
+
+
+
+ const confirmApply=
+ confirm(
+ "Are you sure you want to apply for this job?"
+ );
+
+
+ if(!confirmApply)
+ return;
+
+
+
+ const response=
+ await API.applyJob({
+
+   candidateID:
+   candidate.candidateID,
+
+   jobID:
+   jobID
+
+ });
+
+
+
+ if(response.success){
+
+
+   alert(
+   "Job application submitted successfully."
+   );
+
+
+   window.location.href=
+   "my-applications.html";
+
+
+ }
+
+ else{
+
+
+   alert(response.message);
+
+
+ }
+
+
+};
+
+
+
+
+// ======================================
+// LOAD JOB PAGE
+// ======================================
+
+
+Candidate.initJobs=function(){
+
+
+ const page=
+ window.location.pathname;
+
+
+ if(
+ page.includes("available-jobs.html")
+ ){
+
+   this.loadJobs();
+
+ }
+
+
+};
+
+
+
+
+// ======================================
+// JOB DETAILS PAGE
+// ======================================
+
+
+Candidate.initJobDetails=function(){
+
+
+ const page=
+ window.location.pathname;
+
+
+ if(
+ page.includes("job-details.html")
+ ){
+
+
+   const job=
+   Storage.getJob();
+
+
+   if(!job) return;
+
+
+
+   const fields={
+
+   jobTitle:job.jobTitle,
+
+   companyName:job.companyName,
+
+   location:job.location,
+
+   salary:job.salaryMin+
+   " - "+
+   job.salaryMax,
+
+   description:job.jobDescription,
+
+   skills:job.skills
+
+   };
+
+
+
+   Object.keys(fields).forEach(id=>{
+
+
+    const el=
+    document.getElementById(id);
+
+
+    if(el){
+
+     el.innerHTML=
+     fields[id];
+
+    }
+
+
+   });
+
+
+
+ }
+
 
 
 };
