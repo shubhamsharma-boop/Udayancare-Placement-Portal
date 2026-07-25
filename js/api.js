@@ -224,6 +224,15 @@ const API = {
 
     }
 
+submitEnquiry(data){
+
+    return this.call(
+        "submitEnquiry",
+        data
+    );
+
+}
+
 };
 
 Object.freeze(API);
