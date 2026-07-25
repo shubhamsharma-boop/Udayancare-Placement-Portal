@@ -81,6 +81,11 @@ const API = {
 
     },
 
+    getCandidateProfile(data) {
+
+    return this.call("getCandidateProfile", data);
+
+},
 
 
     getCandidateDashboard(data) {
