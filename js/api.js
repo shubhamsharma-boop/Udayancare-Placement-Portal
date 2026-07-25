@@ -220,16 +220,13 @@ const API = {
 
     updateApplicationStatus(data) {
 
-        return this.call("updateApplicationStatus", data);
+    return this.call("updateApplicationStatus", data);
 
-    }
+},
 
-submitEnquiry(data){
+submitEnquiry(data) {
 
-    return this.call(
-        "submitEnquiry",
-        data
-    );
+    return this.call("submitEnquiry", data);
 
 }
 
