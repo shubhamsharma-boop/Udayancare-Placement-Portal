@@ -639,212 +639,104 @@ Candidate.initDashboard = function(){
 // LOAD PROFILE
 // ======================================
 
+Candidate.loadProfile = async function () {
 
-Candidate.loadProfile = async function(){
+    const session = Storage.getCandidate();
 
+    if (!session) {
 
-    const candidate =
-    Storage.getCandidate();
-
-
-
-    if(!candidate){
-
-
-        window.location.href =
-        "candidate-login.html";
-
-
+        window.location.href = "candidate-login.html";
         return;
-
 
     }
 
-
-
-
-
     const response =
-    await API.getCandidateProfile({
+        await API.getCandidateProfile({
 
+            candidateID: session.candidateID
 
-        candidateID:
-        candidate.candidateID
+        });
 
+    if (!response.success) {
+
+        alert(response.message);
+        return;
+
+    }
+
+    const profile = response.data;
+
+    // ==============================
+    // UPDATE LOCAL STORAGE
+    // ==============================
+
+    Storage.saveCandidate({
+
+        ...session,
+
+        ...profile
 
     });
 
+    // ==============================
+    // AUTO FILL FORM
+    // ==============================
 
+    this.fillProfileField("candidateID", profile.Candidate_ID);
+    this.fillProfileField("shaliniID", profile.Shalini_ID);
 
+    this.fillProfileField("fullName", profile.Full_Name);
 
+    this.fillProfileField("gender", profile.Gender);
 
-    if(response.success){
+    this.fillProfileField("dob", profile.DOB);
 
+    this.fillProfileField("currentCity", profile.Current_City);
 
+    this.fillProfileField("mobile", profile.Mobile);
 
-        const profile =
-        response.data;
+    this.fillProfileField("email", profile.Email);
 
+    this.fillProfileField("education", profile.Education);
 
+    this.fillProfileField("qualification", profile.Qualification);
 
+    this.fillProfileField("passingYear", profile.Passing_Year);
 
-        // Save latest profile
+    this.fillProfileField("skills", profile.Skills);
 
-        Storage.saveCandidate(profile);
+    this.fillProfileField("experience", profile.Experience);
 
+    this.fillProfileField("employmentStatus", profile.Employment_Status);
 
+    this.fillProfileField("preferredLocation", profile.Preferred_Location);
 
+    this.fillProfileField("expectedSalary", profile.Expected_Salary);
 
+    this.fillProfileField("aboutCandidate", profile.About_Candidate);
 
-        // ==========================
-        // Fill Profile Fields
-        // ==========================
-
-
-
-        this.fillProfileField(
-            "profileShaliniID",
-            profile.shaliniID
-        );
-
-
-
-        this.fillProfileField(
-            "profileFullName",
-            profile.fullName
-        );
-
-
-
-        this.fillProfileField(
-            "profileMobile",
-            profile.mobile
-        );
-
-
-
-        this.fillProfileField(
-            "profileEmail",
-            profile.email
-        );
-
-
-
-        this.fillProfileField(
-            "education",
-            profile.education
-        );
-
-
-
-        this.fillProfileField(
-            "qualification",
-            profile.qualification
-        );
-
-
-
-        this.fillProfileField(
-            "passingYear",
-            profile.passingYear
-        );
-
-
-
-        this.fillProfileField(
-            "skills",
-            profile.skills
-        );
-
-
-
-        this.fillProfileField(
-            "experience",
-            profile.experience
-        );
-
-
-
-        this.fillProfileField(
-            "preferredLocation",
-            profile.preferredLocation
-        );
-
-
-
-        this.fillProfileField(
-            "expectedSalary",
-            profile.expectedSalary
-        );
-
-
-
-        this.fillProfileField(
-            "aboutCandidate",
-            profile.aboutCandidate
-        );
-
-
-
-        // Profile Status
-
-
-        const status =
-        document.getElementById(
-            "profileStatus"
-        );
-
-
-        if(status){
-
-
-            status.innerHTML =
-            profile.profileStatus ||
-            "Profile Incomplete";
-
-
-        }
-
-
-
-    }
-
+    this.updateProfileProgress();
 
 };
 
 
 
 
-
 // ======================================
-// FILL INPUT HELPER
+// FILL FIELD
 // ======================================
 
+Candidate.fillProfileField = function (id, value) {
 
-Candidate.fillProfileField = function(
-    id,
-    value
-){
+    const element = document.getElementById(id);
 
+    if (element) {
 
-
-    const element =
-    document.getElementById(id);
-
-
-
-    if(element){
-
-
-        element.value =
-        value || "";
-
+        element.value = value || "";
 
     }
 
-
 };
-
 
 
 
@@ -853,250 +745,179 @@ Candidate.fillProfileField = function(
 // UPDATE PROFILE
 // ======================================
 
+Candidate.updateProfile = async function () {
 
-Candidate.updateProfile = async function(){
+    const session = Storage.getCandidate();
 
+    if (!session) {
 
-
-    const candidate =
-    Storage.getCandidate();
-
-
-
-    if(!candidate){
-
-
+        window.location.href = "candidate-login.html";
         return;
 
-
     }
-
-
-
-
 
     const data = {
 
+        candidateID: session.candidateID,
 
-        candidateID:
-        candidate.candidateID,
+        fullName: document.getElementById("fullName").value,
 
+        gender: document.getElementById("gender").value,
 
+        dob: document.getElementById("dob").value,
 
-        fullName:
-        document.getElementById(
-            "profileFullName"
-        ).value,
+        currentCity: document.getElementById("currentCity").value,
 
+        mobile: document.getElementById("mobile").value,
 
+        email: document.getElementById("email").value,
 
-        mobile:
-        document.getElementById(
-            "profileMobile"
-        ).value,
+        education: document.getElementById("education").value,
 
+        qualification: document.getElementById("qualification").value,
 
+        passingYear: document.getElementById("passingYear").value,
 
-        education:
-        document.getElementById(
-            "education"
-        ).value,
+        skills: document.getElementById("skills").value,
 
+        experience: document.getElementById("experience").value,
 
+        employmentStatus: document.getElementById("employmentStatus").value,
 
-        qualification:
-        document.getElementById(
-            "qualification"
-        ).value,
+        preferredLocation: document.getElementById("preferredLocation").value,
 
+        expectedSalary: document.getElementById("expectedSalary").value,
 
-
-        passingYear:
-        document.getElementById(
-            "passingYear"
-        ).value,
-
-
-
-        skills:
-        document.getElementById(
-            "skills"
-        ).value,
-
-
-
-        experience:
-        document.getElementById(
-            "experience"
-        ).value,
-
-
-
-        preferredLocation:
-        document.getElementById(
-            "preferredLocation"
-        ).value,
-
-
-
-        expectedSalary:
-        document.getElementById(
-            "expectedSalary"
-        ).value,
-
-
-
-        aboutCandidate:
-        document.getElementById(
-            "aboutCandidate"
-        ).value
-
-
+        aboutCandidate: document.getElementById("aboutCandidate").value
 
     };
 
-
-
-
-
     const response =
-    await API.updateCandidateProfile(
-        data
-    );
+        await API.updateCandidateProfile(data);
 
+    if (!response.success) {
 
-
-
-
-    if(response.success){
-
-
-
-        alert(
-            "Profile updated successfully."
-        );
-
-
-
-        Storage.saveCandidate(
-            response.data
-        );
-
-
-
-        this.updateProfileStatus();
-
-
+        alert(response.message);
+        return;
 
     }
 
-    else{
+    // ==========================
+    // UPDATE LOCAL STORAGE
+    // ==========================
 
+    Storage.saveCandidate({
 
-        alert(
-            response.message
-        );
+        ...session,
 
+        Candidate_ID: session.candidateID,
 
-    }
+        Shalini_ID: session.shaliniID,
 
+        Full_Name: data.fullName,
 
+        Gender: data.gender,
+
+        DOB: data.dob,
+
+        Current_City: data.currentCity,
+
+        Mobile: data.mobile,
+
+        Email: data.email,
+
+        Education: data.education,
+
+        Qualification: data.qualification,
+
+        Passing_Year: data.passingYear,
+
+        Skills: data.skills,
+
+        Experience: data.experience,
+
+        Employment_Status: data.employmentStatus,
+
+        Preferred_Location: data.preferredLocation,
+
+        Expected_Salary: data.expectedSalary,
+
+        About_Candidate: data.aboutCandidate,
+
+        Profile_Status: "Profile Complete"
+
+    });
+
+    this.updateProfileProgress();
+
+    alert("Profile Updated Successfully.");
 
 };
 
 
 
 
-
 // ======================================
-// PROFILE STATUS
+// PROFILE PROGRESS
 // ======================================
 
-
-Candidate.updateProfileStatus = function(){
-
-
-
-    const candidate =
-    Storage.getCandidate();
-
-
-
-    if(!candidate)
-    return;
-
-
-
-
-    let completed = 0;
-
-
+Candidate.updateProfileProgress = function () {
 
     const fields = [
 
-
-        candidate.fullName,
-
-        candidate.education,
-
-        candidate.qualification,
-
-        candidate.skills,
-
-        candidate.experience,
-
-        candidate.preferredLocation,
-
-        candidate.aboutCandidate
-
+        "fullName",
+        "gender",
+        "dob",
+        "currentCity",
+        "mobile",
+        "education",
+        "qualification",
+        "passingYear",
+        "skills",
+        "experience",
+        "employmentStatus",
+        "preferredLocation",
+        "expectedSalary",
+        "aboutCandidate"
 
     ];
 
+    let filled = 0;
 
+    fields.forEach(id => {
 
+        const element = document.getElementById(id);
 
-    fields.forEach(
-        field => {
+        if (element && element.value.trim() !== "") {
 
-
-            if(field)
-            completed++;
-
+            filled++;
 
         }
-    );
 
+    });
 
+    const percent =
+        Math.round((filled / fields.length) * 100);
 
+    const percentLabel =
+        document.getElementById("profilePercent");
 
-    const percentage =
-    Math.round(
-        (completed / fields.length) * 100
-    );
+    if (percentLabel) {
 
-
-
-
-    const status =
-    document.getElementById(
-        "profileCompletion"
-    );
-
-
-
-    if(status){
-
-
-        status.innerHTML =
-        percentage + "% Complete";
-
+        percentLabel.innerHTML = percent + "%";
 
     }
 
+    const bar =
+        document.getElementById("profileProgress");
 
+    if (bar) {
+
+        bar.style.width = percent + "%";
+
+    }
 
 };
-
 
 
 
@@ -1105,63 +926,69 @@ Candidate.updateProfileStatus = function(){
 // PROFILE INIT
 // ======================================
 
+Candidate.initProfile = function () {
 
-Candidate.initProfile = function(){
+    const page = window.location.pathname;
 
+    if (!page.includes("candidate-profile.html")) return;
 
+    // Load profile from Google Sheet
+    this.loadProfile();
 
-    const page =
-    window.location.pathname;
+    // Save Profile Form
+    const form = document.getElementById("candidateProfileForm");
 
+    if (form) {
 
+        form.addEventListener("submit", (e) => {
 
-    if(
-        page.includes(
-            "candidate-profile.html"
-        )
-    ){
+            e.preventDefault();
 
+            Candidate.updateProfile();
 
-
-        this.loadProfile();
-
-
-
-
-        const form =
-        document.getElementById(
-            "candidateProfileForm"
-        );
-
-
-
-        if(form){
-
-
-
-            form.addEventListener(
-                "submit",
-                (e)=>{
-
-
-                    e.preventDefault();
-
-
-                    this.updateProfile();
-
-
-
-                }
-            );
-
-
-        }
-
+        });
 
     }
 
+    // Live Progress Bar
+    const controls = document.querySelectorAll(
+
+        "#candidateProfileForm input, \
+         #candidateProfileForm select, \
+         #candidateProfileForm textarea"
+
+    );
+
+    controls.forEach(control => {
+
+        control.addEventListener("input", () => {
+
+            Candidate.updateProfileProgress();
+
+        });
+
+        control.addEventListener("change", () => {
+
+            Candidate.updateProfileProgress();
+
+        });
+
+    });
 
 };
+
+// ======================================
+// REFRESH PROFILE FORM
+// ======================================
+
+Candidate.refreshProfile = function () {
+
+    this.loadProfile();
+
+    this.updateProfileProgress();
+
+};
+
 
 // ======================================
 // CANDIDATE JOB MODULE
