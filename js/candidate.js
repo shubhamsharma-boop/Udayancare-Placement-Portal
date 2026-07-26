@@ -968,4 +968,239 @@ this.updateProfileProgress();
 
 },
 
-    
+  // ======================================
+// DASHBOARD INIT
+// ======================================
+
+initDashboard(){
+
+const page=
+
+window.location.pathname;
+
+if(page.includes("candidate-dashboard.html")){
+
+this.loadDashboard();
+
+}
+
+},
+
+
+// ======================================
+// LOAD JOBS
+// ======================================
+
+async loadJobs(){
+
+const response=
+
+await API.getAvailableJobs();
+
+if(!response.success) return;
+
+const container=
+
+document.getElementById("jobsContainer");
+
+if(!container) return;
+
+container.innerHTML="";
+
+response.data.forEach(job=>{
+
+container.innerHTML+=`
+
+<div class="job-card">
+
+<h3>${job.jobTitle}</h3>
+
+<h4>${job.companyName}</h4>
+
+<p><b>Location :</b> ${job.location}</p>
+
+<p><b>Salary :</b> ₹${job.salaryMin} - ₹${job.salaryMax}</p>
+
+<p><b>Experience :</b> ${job.experience}</p>
+
+<button
+class="btn btn-primary"
+onclick="Candidate.viewJob('${job.jobID}')">
+
+View Details
+
+</button>
+
+</div>
+
+`;
+
+});
+
+},
+
+
+// ======================================
+// VIEW JOB
+// ======================================
+
+async viewJob(jobID){
+
+const response=
+
+await API.getJobDetails({
+
+jobID:jobID
+
+});
+
+if(!response.success){
+
+alert(response.message);
+
+return;
+
+}
+
+Storage.saveJob(response.data);
+
+window.location.href="job-details.html";
+
+},
+
+
+// ======================================
+// APPLY JOB
+// ======================================
+
+async applyJob(jobID){
+
+const session=
+
+Storage.getCandidate();
+
+if(!session){
+
+window.location.href="candidate-login.html";
+
+return;
+
+}
+
+if(!confirm("Apply for this job?")) return;
+
+const response=
+
+await API.applyJob({
+
+candidateID:session.candidateID,
+
+jobID:jobID
+
+});
+
+if(response.success){
+
+alert("Application submitted successfully.");
+
+window.location.href="my-applications.html";
+
+}
+
+else{
+
+alert(response.message);
+
+}
+
+},
+
+
+// ======================================
+// JOBS INIT
+// ======================================
+
+initJobs(){
+
+const page=
+
+window.location.pathname;
+
+if(page.includes("available-jobs.html")){
+
+this.loadJobs();
+
+}
+
+},
+
+
+// ======================================
+// JOB DETAILS INIT
+// ======================================
+
+initJobDetails(){
+
+const page=
+
+window.location.pathname;
+
+if(!page.includes("job-details.html")) return;
+
+const job=
+
+Storage.getJob();
+
+if(!job) return;
+
+const map={
+
+jobTitle:job.jobTitle,
+
+companyName:job.companyName,
+
+location:job.location,
+
+salary:"₹"+job.salaryMin+" - ₹"+job.salaryMax,
+
+description:job.jobDescription,
+
+skills:job.skills
+
+};
+
+Object.keys(map).forEach(id=>{
+
+const el=
+
+document.getElementById(id);
+
+if(el){
+
+el.innerHTML=map[id];
+
+}
+
+});
+
+}
+
+};
+
+
+
+// ======================================
+// START MODULE
+// ======================================
+
+document.addEventListener(
+
+"DOMContentLoaded",
+
+()=>{
+
+Candidate.init();
+
+}
+
+);  
