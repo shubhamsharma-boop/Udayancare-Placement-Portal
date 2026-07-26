@@ -1,1271 +1,971 @@
 // ======================================
 // UCPP CANDIDATE MODULE
-// Version : 1.0.0
+// Version : 2.0.0
 // ======================================
 
-const Candidate = {
-
-    // =================================
-    // INITIALIZE
-    // =================================
-
-    init() {
-
-        this.bindRegisterForm();
-
-    },
-
-    
-
-    // =================================
-    // REGISTER FORM
-    // =================================
-
-    bindRegisterForm() {
-
-        const form = document.getElementById("candidateRegisterForm");
-
-        if (!form) return;
-
-        form.addEventListener("submit", (e) => {
-
-            e.preventDefault();
-
-            this.register();
-
-        });
-
-    },
-
-
-
-    // =================================
-    // REGISTER
-    // =================================
-
-    async register() {
-
-        const shaliniID =
-            document.getElementById("shaliniId").value.trim();
-
-        const fullName =
-            document.getElementById("fullName").value.trim();
-
-        const mobile =
-            document.getElementById("mobile").value.trim();
-
-        const email =
-            document.getElementById("email").value.trim();
-
-        const password =
-            document.getElementById("password").value;
-
-        const confirmPassword =
-            document.getElementById("confirmPassword").value;
-
-        const terms =
-            document.getElementById("terms").checked;
-
-
-
-        // ==========================
-        // VALIDATION
-        // ==========================
-
-        if (
-            !shaliniID ||
-            !fullName ||
-            !mobile ||
-            !email ||
-            !password
-        ) {
-
-            alert("Please fill all required fields.");
-
-            return;
-
-        }
-
-        if (mobile.length !== 10) {
-
-            alert("Enter a valid 10 digit mobile number.");
-
-            return;
-
-        }
-
-        if (password !== confirmPassword) {
-
-            alert("Passwords do not match.");
-
-            return;
-
-        }
-
-        if (!terms) {
-
-            alert("Please accept Terms & Conditions.");
-
-            return;
-
-        }
-
-
-
-        // ==========================
-        // BUTTON LOADING
-        // ==========================
-
-        const submitBtn =
-            document.querySelector("#candidateRegisterForm button[type='submit']");
-
-        const originalText =
-            submitBtn.innerHTML;
-
-        submitBtn.disabled = true;
-
-        submitBtn.innerHTML =
-            "Creating Account...";
-
-
-
-        // ==========================
-        // API CALL
-        // ==========================
-
-        const response =
-            await API.registerCandidate({
-
-                shaliniID,
-
-                fullName,
-
-                mobile,
-
-                email,
-
-                password
-
-            });
-
-
-
-        submitBtn.disabled = false;
-
-        submitBtn.innerHTML = originalText;
-
-
-
-        // ==========================
-        // RESPONSE
-        // ==========================
-
-        if (response.success) {
-
-            alert(
-                "Registration Successful!\n\nCandidate ID : " +
-                response.candidateID
-            );
-
-            window.location.href =
-                "candidate-login.html";
-
-        }
-
-        else {
-
-            alert(response.message);
-
-        }
-
-    }
-
-};
-
+const Candidate={
 
 // ======================================
-// CANDIDATE LOGIN
+// INIT
 // ======================================
 
+init(){
 
-Candidate.bindLoginForm = function(){
+this.bindRegisterForm();
 
+this.bindLoginForm();
 
-    const form =
-    document.getElementById("candidateLoginForm");
+this.checkLogin();
 
+this.initDashboard();
 
-    if(!form) return;
+this.initProfile();
 
+this.initJobs();
 
+this.initJobDetails();
 
-    form.addEventListener(
-        "submit",
-        (e)=>{
+},
 
+// ======================================
+// REGISTER FORM
+// ======================================
 
-            e.preventDefault();
+bindRegisterForm(){
 
+const form=
 
-            Candidate.login();
+document.getElementById(
 
+"candidateRegisterForm"
 
-        }
-    );
+);
 
+if(!form) return;
 
-};
+form.addEventListener(
 
+"submit",
 
+(e)=>{
+
+e.preventDefault();
+
+this.register();
+
+}
+
+);
+
+},
+    // ======================================
+// REGISTER
+// ======================================
+
+async register(){
+
+const shaliniID=
+
+document.getElementById("shaliniId")
+.value.trim();
+
+const fullName=
+
+document.getElementById("fullName")
+.value.trim();
+
+const mobile=
+
+document.getElementById("mobile")
+.value.trim();
+
+const email=
+
+document.getElementById("email")
+.value.trim();
+
+const password=
+
+document.getElementById("password")
+.value;
+
+const confirmPassword=
+
+document.getElementById("confirmPassword")
+.value;
+
+const terms=
+
+document.getElementById("terms")
+.checked;
 
 
 
 // ======================================
+// VALIDATION
+// ======================================
+
+if(
+
+!shaliniID ||
+
+!fullName ||
+
+!mobile ||
+
+!email ||
+
+!password
+
+){
+
+alert("Please fill all required fields.");
+
+return;
+
+}
+
+if(mobile.length!=10){
+
+alert("Enter valid mobile number.");
+
+return;
+
+}
+
+if(password!=confirmPassword){
+
+alert("Passwords do not match.");
+
+return;
+
+}
+
+if(!terms){
+
+alert("Please accept Terms & Conditions.");
+
+return;
+
+}
+
+
+
+// ======================================
+// BUTTON LOADING
+// ======================================
+
+const button=
+
+document.querySelector(
+
+"#candidateRegisterForm button[type='submit']"
+
+);
+
+const oldText=
+
+button.innerHTML;
+
+button.disabled=true;
+
+button.innerHTML="Creating Account...";
+
+    // ======================================
+// API CALL
+// ======================================
+
+const response=
+
+await API.registerCandidate({
+
+shaliniID:shaliniID,
+
+fullName:fullName,
+
+mobile:mobile,
+
+email:email,
+
+password:password
+
+});
+
+
+
+// ======================================
+// RESET BUTTON
+// ======================================
+
+button.disabled=false;
+
+button.innerHTML=oldText;
+
+
+
+// ======================================
+// RESPONSE
+// ======================================
+
+if(response.success){
+
+alert(
+
+"Registration Successful!\n\n" +
+
+"Candidate ID : " +
+
+response.candidateID
+
+);
+
+window.location.href=
+
+"candidate-login.html";
+
+return;
+
+}
+
+
+
+alert(response.message);
+
+},
+
+    // ======================================
+// LOGIN FORM
+// ======================================
+
+bindLoginForm(){
+
+const form=
+
+document.getElementById(
+
+"candidateLoginForm"
+
+);
+
+if(!form) return;
+
+form.addEventListener(
+
+"submit",
+
+(e)=>{
+
+e.preventDefault();
+
+this.login();
+
+}
+
+);
+
+},
+
+    // ======================================
 // LOGIN
 // ======================================
 
-Candidate.login = async function () {
+async login(){
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+const email=
 
-    if (!email || !password) {
+document.getElementById("email")
+.value.trim();
 
-        alert("Please enter Email and Password.");
+const password=
 
-        return;
-
-    }
-
-    const button =
-        document.querySelector("#candidateLoginForm button[type='submit']");
-
-    const oldText = button.innerHTML;
-
-    button.disabled = true;
-    button.innerHTML = "Logging In...";
-
-    const response =
-        await API.loginCandidate({
-
-            email: email,
-            password: password
-
-        });
-
-    button.disabled = false;
-    button.innerHTML = oldText;
-
-    if (!response.success) {
-
-        alert(response.message);
-
-        return;
-
-    }
-
-    // ==============================
-    // SAVE COMPLETE SESSION
-    // ==============================
-
-    Storage.saveCandidate({
-
-        candidateID: response.candidateID,
-        shaliniID: response.shaliniID,
-        fullName: response.fullName,
-        email: email,
-
-        profileStatus: response.profileStatus,
-        accountStatus: response.accountStatus
-
-    });
-
-    alert("Login Successful");
-
-    window.location.href =
-        "candidate-dashboard.html";
-
-};
-
+document.getElementById("password")
+.value;
 
 
 
 // ======================================
+// VALIDATION
+// ======================================
+
+if(!email || !password){
+
+alert("Please enter Email and Password.");
+
+return;
+
+}
+
+
+
+// ======================================
+// BUTTON LOADING
+// ======================================
+
+const button=
+
+document.querySelector(
+
+"#candidateLoginForm button[type='submit']"
+
+);
+
+const oldText=
+
+button.innerHTML;
+
+button.disabled=true;
+
+button.innerHTML="Logging In...";
+
+
+
+// ======================================
+// API CALL
+// ======================================
+
+const response=
+
+await API.loginCandidate({
+
+email:email,
+
+password:password
+
+});
+
+    // ======================================
+// RESET BUTTON
+// ======================================
+
+button.disabled=false;
+
+button.innerHTML=oldText;
+
+
+
+// ======================================
+// LOGIN FAILED
+// ======================================
+
+if(!response.success){
+
+alert(response.message);
+
+return;
+
+}
+
+
+
+// ======================================
+// SAVE SESSION
+// ======================================
+
+Storage.saveCandidate({
+
+candidateID:response.data.candidateID,
+
+shaliniID:response.data.shaliniID,
+
+fullName:response.data.fullName,
+
+email:response.data.email,
+
+profileStatus:response.data.profileStatus,
+
+accountStatus:response.data.accountStatus
+
+});
+
+
+
+// ======================================
+// SUCCESS
+// ======================================
+
+alert("Login Successful.");
+
+window.location.href=
+
+"candidate-dashboard.html";
+
+},
+
+    // ======================================
 // CHECK LOGIN
 // ======================================
 
+checkLogin(){
 
-Candidate.checkLogin = function(){
+const currentPage=
+window.location.pathname;
 
+const protectedPages=[
 
+"candidate-dashboard.html",
 
-    const currentPage =
-    window.location.pathname;
+"candidate-profile.html",
 
+"available-jobs.html",
 
+"job-details.html",
 
-    const protectedPages = [
+"my-applications.html"
 
+];
 
-        "candidate-dashboard.html",
+for(let i=0;i<protectedPages.length;i++){
 
-        "candidate-profile.html",
+if(currentPage.includes(protectedPages[i])){
 
-        "my-applications.html"
+const session=
+Storage.getCandidate();
 
+if(!session){
 
-    ];
+window.location.href=
+"candidate-login.html";
 
+return;
 
+}
 
-    protectedPages.forEach(
-        (page)=>{
+}
 
+}
 
-            if(
-                currentPage.includes(page)
-            ){
-
-
-
-                if(
-                    !Storage.getCandidate()
-                ){
-
-
-                    window.location.href =
-                    "candidate-login.html";
-
-
-                }
-
-
-
-            }
-
-
-
-        }
-    );
-
-
-};
-
-
-
-
+},
 
 // ======================================
 // LOGOUT
 // ======================================
 
+logout(){
 
-Candidate.logout = function(){
+Storage.removeCandidate();
 
+alert("Logged out successfully.");
 
+window.location.href=
+"candidate-login.html";
 
-    Storage.removeCandidate();
+},
 
+    // ======================================
+// LOAD DASHBOARD
+// ======================================
 
+async loadDashboard(){
 
-    alert(
-        "Logged out successfully."
-    );
+const session=
+Storage.getCandidate();
 
+if(!session){
 
+window.location.href=
+"candidate-login.html";
 
-    window.location.href =
-    "candidate-login.html";
+return;
 
+}
 
-};
+const response=
 
+await API.getCandidateDashboard({
 
+candidateID:session.candidateID
+
+});
+
+if(!response.success){
+
+alert(response.message);
+
+return;
+
+}
+
+const dashboard=
+response.data;
 
 
 
 // ======================================
-// UPDATE INIT
+// WELCOME NAME
 // ======================================
 
+const name=
 
-const oldCandidateInit =
-Candidate.init;
+document.getElementById("candidateName");
 
-Candidate.init=function(){
+if(name){
 
- this.bindRegisterForm();
+name.innerHTML=
+session.fullName;
 
- this.bindLoginForm();
-
- this.checkLogin();
-
- this.initDashboard();
-
- this.initProfile();
-
- this.initJobs();
-
- this.initJobDetails();
-
-};
-
-// ======================================
-// CANDIDATE DASHBOARD
-// ======================================
-
-
-
-Candidate.loadDashboard = async function(){
-
-
-    const candidate =
-    Storage.getCandidate();
-
-
-
-    if(!candidate){
-
-        window.location.href =
-        "candidate-login.html";
-
-        return;
-
-    }
-
-
-
-
-    const response =
-    await API.getCandidateDashboard({
-
-
-        candidateID:
-        candidate.candidateID
-
-
-
-    });
-
-
-
-
-    if(response.success){
-
-
-
-        const dashboard =
-        response.data;
-
-
-
-        // ==========================
-        // Welcome Name
-        // ==========================
-
-
-        const nameElement =
-        document.getElementById(
-            "candidateName"
-        );
-
-
-        if(nameElement){
-
-
-            nameElement.innerHTML =
-            candidate.fullName;
-
-
-        }
-
-
-
-
-
-        // ==========================
-        // Statistics
-        // ==========================
-
-
-
-        const applications =
-        document.getElementById(
-            "totalApplications"
-        );
-
-
-        if(applications){
-
-
-            applications.innerHTML =
-            dashboard.totalApplications || 0;
-
-
-        }
-
-
-
-
-
-        const shortlisted =
-        document.getElementById(
-            "shortlistedCandidates"
-        );
-
-
-        if(shortlisted){
-
-
-            shortlisted.innerHTML =
-            dashboard.shortlistedCandidates || 0;
-
-
-        }
-
-
-
-
-
-
-        const selected =
-        document.getElementById(
-            "selectedCandidates"
-        );
-
-
-        if(selected){
-
-
-            selected.innerHTML =
-            dashboard.selectedCandidates || 0;
-
-
-        }
-
-
-
-
-
-
-        // ==========================
-        // Profile Status
-        // ==========================
-
-
-
-        const profileStatus =
-        document.getElementById(
-            "profileStatus"
-        );
-
-
-
-        if(profileStatus){
-
-
-
-            profileStatus.innerHTML =
-
-            candidate.profileStatus ||
-
-            "Profile Incomplete";
-
-
-
-        }
-
-
-
-
-
-    }
-
-    else{
-
-
-        console.log(
-            response.message
-        );
-
-
-    }
-
-
-};
-
-
-
+}
 
 
 
 // ======================================
-// DASHBOARD INIT
+// TOTAL APPLICATIONS
 // ======================================
 
+const total=
 
-Candidate.initDashboard = function(){
+document.getElementById("totalApplications");
 
+if(total){
 
+total.innerHTML=
+dashboard.totalApplications || 0;
 
-    const page =
-    window.location.pathname;
-
-
-
-    if(
-        page.includes(
-            "candidate-dashboard.html"
-        )
-    ){
-
-
-        this.loadDashboard();
-
-
-    }
-
-
-
-};
-
-// ======================================
-// CANDIDATE PROFILE MODULE
-// ======================================
+}
 
 
 
 // ======================================
+// SHORTLISTED
+// ======================================
+
+const shortlisted=
+
+document.getElementById("shortlistedJobs");
+
+if(shortlisted){
+
+shortlisted.innerHTML=
+dashboard.shortlistedJobs || 0;
+
+}
+
+
+
+// ======================================
+// INTERVIEW
+// ======================================
+
+const interview=
+
+document.getElementById("interviewCalls");
+
+if(interview){
+
+interview.innerHTML=
+dashboard.interviewCalls || 0;
+
+}
+
+
+
+// ======================================
+// SELECTED
+// ======================================
+
+const selected=
+
+document.getElementById("selectedJobs");
+
+if(selected){
+
+selected.innerHTML=
+dashboard.selectedJobs || 0;
+
+}
+
+
+
+// ======================================
+// PROFILE STATUS
+// ======================================
+
+const profile=
+
+document.getElementById("profileStatus");
+
+if(profile){
+
+profile.innerHTML=
+session.profileStatus ||
+"Profile Incomplete";
+
+}
+
+},
+
+    // ======================================
 // LOAD PROFILE
 // ======================================
 
-Candidate.loadProfile = async function () {
+async loadProfile(){
 
-    const session = Storage.getCandidate();
+const session=
+Storage.getCandidate();
 
-    if (!session) {
+if(!session){
 
-        window.location.href = "candidate-login.html";
-        return;
+window.location.href=
+"candidate-login.html";
 
-    }
+return;
 
-    const response =
-        await API.getCandidateProfile({
+}
 
-            candidateID: session.candidateID
+const response=
 
-        });
+await API.getCandidateProfile({
 
-    if (!response.success) {
+candidateID:session.candidateID
 
-        alert(response.message);
-        return;
+});
 
-    }
+if(!response.success){
 
-    const profile = response.data;
+alert(response.message);
 
-    // ==============================
-    // UPDATE LOCAL STORAGE
-    // ==============================
+return;
 
-    Storage.saveCandidate({
+}
 
-        ...session,
-
-        ...profile
-
-    });
-
-    // ==============================
-    // AUTO FILL FORM
-    // ==============================
-
-    this.fillProfileField("candidateID", profile.Candidate_ID);
-    this.fillProfileField("shaliniID", profile.Shalini_ID);
-
-    this.fillProfileField("fullName", profile.Full_Name);
-
-    this.fillProfileField("gender", profile.Gender);
-
-    this.fillProfileField("dob", profile.DOB);
-
-    this.fillProfileField("currentCity", profile.Current_City);
-
-    this.fillProfileField("mobile", profile.Mobile);
-
-    this.fillProfileField("email", profile.Email);
-
-    this.fillProfileField("education", profile.Education);
-
-    this.fillProfileField("qualification", profile.Qualification);
-
-    this.fillProfileField("passingYear", profile.Passing_Year);
-
-    this.fillProfileField("skills", profile.Skills);
-
-    this.fillProfileField("experience", profile.Experience);
-
-    this.fillProfileField("employmentStatus", profile.Employment_Status);
-
-    this.fillProfileField("preferredLocation", profile.Preferred_Location);
-
-    this.fillProfileField("expectedSalary", profile.Expected_Salary);
-
-    this.fillProfileField("aboutCandidate", profile.About_Candidate);
-
-    this.updateProfileProgress();
-
-};
-
+const profile=
+response.data;
 
 
 
 // ======================================
+// UPDATE LOCAL STORAGE
+// ======================================
+
+Storage.saveCandidate({
+
+...session,
+
+...profile
+
+});
+
+
+
+// ======================================
+// FILL FORM
+// ======================================
+
+this.fillField("candidateID",profile.candidateID);
+
+this.fillField("shaliniID",profile.shaliniID);
+
+this.fillField("fullName",profile.fullName);
+
+this.fillField("gender",profile.gender);
+
+this.fillField("dob",profile.dob);
+
+this.fillField("currentCity",profile.currentCity);
+
+this.fillField("mobile",profile.mobile);
+
+this.fillField("email",profile.email);
+
+this.fillField("education",profile.education);
+
+this.fillField("qualification",profile.qualification);
+
+this.fillField("passingYear",profile.passingYear);
+
+this.fillField("skills",profile.skills);
+
+this.fillField("experience",profile.experience);
+
+this.fillField("employmentStatus",profile.employmentStatus);
+
+this.fillField("preferredLocation",profile.preferredLocation);
+
+this.fillField("expectedSalary",profile.expectedSalary);
+
+this.fillField("aboutCandidate",profile.aboutCandidate);
+
+this.updateProfileProgress();
+
+},
+
+    // ======================================
 // FILL FIELD
 // ======================================
 
-Candidate.fillProfileField = function (id, value) {
+fillField(id,value){
 
-    const element = document.getElementById(id);
+const element=
 
-    if (element) {
+document.getElementById(id);
 
-        element.value = value || "";
+if(element){
 
-    }
+element.value=value || "";
 
-};
+}
 
-
+},
 
 
 // ======================================
 // UPDATE PROFILE
 // ======================================
 
-Candidate.updateProfile = async function () {
+async updateProfile(){
 
-    const session = Storage.getCandidate();
+const session=
 
-    if (!session) {
+Storage.getCandidate();
 
-        window.location.href = "candidate-login.html";
-        return;
+if(!session){
 
-    }
+window.location.href=
 
-    const data = {
+"candidate-login.html";
 
-        candidateID: session.candidateID,
+return;
 
-        fullName: document.getElementById("fullName").value,
+}
 
-        gender: document.getElementById("gender").value,
+const data={
 
-        dob: document.getElementById("dob").value,
+candidateID:session.candidateID,
 
-        currentCity: document.getElementById("currentCity").value,
+fullName:document.getElementById("fullName").value,
 
-        mobile: document.getElementById("mobile").value,
+gender:document.getElementById("gender").value,
 
-        email: document.getElementById("email").value,
+dob:document.getElementById("dob").value,
 
-        education: document.getElementById("education").value,
+currentCity:document.getElementById("currentCity").value,
 
-        qualification: document.getElementById("qualification").value,
+mobile:document.getElementById("mobile").value,
 
-        passingYear: document.getElementById("passingYear").value,
+education:document.getElementById("education").value,
 
-        skills: document.getElementById("skills").value,
+qualification:document.getElementById("qualification").value,
 
-        experience: document.getElementById("experience").value,
+passingYear:document.getElementById("passingYear").value,
 
-        employmentStatus: document.getElementById("employmentStatus").value,
+skills:document.getElementById("skills").value,
 
-        preferredLocation: document.getElementById("preferredLocation").value,
+experience:document.getElementById("experience").value,
 
-        expectedSalary: document.getElementById("expectedSalary").value,
+employmentStatus:document.getElementById("employmentStatus").value,
 
-        aboutCandidate: document.getElementById("aboutCandidate").value
+preferredLocation:document.getElementById("preferredLocation").value,
 
-    };
+expectedSalary:document.getElementById("expectedSalary").value,
 
-    const response =
-        await API.updateCandidateProfile(data);
-
-    if (!response.success) {
-
-        alert(response.message);
-        return;
-
-    }
-
-    // ==========================
-    // UPDATE LOCAL STORAGE
-    // ==========================
-
-    Storage.saveCandidate({
-
-        ...session,
-
-        Candidate_ID: session.candidateID,
-
-        Shalini_ID: session.shaliniID,
-
-        Full_Name: data.fullName,
-
-        Gender: data.gender,
-
-        DOB: data.dob,
-
-        Current_City: data.currentCity,
-
-        Mobile: data.mobile,
-
-        Email: data.email,
-
-        Education: data.education,
-
-        Qualification: data.qualification,
-
-        Passing_Year: data.passingYear,
-
-        Skills: data.skills,
-
-        Experience: data.experience,
-
-        Employment_Status: data.employmentStatus,
-
-        Preferred_Location: data.preferredLocation,
-
-        Expected_Salary: data.expectedSalary,
-
-        About_Candidate: data.aboutCandidate,
-
-        Profile_Status: "Profile Complete"
-
-    });
-
-    this.updateProfileProgress();
-
-    alert("Profile Updated Successfully.");
+aboutCandidate:document.getElementById("aboutCandidate").value
 
 };
 
+const response=
 
+await API.updateCandidateProfile(data);
 
+if(!response.success){
 
-// ======================================
+alert(response.message);
+
+return;
+
+}
+
+Storage.saveCandidate({
+
+...session,
+
+...data,
+
+profileStatus:"Profile Complete"
+
+});
+
+alert("Profile Updated Successfully.");
+
+this.updateProfileProgress();
+
+},
+
+    // ======================================
 // PROFILE PROGRESS
 // ======================================
 
-Candidate.updateProfileProgress = function () {
+updateProfileProgress(){
 
-    const fields = [
+const fields=[
 
-        "fullName",
-        "gender",
-        "dob",
-        "currentCity",
-        "mobile",
-        "education",
-        "qualification",
-        "passingYear",
-        "skills",
-        "experience",
-        "employmentStatus",
-        "preferredLocation",
-        "expectedSalary",
-        "aboutCandidate"
+"fullName",
 
-    ];
+"gender",
 
-    let filled = 0;
+"dob",
 
-    fields.forEach(id => {
+"currentCity",
 
-        const element = document.getElementById(id);
+"mobile",
 
-        if (element && element.value.trim() !== "") {
+"education",
 
-            filled++;
+"qualification",
 
-        }
+"passingYear",
 
-    });
+"skills",
 
-    const percent =
-        Math.round((filled / fields.length) * 100);
+"experience",
 
-    const percentLabel =
-        document.getElementById("profilePercent");
+"employmentStatus",
 
-    if (percentLabel) {
+"preferredLocation",
 
-        percentLabel.innerHTML = percent + "%";
+"expectedSalary",
 
-    }
+"aboutCandidate"
 
-    const bar =
-        document.getElementById("profileProgress");
+];
 
-    if (bar) {
+let filled=0;
 
-        bar.style.width = percent + "%";
+fields.forEach(id=>{
 
-    }
+const element=
 
-};
+document.getElementById(id);
 
+if(element && element.value.trim()!=""){
 
+filled++;
+
+}
+
+});
+
+const percent=
+
+Math.round(
+
+(filled/fields.length)*100
+
+);
+
+const label=
+
+document.getElementById(
+
+"profilePercent"
+
+);
+
+if(label){
+
+label.innerHTML=
+
+percent+"%";
+
+}
+
+const bar=
+
+document.getElementById(
+
+"profileProgress"
+
+);
+
+if(bar){
+
+bar.style.width=
+
+percent+"%";
+
+}
+
+},
 
 
 // ======================================
 // PROFILE INIT
 // ======================================
 
-Candidate.initProfile = function () {
+initProfile(){
 
-    const page = window.location.pathname;
+const page=
 
-    if (!page.includes("candidate-profile.html")) return;
+window.location.pathname;
 
-    // Load profile from Google Sheet
-    this.loadProfile();
+if(!page.includes(
 
-    // Save Profile Form
-    const form = document.getElementById("candidateProfileForm");
+"candidate-profile.html"
 
-    if (form) {
+)) return;
 
-        form.addEventListener("submit", (e) => {
+this.loadProfile();
 
-            e.preventDefault();
+const form=
 
-            Candidate.updateProfile();
+document.getElementById(
 
-        });
+"candidateProfileForm"
 
-    }
+);
 
-    // Live Progress Bar
-    const controls = document.querySelectorAll(
+if(form){
 
-        "#candidateProfileForm input, \
-         #candidateProfileForm select, \
-         #candidateProfileForm textarea"
+form.addEventListener(
 
-    );
+"submit",
 
-    controls.forEach(control => {
+(e)=>{
 
-        control.addEventListener("input", () => {
+e.preventDefault();
 
-            Candidate.updateProfileProgress();
+this.updateProfile();
 
-        });
+}
 
-        control.addEventListener("change", () => {
+);
 
-            Candidate.updateProfileProgress();
+}
 
-        });
+const controls=
 
-    });
+document.querySelectorAll(
 
-};
+"#candidateProfileForm input,#candidateProfileForm select,#candidateProfileForm textarea"
 
-// ======================================
-// REFRESH PROFILE FORM
-// ======================================
+);
 
-Candidate.refreshProfile = function () {
+controls.forEach(control=>{
 
-    this.loadProfile();
+control.addEventListener(
 
-    this.updateProfileProgress();
+"input",
 
-};
-
-
-// ======================================
-// CANDIDATE JOB MODULE
-// ======================================
-
-
-Candidate.loadJobs=async function(){
-
- const response=await API.getAvailableJobs();
-
- if(response.success){
-
-   const container=document.getElementById("jobsContainer");
-
-   if(!container) return;
-
-   container.innerHTML="";
-
-
-   response.jobs.forEach(job=>{
-
-    container.innerHTML+=`
-
-    <div class="job-card">
-
-        <h3>${job.jobTitle}</h3>
-
-        <h4>${job.companyName}</h4>
-
-        <p>
-        <b>Location:</b> ${job.location}
-        </p>
-
-        <p>
-        <b>Salary:</b>
-        ${job.salaryMin} -
-        ${job.salaryMax}
-        </p>
-
-        <p>
-        <b>Experience:</b>
-        ${job.experience}
-        </p>
-
-        <button 
-        class="btn btn-primary"
-        onclick="Candidate.viewJob('${job.jobID}')">
-
-        View Details
-
-        </button>
-
-    </div>
-
-    `;
-
-   });
-
- }
-
-};
-
-
-
-
-// ======================================
-// JOB DETAILS
-// ======================================
-
-
-Candidate.viewJob=async function(jobID){
-
-
- const response=
- await API.getJobDetails(jobID);
-
-
- if(response.success){
-
-
-  Storage.saveJob(response.job);
-
-
-  window.location.href=
-  "job-details.html";
-
-
- }
-
- else{
-
-  alert(response.message);
-
- }
-
-};
-
-
-
-
-// ======================================
-// APPLY JOB
-// ======================================
-
-
-Candidate.applyJob=async function(jobID){
-
-
- const candidate=
- Storage.getCandidate();
-
-
- if(!candidate){
-
-   window.location.href=
-   "candidate-login.html";
-
-   return;
-
- }
-
-
-
- const confirmApply=
- confirm(
- "Are you sure you want to apply for this job?"
- );
-
-
- if(!confirmApply)
- return;
-
-
-
- const response=
- await API.applyJob({
-
-   candidateID:
-   candidate.candidateID,
-
-   jobID:
-   jobID
-
- });
-
-
-
- if(response.success){
-
-
-   alert(
-   "Job application submitted successfully."
-   );
-
-
-   window.location.href=
-   "my-applications.html";
-
-
- }
-
- else{
-
-
-   alert(response.message);
-
-
- }
-
-
-};
-
-
-
-
-// ======================================
-// LOAD JOB PAGE
-// ======================================
-
-
-Candidate.initJobs=function(){
-
-
- const page=
- window.location.pathname;
-
-
- if(
- page.includes("available-jobs.html")
- ){
-
-   this.loadJobs();
-
- }
-
-
-};
-
-
-
-
-// ======================================
-// JOB DETAILS PAGE
-// ======================================
-
-
-Candidate.initJobDetails=function(){
-
-
- const page=
- window.location.pathname;
-
-
- if(
- page.includes("job-details.html")
- ){
-
-
-   const job=
-   Storage.getJob();
-
-
-   if(!job) return;
-
-
-
-   const fields={
-
-   jobTitle:job.jobTitle,
-
-   companyName:job.companyName,
-
-   location:job.location,
-
-   salary:job.salaryMin+
-   " - "+
-   job.salaryMax,
-
-   description:job.jobDescription,
-
-   skills:job.skills
-
-   };
-
-
-
-   Object.keys(fields).forEach(id=>{
-
-
-    const el=
-    document.getElementById(id);
-
-
-    if(el){
-
-     el.innerHTML=
-     fields[id];
-
-    }
-
-
-   });
-
-
-
- }
-
-
-
-};
-
-// ======================================
-// START MODULE
-// ======================================
-
-document.addEventListener(
-"DOMContentLoaded",
 ()=>{
-    Candidate.init();
+
+this.updateProfileProgress();
+
+}
+
+);
+
+control.addEventListener(
+
+"change",
+
+()=>{
+
+this.updateProfileProgress();
+
+}
+
+);
+
 });
+
+},
+
+    
