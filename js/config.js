@@ -44,11 +44,8 @@ SOCIAL: {
 },
 
     LOGO: {
-
     MAIN: "images/logo.png",
-
     FAVICON: "assets/icons/favicon.ico"
-
 },
 
 SITE: {
