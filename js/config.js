@@ -19,6 +19,8 @@ const CONFIG = {
 
         ADMIN: "ucpp_admin"
 
+        JOB:"UCPP_JOB"
+
     }
 
 };
