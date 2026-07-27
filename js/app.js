@@ -11,6 +11,55 @@
 
 document.addEventListener("DOMContentLoaded",()=>{
 
+ /*=========================================================
+ WEBSITE CONFIG LOADER
+==========================================================*/
+
+function loadWebsiteConfig(){
+
+// Phone
+document.querySelectorAll("#sitePhone").forEach(el=>{
+el.textContent = CONFIG.CONTACT.PHONE;
+});
+
+// Email
+document.querySelectorAll("#siteEmail").forEach(el=>{
+el.textContent = CONFIG.CONTACT.EMAIL;
+});
+
+// Address
+document.querySelectorAll("#siteAddress").forEach(el=>{
+el.textContent = CONFIG.CONTACT.ADDRESS;
+});
+
+// Facebook
+document.querySelectorAll("#facebookLink").forEach(el=>{
+el.href = CONFIG.SOCIAL.FACEBOOK;
+el.target="_blank";
+});
+
+// LinkedIn
+document.querySelectorAll("#linkedinLink").forEach(el=>{
+el.href = CONFIG.SOCIAL.LINKEDIN;
+el.target="_blank";
+});
+
+// Instagram
+document.querySelectorAll("#instagramLink").forEach(el=>{
+el.href = CONFIG.SOCIAL.INSTAGRAM;
+el.target="_blank";
+});
+
+// WhatsApp
+document.querySelectorAll("#whatsappLink").forEach(el=>{
+el.href = CONFIG.SOCIAL.WHATSAPP;
+el.target="_blank";
+});
+
+}
+
+loadWebsiteConfig();
+
 
 /*=========================================================
  GLOBAL CONFIGURATION
