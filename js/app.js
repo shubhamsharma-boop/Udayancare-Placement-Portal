@@ -72,6 +72,11 @@ document.querySelectorAll(".siteTagline").forEach(el=>{
     el.textContent = CONFIG.SITE.TAGLINE;
 });
 
+ // Site Description
+document.querySelectorAll(".siteDescription").forEach(el=>{
+    el.textContent = CONFIG.SITE.DESCRIPTION;
+});
+
 }
 
 loadWebsiteConfig();
