@@ -42,6 +42,24 @@ SOCIAL: {
     WHATSAPP: "https://wa.me/918126757595"
 
 }
+
+    LOGO: {
+
+    MAIN: "images/logo.png",
+
+    FAVICON: "assets/icons/favicon.ico"
+
+},
+
+SITE: {
+
+    NAME: "Udayan Care Placement Portal",
+
+    SHORT_NAME: "UCPP",
+
+    TAGLINE: "Making Young Lives Shine Through Employment"
+
+}
     
 };
 
