@@ -155,22 +155,20 @@ return;
 // BUTTON LOADING
 // ======================================
 
-const button=
-
+const button =
 document.querySelector(
-
 "#candidateRegisterForm button[type='submit']"
-
 );
 
-const oldText=
-
+const oldText =
 button.innerHTML;
 
-button.disabled=true;
+button.disabled = true;
 
-button.innerHTML="Creating Account...";
+button.innerHTML =
+'<i class="fa-solid fa-spinner fa-spin"></i> Creating Account...';
 
+    
     // ======================================
 // API CALL
 // ======================================
