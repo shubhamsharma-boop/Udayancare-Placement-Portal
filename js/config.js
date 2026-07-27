@@ -41,7 +41,7 @@ SOCIAL: {
 
     WHATSAPP: "https://wa.me/918126757595"
 
-}
+},
 
     LOGO: {
 
