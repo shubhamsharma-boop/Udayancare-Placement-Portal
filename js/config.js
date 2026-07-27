@@ -57,10 +57,11 @@ SITE: {
 
     SHORT_NAME: "UCPP",
 
-    TAGLINE: "Making Young Lives Shine Through Employment"
+    TAGLINE: "Making Young Lives Shine Through Employment",
 
-}
-    
+    DESCRIPTION: "Udayan Care Placement Portal connects Shalini Fellows with verified employers and supports career growth."
+
+}    
 };
 
 // Freeze Configuration
