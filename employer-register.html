@@ -906,81 +906,61 @@ form.addEventListener("submit",async(e)=>{
 
 e.preventDefault();
 
-const password=document.getElementById("password").value;
-
-const confirmPassword=document.getElementById("confirmPassword").value;
-
-if(password!==confirmPassword){
-
-showToast("Passwords do not match","error");
-
-return;
-
-}
-
 const data={
 
-companyName:document.getElementById("companyName").value,
+companyName:
+document.getElementById("companyName").value.trim(),
 
-contactPerson:document.getElementById("contactPerson").value,
+contactPerson:
+document.getElementById("contactPerson").value.trim(),
 
-designation:document.getElementById("designation").value,
+designation:
+document.getElementById("designation").value.trim(),
 
-mobile:document.getElementById("mobile").value,
+mobile:
+document.getElementById("mobile").value.trim(),
 
-email:document.getElementById("email").value,
+email:
+document.getElementById("email").value.trim(),
 
-password:password,
+password:
+document.getElementById("password").value,
 
-companyType:document.getElementById("companyType").value,
+confirmPassword:
+document.getElementById("confirmPassword").value,
 
-industry:document.getElementById("industry").value,
+companyType:
+document.getElementById("companyType").value,
 
-website:document.getElementById("website").value,
+industry:
+document.getElementById("industry").value,
 
-companyDescription:document.getElementById("companyDescription").value,
+website:
+document.getElementById("website").value.trim(),
 
-state:document.getElementById("state").value,
+companyDescription:
+document.getElementById("companyDescription").value.trim(),
 
-district:document.getElementById("district").value,
+state:
+document.getElementById("state").value,
 
-location:document.getElementById("location").value,
+district:
+document.getElementById("district").value.trim(),
 
-address:document.getElementById("address").value,
+city:
+document.getElementById("city").value.trim(),
 
-gstNumber:document.getElementById("gstNumber").value,
+address:
+document.getElementById("address").value.trim(),
 
-logoURL:document.getElementById("logoURL").value
+gstNumber:
+document.getElementById("gstNumber").value.trim(),
+
+logoURL:""
 
 };
 
-const response=await apiRequest(
-
-"registerEmployer",
-
-data
-
-);
-
-if(response.success){
-
-showToast(response.message,"success");
-
-form.reset();
-
-setTimeout(()=>{
-
-window.location.href="employer-login.html";
-
-},1500);
-
-}
-
-else{
-
-showToast(response.message,"error");
-
-}
+// baaki code yahin continue hoga...
 
 });
 
