@@ -4,222 +4,113 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-
-<title>
-Employer Registration | Udayan Care Placement Portal
-</title>
-
-
+<title>Employer Registration | Udayan Care Placement Portal</title>
 
 <meta name="description"
 content="Register your company with Udayan Care Placement Portal and hire skilled Shalini Fellows.">
 
+<link rel="stylesheet" href="css/style.css">
 
-
-<link rel="stylesheet"
-href="css/style.css">
-
-
-
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link rel="preconnect"
 href="https://fonts.gstatic.com"
 crossorigin>
 
-
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
-
-
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-
 </head>
-
-
 
 <body>
 
-
-
 <!-- ================= TOP BAR ================= -->
-
 
 <div class="topbar">
 
-
 <div class="container topbar-content">
-
-
 
 <div class="top-left">
 
-
 <span>
-
 <i class="fa-solid fa-phone"></i>
-
-+91-11-27821333
-
+<span id="sitePhone"></span>
 </span>
-
-
-
 
 <span>
-
 <i class="fa-solid fa-envelope"></i>
-
-placement@udayancare.org
-
+<span id="siteEmail"></span>
 </span>
-
 
 </div>
-
-
-
-
-
 
 <div class="top-right">
 
-
-<a href="#">
-
+<a id="facebookLink" href="#">
 <i class="fab fa-facebook-f"></i>
-
 </a>
 
-
-<a href="#">
-
+<a id="linkedinLink" href="#">
 <i class="fab fa-linkedin-in"></i>
-
 </a>
 
-
-<a href="#">
-
+<a id="instagramLink" href="#">
 <i class="fab fa-instagram"></i>
-
 </a>
 
-
-<a href="#">
-
+<a id="whatsappLink" href="#">
 <i class="fab fa-whatsapp"></i>
-
 </a>
 
+</div>
 
 </div>
 
-
-
-
 </div>
-
-
-</div>
-
-
-
-
-
-
-
 
 <!-- ================= HEADER ================= -->
 
-
 <header class="header">
-
-
 
 <div class="container navbar">
 
+<a href="index.html" class="logo">
 
-
-
-
-<a href="index.html"
-class="logo">
-
-
-<img src="images/logo.png"
-alt="Udayan Care">
-
+<img class="siteLogo"
+alt="UCPP Logo">
 
 </a>
-
-
-
-
-
-
 
 <nav class="nav-menu">
 
-
-
 <a href="index.html">
-
 Home
-
 </a>
-
-
 
 <a href="about.html">
-
 About
-
 </a>
-
-
 
 <a href="jobs.html">
-
 Jobs
-
 </a>
-
-
 
 <a href="contact.html">
-
 Contact
-
 </a>
-
-
 
 <a href="candidate-login.html">
-
 Candidate Login
-
 </a>
-
-
 
 <a href="employer-login.html">
-
 Employer Login
-
 </a>
-
-
 
 <a href="employer-register.html"
 class="btn btn-primary active">
@@ -228,15 +119,7 @@ Register
 
 </a>
 
-
-
 </nav>
-
-
-
-
-
-
 
 <button class="menu-toggle">
 
@@ -244,50 +127,24 @@ Register
 
 </button>
 
-
-
-
-
 </div>
-
-
 
 </header>
 
-
-
-
-
-
-
-
-
-<!-- ================= PAGE BANNER ================= -->
-
+<!-- ================= HERO ================= -->
 
 <section class="hero"
 style="padding:70px 0;">
 
-
-
 <div class="container text-center">
-
-
 
 <span class="hero-tag">
 
-
 <i class="fa-solid fa-building"></i>
-
 
 Employer Registration
 
-
 </span>
-
-
-
-
 
 <h1>
 
@@ -295,51 +152,28 @@ Partner With Udayan Care
 
 </h1>
 
-
-
-
 <p>
 
 Hire skilled and trained Shalini Fellows through our trusted placement platform.
 
 </p>
 
-
-
 </div>
-
 
 </section>
 
-
-
-
-
-
-
-
-
-<!-- ================= REGISTRATION SECTION ================= -->
-
+<!-- ================= FORM ================= -->
 
 <section class="section">
 
-
-
 <div class="container">
-
 
 <div class="form-container">
 
-
 <form id="employerRegisterForm">
-
-    <!-- ================= COMPANY INFORMATION ================= -->
-
 
 <div class="section-title"
 style="margin-bottom:40px;">
-
 
 <span>
 
@@ -347,13 +181,11 @@ COMPANY DETAILS
 
 </span>
 
-
 <h2>
 
 Register Your Organization
 
 </h2>
-
 
 <p>
 
@@ -361,20 +193,11 @@ Provide company information to create your employer account.
 
 </p>
 
-
 </div>
-
-
-
-
-
-
 
 <!-- Company Name -->
 
-
 <div class="form-group">
-
 
 <label>
 
@@ -382,28 +205,18 @@ Company Name *
 
 </label>
 
-
-<input 
+<input
 type="text"
 id="companyName"
 class="form-control"
-placeholder="Enter company name"
+placeholder="Enter Company Name"
 required>
-
 
 </div>
 
-
-
-
-
-
-
-<!-- Industry -->
-
+    <!-- ================= INDUSTRY ================= -->
 
 <div class="form-group">
-
 
 <label>
 
@@ -411,82 +224,52 @@ Industry *
 
 </label>
 
-
-
-<select 
+<select
 id="industry"
 class="form-control"
 required>
 
-
-
 <option value="">
-
 Select Industry
-
 </option>
 
-
-<option>
-
+<option value="IT & Software">
 IT & Software
-
 </option>
 
-
-<option>
-
+<option value="BPO / Customer Support">
 BPO / Customer Support
-
 </option>
 
-
-<option>
-
+<option value="Banking & Finance">
 Banking & Finance
-
 </option>
 
-
-<option>
-
+<option value="Education">
 Education
-
 </option>
 
-
-<option>
-
+<option value="Healthcare">
 Healthcare
-
 </option>
 
-
-<option>
-
+<option value="Retail">
 Retail
-
 </option>
 
-
-<option>
-
+<option value="Manufacturing">
 Manufacturing
-
 </option>
 
+<option value="NGO / Development Sector">
+NGO / Development Sector
+</option>
 
-<option>
-
+<option value="Other">
 Other
-
 </option>
-
-
 
 </select>
-
-
 
 </div>
 
@@ -494,14 +277,9 @@ Other
 
 
 
-
-
-
-<!-- Website -->
-
+<!-- ================= WEBSITE ================= -->
 
 <div class="form-group">
-
 
 <label>
 
@@ -509,14 +287,11 @@ Company Website
 
 </label>
 
-
-
 <input
 type="url"
 id="website"
 class="form-control"
-placeholder="https://example.com">
-
+placeholder="https://www.company.com">
 
 </div>
 
@@ -524,13 +299,9 @@ placeholder="https://example.com">
 
 
 
-
-
-<!-- Company Size -->
-
+<!-- ================= COMPANY TYPE ================= -->
 
 <div class="form-group">
-
 
 <label>
 
@@ -538,61 +309,36 @@ Company Size *
 
 </label>
 
-
-
 <select
 id="companyType"
 class="form-control"
 required>
 
-
-
 <option value="">
-
-Select Employee Strength
-
+Select Company Size
 </option>
 
-
-<option>
-
+<option value="1-10 Employees">
 1-10 Employees
-
 </option>
 
-
-<option>
-
+<option value="11-50 Employees">
 11-50 Employees
-
 </option>
 
-
-<option>
-
+<option value="51-200 Employees">
 51-200 Employees
-
 </option>
 
-
-<option>
-
+<option value="201-500 Employees">
 201-500 Employees
-
 </option>
 
-
-<option>
-
+<option value="500+ Employees">
 500+ Employees
-
 </option>
-
-
 
 </select>
-
-
 
 </div>
 
@@ -600,12 +346,9 @@ Select Employee Strength
 
 
 
-
-
 <!-- ================= HR DETAILS ================= -->
 
-
-<h3 style="margin:35px 0 20px;">
+<h3 style="margin:40px 0 20px;">
 
 HR / Hiring Contact Details
 
@@ -615,29 +358,20 @@ HR / Hiring Contact Details
 
 
 
-
-<!-- HR Name -->
-
-
 <div class="form-group">
-
 
 <label>
 
-HR / Recruiter Name *
+HR / Contact Person *
 
 </label>
-
-
 
 <input
 type="text"
 id="contactPerson"
 class="form-control"
-placeholder="Enter HR name"
+placeholder="Enter HR / Recruiter Name"
 required>
-
-
 
 </div>
 
@@ -645,14 +379,7 @@ required>
 
 
 
-
-
-
-<!-- Designation -->
-
-
 <div class="form-group">
-
 
 <label>
 
@@ -660,16 +387,12 @@ Designation *
 
 </label>
 
-
-
 <input
 type="text"
 id="designation"
 class="form-control"
-placeholder="HR Manager / Recruiter"
+placeholder="HR Manager / Talent Acquisition"
 required>
-
-
 
 </div>
 
@@ -677,22 +400,13 @@ required>
 
 
 
-
-
-
-<!-- Email -->
-
-
 <div class="form-group">
-
 
 <label>
 
 Official Email *
 
 </label>
-
-
 
 <input
 type="email"
@@ -701,115 +415,68 @@ class="form-control"
 placeholder="hr@company.com"
 required>
 
-
-
 </div>
 
 
 
 
 
-
-
-
-<!-- Mobile -->
-
-
 <div class="form-group">
-
 
 <label>
 
-Contact Number *
+Mobile Number *
 
 </label>
-
-
 
 <input
 type="tel"
 id="mobile"
 class="form-control"
-placeholder="+91 XXXXX XXXXX"
+placeholder="+91 XXXXXXXXXX"
 required>
-
-
 
 </div>
 
-    <!-- ================= COMPANY ADDRESS ================= -->
 
 
-<h3 style="margin:35px 0 20px;">
 
-Company Address
+
+<!-- ================= COMPANY DESCRIPTION ================= -->
+
+<div class="form-group">
+
+<label>
+
+Company Description
+
+</label>
+
+<textarea
+id="companyDescription"
+class="form-control"
+rows="5"
+placeholder="Write a short description about your company...">
+
+</textarea>
+
+</div>
+
+    <!-- ================= COMPANY LOCATION ================= -->
+
+<h3 style="margin:40px 0 20px;">
+
+Company Location
 
 </h3>
 
 
 
-
-
-<div class="form-group">
-
-
-<label>
-
-Address *
-
-</label>
-
-
-
-<textarea
-id="address"
-class="form-control"
-placeholder="Enter company address"
-required></textarea>
-
-
-
-</div>
-
-
-
-
-
-
-
 <div class="dashboard-grid">
 
-
-
-
+<!-- State -->
 
 <div class="form-group">
-
-
-<label>
-
-City *
-
-</label>
-
-
-<input
-type="text"
-id="location"
-class="form-control"
-placeholder="Enter city"
-required>
-
-
-</div>
-
-
-
-
-
-
-<div class="form-group">
-
 
 <label>
 
@@ -817,65 +484,67 @@ State *
 
 </label>
 
-
-
 <select
 id="state"
 class="form-control"
 required>
 
+<option value="">Select State</option>
 
-<option value="">
+<option value="Andhra Pradesh">Andhra Pradesh</option>
 
-Select State
+<option value="Delhi">Delhi</option>
 
-</option>
+<option value="Gujarat">Gujarat</option>
 
+<option value="Haryana">Haryana</option>
 
-<option>
+<option value="Karnataka">Karnataka</option>
 
-Delhi
+<option value="Madhya Pradesh">Madhya Pradesh</option>
 
-</option>
+<option value="Maharashtra">Maharashtra</option>
 
+<option value="Punjab">Punjab</option>
 
-<option>
+<option value="Rajasthan">Rajasthan</option>
 
-Uttar Pradesh
+<option value="Tamil Nadu">Tamil Nadu</option>
 
-</option>
+<option value="Telangana">Telangana</option>
 
+<option value="Uttar Pradesh">Uttar Pradesh</option>
 
-<option>
+<option value="Uttarakhand">Uttarakhand</option>
 
-Haryana
+<option value="West Bengal">West Bengal</option>
 
-</option>
-
-
-<option>
-
-Maharashtra
-
-</option>
-
-
-<option>
-
-Karnataka
-
-</option>
-
-
-<option>
-
-Other
-
-</option>
-
+<option value="Other">Other</option>
 
 </select>
 
+</div>
+
+
+
+
+
+<!-- District -->
+
+<div class="form-group">
+
+<label>
+
+District *
+
+</label>
+
+<input
+type="text"
+id="district"
+class="form-control"
+placeholder="Enter District"
+required>
 
 </div>
 
@@ -883,10 +552,95 @@ Other
 
 
 
+<!-- City -->
+
+<div class="form-group">
+
+<label>
+
+City *
+
+</label>
+
+<input
+type="text"
+id="location"
+class="form-control"
+placeholder="Enter City"
+required>
+
+</div>
 
 </div>
 
 
+
+
+
+<!-- Company Address -->
+
+<div class="form-group">
+
+<label>
+
+Company Address *
+
+</label>
+
+<textarea
+id="address"
+class="form-control"
+rows="4"
+placeholder="Complete Company Address"
+required>
+
+</textarea>
+
+</div>
+
+
+
+
+
+<!-- GST -->
+
+<div class="form-group">
+
+<label>
+
+GST Number
+
+</label>
+
+<input
+type="text"
+id="gstNumber"
+class="form-control"
+placeholder="Enter GST Number">
+
+</div>
+
+
+
+
+
+<!-- Logo -->
+
+<div class="form-group">
+
+<label>
+
+Company Logo URL
+
+</label>
+
+<input
+type="url"
+id="logoURL"
+class="form-control"
+placeholder="https://company.com/logo.png">
+
+</div>
 
 
 
@@ -894,10 +648,9 @@ Other
 
 <!-- ================= ACCOUNT SECURITY ================= -->
 
+<h3 style="margin:40px 0 20px;">
 
-<h3 style="margin:35px 0 20px;">
-
-Create Account
+Account Security
 
 </h3>
 
@@ -905,10 +658,7 @@ Create Account
 
 
 
-
-
 <div class="form-group">
-
 
 <label>
 
@@ -916,32 +666,20 @@ Password *
 
 </label>
 
-
-
-
 <div class="password-box">
-
-
 
 <input
 type="password"
 id="password"
 class="form-control"
-placeholder="Create password"
+placeholder="Create Password"
 required>
-
-
 
 <i class="fa-solid fa-eye password-toggle"></i>
 
-
-
 </div>
 
-
 </div>
-
-
 
 
 
@@ -949,67 +687,45 @@ required>
 
 <div class="form-group">
 
-
 <label>
 
 Confirm Password *
 
 </label>
 
-
-
-
 <div class="password-box">
-
-
 
 <input
 type="password"
 id="confirmPassword"
 class="form-control"
-placeholder="Confirm password"
+placeholder="Confirm Password"
 required>
-
-
 
 <i class="fa-solid fa-eye password-toggle"></i>
 
-
+</div>
 
 </div>
 
 
-</div>
 
 
 
-
-
-
-
-
-
-<!-- ================= TERMS ================= -->
-
+<!-- Terms -->
 
 <div class="checkbox-group">
-
 
 <input
 type="checkbox"
 id="terms"
 required>
 
-
-
 <label for="terms">
-
 
 I agree to the Employer Terms & Conditions and Privacy Policy.
 
-
 </label>
-
 
 </div>
 
@@ -1017,15 +733,12 @@ I agree to the Employer Terms & Conditions and Privacy Policy.
 
 
 
-
-
-
-<!-- ================= MESSAGE AREA ================= -->
-
+<!-- Message -->
 
 <div id="registerMessage"></div>
 
-    <!-- ================= SUBMIT BUTTON ================= -->
+
+
 
 
 <button
@@ -1033,14 +746,12 @@ type="submit"
 class="btn btn-primary"
 style="width:100%;margin-top:20px;">
 
-
 <i class="fa-solid fa-building"></i>
-
 
 Register Company
 
-
 </button>
+
 
 
 
@@ -1048,66 +759,39 @@ Register Company
 <p class="text-center"
 style="margin-top:25px;">
 
+Already Registered?
 
-Already registered?
-
-
-<a href="employer-login.html"
+<a
+href="employer-login.html"
 style="color:var(--primary);font-weight:600;">
-
 
 Login Here
 
-
 </a>
-
 
 </p>
 
-
-
-
-
 </form>
 
-
 </div>
 
-
 </div>
-
 
 </section>
 
-
-
-
-
-
-
-
-
-<!-- ================= FOOTER ================= -->
-
+    <!-- ================= FOOTER ================= -->
 
 <footer class="footer">
 
-
 <div class="container">
-
 
 <div class="footer-grid">
 
-
-
 <div>
 
-
-<img src="images/logo.png"
-alt="Udayan Care Logo"
-style="height:60px;">
-
-
+<img class="siteLogo"
+style="height:60px;margin-bottom:20px;"
+alt="UCPP Logo">
 
 <p>
 
@@ -1115,347 +799,195 @@ Udayan Care Placement Portal connects employers with skilled Shalini Fellows and
 
 </p>
 
-
-
-
-
 <div class="social-links">
 
-
-<a href="#">
-
+<a id="facebookLink" href="#">
 <i class="fab fa-facebook-f"></i>
-
 </a>
 
-
-
-<a href="#">
-
+<a id="linkedinLink" href="#">
 <i class="fab fa-linkedin-in"></i>
-
 </a>
 
-
-
-<a href="#">
-
+<a id="instagramLink" href="#">
 <i class="fab fa-instagram"></i>
-
 </a>
 
-
-
-<a href="#">
-
+<a id="whatsappLink" href="#">
 <i class="fab fa-whatsapp"></i>
-
 </a>
 
-
-
 </div>
 
-
 </div>
-
-
-
-
-
 
 <div>
 
+<h3>Quick Links</h3>
 
-<h3>
+<a href="index.html">Home</a>
 
-Quick Links
+<a href="about.html">About</a>
 
-</h3>
+<a href="jobs.html">Jobs</a>
 
-
-<a href="index.html">
-
-Home
-
-</a>
-
-
-<a href="about.html">
-
-About
-
-</a>
-
-
-<a href="jobs.html">
-
-Jobs
-
-</a>
-
-
-<a href="contact.html">
-
-Contact
-
-</a>
-
+<a href="contact.html">Contact</a>
 
 </div>
-
-
-
-
-
-
-
 
 <div>
 
+<h3>Candidates</h3>
 
-<h3>
+<a href="candidate-register.html">Register</a>
 
-Candidates
+<a href="candidate-login.html">Login</a>
 
-</h3>
+<a href="available-jobs.html">Available Jobs</a>
 
-
-<a href="candidate-register.html">
-
-Register
-
-</a>
-
-
-<a href="candidate-login.html">
-
-Login
-
-</a>
-
-
-<a href="available-jobs.html">
-
-Jobs
-
-</a>
-
-
-<a href="my-applications.html">
-
-Applications
-
-</a>
-
+<a href="my-applications.html">Applications</a>
 
 </div>
-
-
-
-
-
-
-
 
 <div>
 
+<h3>Employers</h3>
 
-<h3>
+<a href="employer-register.html">Register</a>
 
-Employers
+<a href="employer-login.html">Login</a>
 
-</h3>
+<a href="post-job.html">Post Job</a>
 
-
-<a href="employer-register.html">
-
-Register
-
-</a>
-
-
-<a href="employer-login.html">
-
-Login
-
-</a>
-
-
-<a href="post-job.html">
-
-Post Job
-
-</a>
-
-
-<a href="manage-jobs.html">
-
-Manage Jobs
-
-</a>
-
+<a href="manage-jobs.html">Manage Jobs</a>
 
 </div>
 
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
 
 <div class="footer-bottom">
 
-
 <p>
 
-© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.
+© 2026
+<span id="siteName"></span>
+|
+An Initiative of Udayan Care
 
 </p>
 
-
-
 </div>
 
-
-
-
-
 </div>
-
 
 </footer>
 
-
-
-
-
-
-
-
-
 <!-- ================= BACK TO TOP ================= -->
-
 
 <div class="back-top">
 
-
 <i class="fa-solid fa-arrow-up"></i>
-
 
 </div>
 
-
-
-
-
-
-
-
-
 <!-- ================= JAVASCRIPT ================= -->
 
+<script src="js/config.js"></script>
 
 <script src="js/app.js"></script>
 
-
-
-
 <script>
 
+document.addEventListener("DOMContentLoaded",()=>{
 
-document.addEventListener(
-"DOMContentLoaded",
-function(){
+const form=document.getElementById("employerRegisterForm");
 
-
-
-console.log(
-"Employer Registration Page Loaded"
-);
-
-
-
-
-
-const form =
-document.getElementById(
-"employerRegisterForm"
-);
-
-
-
-
-if(form){
-
-
-form.addEventListener(
-"submit",
-function(e){
-
-
+form.addEventListener("submit",async(e)=>{
 
 e.preventDefault();
 
+const password=document.getElementById("password").value;
 
+const confirmPassword=document.getElementById("confirmPassword").value;
 
-console.log(
-"Employer Registration Submitted"
-);
+if(password!==confirmPassword){
 
+showToast("Passwords do not match","error");
 
-
-/*
-
-Future Google Apps Script Integration:
-
-
-1. Validate Company Details
-
-2. Check Duplicate Employer
-
-3. Save Data To Employer_Master Sheet
-
-4. Generate Employer ID
-
-5. Send Verification Email
-
-
-*/
-
-
-
-});
-
+return;
 
 }
 
+const data={
 
+companyName:document.getElementById("companyName").value,
 
+contactPerson:document.getElementById("contactPerson").value,
 
+designation:document.getElementById("designation").value,
+
+mobile:document.getElementById("mobile").value,
+
+email:document.getElementById("email").value,
+
+password:password,
+
+companyType:document.getElementById("companyType").value,
+
+industry:document.getElementById("industry").value,
+
+website:document.getElementById("website").value,
+
+companyDescription:document.getElementById("companyDescription").value,
+
+state:document.getElementById("state").value,
+
+district:document.getElementById("district").value,
+
+location:document.getElementById("location").value,
+
+address:document.getElementById("address").value,
+
+gstNumber:document.getElementById("gstNumber").value,
+
+logoURL:document.getElementById("logoURL").value
+
+};
+
+const response=await apiRequest(
+
+"registerEmployer",
+
+data
+
+);
+
+if(response.success){
+
+showToast(response.message,"success");
+
+form.reset();
+
+setTimeout(()=>{
+
+window.location.href="employer-login.html";
+
+},1500);
+
+}
+
+else{
+
+showToast(response.message,"error");
+
+}
 
 });
 
-
+});
 
 </script>
 
-
-
-
-
-
-
-
 </body>
-
 
 </html>
