@@ -56,6 +56,22 @@ el.href = CONFIG.SOCIAL.WHATSAPP;
 el.target="_blank";
 });
 
+ // Logo
+document.querySelectorAll(".siteLogo").forEach(el=>{
+    el.src = CONFIG.LOGO.MAIN;
+    el.alt = CONFIG.SITE.NAME;
+});
+
+// Site Name
+document.querySelectorAll(".siteName").forEach(el=>{
+    el.textContent = CONFIG.SITE.NAME;
+});
+
+// Tagline
+document.querySelectorAll(".siteTagline").forEach(el=>{
+    el.textContent = CONFIG.SITE.TAGLINE;
+});
+
 }
 
 loadWebsiteConfig();
