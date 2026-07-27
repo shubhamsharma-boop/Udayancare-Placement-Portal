@@ -789,6 +789,10 @@ button.innerHTML = oldText;
 
 if(!response.success){
 
+    button.disabled = false;
+
+button.innerHTML = oldText;
+
 alert(response.message);
 
 return;
