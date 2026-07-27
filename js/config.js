@@ -13,15 +13,36 @@ const CONFIG = {
 
     STORAGE: {
 
-        CANDIDATE: "ucpp_candidate",
+    CANDIDATE: "ucpp_candidate",
 
-        EMPLOYER: "ucpp_employer",
+    EMPLOYER: "ucpp_employer",
 
-        ADMIN: "ucpp_admin"
+    ADMIN: "ucpp_admin"
 
-        
-    }
+},
 
+CONTACT: {
+
+    PHONE: "+91-11-27821333",
+
+    EMAIL: "placement@udayancare.org",
+
+    ADDRESS: "A-43, Chittaranjan Park, New Delhi - 110019"
+
+},
+
+SOCIAL: {
+
+    FACEBOOK: "https://www.facebook.com/UdayanCare/",
+
+    LINKEDIN: "https://in.linkedin.com/company/udayan-care-ngo",
+
+    INSTAGRAM: "https://www.instagram.com/udayancare/",
+
+    WHATSAPP: "https://wa.me/918126757595"
+
+}
+    
 };
 
 // Freeze Configuration
