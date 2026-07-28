@@ -742,15 +742,21 @@ I agree to the Employer Terms & Conditions and Privacy Policy.
 
 <button
 type="submit"
+id="registerBtn"
 class="btn btn-primary"
 style="width:100%;margin-top:20px;">
 
+<span id="btnText">
 <i class="fa-solid fa-building"></i>
-
 Register Company
+</span>
+
+<span id="btnLoader" style="display:none;">
+<i class="fa-solid fa-spinner fa-spin"></i>
+Please Wait...
+</span>
 
 </button>
-
 
 
 
@@ -959,6 +965,13 @@ logoURL:
 document.getElementById("logoURL").value.trim()
 
 };
+    const btn = document.getElementById("registerBtn");
+const btnText = document.getElementById("btnText");
+const btnLoader = document.getElementById("btnLoader");
+
+btn.disabled = true;
+btnText.style.display = "none";
+btnLoader.style.display = "inline";
 
 // ===============================
 // VALIDATION
@@ -988,9 +1001,13 @@ delete data.confirmPassword;
 
 const response = await API.registerEmployer(data);
 
+    btn.disabled = false;
+btnText.style.display = "inline";
+btnLoader.style.display = "none";
+
 if(response.success){
 
-showToast(response.message,"success");
+alert(response.message);
 
 form.reset();
 
@@ -1003,7 +1020,7 @@ window.location.href="employer-login.html";
 }
 else{
 
-showToast(response.message,"error");
+alert(response.message);
 
 }
 
