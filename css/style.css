@@ -3983,13 +3983,19 @@ grid-template-columns:1fr;
 
 .company-card .dashboard-grid>div{
 
+ display:flex;
+flex-direction:column;
+justify-content:center;
+min-height:130px;
+word-break:break-word;
+
     background:#F8FAFC;
 
     border:1px solid #E5E7EB;
 
     border-radius:18px;
 
-    padding:22px;
+    padding:18px;
 
     transition:.30s;
 
@@ -4023,11 +4029,17 @@ grid-template-columns:1fr;
 
     margin:0;
 
-    font-size:20px;
+    font-size:18px;
 
     font-weight:600;
 
     color:#0F172A;
+
+    line-height:1.5;
+
+    word-break:break-word;
+
+    overflow-wrap:anywhere;
 
 }
 
