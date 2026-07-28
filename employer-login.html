@@ -3,238 +3,119 @@
 
 <head>
 
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-
-
-<title>
-
-Employer Login | Udayan Care Placement Portal
-
-</title>
-
-
-
+<title>Employer Login | Udayan Care Placement Portal</title>
 
 <meta name="description"
-content="Employer login portal for Udayan Care Placement Portal.">
+content="Employer Login - Udayan Care Placement Portal">
 
+<link rel="stylesheet" href="css/style.css">
 
-
-
-
-
-<link rel="stylesheet"
-href="css/style.css">
-
-
-
-
-
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
-
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link rel="preconnect"
 href="https://fonts.gstatic.com"
 crossorigin>
 
-
-
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
-
-
-
-
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-
 </head>
-
-
-
-
 
 <body>
 
-
-
-
-
 <!-- ================= TOP BAR ================= -->
-
 
 <div class="topbar">
 
-
 <div class="container topbar-content">
-
-
 
 <div class="top-left">
 
-
 <span>
-    <i class="fa-solid fa-phone"></i>
-    <span id="sitePhone"></span>
+<i class="fa-solid fa-phone"></i>
+<span id="sitePhone"></span>
 </span>
 
 <span>
-    <i class="fa-solid fa-envelope"></i>
-    <span id="siteEmail"></span>
+<i class="fa-solid fa-envelope"></i>
+<span id="siteEmail"></span>
 </span>
-
 
 </div>
-
-
-
-
 
 <div class="top-right">
 
-
 <a id="facebookLink" href="#">
-    <i class="fab fa-facebook-f"></i>
+<i class="fab fa-facebook-f"></i>
 </a>
 
 <a id="linkedinLink" href="#">
-    <i class="fab fa-linkedin-in"></i>
+<i class="fab fa-linkedin-in"></i>
 </a>
 
 <a id="instagramLink" href="#">
-    <i class="fab fa-instagram"></i>
+<i class="fab fa-instagram"></i>
 </a>
 
 <a id="whatsappLink" href="#">
-    <i class="fab fa-whatsapp"></i>
+<i class="fab fa-whatsapp"></i>
 </a>
 
 </div>
 
-
-
-
 </div>
 
-
 </div>
-
-
-
-
-
-
-
 
 <!-- ================= HEADER ================= -->
 
-
 <header class="header">
-
-
 
 <div class="container navbar">
 
+<a href="index.html" class="logo">
 
-
-
-
-<a href="index.html"
-class="logo">
-
-
-<img class="siteLogo" alt="UCPP">
-
+<img class="siteLogo"
+alt="UCPP Logo">
 
 </a>
-
-
-
-
-
-
 
 <nav class="nav-menu">
 
-
-
 <a href="index.html">
-
 Home
-
 </a>
-
-
 
 <a href="about.html">
-
 About
-
 </a>
-
-
 
 <a href="jobs.html">
-
 Jobs
-
 </a>
-
-
 
 <a href="contact.html">
-
 Contact
-
 </a>
-
-
 
 <a href="candidate-login.html">
-
 Candidate Login
-
 </a>
 
-
-
-
 <a href="employer-login.html"
-class="active">
+class="btn btn-primary active">
 
 Employer Login
 
 </a>
 
-
-
-<a href="employer-register.html"
-class="btn btn-primary">
-
-Register
-
-</a>
-
-
-
 </nav>
-
-
-
-
-
-
 
 <button class="menu-toggle">
 
@@ -242,79 +123,29 @@ Register
 
 </button>
 
-
-
-
-
 </div>
-
-
 
 </header>
 
+<!-- ================= HERO ================= -->
 
+<section class="hero" style="padding:70px 0;">
 
+<div class="container text-center">
 
+<span class="hero-tag">
 
+<i class="fa-solid fa-right-to-bracket"></i>
 
-
-
-
-<!-- ================= LOGIN SECTION ================= -->
-
-
-<section class="auth-section">
-
-
-
-<div class="container">
-
-
-
-<div class="auth-wrapper">
-
-
-
-
-
-<div class="auth-image">
-
-
-<img src="images/employer.png"
-alt="Employer Login">
-
-
-</div>
-
-
-
-
-
-
-<div class="form-container">
-
-
-
-<div class="auth-title">
-
-
-<span class="badge">
-
-Employer Portal
+Employer Login
 
 </span>
 
-
-
-
 <h1>
 
-Welcome Back
+Welcome Back Employer
 
 </h1>
-
-
-
 
 <p>
 
@@ -322,23 +153,45 @@ Login to manage your company profile, jobs and applications.
 
 </p>
 
-
-
 </div>
 
+</section>
 
+<!-- ================= LOGIN FORM ================= -->
 
+<section class="section">
 
+<div class="container">
 
-
+<div class="form-container">
 
 <form id="employerLoginForm">
 
+<div class="section-title">
+
+<span>
+
+LOGIN
+
+</span>
+
+<h2>
+
+Employer Account Login
+
+</h2>
+
+<p>
+
+Enter your registered email and password.
+
+</p>
+
+</div>
+
     <!-- ================= EMAIL ================= -->
 
-
 <div class="form-group">
-
 
 <label>
 
@@ -346,21 +199,14 @@ Official Email *
 
 </label>
 
-
-
 <input
 type="email"
 id="email"
 class="form-control"
-placeholder="Enter registered email"
+placeholder="Enter Registered Email"
 required>
 
-
-
 </div>
-
-
-
 
 
 
@@ -368,9 +214,7 @@ required>
 
 <!-- ================= PASSWORD ================= -->
 
-
 <div class="form-group">
-
 
 <label>
 
@@ -378,36 +222,20 @@ Password *
 
 </label>
 
-
-
-
-
 <div class="password-box">
-
-
 
 <input
 type="password"
 id="password"
 class="form-control"
-placeholder="Enter password"
+placeholder="Enter Password"
 required>
-
-
-
 
 <i class="fa-solid fa-eye password-toggle"></i>
 
-
-
 </div>
 
-
-
 </div>
-
-
-
 
 
 
@@ -415,53 +243,32 @@ required>
 
 <!-- ================= REMEMBER ME ================= -->
 
+<div class="dashboard-grid">
 
-<div class="d-flex justify-between align-center"
-style="margin-bottom:25px;">
-
-
-
-
-
-<div class="checkbox-group"
-style="margin:0;">
-
-
+<div class="checkbox-group">
 
 <input
 type="checkbox"
-id="remember">
+id="rememberMe">
 
-
-
-<label for="remember">
+<label for="rememberMe">
 
 Remember Me
 
 </label>
 
-
-
 </div>
 
-
-
-
-
-
+<div style="text-align:right;">
 
 <a href="#"
 style="color:var(--primary);font-weight:600;">
 
-
 Forgot Password?
-
 
 </a>
 
-
-
-
+</div>
 
 </div>
 
@@ -469,12 +276,7 @@ Forgot Password?
 
 
 
-
-
-
-
-<!-- ================= MESSAGE AREA ================= -->
-
+<!-- ================= LOGIN MESSAGE ================= -->
 
 <div id="loginMessage"></div>
 
@@ -482,597 +284,316 @@ Forgot Password?
 
 
 
-
-
-
 <!-- ================= LOGIN BUTTON ================= -->
-
 
 <button
 type="submit"
+id="loginBtn"
 class="btn btn-primary"
-style="width:100%;">
+style="width:100%;margin-top:20px;">
 
-
+<span id="btnText">
 
 <i class="fa-solid fa-right-to-bracket"></i>
 
+Login
 
+</span>
 
-Login To Employer Portal
+<span
+id="btnLoader"
+style="display:none;">
 
+<i class="fa-solid fa-spinner fa-spin"></i>
 
+Please Wait...
+
+</span>
 
 </button>
 
-    <!-- ================= REGISTER REDIRECT ================= -->
+
+
 
 
 <p class="text-center"
 style="margin-top:25px;">
 
+Don't have an Employer Account?
 
-New Employer?
-
-
-<a href="employer-register.html"
+<a
+href="employer-register.html"
 style="color:var(--primary);font-weight:600;">
 
-
-Create Company Account
-
+Register Here
 
 </a>
 
-
 </p>
-
-
-
-
 
 </form>
 
-
-
 </div>
 
-
-
 </div>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= EMPLOYER BENEFITS ================= -->
-
-
-<section class="section light-bg">
-
-
-
-<div class="container">
-
-
-
-
-
-<div class="section-title">
-
-
-
-<span>
-
-WHY PARTNER WITH US
-
-</span>
-
-
-
-<h2>
-
-Benefits For Employers
-
-</h2>
-
-
-
-<p>
-
-Connect with trained and motivated candidates through Udayan Care Placement Portal.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="why-grid">
-
-
-
-
-
-<div class="why-card">
-
-
-<i class="fa-solid fa-users"></i>
-
-
-
-<h3>
-
-Verified Candidates
-
-</h3>
-
-
-
-<p>
-
-Access profiles of skilled and trained Shalini Fellows.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="why-card">
-
-
-<i class="fa-solid fa-bullseye"></i>
-
-
-
-<h3>
-
-Smart Hiring
-
-</h3>
-
-
-
-<p>
-
-Find candidates based on skills, education and preferences.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="why-card">
-
-
-<i class="fa-solid fa-clock"></i>
-
-
-
-<h3>
-
-Save Recruitment Time
-
-</h3>
-
-
-
-<p>
-
-Manage job posting and applications from one platform.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= SECURITY SECTION ================= -->
-
-
-<section class="section">
-
-
-
-<div class="container">
-
-
-
-<div class="card"
-style="padding:45px;text-align:center;">
-
-
-
-
-
-<i class="fa-solid fa-shield-halved"
-style="
-font-size:45px;
-color:var(--primary);
-margin-bottom:20px;
-">
-</i>
-
-
-
-
-
-<h2>
-
-Secure Employer Access
-
-</h2>
-
-
-
-
-<p>
-
-Your company information and hiring data are handled securely. Employer verification will be completed before job posting access.
-
-</p>
-
-
-
-
-
-</div>
-
-
-
-</div>
-
-
 
 </section>
 
     <!-- ================= FOOTER ================= -->
 
-
 <footer class="footer">
-
 
 <div class="container">
 
-
 <div class="footer-grid">
 
-
+<!-- About -->
 
 <div>
-
 
 <img class="siteLogo"
-style="height:60px;margin-bottom:20px;">
+style="height:60px;margin-bottom:20px;"
+alt="UCPP Logo">
 
+<p>
 
-<p class="siteDescription"></p>
+Udayan Care Placement Portal connects employers with skilled Shalini Fellows and creates meaningful employment opportunities.
 
-    <div class="social-links">
+</p>
 
-<a id="facebookLink" href="#"><i class="fab fa-facebook-f"></i></a>
+<div class="social-links">
 
-<a id="linkedinLink" href="#"><i class="fab fa-linkedin-in"></i></a>
+<a id="facebookLinkFooter" href="#">
+<i class="fab fa-facebook-f"></i>
+</a>
 
-<a id="instagramLink" href="#"><i class="fab fa-instagram"></i></a>
+<a id="linkedinLinkFooter" href="#">
+<i class="fab fa-linkedin-in"></i>
+</a>
 
-<a id="whatsappLink" href="#"><i class="fab fa-whatsapp"></i></a>
+<a id="instagramLinkFooter" href="#">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a id="whatsappLinkFooter" href="#">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 </div>
 
-
 </div>
 
-
-
+<!-- Quick Links -->
 
 <div>
 
 <h3>
+
 Quick Links
+
 </h3>
 
-<a href="index.html">
-Home
-</a>
+<a href="index.html">Home</a>
 
-<a href="about.html">
-About
-</a>
+<a href="about.html">About</a>
 
-<a href="jobs.html">
-Jobs
-</a>
+<a href="jobs.html">Jobs</a>
 
-<a href="contact.html">
-Contact
-</a>
-
+<a href="contact.html">Contact</a>
 
 </div>
 
-
-
+<!-- Candidates -->
 
 <div>
 
 <h3>
+
 Candidates
+
 </h3>
 
-<a href="candidate-register.html">
-Register
-</a>
+<a href="candidate-register.html">Register</a>
 
-<a href="candidate-login.html">
-Login
-</a>
+<a href="candidate-login.html">Login</a>
 
-<a href="available-jobs.html">
-Jobs
-</a>
+<a href="available-jobs.html">Available Jobs</a>
 
+<a href="my-applications.html">Applications</a>
 
 </div>
 
-
-
+<!-- Employers -->
 
 <div>
 
 <h3>
+
 Employers
+
 </h3>
 
+<a href="employer-register.html">Register</a>
 
-<a href="employer-register.html">
-Register Company
-</a>
+<a href="employer-login.html">Login</a>
 
+<a href="post-job.html">Post Job</a>
 
-<a href="employer-login.html">
-Login
-</a>
-
-
-<a href="post-job.html">
-Post Job
-</a>
-
+<a href="manage-jobs.html">Manage Jobs</a>
 
 </div>
 
-
 </div>
-
-
 
 <div class="footer-bottom">
 
-
 <p>
-© 2026 <span id="siteName"></span> | An Initiative of Udayan Care
+
+© 2026
+
+<span id="siteName"></span>
+
+|
+
+An Initiative of Udayan Care
+
 </p>
 
-
 </div>
 
-
 </div>
-
 
 </footer>
 
-
-
-
-
-
-
-
 <!-- ================= BACK TO TOP ================= -->
-
 
 <div class="back-top">
 
-
 <i class="fa-solid fa-arrow-up"></i>
-
 
 </div>
 
+    <!-- ================= JAVASCRIPT ================= -->
 
-
-
-
-
-
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
-
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
 <script src="js/app.js"></script>
-
-
-
-
 
 <script>
 
+document.addEventListener("DOMContentLoaded",()=>{
 
-document.addEventListener(
-"DOMContentLoaded",
-function(){
+const form=document.getElementById("employerLoginForm");
 
-
-
-console.log(
-"Employer Login Page Loaded"
-);
-
-
-
-
-
-
-const loginForm =
-document.getElementById(
-"employerLoginForm"
-);
-
-
-
-
-
-if(loginForm){
-
-
-loginForm.addEventListener(
-"submit",
-function(e){
-
-
+form.addEventListener("submit",async(e)=>{
 
 e.preventDefault();
 
+// ===============================
+// GET DATA
+// ===============================
 
+const data={
 
+email:
+document.getElementById("email").value.trim(),
 
-const email =
-document.getElementById("email").value;
+password:
+document.getElementById("password").value
 
+};
 
+// ===============================
+// BASIC VALIDATION
+// ===============================
 
-const password =
-document.getElementById("password").value;
+if(data.email==""){
 
+alert("Please enter Email.");
 
-
-
-
-
-
-console.log({
-
-email,
-password
-
-});
-
-
-
-
-
-/*
-
-Future Google Apps Script Integration:
-
-
-
-1. Validate Employer Credentials
-
-2. Check Employer Status
-
-3. Verify Account Approval
-
-4. Create Session
-
-5. Redirect Employer Dashboard
-
-
-
-*/
-
-
-
-
-
-});
-
-
+return;
 
 }
 
+if(data.password==""){
 
+alert("Please enter Password.");
 
+return;
+
+}
+
+// ===============================
+// BUTTON LOADER
+// ===============================
+
+const btn=document.getElementById("loginBtn");
+
+const btnText=document.getElementById("btnText");
+
+const btnLoader=document.getElementById("btnLoader");
+
+btn.disabled=true;
+
+btnText.style.display="none";
+
+btnLoader.style.display="inline";
+
+// ===============================
+// API CALL
+// ===============================
+
+const response=
+await API.loginEmployer(data);
+
+// ===============================
+// STOP LOADER
+// ===============================
+
+btn.disabled=false;
+
+btnText.style.display="inline";
+
+btnLoader.style.display="none";
+
+// ===============================
+// SUCCESS
+// ===============================
+
+if(response.success){
+
+// Save Login Session
+
+sessionStorage.setItem(
+"employer",
+JSON.stringify(response.data)
+);
+
+alert(response.message);
+
+// Redirect Dashboard
+
+setTimeout(()=>{
+
+window.location.href=
+"employer-dashboard.html";
+
+},1000);
+
+}
+
+else{
+
+alert(response.message);
+
+}
 
 });
 
-
+});
 
 </script>
 
-
-
-
-
-
-
-
 </body>
-
 
 </html>
