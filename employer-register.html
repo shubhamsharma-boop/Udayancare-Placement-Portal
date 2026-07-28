@@ -960,7 +960,59 @@ logoURL:""
 
 };
 
-// baaki code yahin continue hoga...
+// ===============================
+// VALIDATION
+// ===============================
+
+if(data.password !== data.confirmPassword){
+
+showToast("Passwords do not match.","error");
+return;
+
+}
+
+if(!document.getElementById("terms").checked){
+
+showToast("Please accept Terms & Conditions.","error");
+return;
+
+}
+
+// Confirm Password backend ko nahi bhejna
+delete data.confirmPassword;
+
+
+// ===============================
+// REGISTER EMPLOYER
+// ===============================
+
+const response = await apiRequest(
+"registerEmployer",
+data
+);
+
+if(response.success){
+
+showToast(response.message,"success");
+
+form.reset();
+
+setTimeout(()=>{
+
+window.location.href="employer-login.html";
+
+},1500);
+
+}
+else{
+
+showToast(response.message,"error");
+
+}
+
+});
+
+});
 
 });
 
