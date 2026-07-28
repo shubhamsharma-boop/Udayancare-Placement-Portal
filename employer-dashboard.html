@@ -648,7 +648,11 @@ Edit Details
 
 <strong>HR Name</strong>
 
-<p id="contactPerson">-</p>
+<input
+type="text"
+id="contactPerson"
+class="form-control"
+readonly>
 
 </div>
 
@@ -656,7 +660,11 @@ Edit Details
 
 <strong>Designation</strong>
 
-<p id="designation">-</p>
+<input
+type="text"
+id="designation"
+class="form-control"
+readonly>
 
 </div>
 
@@ -672,7 +680,11 @@ Edit Details
 
 <strong>Mobile</strong>
 
-<p id="companyMobile">-</p>
+<input
+type="text"
+id="companyMobile"
+class="form-control"
+readonly>
 
 </div>
 
@@ -680,7 +692,11 @@ Edit Details
 
 <strong>Location</strong>
 
-<p id="companyLocation">-</p>
+<input
+type="text"
+id="companyLocation"
+class="form-control"
+readonly>
 
 </div>
 
@@ -903,21 +919,21 @@ year:"numeric"
 document.getElementById("companyName").innerHTML =
 employer.companyName;
 
-document.getElementById("contactPerson").innerText =
-employer.contactPerson || "-";
+document.getElementById("contactPerson").value =
+employer.contactPerson || "";
 
-document.getElementById("designation").innerText =
-employer.designation || "-";
+document.getElementById("designation").value =
+employer.designation || "";
 
 document.getElementById("companyEmail").innerText =
 employer.email || "-";
 
-document.getElementById("companyMobile").innerText =
-employer.mobile || "-";
+document.getElementById("companyMobile").value =
+employer.mobile || "";
 
-document.getElementById("companyLocation").innerText =
-(employer.city || "-") +
-", " +
+document.getElementById("companyLocation").value =
+(employer.city || "") +
+((employer.city && employer.state) ? ", " : "") +
 (employer.state || "");
 
 document.getElementById("totalJobs").innerText=d.totalJobs;
@@ -986,12 +1002,125 @@ document.getElementById("logoutBtn").onclick=logout;
 // EDIT COMPANY DETAILS
 // =========================
 
-document.getElementById("editCompanyBtn").addEventListener("click", () => {
+let editMode = false;
 
-    window.location.href = "edit-employer-profile.html";
+const editBtn = document.getElementById("editCompanyBtn");
+
+editBtn.addEventListener("click", () => {
+
+    const contact = document.getElementById("contactPerson");
+    const designation = document.getElementById("designation");
+    const mobile = document.getElementById("companyMobile");
+    const location = document.getElementById("companyLocation");
+
+    if (!editMode) {
+
+        contact.removeAttribute("readonly");
+        designation.removeAttribute("readonly");
+        mobile.removeAttribute("readonly");
+        location.removeAttribute("readonly");
+
+        contact.focus();
+
+        editBtn.innerHTML = `
+            <i class="fa-solid fa-floppy-disk"></i>
+            Save Changes
+        `;
+
+        editMode = true;
+
+        return;
+
+    }
+
+    // =========================
+// SAVE DATA
+// =========================
+
+const updatedData = {
+
+    employerID: employer.employerID,
+
+    contactPerson:
+    contact.value.trim(),
+
+    designation:
+    designation.value.trim(),
+
+    mobile:
+    mobile.value.trim(),
+
+    location:
+    location.value.trim()
+
+};
+
+try{
+
+    const response =
+    await API.updateEmployerProfile(updatedData);
+
+    if(response.success){
+
+        // Lock Fields Again
+
+        contact.setAttribute("readonly",true);
+
+        designation.setAttribute("readonly",true);
+
+        mobile.setAttribute("readonly",true);
+
+        location.setAttribute("readonly",true);
+
+        editBtn.innerHTML = `
+        <i class="fa-solid fa-pen"></i>
+        Edit Details
+        `;
+
+        editMode = false;
+
+        // Update Local Storage
+
+        employer.contactPerson = updatedData.contactPerson;
+        employer.designation = updatedData.designation;
+        employer.mobile = updatedData.mobile;
+
+        localStorage.setItem(
+            "employer",
+            JSON.stringify(employer)
+        );
+
+        showToast(
+            "Company Details Updated Successfully",
+            "success"
+        );
+
+    }
+
+    else{
+
+        showToast(
+            response.message,
+            "error"
+        );
+
+    }
+
+}
+
+catch(error){
+
+    console.log(error);
+
+    showToast(
+        "Unable to update details.",
+        "error"
+    );
+
+}
 
 });
-
+    
 </script>
 
 </body>
