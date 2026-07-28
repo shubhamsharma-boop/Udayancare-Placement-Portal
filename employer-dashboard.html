@@ -2010,5 +2010,21 @@ loadEmployerDashboard();
 
 </body>
 
+    <script>
+
+const employer = JSON.parse(
+sessionStorage.getItem("employer")
+);
+
+if(!employer){
+
+window.location.href="employer-login.html";
+
+}
+
+console.log(employer);
+
+</script>
+
 
 </html>
