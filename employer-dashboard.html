@@ -160,7 +160,7 @@ Logout
 
 <div class="card">
 
-<h2 id="companyName">
+<h2 id="companyWelcome">
 
 Welcome...
 
@@ -779,7 +779,19 @@ document.addEventListener("DOMContentLoaded",async()=>{
 // LOGIN CHECK
 // =========================
 
-const employerID=localStorage.getItem("employerID");
+const employer = JSON.parse(
+localStorage.getItem("employer")
+);
+
+if(!employer){
+
+window.location.href="employer-login.html";
+
+return;
+
+}
+
+const employerID = employer.employerID;
 
 if(!employerID){
 
@@ -804,6 +816,33 @@ employerID:employerID
 if(response.success){
 
 const d=response.data;
+
+    // =========================
+// COMPANY DETAILS
+// =========================
+
+document.getElementById("companyWelcome").innerHTML =
+"Welcome, " + employer.companyName;
+
+document.getElementById("companyName").innerHTML =
+employer.companyName;
+
+document.getElementById("contactPerson").innerText =
+employer.contactPerson || "-";
+
+document.getElementById("designation").innerText =
+employer.designation || "-";
+
+document.getElementById("companyEmail").innerText =
+employer.email || "-";
+
+document.getElementById("companyMobile").innerText =
+employer.mobile || "-";
+
+document.getElementById("companyLocation").innerText =
+(employer.city || "-") +
+", " +
+(employer.state || "");
 
 document.getElementById("companyName").innerHTML=
 "Welcome, "+(localStorage.getItem("companyName")||"Employer");
