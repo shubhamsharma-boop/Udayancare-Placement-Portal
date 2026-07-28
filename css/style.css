@@ -3929,13 +3929,23 @@ font-size:32px;
 
 .company-card .dashboard-grid{
 
-    padding:35px;
+padding:35px;
 
-    gap:20px;
+gap:18px;
 
-    display:grid;
+display:grid;
 
-    grid-template-columns:repeat(5,1fr);
+grid-template-columns:
+
+1fr      /* HR */
+
+1fr      /* Designation */
+
+1.7fr    /* Email */
+
+1fr      /* Mobile */
+
+1fr;     /* Location */
 
 }
 
