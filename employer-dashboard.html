@@ -212,7 +212,7 @@ Manage Jobs
 
 <p id="welcomeCompanyName">
 
-Loading...
+Employer Account
 
 </p>
 
@@ -222,14 +222,14 @@ Loading...
 
 <i class="fa-solid fa-calendar-days"></i>
 
-<h4>Today's Date</h4>
+<h4>
+Last Login
+</h4>
 
-<p id="todayDate">
-
--- -- ----
-
+<p id="lastLogin">
+--
 </p>
-
+    
 </div>
 
 </div>
@@ -888,6 +888,18 @@ const d=response.data;
 document.getElementById("companyWelcome").innerHTML =
 "Welcome, " + employer.companyName;
 
+    document.getElementById("welcomeCompanyName").innerText =
+employer.companyName;
+
+const lastLogin = localStorage.getItem("lastLogin");
+
+document.getElementById("lastLogin").innerText =
+lastLogin || new Date().toLocaleDateString("en-IN",{
+day:"2-digit",
+month:"short",
+year:"numeric"
+});
+
 document.getElementById("companyName").innerHTML =
 employer.companyName;
 
@@ -907,9 +919,6 @@ document.getElementById("companyLocation").innerText =
 (employer.city || "-") +
 ", " +
 (employer.state || "");
-
-document.getElementById("companyName").innerHTML=
-"Welcome, "+(localStorage.getItem("companyName")||"Employer");
 
 document.getElementById("totalJobs").innerText=d.totalJobs;
 
@@ -970,8 +979,6 @@ window.location.href="employer-login.html";
 }
 
 document.getElementById("logoutBtn").onclick=logout;
-
-document.getElementById("logoutCard").onclick=logout;
 
 });
 
