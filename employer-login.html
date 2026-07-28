@@ -562,29 +562,30 @@ btnLoader.style.display="none";
 
 if(response.success){
 
-// Save Login Session
+// Save Login
 
-sessionStorage.setItem(
+localStorage.setItem(
+"employerID",
+response.data.employerID
+);
+
+localStorage.setItem(
+"companyName",
+response.data.companyName
+);
+
+localStorage.setItem(
 "employer",
 JSON.stringify(response.data)
 );
 
-alert(response.message);
-
-// Redirect Dashboard
+showToast(response.message,"success");
 
 setTimeout(()=>{
 
-window.location.href=
-"employer-dashboard.html";
+window.location.href="employer-dashboard.html";
 
 },1000);
-
-}
-
-else{
-
-alert(response.message);
 
 }
 
