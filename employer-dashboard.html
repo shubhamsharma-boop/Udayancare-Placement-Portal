@@ -1006,8 +1006,11 @@ let editMode = false;
 
 const editBtn = document.getElementById("editCompanyBtn");
 
-editBtn.addEventListener("click", () => {
+const employer =
+JSON.parse(localStorage.getItem("employer"));
 
+editBtn.addEventListener("click", async () => {
+    
     const contact = document.getElementById("contactPerson");
     const designation = document.getElementById("designation");
     const mobile = document.getElementById("companyMobile");
@@ -1037,21 +1040,20 @@ editBtn.addEventListener("click", () => {
 // SAVE DATA
 // =========================
 
-const updatedData = {
+const employer =
+JSON.parse(localStorage.getItem("employer"));
 
-    employerID: employer.employerID,
+const updatedData={
 
-    contactPerson:
-    contact.value.trim(),
+employerID: employer.employerID,
 
-    designation:
-    designation.value.trim(),
+contactPerson: contact.value.trim(),
 
-    mobile:
-    mobile.value.trim(),
+designation: designation.value.trim(),
 
-    location:
-    location.value.trim()
+mobile: mobile.value.trim(),
+
+location: location.value.trim()
 
 };
 
