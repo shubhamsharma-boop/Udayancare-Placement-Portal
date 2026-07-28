@@ -3,420 +3,381 @@
 
 <head>
 
-
 <meta charset="UTF-8">
-
 
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-
-
 <title>
 
-Employer Dashboard | Udayan Care Placement Portal
+Employer Dashboard |
+Udayan Care Placement Portal
 
 </title>
 
-
-
-
 <meta name="description"
-content="Employer dashboard to manage jobs and candidate applications through Udayan Care Placement Portal.">
-
-
-
-
-
+content="Employer Dashboard - Manage Jobs, Applications and Company Profile.">
 
 <link rel="stylesheet"
 href="css/style.css">
 
-
-
-
-
 <link rel="preconnect"
 href="https://fonts.googleapis.com">
-
 
 <link rel="preconnect"
 href="https://fonts.gstatic.com"
 crossorigin>
 
-
-
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
-
-
-
-
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-
 </head>
-
-
-
 
 <body>
 
+<!-- ================= TOP BAR ================= -->
 
+<div class="topbar">
 
+<div class="container topbar-content">
 
+<div class="top-left">
 
-<!-- ================= DASHBOARD WRAPPER ================= -->
+<span>
 
+<i class="fa-solid fa-phone"></i>
 
-<div class="dashboard">
+<span id="sitePhone"></span>
 
+</span>
 
+<span>
 
+<i class="fa-solid fa-envelope"></i>
 
+<span id="siteEmail"></span>
 
-
-
-
-<!-- ================= SIDEBAR ================= -->
-
-
-<aside class="sidebar">
-
-
-
-
-
-<div class="sidebar-logo">
-
-
-<img src="images/logo.png"
-alt="Udayan Care Logo">
-
+</span>
 
 </div>
 
+<div class="top-right">
 
+<a id="facebookLink" href="#">
 
+<i class="fab fa-facebook-f"></i>
 
+</a>
 
+<a id="linkedinLink" href="#">
 
+<i class="fab fa-linkedin-in"></i>
 
+</a>
 
+<a id="instagramLink" href="#">
 
-<nav class="sidebar-menu">
+<i class="fab fa-instagram"></i>
 
+</a>
 
+<a id="whatsappLink" href="#">
 
+<i class="fab fa-whatsapp"></i>
 
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+<div class="container navbar">
+
+<a href="index.html"
+class="logo">
+
+<img
+class="siteLogo"
+alt="UCPP Logo">
+
+</a>
+
+<nav class="nav-menu">
+
+<a href="index.html">
+
+Home
+
+</a>
+
+<a href="jobs.html">
+
+Jobs
+
+</a>
+
+<a href="post-job.html">
+
+Post Job
+
+</a>
+
+<a href="manage-jobs.html">
+
+Manage Jobs
+
+</a>
+
+<a href="applications.html">
+
+Applications
+
+</a>
+
+<a href="company-profile.html">
+
+Company Profile
+
+</a>
+
+<a href="#"
+id="logoutBtn"
+class="btn btn-danger">
+
+Logout
+
+</a>
+
+</nav>
+
+<button class="menu-toggle">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+</div>
+
+</header>
+
+<!-- ================= DASHBOARD ================= -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="dashboard-grid">
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="dashboard-sidebar">
+
+<div class="dashboard-user">
+
+<div class="dashboard-avatar">
+
+<i class="fa-solid fa-building"></i>
+
+</div>
+
+<h3 id="companyName">
+
+Loading...
+
+</h3>
+
+<p id="contactPerson">
+
+Employer
+
+</p>
+
+<span id="employerID">
+
+EMP00000
+
+</span>
+
+</div>
+
+<ul class="dashboard-menu">
+
+<li>
 
 <a href="employer-dashboard.html"
 class="active">
 
-
-<i class="fa-solid fa-chart-line"></i>
-
+<i class="fa-solid fa-house"></i>
 
 Dashboard
 
-
 </a>
 
+</li>
 
-
-
-
-
+<li>
 
 <a href="company-profile.html">
 
-
 <i class="fa-solid fa-building"></i>
-
 
 Company Profile
 
-
 </a>
 
+</li>
 
-
-
-
-
-
+<li>
 
 <a href="post-job.html">
 
+<i class="fa-solid fa-plus"></i>
 
-<i class="fa-solid fa-circle-plus"></i>
-
-
-Post New Job
-
+Post Job
 
 </a>
 
+</li>
 
-
-
-
-
-
+<li>
 
 <a href="manage-jobs.html">
 
-
 <i class="fa-solid fa-briefcase"></i>
-
 
 Manage Jobs
 
-
 </a>
 
+</li>
 
-
-
-
-
-
+<li>
 
 <a href="applications.html">
 
-
 <i class="fa-solid fa-users"></i>
-
 
 Applications
 
-
 </a>
 
+</li>
 
+<li>
 
-
-
-
-
-
-<a href="shortlisted.html">
-
-
-<i class="fa-solid fa-user-check"></i>
-
-
-Shortlisted Candidates
-
-
-</a>
-
-
-
-
-
-
-
-
-<a href="#">
-
-
-<i class="fa-solid fa-gear"></i>
-
-
-Settings
-
-
-</a>
-
-
-
-
-
-
-
-
-<a href="employer-login.html">
-
+<a href="#"
+id="sidebarLogout">
 
 <i class="fa-solid fa-right-from-bracket"></i>
 
-
 Logout
-
 
 </a>
 
+</li>
 
-
-
-
-</nav>
-
-
-
-
+</ul>
 
 </aside>
 
+<!-- ================= MAIN CONTENT START ================= -->
 
+<div class="dashboard-content">
 
-
-
-
-
-
-
-<!-- ================= MAIN CONTENT ================= -->
-
-
-<main class="dashboard-content">
-
-
-
-
-
-
-
-<!-- ================= DASHBOARD HEADER ================= -->
-
-
+    <!-- ================= PAGE HEADER ================= -->
 
 <div class="dashboard-header">
 
-
-
-
-
 <div>
 
+<h2>
 
-<h1>
+Welcome,
 
-Welcome, ABC Technologies
+<span id="welcomeCompany">
 
-</h1>
-
-
-
-<p>
-
-Manage your hiring activities from one place.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="user-profile">
-
-
-
-<img src="images/company-placeholder.png"
-alt="Company">
-
-
-
-
-
-
-<div>
-
-
-<h4>
-
-ABC Technologies
-
-</h4>
-
-
-<span>
-
-Employer
+Loading...
 
 </span>
 
+👋
 
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-    <!-- ================= DASHBOARD STATISTICS ================= -->
-
-
-<section class="dashboard-grid">
-
-
-
-
-
-<div class="dashboard-card">
-
-
-<i class="fa-solid fa-briefcase"></i>
-
-
-
-<h3>
-
-15
-
-</h3>
-
-
+</h2>
 
 <p>
 
-Total Jobs Posted
+Manage your jobs, applications and company profile from one place.
 
 </p>
 
+</div>
 
+<div>
+
+<span class="badge badge-success">
+
+Employer Dashboard
+
+</span>
 
 </div>
 
+</div>
 
+<!-- ================= STATISTICS ================= -->
 
+<div class="dashboard-grid stats-grid">
 
+<div class="card stat-card">
 
+<div class="stat-icon">
 
+<i class="fa-solid fa-briefcase"></i>
 
+</div>
 
+<div class="stat-content">
 
-<div class="dashboard-card">
+<h3 id="totalJobs">
 
-
-<i class="fa-solid fa-circle-check"></i>
-
-
-
-<h3>
-
-8
+0
 
 </h3>
 
+<p>
 
+Total Jobs
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card stat-card">
+
+<div class="stat-icon">
+
+<i class="fa-solid fa-circle-check"></i>
+
+</div>
+
+<div class="stat-content">
+
+<h3 id="activeJobs">
+
+0
+
+</h3>
 
 <p>
 
@@ -424,1459 +385,216 @@ Active Jobs
 
 </p>
 
-
+</div>
 
 </div>
 
+<div class="card stat-card">
 
-
-
-
-
-
-
-
-<div class="dashboard-card">
-
+<div class="stat-icon">
 
 <i class="fa-solid fa-users"></i>
 
+</div>
 
+<div class="stat-content">
 
-<h3>
+<h3 id="totalApplications">
 
-246
+0
 
 </h3>
 
-
-
 <p>
 
-Applications Received
+Applications
 
 </p>
 
-
+</div>
 
 </div>
 
+<div class="card stat-card">
 
-
-
-
-
-
-
-
-<div class="dashboard-card">
-
+<div class="stat-icon">
 
 <i class="fa-solid fa-user-check"></i>
 
+</div>
 
+<div class="stat-content">
 
-<h3>
+<h3 id="selectedCandidates">
 
-32
+0
 
 </h3>
 
-
-
 <p>
-
-Shortlisted Candidates
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= QUICK ACTIONS ================= -->
-
-
-<section class="section"
-style="padding:50px 0;">
-
-
-
-
-
-<div class="section-title">
-
-
-<span>
-
-QUICK ACTIONS
-
-</span>
-
-
-
-<h2>
-
-Manage Your Hiring
-
-</h2>
-
-
-
-<p>
-
-Use quick actions to manage jobs and candidates efficiently.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="why-grid">
-
-
-
-
-
-
-<div class="why-card">
-
-
-
-<i class="fa-solid fa-plus"></i>
-
-
-
-<h3>
-
-Post New Job
-
-</h3>
-
-
-
-<p>
-
-Create new job opportunities and connect with candidates.
-
-</p>
-
-
-
-
-
-<a href="post-job.html"
-class="btn btn-primary">
-
-
-Post Job
-
-
-</a>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="why-card">
-
-
-
-<i class="fa-solid fa-list"></i>
-
-
-
-<h3>
-
-Manage Jobs
-
-</h3>
-
-
-
-<p>
-
-View, edit and manage all your posted job openings.
-
-</p>
-
-
-
-
-
-<a href="manage-jobs.html"
-class="btn btn-primary">
-
-
-Manage Jobs
-
-
-</a>
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="why-card">
-
-
-
-<i class="fa-solid fa-user-group"></i>
-
-
-
-<h3>
-
-View Applications
-
-</h3>
-
-
-
-<p>
-
-Review candidate profiles and update hiring status.
-
-</p>
-
-
-
-
-
-<a href="applications.html"
-class="btn btn-primary">
-
-
-View Applications
-
-
-</a>
-
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-</section>
-
-    <!-- ================= RECENT JOB POSTS ================= -->
-
-
-<section class="section light-bg"
-style="padding:50px 0;">
-
-
-
-<div class="container">
-
-
-
-
-
-<div class="section-title">
-
-
-<span>
-
-JOB MANAGEMENT
-
-</span>
-
-
-
-<h2>
-
-Recent Job Posts
-
-</h2>
-
-
-
-<p>
-
-Monitor your active job openings and candidate responses.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="table-wrapper">
-
-
-
-
-
-<table class="table">
-
-
-
-
-
-
-<thead>
-
-
-<tr>
-
-
-<th>
-
-Job Title
-
-</th>
-
-
-
-<th>
-
-Location
-
-</th>
-
-
-
-<th>
-
-Applications
-
-</th>
-
-
-
-<th>
-
-Status
-
-</th>
-
-
-
-<th>
-
-Action
-
-</th>
-
-
-
-</tr>
-
-
-
-</thead>
-
-
-
-
-
-
-
-
-<tbody>
-
-
-
-
-
-
-
-<tr>
-
-
-<td>
-
-Customer Support Executive
-
-</td>
-
-
-
-
-<td>
-
-Noida
-
-</td>
-
-
-
-
-<td>
-
-85
-
-</td>
-
-
-
-
-<td>
-
-
-<span class="status status-approved">
-
-Active
-
-</span>
-
-
-</td>
-
-
-
-
-
-<td>
-
-
-
-<a href="manage-jobs.html"
-class="btn btn-primary">
-
-
-Manage
-
-
-</a>
-
-
-
-</td>
-
-
-
-</tr>
-
-
-
-
-
-
-
-
-
-<tr>
-
-
-<td>
-
-HR Associate
-
-</td>
-
-
-
-
-<td>
-
-Gurugram
-
-</td>
-
-
-
-
-<td>
-
-62
-
-</td>
-
-
-
-
-<td>
-
-
-<span class="status status-approved">
-
-Active
-
-</span>
-
-
-</td>
-
-
-
-
-
-<td>
-
-
-
-<a href="manage-jobs.html"
-class="btn btn-primary">
-
-
-Manage
-
-
-</a>
-
-
-
-</td>
-
-
-
-</tr>
-
-
-
-
-
-
-
-
-
-<tr>
-
-
-<td>
-
-Operations Executive
-
-</td>
-
-
-
-
-<td>
-
-Delhi
-
-</td>
-
-
-
-
-<td>
-
-99
-
-</td>
-
-
-
-
-<td>
-
-
-<span class="status status-pending">
-
-Pending Approval
-
-</span>
-
-
-</td>
-
-
-
-
-
-<td>
-
-
-
-<a href="manage-jobs.html"
-class="btn btn-primary">
-
-
-Manage
-
-
-</a>
-
-
-
-</td>
-
-
-
-</tr>
-
-
-
-
-
-
-
-</tbody>
-
-
-
-
-</table>
-
-
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= APPLICATION OVERVIEW ================= -->
-
-
-<section class="section">
-
-
-
-<div class="container">
-
-
-
-
-
-<div class="section-title">
-
-
-<span>
-
-APPLICATION INSIGHTS
-
-</span>
-
-
-
-<h2>
-
-Candidate Response Overview
-
-</h2>
-
-
-
-<p>
-
-Track candidate applications received for your posted jobs.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="stats-grid">
-
-
-
-
-
-<div class="stat-card">
-
-
-<i class="fa-solid fa-eye"></i>
-
-
-
-<h2>
-
-540
-
-</h2>
-
-
-
-<h4>
-
-Profile Views
-
-</h4>
-
-
-<p>
-
-Candidates viewed your job postings.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="stat-card">
-
-
-<i class="fa-solid fa-file-circle-check"></i>
-
-
-
-<h2>
-
-246
-
-</h2>
-
-
-
-<h4>
-
-Applications
-
-</h4>
-
-
-
-<p>
-
-Total applications received.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="stat-card">
-
-
-<i class="fa-solid fa-comments"></i>
-
-
-
-<h2>
-
-48
-
-</h2>
-
-
-
-<h4>
-
-Interviews
-
-</h4>
-
-
-
-<p>
-
-Candidates moved to interview stage.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="stat-card">
-
-
-<i class="fa-solid fa-trophy"></i>
-
-
-
-<h2>
-
-12
-
-</h2>
-
-
-
-<h4>
 
 Selected
 
-</h4>
-
-
-
-<p>
-
-Successful hiring completed.
-
 </p>
 
-
+</div>
 
 </div>
 
-
-
-
-
-
 </div>
 
+<!-- ================= QUICK ACTIONS ================= -->
 
+<div class="card">
 
-</div>
-
-
-
-</section>
-
-    <!-- ================= NOTIFICATIONS ================= -->
-
-
-<section class="section light-bg"
-style="padding:50px 0;">
-
-
-
-<div class="container">
-
-
-
-
-
-<div class="section-title">
-
-
-<span>
-
-NOTIFICATIONS
-
-</span>
-
-
-
-<h2>
-
-Latest Updates
-
-</h2>
-
-
-
-<p>
-
-Stay updated with your recruitment activities.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="card"
-style="padding:35px;">
-
-
-
-
-
-
-<div class="step">
-
-
-<i class="fa-solid fa-bell"></i>
-
-
-Your Customer Support Executive job received 85 applications.
-
-
-</div>
-
-
-
-
-
-
-
-<div class="step">
-
-
-<i class="fa-solid fa-user-check"></i>
-
-
-12 candidates have been shortlisted by your hiring team.
-
-
-</div>
-
-
-
-
-
-
-
-<div class="step">
-
-
-<i class="fa-solid fa-calendar-check"></i>
-
-
-Interview schedule is pending for 5 candidates.
-
-
-</div>
-
-
-
-
-
-
-
-<div class="step">
-
-
-<i class="fa-solid fa-circle-check"></i>
-
-
-Your employer profile has been verified successfully.
-
-
-</div>
-
-
-
-
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= EMPLOYER VERIFICATION ================= -->
-
-
-<section class="section">
-
-
-
-<div class="container">
-
-
-
-
-
-<div class="card"
-style="
-padding:45px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:30px;
-flex-wrap:wrap;
-">
-
-
-
-
-
-<div>
-
-
-<h2>
-
-Employer Verification Status
-
-</h2>
-
-
-
-
-<p>
-
-Your company account is verified and ready for hiring activities.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div>
-
-
-<span class="status status-approved">
-
-Verified Employer
-
-</span>
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= SUPPORT CTA ================= -->
-
-
-<section class="cta">
-
-
-
-<div class="container">
-
-
-
-<div class="cta-box">
-
-
-
-
-
-<h2>
-
-Need Hiring Support?
-
-</h2>
-
-
-
-
-
-<p>
-
-Our placement team can help you with candidate selection, interview coordination and recruitment support.
-
-</p>
-
-
-
-
-
-
-<a href="contact.html"
-class="btn">
-
-
-Contact Placement Team
-
-
-</a>
-
-
-
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-</section>
-
-    <!-- ================= FOOTER ================= -->
-
-
-<footer class="footer">
-
-
-<div class="container">
-
-
-<div class="footer-grid">
-
-
-
-<div>
-
-
-<img src="images/logo.png"
-alt="Udayan Care Logo"
-style="height:60px;">
-
-
-
-<p>
-
-Udayan Care Placement Portal enables employers to discover talent and build successful teams through meaningful hiring.
-
-</p>
-
-
-
-
-
-<div class="social-links">
-
-
-<a href="#">
-
-<i class="fab fa-facebook-f"></i>
-
-</a>
-
-
-
-<a href="#">
-
-<i class="fab fa-linkedin-in"></i>
-
-</a>
-
-
-
-<a href="#">
-
-<i class="fab fa-instagram"></i>
-
-</a>
-
-
-
-<a href="#">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div>
-
+<div class="card-header">
 
 <h3>
 
-Employer
+Quick Actions
 
 </h3>
 
+</div>
 
+<div class="dashboard-grid quick-action-grid">
 
-<a href="employer-dashboard.html">
+<a href="post-job.html" class="quick-card">
 
-Dashboard
+<i class="fa-solid fa-plus"></i>
 
-</a>
-
-
-
-<a href="company-profile.html">
-
-Company Profile
-
-</a>
-
-
-
-<a href="post-job.html">
+<h4>
 
 Post Job
 
-</a>
-
-
-
-<a href="manage-jobs.html">
-
-Manage Jobs
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div>
-
-
-<h3>
-
-Hiring
-
-</h3>
-
-
-
-<a href="applications.html">
-
-Applications
-
-</a>
-
-
-
-<a href="shortlisted.html">
-
-Shortlisted
-
-</a>
-
-
-
-<a href="#">
-
-Interview Schedule
-
-</a>
-
-
-
-<a href="#">
-
-Reports
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div>
-
-
-<h3>
-
-Support
-
-</h3>
-
-
-
-<a href="contact.html">
-
-Contact Team
-
-</a>
-
-
-
-<a href="#">
-
-Help Center
-
-</a>
-
-
-
-<a href="#">
-
-Privacy Policy
-
-</a>
-
-
-
-<a href="#">
-
-Terms
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="footer-bottom">
-
+</h4>
 
 <p>
 
-© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.
+Create a new job opening.
 
 </p>
 
+</a>
 
+<a href="manage-jobs.html" class="quick-card">
+
+<i class="fa-solid fa-briefcase"></i>
+
+<h4>
+
+Manage Jobs
+
+</h4>
+
+<p>
+
+View and edit posted jobs.
+
+</p>
+
+</a>
+
+<a href="applications.html" class="quick-card">
+
+<i class="fa-solid fa-users"></i>
+
+<h4>
+
+Applications
+
+</h4>
+
+<p>
+
+View all candidate applications.
+
+</p>
+
+</a>
+
+<a href="company-profile.html" class="quick-card">
+
+<i class="fa-solid fa-building"></i>
+
+<h4>
+
+Company Profile
+
+</h4>
+
+<p>
+
+Update company information.
+
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+    <!-- ================= RECENT JOBS ================= -->
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>
+
+Recent Jobs
+
+</h3>
+
+<a href="manage-jobs.html"
+class="btn btn-sm">
+
+View All
+
+</a>
+
+</div>
+
+<div class="table-responsive">
+
+<table class="dashboard-table">
+
+<thead>
+
+<tr>
+
+<th>Job Title</th>
+
+<th>Location</th>
+
+<th>Status</th>
+
+<th>Applications</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="recentJobsTable">
+
+<tr>
+
+<td colspan="5" class="text-center">
+
+Loading jobs...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
 
 </div>
 
@@ -1884,147 +602,360 @@ Terms
 
 
 
+<!-- ================= RECENT APPLICATIONS ================= -->
+
+<div class="card"
+style="margin-top:30px;">
+
+<div class="card-header">
+
+<h3>
+
+Latest Applications
+
+</h3>
+
+<a href="applications.html"
+class="btn btn-sm">
+
+View All
+
+</a>
+
 </div>
 
+<div class="table-responsive">
+
+<table class="dashboard-table">
+
+<thead>
+
+<tr>
+
+<th>Candidate</th>
+
+<th>Job Title</th>
+
+<th>Applied On</th>
+
+<th>Status</th>
+
+<th>Profile</th>
+
+</tr>
+
+</thead>
+
+<tbody id="recentApplicationsTable">
+
+<tr>
+
+<td colspan="5" class="text-center">
+
+Loading applications...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- ================= COMPANY SUMMARY ================= -->
+
+<div class="card"
+style="margin-top:30px;">
+
+<div class="card-header">
+
+<h3>
+
+Company Summary
+
+</h3>
+
+</div>
+
+<div class="dashboard-grid">
+
+<div>
+
+<p>
+
+<strong>Company :</strong>
+
+<span id="summaryCompany">
+
+-
+
+</span>
+
+</p>
+
+</div>
+
+<div>
+
+<p>
+
+<strong>Industry :</strong>
+
+<span id="summaryIndustry">
+
+-
+
+</span>
+
+</p>
+
+</div>
+
+<div>
+
+<p>
+
+<strong>State :</strong>
+
+<span id="summaryState">
+
+-
+
+</span>
+
+</p>
+
+</div>
+
+<div>
+
+<p>
+
+<strong>District :</strong>
+
+<span id="summaryDistrict">
+
+-
+
+</span>
+
+</p>
+
+</div>
+
+<div>
+
+<p>
+
+<strong>City :</strong>
+
+<span id="summaryCity">
+
+-
+
+</span>
+
+</p>
+
+</div>
+
+<div>
+
+<p>
+
+<strong>Email :</strong>
+
+<span id="summaryEmail">
+
+-
+
+</span>
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+    </div>
+<!-- dashboard-content end -->
+
+</div>
+<!-- dashboard-grid end -->
+
+</div>
+<!-- container end -->
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-bottom">
+
+<p>
+
+© 2026
+
+<span id="siteName"></span>
+
+|
+
+An Initiative of Udayan Care
+
+</p>
+
+</div>
+
+</div>
 
 </footer>
 
-
-
-
-
-
-
-
-
 <!-- ================= BACK TO TOP ================= -->
-
 
 <div class="back-top">
 
-
 <i class="fa-solid fa-arrow-up"></i>
-
 
 </div>
 
-
-
-
-
-
-
-
-
 <!-- ================= JAVASCRIPT ================= -->
 
+<script src="js/config.js"></script>
+
+<script src="js/api.js"></script>
 
 <script src="js/app.js"></script>
 
-
-
-
-
-
 <script>
 
+document.addEventListener("DOMContentLoaded", async ()=>{
 
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
-
-
-console.log(
-"Employer Dashboard Loaded"
-);
-
-
-
-
-
-/*
-
-Future Google Apps Script Integration:
-
-
-1. Get Employer Session
-
-2. Load Company Details
-
-3. Fetch Posted Jobs
-
-4. Fetch Application Statistics
-
-5. Load Notifications
-
-6. Update Dashboard Cards
-
-
-
-*/
-
-
-
-
-
-
-function loadEmployerDashboard(){
-
-
-
-console.log(
-
-"Loading Employer Dashboard Data..."
-
-);
-
-
-
-}
-
-
-
-
-
-loadEmployerDashboard();
-
-
-
-
-
-
-});
-
-
-
-</script>
-
-
-
-
-
-
-
-
-
-</body>
-
-    <script>
+// ==========================
+// Session Check
+// ==========================
 
 const employer = JSON.parse(
-sessionStorage.getItem("employer")
+
+localStorage.getItem("employer")
+
 );
 
 if(!employer){
 
 window.location.href="employer-login.html";
 
+return;
+
 }
 
-console.log(employer);
+// ==========================
+// Employer Details
+// ==========================
+
+document.getElementById("companyName").innerText =
+employer.companyName;
+
+document.getElementById("welcomeCompany").innerText =
+employer.companyName;
+
+document.getElementById("summaryCompany").innerText =
+employer.companyName;
+
+document.getElementById("contactPerson").innerText =
+employer.contactPerson;
+
+document.getElementById("employerID").innerText =
+employer.employerID;
+
+document.getElementById("summaryIndustry").innerText =
+employer.industry;
+
+document.getElementById("summaryState").innerText =
+employer.state;
+
+document.getElementById("summaryDistrict").innerText =
+employer.district;
+
+document.getElementById("summaryCity").innerText =
+employer.city;
+
+document.getElementById("summaryEmail").innerText =
+employer.email;
+
+// ==========================
+// Dashboard API
+// ==========================
+
+const result =
+await API.getEmployerDashboard({
+
+employerID:
+employer.employerID
+
+});
+
+if(result.success){
+
+document.getElementById("totalJobs").innerText =
+result.data.totalJobs;
+
+document.getElementById("activeJobs").innerText =
+result.data.activeJobs;
+
+document.getElementById("totalApplications").innerText =
+result.data.totalApplications;
+
+document.getElementById("selectedCandidates").innerText =
+result.data.selectedCandidates;
+
+}
+
+// ==========================
+// Logout
+// ==========================
+
+document.getElementById("logoutBtn")
+
+.addEventListener("click",logout);
+
+document.getElementById("sidebarLogout")
+
+.addEventListener("click",logout);
+
+function logout(e){
+
+e.preventDefault();
+
+localStorage.removeItem("employer");
+
+showToast("Logged out successfully","success");
+
+setTimeout(()=>{
+
+window.location.href="employer-login.html";
+
+},800);
+
+}
+
+});
 
 </script>
 
+</body>
 
 </html>
