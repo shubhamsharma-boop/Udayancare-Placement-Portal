@@ -3931,7 +3931,43 @@ font-size:32px;
 
     padding:35px;
 
-    gap:25px;
+    gap:20px;
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+}
+
+@media(max-width:1200px){
+
+.company-card .dashboard-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.company-card .dashboard-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+padding:20px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.company-card .dashboard-grid{
+
+grid-template-columns:1fr;
+
+}
 
 }
 
@@ -4010,6 +4046,164 @@ font-size:32px;
 .company-card .dashboard-grid{
 
     padding:20px;
+
+}
+
+}
+
+/* ===========================================
+WELCOME BANNER
+=========================================== */
+
+.welcome-banner{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:40px;
+
+padding:50px;
+
+border-radius:24px;
+
+background:linear-gradient(135deg,#2563EB,#4F8BFF);
+
+color:#fff;
+
+box-shadow:0 20px 45px rgba(37,99,235,.25);
+
+}
+
+.welcome-left{
+
+flex:1;
+
+}
+
+.welcome-badge{
+
+display:inline-block;
+
+padding:8px 18px;
+
+background:rgba(255,255,255,.15);
+
+border-radius:50px;
+
+font-weight:600;
+
+margin-bottom:18px;
+
+}
+
+.welcome-banner h1{
+
+font-size:48px;
+
+color:#fff;
+
+margin-bottom:15px;
+
+}
+
+.welcome-banner p{
+
+color:rgba(255,255,255,.92);
+
+font-size:18px;
+
+max-width:650px;
+
+}
+
+.welcome-buttons{
+
+display:flex;
+
+gap:18px;
+
+margin-top:30px;
+
+}
+
+.welcome-right{
+
+width:300px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.welcome-mini-card{
+
+background:#fff;
+
+color:#111827;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+.welcome-mini-card i{
+
+font-size:28px;
+
+color:#2563EB;
+
+margin-bottom:12px;
+
+}
+
+.welcome-mini-card h4{
+
+margin-bottom:6px;
+
+font-size:15px;
+
+color:#64748B;
+
+}
+
+.welcome-mini-card p{
+
+font-size:20px;
+
+font-weight:700;
+
+color:#0F172A;
+
+}
+
+@media(max-width:992px){
+
+.welcome-banner{
+
+flex-direction:column;
+
+padding:35px;
+
+}
+
+.welcome-right{
+
+width:100%;
+
+}
+
+.welcome-banner h1{
+
+font-size:36px;
 
 }
 
