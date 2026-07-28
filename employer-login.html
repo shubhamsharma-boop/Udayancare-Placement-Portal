@@ -587,6 +587,16 @@ localStorage.setItem(
 response.data.companyName
 );
 
+    localStorage.setItem(
+"lastLogin",
+new Date().toLocaleDateString("en-IN",{
+day:"2-digit",
+month:"short",
+year:"numeric"
+})
+);
+    
+
 localStorage.setItem(
 "employer",
 JSON.stringify(response.data)
