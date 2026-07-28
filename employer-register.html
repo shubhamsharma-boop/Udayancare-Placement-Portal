@@ -955,7 +955,8 @@ document.getElementById("address").value.trim(),
 gstNumber:
 document.getElementById("gstNumber").value.trim(),
 
-logoURL:""
+logoURL:
+document.getElementById("logoURL").value.trim()
 
 };
 
@@ -985,10 +986,7 @@ delete data.confirmPassword;
 // REGISTER EMPLOYER
 // ===============================
 
-const response = await apiRequest(
-"registerEmployer",
-data
-);
+const response = await API.registerEmployer(data);
 
 if(response.success){
 
@@ -1010,8 +1008,6 @@ showToast(response.message,"error");
 }
 
 });    
-
-});
 
 });
 
