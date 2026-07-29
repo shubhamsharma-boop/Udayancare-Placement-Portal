@@ -3,303 +3,124 @@
 
 <head>
 
-
 <meta charset="UTF-8">
-
 
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-
-
 <title>
-
-Post Job | Udayan Care Placement Portal
-
+Post New Job | UCPP
 </title>
 
-
-
-
 <meta name="description"
-content="Create and publish job opportunities through Udayan Care Placement Portal.">
-
-
-
-
-
+content="Employer Job Posting">
 
 <link rel="stylesheet"
 href="css/style.css">
 
-
-
-
-
 <link rel="preconnect"
 href="https://fonts.googleapis.com">
-
 
 <link rel="preconnect"
 href="https://fonts.gstatic.com"
 crossorigin>
 
-
-
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
-
-
-
-
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-
 </head>
-
-
-
-
-
-
 
 <body>
 
-
-
-
-
-
-
-
-<!-- ================= DASHBOARD ================= -->
-
-
 <div class="dashboard">
-
-
-
-
-
-
-
 
 <!-- ================= SIDEBAR ================= -->
 
-
 <aside class="sidebar">
-
-
-
-
 
 <div class="sidebar-logo">
 
-
-<img src="images/logo.png"
-alt="Udayan Care Logo">
-
+<img
+src="images/logo.png"
+alt="Logo">
 
 </div>
 
-
-
-
-
-
-
-
 <nav class="sidebar-menu">
-
-
-
-
 
 <a href="employer-dashboard.html">
 
-
 <i class="fa-solid fa-chart-line"></i>
-
 
 Dashboard
 
-
 </a>
-
-
-
-
-
-
-
 
 <a href="company-profile.html">
 
-
 <i class="fa-solid fa-building"></i>
-
 
 Company Profile
 
-
 </a>
 
+<a
+class="active"
+href="post-job.html">
 
-
-
-
-
-
-
-<a href="post-job.html"
-class="active">
-
-
-<i class="fa-solid fa-circle-plus"></i>
-
+<i class="fa-solid fa-plus"></i>
 
 Post New Job
 
-
 </a>
-
-
-
-
-
-
-
 
 <a href="manage-jobs.html">
 
-
 <i class="fa-solid fa-briefcase"></i>
-
 
 Manage Jobs
 
-
 </a>
-
-
-
-
-
-
-
 
 <a href="applications.html">
 
-
 <i class="fa-solid fa-users"></i>
-
 
 Applications
 
+</a>
+
+<a href="reports.html">
+
+<i class="fa-solid fa-chart-column"></i>
+
+Reports
 
 </a>
 
-
-
-
-
-
-
-
-<a href="shortlisted.html">
-
-
-<i class="fa-solid fa-user-check"></i>
-
-
-Shortlisted Candidates
-
-
-</a>
-
-
-
-
-
-
-
-
-<a href="#">
-
-
-<i class="fa-solid fa-gear"></i>
-
-
-Settings
-
-
-</a>
-
-
-
-
-
-
-
-
-<a href="employer-login.html">
-
+<a
+id="logoutBtn">
 
 <i class="fa-solid fa-right-from-bracket"></i>
 
-
 Logout
-
 
 </a>
 
-
-
-
-
-
 </nav>
-
-
-
-
-
 
 </aside>
 
-
-
-
-
-
-
-
-
-<!-- ================= MAIN CONTENT ================= -->
-
+<!-- ================= CONTENT ================= -->
 
 <main class="dashboard-content">
 
-
-
-
-
-
-
-<!-- ================= HEADER ================= -->
-
-
 <div class="dashboard-header">
 
-
-
-
-
 <div>
-
 
 <h1>
 
@@ -307,45 +128,26 @@ Post New Job
 
 </h1>
 
-
-
 <p>
 
-Create a new opportunity for candidates.
+Create a new opportunity for Shalini Candidates.
 
 </p>
 
-
-
 </div>
-
-
-
-
-
-
-
 
 <div class="user-profile">
 
-
-
-<img src="images/company-placeholder.png"
-alt="Company">
-
-
-
-
+<img
+src="images/company-placeholder.png">
 
 <div>
 
+<h4 id="headerCompanyName">
 
-<h4>
-
-ABC Technologies
+Loading...
 
 </h4>
-
 
 <span>
 
@@ -353,41 +155,69 @@ Verified Employer
 
 </span>
 
+</div>
 
 </div>
 
+</div>
 
+<!-- ================= COMPANY INFO ================= -->
+
+<section class="card company-card">
+
+<div class="company-header">
+
+<div>
+
+<h3 id="companyName">
+
+Loading...
+
+</h3>
+
+<p>
+
+Employer Information
+
+</p>
 
 </div>
 
+</div>
 
+<div class="dashboard-grid">
 
+<div>
 
+<strong>
 
+Company Name
+
+</strong>
+
+<input
+
+type="text"
+
+id="company_name"
+
+class="form-control"
+
+readonly>
 
 </div>
 
+</div>
 
-
-
-
-
-
-
+</section>
 
 <!-- ================= JOB FORM ================= -->
 
-
-<section class="card"
-style="padding:40px;">
-
-
-
-
-
+<section
+class="card"
+style="margin-top:30px;padding:35px;">
 
 <div class="section-title">
-
 
 <span>
 
@@ -395,40 +225,34 @@ JOB DETAILS
 
 </span>
 
-
-
 <h2>
 
-Create Job Opening
+Create New Job
 
 </h2>
 
-
-
 <p>
 
-Provide accurate details to attract suitable candidates.
+Fill all mandatory information.
 
 </p>
 
-
-
 </div>
 
-
-
-
-
-
-
-
-<form id="postJobForm">
+<form
+id="postJobForm">
 
   <!-- ================= BASIC JOB INFORMATION ================= -->
 
+<h3 style="margin-bottom:20px;">
+
+Basic Job Information
+
+</h3>
+
+<div class="dashboard-grid">
 
 <div class="form-group">
-
 
 <label>
 
@@ -436,218 +260,197 @@ Job Title *
 
 </label>
 
-
-
 <input
+
 type="text"
+
 id="jobTitle"
+
 class="form-control"
-placeholder="Example: Customer Support Executive"
+
+placeholder="Customer Support Executive"
+
 required>
 
-
-
 </div>
-
-
-
-
-
-
-
-
-<div class="dashboard-grid">
-
-
-
-
-
-
 
 <div class="form-group">
 
-
 <label>
 
-Department *
+Job Category *
 
 </label>
 
-
-
 <select
-id="department"
-class="form-control">
 
+id="jobCategory"
 
+class="form-control"
 
-<option>
+required>
 
-Customer Support
+<option value="">Select Category</option>
 
-</option>
+<option>Administration</option>
 
+<option>BPO / Customer Support</option>
 
+<option>Education</option>
 
-<option>
+<option>Finance</option>
 
-Sales
+<option>Healthcare</option>
 
-</option>
+<option>Hospitality</option>
 
+<option>Human Resources</option>
 
+<option>IT / Software</option>
 
-<option>
+<option>Manufacturing</option>
 
-Human Resources
+<option>Marketing</option>
 
-</option>
+<option>Operations</option>
 
+<option>Retail</option>
 
+<option>Sales</option>
 
-<option>
+<option>Security</option>
 
-Operations
+<option>Telecalling</option>
 
-</option>
+<option>Warehouse</option>
 
-
-
-<option>
-
-Finance
-
-</option>
-
-
-
-<option>
-
-Technology
-
-</option>
-
-
-
-<option>
-
-Marketing
-
-</option>
-
-
+<option>Other</option>
 
 </select>
 
-
-
-
 </div>
-
-
-
-
-
-
-
-
 
 <div class="form-group">
 
-
 <label>
 
-Employment Type *
+Job Type *
 
 </label>
 
-
-
 <select
-id="employmentType"
-class="form-control">
 
+id="jobType"
 
+class="form-control"
 
-<option>
+required>
 
-Full Time
+<option value="">Select Job Type</option>
 
-</option>
+<option>Full Time</option>
 
+<option>Part Time</option>
 
+<option>Internship</option>
 
-<option>
+<option>Contract</option>
 
-Part Time
+<option>Temporary</option>
 
-</option>
-
-
-
-<option>
-
-Internship
-
-</option>
-
-
-
-<option>
-
-Contract
-
-</option>
-
-
+<option>Freelance</option>
 
 </select>
 
+</div>
 
+<div class="form-group">
 
+<label>
+
+Work Mode *
+
+</label>
+
+<select
+
+id="workMode"
+
+class="form-control"
+
+required>
+
+<option value="">Select Work Mode</option>
+
+<option>Office</option>
+
+<option>Hybrid</option>
+
+<option>Remote</option>
+
+</select>
 
 </div>
 
-
-
-
-
-
 </div>
 
+<hr style="margin:40px 0;">
 
+<!-- ================= JOB LOCATION ================= -->
 
-
-
-
-
-
-
-<!-- ================= LOCATION ================= -->
-
-
-<h3 style="margin:35px 0 20px;">
+<h3 style="margin-bottom:20px;">
 
 Job Location
 
 </h3>
 
-
-
-
-
-
-
-
 <div class="dashboard-grid">
-
-
-
-
-
 
 <div class="form-group">
 
+<label>
+
+State *
+
+</label>
+
+<input
+
+type="text"
+
+id="state"
+
+class="form-control"
+
+placeholder="State"
+
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+District *
+
+</label>
+
+<input
+
+type="text"
+
+id="district"
+
+class="form-control"
+
+placeholder="District"
+
+required>
+
+</div>
+
+<div class="form-group">
 
 <label>
 
@@ -655,345 +458,265 @@ City *
 
 </label>
 
-
-
 <input
+
 type="text"
-id="location"
+
+id="city"
+
 class="form-control"
-placeholder="Example: Noida"
+
+placeholder="City"
+
 required>
 
-
-
 </div>
-
-
-
-
-
-
-
-
 
 <div class="form-group">
 
-
 <label>
 
-Work Mode
+Address *
 
 </label>
 
+<input
 
+type="text"
 
-<select
-id="workMode"
-class="form-control">
+id="address"
 
+class="form-control"
 
+placeholder="Complete Office Address"
 
-<option>
-
-Office
-
-</option>
-
-
-
-<option>
-
-Hybrid
-
-</option>
-
-
-
-<option>
-
-Remote
-
-</option>
-
-
-
-</select>
-
-
-
+required>
 
 </div>
 
-
-
-
-
-
-
 </div>
 
+<hr style="margin:40px 0;">
 
+  <!-- ================= ELIGIBILITY ================= -->
 
+<h3 style="margin-bottom:20px;">
 
-
-
-
-
-
-<!-- ================= EXPERIENCE & SALARY ================= -->
-
-
-<h3 style="margin:35px 0 20px;">
-
-Experience & Salary
+Eligibility & Salary
 
 </h3>
-
-
-
-
-
-
-
-
 
 <div class="dashboard-grid">
 
-
-
-
-
-
 <div class="form-group">
-
 
 <label>
 
-Experience Required *
+Experience *
 
 </label>
-
-
 
 <select
 id="experience"
-class="form-control">
+class="form-control"
+required>
 
+<option value="">Select Experience</option>
 
+<option>Fresher</option>
 
-<option>
+<option>0-1 Year</option>
 
-Fresher
+<option>1-2 Years</option>
 
-</option>
+<option>2-3 Years</option>
 
+<option>3-5 Years</option>
 
-
-<option>
-
-0-1 Year
-
-</option>
-
-
-
-<option>
-
-1-3 Years
-
-</option>
-
-
-
-<option>
-
-3-5 Years
-
-</option>
-
-
-
-<option>
-
-5+ Years
-
-</option>
-
-
+<option>5+ Years</option>
 
 </select>
 
-
-
 </div>
-
-
-
-
-
-
-
-
 
 <div class="form-group">
 
-
 <label>
 
-Salary Range *
+Qualification *
 
 </label>
 
+<select
+id="qualification"
+class="form-control"
+required>
 
+<option value="">Select Qualification</option>
+
+<option>10th Pass</option>
+
+<option>12th Pass</option>
+
+<option>ITI</option>
+
+<option>Diploma</option>
+
+<option>Graduate</option>
+
+<option>Post Graduate</option>
+
+<option>Any Qualification</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Vacancies *
+
+</label>
 
 <input
-type="text"
-id="salary"
+type="number"
+id="vacancies"
 class="form-control"
-placeholder="₹18,000 - ₹25,000">
-
-
-
-</div>
-
-
-
-
-
+placeholder="10"
+required>
 
 </div>
 
-  <!-- ================= JOB REQUIREMENTS ================= -->
+<div class="form-group">
 
+<label>
 
-<h3 style="margin:35px 0 20px;">
+Application Last Date *
 
-Job Requirements
+</label>
+
+<input
+type="date"
+id="applicationLastDate"
+class="form-control"
+required>
+
+</div>
+
+</div>
+
+<hr style="margin:40px 0;">
+
+<!-- ================= SKILLS ================= -->
+
+<h3 style="margin-bottom:20px;">
+
+Skills & Salary
 
 </h3>
 
-
-
-
-
-
-
+<div class="dashboard-grid">
 
 <div class="form-group">
 
-
 <label>
 
-Required Skills *
+Skills *
 
 </label>
-
-
-
 
 <input
 type="text"
 id="skills"
 class="form-control"
-placeholder="Example: Communication, MS Excel, Customer Handling">
-
-
+placeholder="Communication, Excel, Sales"
+required>
 
 <small>
 
-Separate skills using commas.
+Separate multiple skills using commas.
 
 </small>
 
-
-
 </div>
 
-
-
-
-
-
-
-
-
 <div class="form-group">
-
 
 <label>
 
-Minimum Qualification *
+Minimum Salary *
 
 </label>
 
-
-
-
-<select
-id="qualification"
-class="form-control">
-
-
-
-<option>
-
-12th Pass
-
-</option>
-
-
-
-<option>
-
-Graduate
-
-</option>
-
-
-
-<option>
-
-Post Graduate
-
-</option>
-
-
-
-<option>
-
-Diploma
-
-</option>
-
-
-
-<option>
-
-Any Qualification
-
-</option>
-
-
-
-</select>
-
-
+<input
+type="number"
+id="salaryMin"
+class="form-control"
+placeholder="15000"
+required>
 
 </div>
 
+<div class="form-group">
 
+<label>
 
+Maximum Salary *
 
+</label>
 
+<input
+type="number"
+id="salaryMax"
+class="form-control"
+placeholder="25000"
+required>
 
-
-
-
-<!-- ================= JOB DESCRIPTION ================= -->
-
+</div>
 
 <div class="form-group">
 
+<label>
+
+Job Status
+
+</label>
+
+<select
+id="jobStatus"
+class="form-control">
+
+<option selected>
+
+Active
+
+</option>
+
+<option>
+
+Closed
+
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+<hr style="margin:40px 0;">
+
+  <!-- ================= JOB DESCRIPTION ================= -->
+
+<h3 style="margin-bottom:20px;">
+
+Job Details
+
+</h3>
+
+<div class="form-group">
 
 <label>
 
@@ -1001,808 +724,236 @@ Job Description *
 
 </label>
 
-
-
-
-
-
 <textarea
+
 id="jobDescription"
+
 class="form-control"
+
 rows="6"
-placeholder="Describe roles, responsibilities and requirements">
+
+placeholder="Write complete job description..."
+
+required>
 
 </textarea>
 
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-<!-- ================= ADDITIONAL DETAILS ================= -->
-
-
-<h3 style="margin:35px 0 20px;">
-
-Additional Details
-
-</h3>
-
-
-
-
-
-
-
-
-<div class="dashboard-grid">
-
-
-
-
-
 
 <div class="form-group">
 
-
 <label>
 
-Number of Vacancies *
+Job Responsibilities *
 
 </label>
-
-
-
-<input
-type="number"
-id="vacancy"
-class="form-control"
-placeholder="Example: 10">
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="form-group">
-
-
-<label>
-
-Application Deadline
-
-</label>
-
-
-
-<input
-type="date"
-id="deadline"
-class="form-control">
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- ================= JOB BENEFITS ================= -->
-
-
-<div class="form-group">
-
-
-<label>
-
-Job Benefits
-
-</label>
-
-
-
 
 <textarea
-id="benefits"
+
+id="jobResponsibilities"
+
 class="form-control"
-rows="4"
-placeholder="Example: Training, Insurance, Incentives, Growth Opportunities">
+
+rows="5"
+
+placeholder="Daily responsibilities..."
+
+required>
 
 </textarea>
 
+</div>
 
+<div class="form-group">
 
+<label>
+
+Required Skills *
+
+</label>
+
+<textarea
+
+id="requiredSkills"
+
+class="form-control"
+
+rows="5"
+
+placeholder="Required technical & soft skills..."
+
+required>
+
+</textarea>
 
 </div>
 
+<!-- Hidden Employer ID -->
 
+<input
 
+type="hidden"
 
+id="employerID">
 
+<br>
 
-
-
-
-<!-- ================= MESSAGE ================= -->
-
-
-<div id="jobMessage"></div>
-
-
-
-
-
-
-
-
-
-<!-- ================= SUBMIT BUTTON ================= -->
-
+<div style="display:flex;gap:15px;flex-wrap:wrap;">
 
 <button
+
 type="submit"
+
+id="saveJobBtn"
+
 class="btn btn-primary">
 
+<i class="fa-solid fa-floppy-disk"></i>
 
-
-<i class="fa-solid fa-paper-plane"></i>
-
-
-
-Submit Job For Approval
-
-
+Save Job
 
 </button>
 
-  </form>
+<button
 
+type="reset"
+
+class="btn btn-outline">
+
+<i class="fa-solid fa-rotate-right"></i>
+
+Reset
+
+</button>
+
+</div>
+
+</form>
 
 </section>
 
-
-
-
-
-
-
-
-
-<!-- ================= JOB POSTING INFO ================= -->
-
-
-<section class="section light-bg">
-
-
-
-<div class="container">
-
-
-
-<div class="card"
-style="padding:40px;">
-
-
-
-
-
-<div class="section-title">
-
-
-<span>
-
-IMPORTANT
-
-</span>
-
-
-
-<h2>
-
-Job Approval Process
-
-</h2>
-
-
-
-
-<p>
-
-All job postings are reviewed by the Udayan Care placement team before publishing.
-
-</p>
-
-
+</main>
 
 </div>
-
-
-
-
-
-
-
-
-
-<div class="why-grid">
-
-
-
-
-
-<div class="why-card">
-
-
-<i class="fa-solid fa-file-circle-check"></i>
-
-
-
-<h3>
-
-Submit Job
-
-</h3>
-
-
-
-<p>
-
-Employer creates a job opportunity with complete details.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="why-card">
-
-
-<i class="fa-solid fa-user-shield"></i>
-
-
-
-<h3>
-
-Verification
-
-</h3>
-
-
-
-<p>
-
-Placement team verifies job information and requirements.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="why-card">
-
-
-<i class="fa-solid fa-bullhorn"></i>
-
-
-
-<h3>
-
-Publish
-
-</h3>
-
-
-
-<p>
-
-Approved jobs become visible to eligible candidates.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
 
 <!-- ================= FOOTER ================= -->
 
-
 <footer class="footer">
-
 
 <div class="container">
 
-
 <div class="footer-grid">
-
-
 
 <div>
 
+<img class="siteLogo"
 
-<img src="images/logo.png"
-alt="Udayan Care Logo"
-style="height:60px;">
+style="height:60px;margin-bottom:20px;"
 
-
+alt="Logo">
 
 <p>
 
-Udayan Care Placement Portal connects employers with talented candidates and creates meaningful employment opportunities.
+Udayan Care Placement Portal connects employers with skilled Shalini Fellows and creates meaningful employment opportunities.
 
 </p>
-
-
-
 
 <div class="social-links">
 
+<a id="facebookLinkFooter" href="#"><i class="fab fa-facebook-f"></i></a>
 
-<a href="#">
+<a id="linkedinLinkFooter" href="#"><i class="fab fa-linkedin-in"></i></a>
 
-<i class="fab fa-facebook-f"></i>
+<a id="instagramLinkFooter" href="#"><i class="fab fa-instagram"></i></a>
 
-</a>
-
-
-<a href="#">
-
-<i class="fab fa-linkedin-in"></i>
-
-</a>
-
-
-<a href="#">
-
-<i class="fab fa-instagram"></i>
-
-</a>
-
-
-<a href="#">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
+<a id="whatsappLinkFooter" href="#"><i class="fab fa-whatsapp"></i></a>
 
 </div>
 
-
 </div>
-
-
-
-
-
-
-
-
 
 <div>
 
+<h3>Quick Links</h3>
 
-<h3>
+<a href="index.html">Home</a>
 
-Employer
+<a href="about.html">About</a>
 
-</h3>
+<a href="jobs.html">Jobs</a>
 
-
-<a href="employer-dashboard.html">
-
-Dashboard
-
-</a>
-
-
-<a href="company-profile.html">
-
-Company Profile
-
-</a>
-
-
-<a href="manage-jobs.html">
-
-Manage Jobs
-
-</a>
-
-
-<a href="applications.html">
-
-Applications
-
-</a>
-
-
+<a href="contact.html">Contact</a>
 
 </div>
-
-
-
-
-
-
-
-
 
 <div>
 
+<h3>Employer</h3>
 
-<h3>
+<a href="employer-dashboard.html">Dashboard</a>
 
-Candidates
+<a href="manage-jobs.html">Manage Jobs</a>
 
-</h3>
-
-
-
-<a href="jobs.html">
-
-Browse Jobs
-
-</a>
-
-
-
-<a href="candidate-register.html">
-
-Register
-
-</a>
-
-
-
-<a href="candidate-login.html">
-
-Login
-
-</a>
-
-
-
-<a href="my-applications.html">
-
-My Applications
-
-</a>
-
-
+<a href="applications.html">Applications</a>
 
 </div>
-
-
-
-
-
-
-
-
 
 <div>
 
+<h3>Support</h3>
 
-<h3>
+<a href="contact.html">Support</a>
 
-Support
+<a href="#">Privacy Policy</a>
 
-</h3>
-
-
-<a href="contact.html">
-
-Contact
-
-</a>
-
-
-
-<a href="#">
-
-Help Center
-
-</a>
-
-
-
-<a href="#">
-
-Privacy Policy
-
-</a>
-
-
-
-<a href="#">
-
-Terms
-
-</a>
-
+<a href="#">Terms & Conditions</a>
 
 </div>
 
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
 
 <div class="footer-bottom">
 
-
 <p>
 
-© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.
+© 2026
+
+<span id="siteName"></span>
+
+|
+
+An Initiative of Udayan Care
 
 </p>
 
-
 </div>
 
-
-
-
-
 </div>
-
 
 </footer>
 
-
-
-
-
-
-
-
-
-<!-- ================= BACK TO TOP ================= -->
-
-
 <div class="back-top">
-
 
 <i class="fa-solid fa-arrow-up"></i>
 
-
 </div>
 
+<script src="js/config.js"></script>
 
-
-
-
-
-
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
+<script src="js/api.js"></script>
 
 <script src="js/app.js"></script>
 
-
-
-
-
-
-
-
 <script>
 
+document.addEventListener("DOMContentLoaded", async ()=>{
 
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
-
-
-console.log(
-"Post Job Page Loaded"
-);
-
-
-
-
-
-
-const form =
-document.getElementById(
-"postJobForm"
-);
-
-
-
-
-
-
-if(form){
-
-
-
-form.addEventListener(
-"submit",
-function(e){
-
-
-
-e.preventDefault();
-
-
-
-
-
-
-const message =
-document.getElementById(
-"jobMessage"
-);
-
-
-
-
-
-message.innerHTML = `
-
-<div class="status status-pending">
-
-Job submitted successfully. Waiting for approval.
-
-</div>
-
-`;
-
-
-
-
-
-console.log(
-
-"Job Data Ready For Google Sheet Integration"
-
-);
-
-
-
-
-
-
-
-
-/*
-
-Future Google Apps Script:
-
-
-
-1. Get Employer ID
-
-2. Validate Job Details
-
-3. Add Record In Jobs Sheet
-
-4. Generate Job ID
-
-5. Set Status = Pending
-
-6. Notify Admin
-
-
-
-*/
-
-
-
-
+// JavaScript Next Part
 
 });
-
-
-
-}
-
-
-
-
-
-});
-
-
 
 </script>
 
-
-
-
-
-
-
-
-
 </body>
-
 
 </html>
