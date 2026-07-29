@@ -172,6 +172,11 @@ const API = {
 
     },
 
+  updateJob(data){
+
+    return this.call("updateJob", data);
+
+},
 
 
     closeJob(data) {
