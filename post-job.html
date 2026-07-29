@@ -1041,7 +1041,7 @@ document.getElementById("employerID").value,
 
 companyName:
 
-document.getElementById("companyName").value,
+document.getElementById("company_name").value,
 
 jobTitle:
 
@@ -1140,7 +1140,10 @@ form.reset();
 document.getElementById("employerID").value =
 employer.employerID;
 
-document.getElementById("companyName").value =
+document.getElementById("companyName").innerHTML =
+employer.companyName;
+
+document.getElementById("company_name").value =
 employer.companyName;
 
 }
