@@ -13,7 +13,7 @@ Manage Jobs | Udayan Care Placement Portal
 </title>
 
 <meta name="description"
-content="Manage Jobs - Udayan Care Placement Portal">
+content="Manage Employer Jobs">
 
 <link rel="stylesheet"
 href="css/style.css">
@@ -35,8 +35,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 <body>
 
-<!-- ================= DASHBOARD ================= -->
-
 <div class="dashboard">
 
 <!-- ================= SIDEBAR ================= -->
@@ -45,9 +43,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 <div class="sidebar-logo">
 
-<img
-class="siteLogo"
-alt="UCPP Logo">
+<img class="siteLogo" alt="Logo">
 
 </div>
 
@@ -69,8 +65,7 @@ Post New Job
 
 </a>
 
-<a
-class="active"
+<a class="active"
 href="manage-jobs.html">
 
 <i class="fa-solid fa-briefcase"></i>
@@ -111,8 +106,6 @@ Logout
 
 <main class="dashboard-content">
 
-<!-- ================= PAGE HEADER ================= -->
-
 <div class="dashboard-header">
 
 <div>
@@ -125,14 +118,13 @@ Manage Jobs
 
 <p>
 
-View, edit, close and manage all your posted jobs.
+View, edit, close and manage all your jobs.
 
 </p>
 
 </div>
 
-<a
-href="post-job.html"
+<a href="post-job.html"
 class="btn btn-primary">
 
 <i class="fa-solid fa-plus"></i>
@@ -145,8 +137,7 @@ Post New Job
 
 <!-- ================= FILTERS ================= -->
 
-<section
-class="card"
+<section class="card"
 style="padding:25px;margin-bottom:30px;">
 
 <div class="dashboard-grid">
@@ -154,8 +145,8 @@ style="padding:25px;margin-bottom:30px;">
 <div>
 
 <input
-type="text"
 id="searchJob"
+type="text"
 class="form-control"
 placeholder="Search Job Title">
 
@@ -201,46 +192,20 @@ All Categories
 
 </option>
 
-<option value="IT">
+<option value="IT">IT</option>
 
-IT
+<option value="Sales">Sales</option>
 
-</option>
+<option value="HR">HR</option>
 
-<option value="Sales">
+<option value="Finance">Finance</option>
 
-Sales
+<option value="Marketing">Marketing</option>
 
-</option>
-
-<option value="HR">
-
-HR
-
-</option>
-
-<option value="Finance">
-
-Finance
-
-</option>
-
-<option value="Marketing">
-
-Marketing
-
-</option>
-
-<option value="Operations">
-
-Operations
-
-</option>
+<option value="Operations">Operations</option>
 
 <option value="Customer Support">
-
 Customer Support
-
 </option>
 
 </select>
@@ -251,13 +216,13 @@ Customer Support
 
 </section>
 
-    <!-- ================= JOB LIST ================= -->
+<!-- ================= JOB LIST ================= -->
 
 <section class="section">
 
 <div id="jobContainer">
 
-<!-- Jobs JavaScript se load honge -->
+<!-- Dynamic Cards -->
 
 </div>
 
@@ -270,27 +235,18 @@ id="emptyJobs"
 class="card"
 style="display:none;padding:60px;text-align:center;">
 
-<i
-class="fa-solid fa-briefcase"
-style="
-font-size:60px;
-color:#CBD5E1;
-margin-bottom:20px;
-"></i>
+<i class="fa-solid fa-briefcase"
+style="font-size:60px;color:#CBD5E1;"></i>
 
-<h2>
+<h2 style="margin-top:20px;">
 
 No Jobs Found
 
 </h2>
 
-<p
-style="
-margin-top:10px;
-color:#64748B;
-">
+<p style="margin-top:15px;">
 
-No job matches your search or filter.
+No jobs match your search.
 
 </p>
 
@@ -307,11 +263,11 @@ Post New Job
 
 </div>
 
+    <!-- ================= FOOTER ================= -->
+
 </main>
 
 </div>
-
-<!-- ================= FOOTER ================= -->
 
 <footer class="footer">
 
@@ -366,29 +322,13 @@ Quick Links
 
 </h3>
 
-<a href="index.html">
+<a href="index.html">Home</a>
 
-Home
+<a href="about.html">About</a>
 
-</a>
+<a href="jobs.html">Jobs</a>
 
-<a href="about.html">
-
-About
-
-</a>
-
-<a href="jobs.html">
-
-Jobs
-
-</a>
-
-<a href="contact.html">
-
-Contact
-
-</a>
+<a href="contact.html">Contact</a>
 
 </div>
 
@@ -499,47 +439,65 @@ window.location.href="employer-login.html";
 
 }
 
-const employerID = employer.employerID;
+const employerID =
+employer.employerID;
 
 let jobs=[];
 
-    // ======================================
-// LOAD EMPLOYER JOBS
-// ======================================
 
-document.addEventListener("DOMContentLoaded", async () => {
 
-    await loadJobs();
+// =====================================
+// PAGE LOAD
+// =====================================
 
-    document.getElementById("searchJob")
-    .addEventListener("keyup", filterJobs);
+document.addEventListener("DOMContentLoaded",async()=>{
 
-    document.getElementById("statusFilter")
-    .addEventListener("change", filterJobs);
+await loadJobs();
 
-    document.getElementById("categoryFilter")
-    .addEventListener("change", filterJobs);
+document
+.getElementById("searchJob")
+.addEventListener("keyup",filterJobs);
+
+document
+.getElementById("statusFilter")
+.addEventListener("change",filterJobs);
+
+document
+.getElementById("categoryFilter")
+.addEventListener("change",filterJobs);
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click",()=>{
+
+localStorage.removeItem("employer");
+
+window.location.href="employer-login.html";
+
+});
 
 });
 
 
-// ======================================
+
+// =====================================
 // LOAD JOBS
-// ======================================
+// =====================================
 
 async function loadJobs(){
 
 try{
 
-const response = await API.getEmployerJobs({
+const response =
+await API.getEmployerJobs({
 
-employerID: employerID
+employerID:employerID
 
 });
 
 if(response.success){
 
-jobs = response.jobs || [];
+jobs=response.jobs||[];
 
 renderJobs(jobs);
 
@@ -553,20 +511,25 @@ showToast(response.message,"error");
 
 }
 
-catch(error){
+catch(err){
 
-console.log(error);
+console.log(err);
 
-showToast("Unable to load jobs.","error");
+showToast(
+
+"Unable to load jobs",
+
+"error"
+
+);
 
 }
 
 }
 
-
-// ======================================
+    // =====================================
 // RENDER JOBS
-// ======================================
+// =====================================
 
 function renderJobs(jobList){
 
@@ -597,16 +560,16 @@ container.innerHTML += createJobCard(job);
 }
 
 
-// ======================================
-// JOB CARD
-// ======================================
+
+// =====================================
+// CREATE JOB CARD
+// =====================================
 
 function createJobCard(job){
 
 return `
 
-<div class="job-card"
-data-id="${job.jobID}">
+<div class="card job-card" data-id="${job.jobID}">
 
 <div class="job-card-header">
 
@@ -622,17 +585,17 @@ ${job.jobTitle}
 
 <span>
 
-<i class="fa-solid fa-location-dot"></i>
+<i class="fa-solid fa-building"></i>
 
-${job.city}
+${job.companyName}
 
 </span>
 
 <span>
 
-<i class="fa-solid fa-briefcase"></i>
+<i class="fa-solid fa-location-dot"></i>
 
-${job.jobType}
+${job.city}, ${job.state}
 
 </span>
 
@@ -655,6 +618,8 @@ ${job.jobStatus}
 </span>
 
 </div>
+
+
 
 <div class="job-details">
 
@@ -688,11 +653,7 @@ ${job.jobStatus}
 
 <p>
 
-₹${job.salaryMin}
-
--
-
-₹${job.salaryMax}
+₹${job.salaryMin} - ₹${job.salaryMax}
 
 </p>
 
@@ -716,6 +677,36 @@ ${job.jobStatus}
 
 </div>
 
+
+
+<div style="margin-top:20px;">
+
+<strong>Skills</strong>
+
+<p>
+
+${job.skills}
+
+</p>
+
+</div>
+
+
+
+<div style="margin-top:15px;">
+
+<strong>Description</strong>
+
+<p>
+
+${job.jobDescription}
+
+</p>
+
+</div>
+
+
+
 <div class="job-footer">
 
 <div class="job-date">
@@ -729,7 +720,9 @@ ${job.postedDate}
 <div class="job-actions">
 
 <button
+
 class="btn btn-outline editBtn"
+
 data-id="${job.jobID}">
 
 <i class="fa-solid fa-pen"></i>
@@ -739,17 +732,29 @@ Edit
 </button>
 
 <button
+
 class="btn btn-warning closeBtn"
+
 data-id="${job.jobID}">
 
-<i class="fa-solid fa-lock"></i>
+${job.jobStatus=="Active"
 
-Close
+?
+
+'<i class="fa-solid fa-lock"></i> Close'
+
+:
+
+'<i class="fa-solid fa-lock-open"></i> Reopen'
+
+}
 
 </button>
 
 <button
+
 class="btn btn-danger deleteBtn"
+
 data-id="${job.jobID}">
 
 <i class="fa-solid fa-trash"></i>
@@ -768,6 +773,419 @@ Delete
 
 }
 
+    // =====================================
+// SEARCH + FILTER
+// =====================================
+
+function filterJobs(){
+
+const keyword =
+document.getElementById("searchJob").value.toLowerCase();
+
+const status =
+document.getElementById("statusFilter").value;
+
+const category =
+document.getElementById("categoryFilter").value;
+
+const filtered = jobs.filter(job=>{
+
+const matchTitle =
+job.jobTitle.toLowerCase().includes(keyword);
+
+const matchStatus =
+status==="All" || job.jobStatus===status;
+
+const matchCategory =
+category==="All" || job.jobCategory===category;
+
+return matchTitle && matchStatus && matchCategory;
+
+});
+
+renderJobs(filtered);
+
+}
+
+
+
+// =====================================
+// INLINE EDIT
+// =====================================
+
+document.addEventListener("click",async function(e){
+
+// ================= EDIT =================
+
+if(e.target.closest(".editBtn")){
+
+const jobID =
+e.target.closest(".editBtn").dataset.id;
+
+const job =
+jobs.find(j=>j.jobID===jobID);
+
+const card =
+document.querySelector(`[data-id="${jobID}"]`);
+
+card.innerHTML=`
+
+<div class="job-card-header">
+
+<h3>Edit Job</h3>
+
+</div>
+
+<div class="dashboard-grid">
+
+<div>
+
+<label>Job Title</label>
+
+<input
+id="editJobTitle"
+class="form-control"
+value="${job.jobTitle}">
+
+</div>
+
+<div>
+
+<label>Category</label>
+
+<input
+id="editCategory"
+class="form-control"
+value="${job.jobCategory}">
+
+</div>
+
+<div>
+
+<label>Experience</label>
+
+<input
+id="editExperience"
+class="form-control"
+value="${job.experience}">
+
+</div>
+
+<div>
+
+<label>Qualification</label>
+
+<input
+id="editQualification"
+class="form-control"
+value="${job.qualification}">
+
+</div>
+
+<div>
+
+<label>Salary Min</label>
+
+<input
+id="editSalaryMin"
+type="number"
+class="form-control"
+value="${job.salaryMin}">
+
+</div>
+
+<div>
+
+<label>Salary Max</label>
+
+<input
+id="editSalaryMax"
+type="number"
+class="form-control"
+value="${job.salaryMax}">
+
+</div>
+
+<div>
+
+<label>Vacancies</label>
+
+<input
+id="editVacancies"
+type="number"
+class="form-control"
+value="${job.vacancies}">
+
+</div>
+
+<div>
+
+<label>Status</label>
+
+<select
+id="editStatus"
+class="form-control">
+
+<option
+${job.jobStatus=="Active"?"selected":""}>
+
+Active
+
+</option>
+
+<option
+${job.jobStatus=="Closed"?"selected":""}>
+
+Closed
+
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div
+style="margin-top:25px;display:flex;gap:15px;">
+
+<button
+class="btn btn-primary saveBtn"
+data-id="${job.jobID}">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Save
+
+</button>
+
+<button
+class="btn btn-outline cancelBtn">
+
+Cancel
+
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+
+// ================= CANCEL =================
+
+if(e.target.closest(".cancelBtn")){
+
+renderJobs(jobs);
+
+return;
+
+}
+    // ================= SAVE JOB =================
+
+if(e.target.closest(".saveBtn")){
+
+const jobID =
+e.target.closest(".saveBtn").dataset.id;
+
+const updatedJob={
+
+jobID:jobID,
+
+jobTitle:
+document.getElementById("editJobTitle").value.trim(),
+
+jobCategory:
+document.getElementById("editCategory").value.trim(),
+
+experience:
+document.getElementById("editExperience").value.trim(),
+
+qualification:
+document.getElementById("editQualification").value.trim(),
+
+salaryMin:
+document.getElementById("editSalaryMin").value.trim(),
+
+salaryMax:
+document.getElementById("editSalaryMax").value.trim(),
+
+vacancies:
+document.getElementById("editVacancies").value.trim(),
+
+jobStatus:
+document.getElementById("editStatus").value
+
+};
+
+try{
+
+const response =
+await API.updateJob(updatedJob);
+
+if(response.success){
+
+const index=
+jobs.findIndex(j=>j.jobID===jobID);
+
+if(index!=-1){
+
+jobs[index]={
+
+...jobs[index],
+
+...updatedJob
+
+};
+
+}
+
+renderJobs(jobs);
+
+showToast(
+"Job Updated Successfully",
+"success"
+);
+
+}
+
+else{
+
+showToast(
+response.message,
+"error"
+);
+
+}
+
+}
+
+catch(err){
+
+console.log(err);
+
+showToast(
+"Unable to update job",
+"error"
+);
+
+}
+
+return;
+
+}
+
+
+
+// ================= CLOSE / REOPEN =================
+
+if(e.target.closest(".closeBtn")){
+
+const jobID=
+e.target.closest(".closeBtn").dataset.id;
+
+const job=
+jobs.find(j=>j.jobID===jobID);
+
+const newStatus=
+job.jobStatus=="Active"
+?
+"Closed"
+:
+"Active";
+
+const response=
+await API.closeJob({
+
+jobID:jobID,
+
+jobStatus:newStatus
+
+});
+
+if(response.success){
+
+job.jobStatus=newStatus;
+
+renderJobs(jobs);
+
+showToast(
+"Job Status Updated",
+"success"
+);
+
+}
+
+else{
+
+showToast(
+response.message,
+"error"
+);
+
+}
+
+return;
+
+}
+
+
+
+// ================= DELETE =================
+
+if(e.target.closest(".deleteBtn")){
+
+const jobID=
+e.target.closest(".deleteBtn").dataset.id;
+
+if(!confirm("Delete this job permanently?")){
+
+return;
+
+}
+
+const response=
+await API.deleteJob({
+
+jobID:jobID
+
+});
+
+if(response.success){
+
+jobs=
+jobs.filter(j=>j.jobID!==jobID);
+
+renderJobs(jobs);
+
+showToast(
+"Job Deleted",
+"success"
+);
+
+}
+
+else{
+
+showToast(
+response.message,
+"error"
+);
+
+}
+
+return;
+
+}
+
+});     // <-- document.addEventListener ends here
+
 </script>
 
-    
+</body>
+
+</html>
