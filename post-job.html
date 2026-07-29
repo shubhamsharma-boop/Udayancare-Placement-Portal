@@ -948,7 +948,192 @@ An Initiative of Udayan Care
 
 document.addEventListener("DOMContentLoaded", async ()=>{
 
-// JavaScript Next Part
+// ===============================
+// LOGIN CHECK
+// ===============================
+
+const employer = JSON.parse(localStorage.getItem("employer"));
+
+if(!employer){
+
+location.href="employer-login.html";
+
+return;
+
+}
+
+// Employer ID
+
+document.getElementById("employerID").value =
+employer.employerID;
+
+// Company Name
+
+document.getElementById("companyName").value =
+employer.companyName;
+
+// ===============================
+// FORM SUBMIT
+// ===============================
+
+const form =
+document.getElementById("postJobForm");
+
+form.addEventListener("submit",async function(e){
+
+e.preventDefault();
+
+const btn =
+document.getElementById("saveJobBtn");
+
+btn.disabled=true;
+
+btn.innerHTML=`
+<i class="fa-solid fa-spinner fa-spin"></i>
+Saving...
+`;
+
+const data={
+
+employerID:
+
+document.getElementById("employerID").value,
+
+companyName:
+
+document.getElementById("companyName").value,
+
+jobTitle:
+
+document.getElementById("jobTitle").value,
+
+jobCategory:
+
+document.getElementById("jobCategory").value,
+
+jobType:
+
+document.getElementById("jobType").value,
+
+workMode:
+
+document.getElementById("workMode").value,
+
+state:
+
+document.getElementById("state").value,
+
+district:
+
+document.getElementById("district").value,
+
+city:
+
+document.getElementById("city").value,
+
+address:
+
+document.getElementById("address").value,
+
+experience:
+
+document.getElementById("experience").value,
+
+qualification:
+
+document.getElementById("qualification").value,
+
+skills:
+
+document.getElementById("skills").value,
+
+salaryMin:
+
+document.getElementById("salaryMin").value,
+
+salaryMax:
+
+document.getElementById("salaryMax").value,
+
+jobDescription:
+
+document.getElementById("jobDescription").value,
+
+jobResponsibilities:
+
+document.getElementById("jobResponsibilities").value,
+
+requiredSkills:
+
+document.getElementById("requiredSkills").value,
+
+vacancies:
+
+document.getElementById("vacancies").value,
+
+applicationLastDate:
+
+document.getElementById("applicationLastDate").value,
+
+jobStatus:
+
+document.getElementById("jobStatus").value
+
+};
+
+  try{
+
+const response =
+await API.postJob(data);
+
+if(response.success){
+
+showToast(
+"Job Posted Successfully",
+"success"
+);
+
+form.reset();
+
+// Employer Details Again
+
+document.getElementById("employerID").value =
+employer.employerID;
+
+document.getElementById("companyName").value =
+employer.companyName;
+
+}
+else{
+
+showToast(
+response.message,
+"error"
+);
+
+}
+
+}
+
+catch(error){
+
+console.log(error);
+
+showToast(
+"Unable to save job.",
+"error"
+);
+
+}
+
+btn.disabled=false;
+
+btn.innerHTML=`
+<i class="fa-solid fa-floppy-disk"></i>
+Save Job
+`;
+
+});
 
 });
 
