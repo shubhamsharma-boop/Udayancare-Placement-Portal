@@ -689,6 +689,10 @@ async function loadJobs() {
 
             jobs = response.jobs || [];
 
+            console.log("Jobs Received :", jobs);
+console.log("Jobs Length :", jobs.length);
+console.log(jobs);
+
             renderJobs(jobs);
 
         } else {
@@ -718,6 +722,9 @@ async function loadJobs() {
 // =============================
 
 function renderJobs(jobList) {
+    console.log("renderJobs Called");
+console.log(jobList);
+console.log(jobList.length);
 
     const container = document.getElementById("jobsContainer");
 
@@ -752,6 +759,7 @@ function renderJobs(jobList) {
 // =============================
 
 function createJobCard(job) {
+    console.log(job);
 
     return `
 
