@@ -758,12 +758,15 @@ console.log(jobList.length);
 // JOB CARD
 // =============================
 
-function createJobCard(job) {
-    console.log(job);
+function createJobCard(job){
 
-    return `
+return `
 
 <div class="job-card">
+
+<div class="job-top">
+
+<div>
 
 <span class="badge">
 
@@ -771,53 +774,27 @@ ${job.jobType}
 
 </span>
 
-<h3>${job.jobTitle}</h3>
+<h3>
 
-<p>
+${job.jobTitle}
+
+</h3>
+
+<p class="company">
 
 <i class="fa-solid fa-building"></i>
 
-${job.companyName}
+${job.companyName || "Confidential Employer"}
 
 </p>
 
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-${job.city}, ${job.state}
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-indian-rupee-sign"></i>
-
-₹${job.salaryMin} - ₹${job.salaryMax}
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-user-graduate"></i>
-
-${job.qualification}
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-briefcase"></i>
-
-${job.experience}
-
-</p>
+</div>
 
 <a
 
-class="btn btn-primary"
+href="job-details.html?id=${job.jobID}"
 
-href="job-details.html?id=${job.jobID}">
+class="btn btn-primary btn-sm">
 
 View Details
 
@@ -825,10 +802,48 @@ View Details
 
 </div>
 
+
+<div class="job-middle">
+
+<div>
+
+<i class="fa-solid fa-location-dot"></i>
+
+${job.city}, ${job.state}
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+₹${job.salaryMin} - ₹${job.salaryMax}
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-user-graduate"></i>
+
+${job.qualification}
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-briefcase"></i>
+
+${job.experience}
+
+</div>
+
+</div>
+
+</div>
+
 `;
 
 }
-
 // =============================
 // FILTER
 // =============================
