@@ -145,7 +145,8 @@ src="images/company-placeholder.png">
 
 <h4 id="headerCompanyName">
 
-Loading...
+document.getElementById("companyName").textContent =
+employer.companyName;
 
 </h4>
 
@@ -1009,9 +1010,10 @@ employer.employerID;
 
 // Company Name
 
-document.getElementById("companyName").value =
+document.getElementById("companyName").textContent =
 employer.companyName;
 
+  
 // ===============================
 // FORM SUBMIT
 // ===============================
@@ -1128,10 +1130,7 @@ await API.postJob(data);
 
 if(response.success){
 
-showToast(
-"Job Posted Successfully",
-"success"
-);
+alert("Job Posted Successfully");
 
 form.reset();
 
@@ -1140,7 +1139,10 @@ form.reset();
 document.getElementById("employerID").value =
 employer.employerID;
 
-document.getElementById("companyName").innerHTML =
+document.getElementById("companyName").textContent =
+employer.companyName;
+
+document.getElementById("headerCompanyName").textContent =
 employer.companyName;
 
 document.getElementById("company_name").value =
@@ -1149,10 +1151,7 @@ employer.companyName;
 }
 else{
 
-showToast(
-response.message,
-"error"
-);
+alert(response.message);
 
 }
 
@@ -1162,10 +1161,7 @@ catch(error){
 
 console.log(error);
 
-showToast(
-"Unable to save job.",
-"error"
-);
+alert("Unable to save job.");
 
 }
 
