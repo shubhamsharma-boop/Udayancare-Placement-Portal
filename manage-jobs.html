@@ -1186,6 +1186,94 @@ return;
 
 </script>
 
+    <script>
+
+document.addEventListener("DOMContentLoaded", loadJobDetails);
+
+async function loadJobDetails(){
+
+const params = new URLSearchParams(window.location.search);
+
+const jobID = params.get("id");
+
+if(!jobID){
+
+alert("Invalid Job");
+
+return;
+
+}
+
+const response = await API.getJobDetails({
+
+jobID: jobID
+
+});
+
+console.log(response);
+
+if(!response.success){
+
+alert(response.message);
+
+return;
+
+}
+
+const job = response.job;
+
+// ===================
+
+document.getElementById("jobTitle").textContent = job.jobTitle;
+
+document.getElementById("companyName").textContent =
+`${job.companyName} • ${job.city}, ${job.state}`;
+
+// ===================
+
+document.querySelector(".job-meta").innerHTML = `
+
+<span>
+<i class="fa-solid fa-location-dot"></i>
+${job.city}
+</span>
+
+<span>
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹${job.salaryMin} - ₹${job.salaryMax}
+</span>
+
+<span>
+<i class="fa-solid fa-briefcase"></i>
+${job.jobType}
+</span>
+
+<span>
+<i class="fa-solid fa-user"></i>
+${job.experience}
+</span>
+
+<span>
+<i class="fa-solid fa-graduation-cap"></i>
+${job.qualification}
+</span>
+
+<span>
+<i class="fa-solid fa-calendar-days"></i>
+${job.postedDate}
+</span>
+
+`;
+
+// Job Overview
+
+document.querySelectorAll(".job-details p")[0].textContent =
+job.jobDescription;
+
+}
+
+</script>
+
 </body>
 
 </html>
