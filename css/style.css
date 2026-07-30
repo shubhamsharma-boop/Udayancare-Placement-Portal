@@ -4594,3 +4594,115 @@ color:#64748B;
 margin-top:10px;
 
 }
+
+/*=========================================
+JOB DETAILS LAYOUT
+=========================================*/
+
+.jobLayout{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:30px;
+
+align-items:start;
+
+}
+
+.jobLeft{
+
+display:flex;
+
+flex-direction:column;
+
+gap:25px;
+
+}
+
+.jobRight{
+
+position:sticky;
+
+top:100px;
+
+}
+
+.companyCard{
+
+padding:25px;
+
+}
+
+.jobInfoTable{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+.jobInfoTable tr{
+
+border-bottom:1px solid #E5E7EB;
+
+}
+
+.jobInfoTable td{
+
+padding:14px 0;
+
+}
+
+.jobInfoTable td:first-child{
+
+font-weight:600;
+
+width:40%;
+
+color:#475569;
+
+}
+
+.skillsContainer{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:12px;
+
+}
+
+.skillsContainer .badge{
+
+background:#2563EB;
+
+color:#fff;
+
+padding:8px 15px;
+
+border-radius:30px;
+
+font-size:14px;
+
+}
+
+@media(max-width:992px){
+
+.jobLayout{
+
+grid-template-columns:1fr;
+
+}
+
+.jobRight{
+
+position:relative;
+
+top:0;
+
+}
+
+}
