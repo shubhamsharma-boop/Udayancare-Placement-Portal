@@ -659,7 +659,7 @@ let jobs = [];
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    loadJobs();
+    loadAvailableJobs();
 
     document.getElementById("searchBtn").addEventListener("click", filterJobs);
 
@@ -677,7 +677,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // LOAD JOBS
 // =============================
 
-async function loadJobs() {
+async function loadAvailableJobs() {
 
     try {
 
