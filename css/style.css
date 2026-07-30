@@ -4502,3 +4502,95 @@ text-align:center;
 }
 
 }
+
+/*==================================
+JOB HERO
+==================================*/
+
+.jobHero{
+
+background:#F8FAFC;
+
+padding:40px 0;
+
+border-bottom:1px solid #E5E7EB;
+
+}
+
+.backLink{
+
+margin-bottom:20px;
+
+}
+
+.backLink a{
+
+text-decoration:none;
+
+font-weight:600;
+
+color:#2563EB;
+
+}
+
+.jobHero h1{
+
+font-size:40px;
+
+font-weight:700;
+
+margin-bottom:10px;
+
+}
+
+.jobHero h3{
+
+font-size:22px;
+
+font-weight:500;
+
+color:#475569;
+
+margin-bottom:25px;
+
+}
+
+.jobSummary{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:25px;
+
+margin-bottom:20px;
+
+font-weight:500;
+
+}
+
+.jobSummary span{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+}
+
+.postedDate{
+
+margin-bottom:30px;
+
+font-size:15px;
+
+color:#64748B;
+
+}
+
+.heroButtons{
+
+margin-top:10px;
+
+}
