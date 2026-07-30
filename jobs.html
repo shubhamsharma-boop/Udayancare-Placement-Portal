@@ -436,6 +436,8 @@ style="display:none;">
 
 </div>
 
+    <div id="pagination" class="pagination"></div>
+
 
 
 <!-- Empty State -->
@@ -651,7 +653,17 @@ JS FILES
 
 <script>
 
+// =============================================
+// GLOBAL VARIABLES
+// =============================================
+
 let jobs = [];
+
+let filteredJobs = [];
+
+let currentPage = 1;
+
+const JOBS_PER_PAGE = 20;
 
 // =============================
 // PAGE LOAD
@@ -689,12 +701,15 @@ async function loadAvailableJobs() {
 
             jobs = response.jobs || [];
 
-            console.log("Jobs Received :", jobs);
+filteredJobs = [...jobs];
+
+currentPage = 1;
+
+console.log("Jobs Received :", jobs);
 console.log("Jobs Length :", jobs.length);
 console.log(jobs);
 
-            renderJobs(jobs);
-
+renderJobs(filteredJobs);
         } else {
 
             showEmpty();
@@ -722,13 +737,14 @@ console.log(jobs);
 // =============================
 
 function renderJobs(jobList) {
-    console.log("renderJobs Called");
-console.log(jobList);
-console.log(jobList.length);
 
-    const container = document.getElementById("jobsContainer");
+    filteredJobs = jobList;
 
-    const noJobs = document.getElementById("noJobs");
+    const container =
+        document.getElementById("jobsContainer");
+
+    const noJobs =
+        document.getElementById("noJobs");
 
     container.innerHTML = "";
 
@@ -738,6 +754,8 @@ console.log(jobList.length);
 
         noJobs.style.display = "block";
 
+        document.getElementById("pagination").innerHTML = "";
+
         return;
 
     }
@@ -746,14 +764,128 @@ console.log(jobList.length);
 
     noJobs.style.display = "none";
 
-    jobList.forEach(job => {
+    const start =
+        (currentPage - 1) * JOBS_PER_PAGE;
+
+    const end =
+        start + JOBS_PER_PAGE;
+
+    const jobsToShow =
+        jobList.slice(start, end);
+
+    jobsToShow.forEach(job => {
 
         container.innerHTML += createJobCard(job);
 
     });
 
+    renderPagination();
+
 }
 
+    // =============================
+// RENDER PAGINATION
+// =============================
+
+function renderPagination() {
+
+    const pagination =
+        document.getElementById("pagination");
+
+    pagination.innerHTML = "";
+
+    const totalPages =
+        Math.ceil(filteredJobs.length / JOBS_PER_PAGE);
+
+    if (totalPages <= 1) return;
+
+    // -------------------------
+    // PREVIOUS BUTTON
+    // -------------------------
+
+    pagination.innerHTML += `
+
+<button
+class="page-btn ${currentPage===1 ? 'disabled' : ''}"
+onclick="changePage(${currentPage-1})"
+${currentPage===1 ? 'disabled' : ''}>
+
+<i class="fa-solid fa-angle-left"></i>
+
+Previous
+
+</button>
+
+`;
+
+    // -------------------------
+    // PAGE NUMBERS
+    // -------------------------
+
+    for(let i=1;i<=totalPages;i++){
+
+        pagination.innerHTML += `
+
+<button
+class="page-btn ${currentPage===i ? 'active' : ''}"
+onclick="changePage(${i})">
+
+${i}
+
+</button>
+
+`;
+
+    }
+
+    // -------------------------
+    // NEXT BUTTON
+    // -------------------------
+
+    pagination.innerHTML += `
+
+<button
+class="page-btn ${currentPage===totalPages ? 'disabled' : ''}"
+onclick="changePage(${currentPage+1})"
+${currentPage===totalPages ? 'disabled' : ''}>
+
+Next
+
+<i class="fa-solid fa-angle-right"></i>
+
+</button>
+
+`;
+
+}
+
+    // =============================
+// CHANGE PAGE
+// =============================
+
+function changePage(page){
+
+    const totalPages =
+        Math.ceil(filteredJobs.length / JOBS_PER_PAGE);
+
+    if(page<1) return;
+
+    if(page>totalPages) return;
+
+    currentPage = page;
+
+    renderJobs(filteredJobs);
+
+    window.scrollTo({
+
+        top:650,
+
+        behavior:"smooth"
+
+    });
+
+}
+    
 // =============================
 // JOB CARD
 // =============================
@@ -850,28 +982,46 @@ ${job.experience}
 
 function filterJobs() {
 
-    const title = document.getElementById("searchTitle").value.toLowerCase();
+    const title =
+        document.getElementById("searchTitle")
+        .value
+        .toLowerCase();
 
-    const location = document.getElementById("searchLocation").value.toLowerCase();
+    const location =
+        document.getElementById("searchLocation")
+        .value
+        .toLowerCase();
 
-    const type = document.getElementById("searchType").value;
+    const type =
+        document.getElementById("searchType")
+        .value;
 
-    const filtered = jobs.filter(job => {
+    filteredJobs = jobs.filter(job => {
 
-        const t = job.jobTitle.toLowerCase().includes(title);
+        const t =
+            job.jobTitle
+            .toLowerCase()
+            .includes(title);
 
-        const l = (job.city + " " + job.state).toLowerCase().includes(location);
+        const l =
+            (job.city + " " + job.state)
+            .toLowerCase()
+            .includes(location);
 
-        const ty = type === "" || job.jobType === type;
+        const ty =
+            type === "" ||
+            job.jobType === type;
 
         return t && l && ty;
 
     });
 
-    renderJobs(filtered);
+    // Reset to first page after search
+    currentPage = 1;
+
+    renderJobs(filteredJobs);
 
 }
-
 // =============================
 // RESET
 // =============================
@@ -884,10 +1034,14 @@ function resetFilters() {
 
     document.getElementById("searchType").value = "";
 
-    renderJobs(jobs);
+    filteredJobs = [...jobs];
+
+    currentPage = 1;
+
+    renderJobs(filteredJobs);
 
 }
-
+    
 // =============================
 // EMPTY
 // =============================
