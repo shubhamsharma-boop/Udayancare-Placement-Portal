@@ -266,13 +266,14 @@ Loading...
 <div class="heroButtons">
 
 <a
-href="#bottomApply"
+id="applyButton"
+href="#"
 class="btn btn-primary">
 
 Apply Now
 
 </a>
-
+  
 </div>
 
 </div>
@@ -541,6 +542,18 @@ Loading...
 
 </div>
 
+</section>
+
+  <!-- =========================
+JS FILES
+========================= -->
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+
+<script>
+
   // =====================================
 // JOB DATA FILL
 // =====================================
@@ -764,7 +777,186 @@ document.getElementById("infoStatus").textContent =
 job.jobStatus;
 
 }
+  // =====================================
+// CURRENT JOB
+// =====================================
+
+let currentJob = null;
+
+
+// =====================================
+// LOAD JOB DETAILS
+// =====================================
+
+async function loadJobDetails(){
+
+try{
+
+// -----------------------------
+// GET JOB ID FROM URL
+// -----------------------------
+
+const params =
+new URLSearchParams(window.location.search);
+
+const jobID =
+params.get("id");
+
+if(!jobID){
+
+showError("Invalid Job Link");
+
+return;
+
+}
+
+// -----------------------------
+// CALL API
+// -----------------------------
+
+const response =
+await API.getJobDetails({
+
+jobID:jobID
+
+});
+
+console.log(response);
+
+// -----------------------------
+// JOB NOT FOUND
+// -----------------------------
+
+if(!response.success){
+
+showError(response.message);
+
+return;
+
+}
+
+// -----------------------------
+// SAVE JOB
+// -----------------------------
+
+currentJob =
+response.job;
+
+// -----------------------------
+// FILL PAGE
+// -----------------------------
+
+fillJob(currentJob);
+
+}
+
+catch(err){
+
+console.log(err);
+
+showError("Unable to load Job Details.");
+
+}
+
+}
+
+  // =====================================
+// PAGE LOAD
+// =====================================
+
+document.addEventListener(
+
+"DOMContentLoaded",
+
+function(){
+
+loadJobDetails();
+
+}
+
+);
+
+  // =====================================
+// APPLY BUTTON
+// =====================================
+
+document.addEventListener("click", function (e) {
+
+    if (e.target.id !== "applyButton") return;
+
+    const candidate =
+        JSON.parse(localStorage.getItem("candidate"));
+
+    if (!candidate) {
+
+        e.preventDefault();
+
+        alert("Please login as Candidate first.");
+
+        window.location.href =
+            "candidate-login.html";
+
+        return;
+
+    }
+
+    window.location.href =
+        "candidate-dashboard.html?apply=" +
+        currentJob.jobID;
+
+});
+
+
+// =====================================
+// ERROR SCREEN
+// =====================================
+
+function showError(message) {
+
+    document.body.innerHTML = `
+
+<section class="section">
+
+<div class="container">
+
+<div class="card"
+style="padding:60px;text-align:center;">
+
+<i
+class="fa-solid fa-circle-exclamation"
+style="font-size:70px;color:#EF4444;"></i>
+
+<h2
+style="margin-top:20px;">
+
+${message}
+
+</h2>
+
+<div
+style="margin-top:30px;">
+
+<a
+href="jobs.html"
+class="btn btn-primary">
+
+Back to Jobs
+
+</a>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
-  
+`;
+
+}
+
+  </script>
+
+</body>
+</html>
