@@ -1,13 +1,13 @@
 // ======================================
 // UCPP API SERVICE
-// Version: 1.0.0
+// Version: 1.1.0
 // ======================================
 
 const API = {
 
-    // ===============================
+    // ======================================
     // COMMON API CALL
-    // ===============================
+    // ======================================
 
     async call(action, data = {}) {
 
@@ -33,9 +33,7 @@ const API = {
 
             });
 
-            const result = await response.json();
-
-            return result;
+            return await response.json();
 
         }
 
@@ -54,7 +52,6 @@ const API = {
     },
 
 
-    
 
     // ======================================
     // CANDIDATE
@@ -66,15 +63,11 @@ const API = {
 
     },
 
-
-
     loginCandidate(data) {
 
         return this.call("loginCandidate", data);
 
     },
-
-
 
     updateCandidateProfile(data) {
 
@@ -84,22 +77,15 @@ const API = {
 
     getCandidateProfile(data) {
 
-    return this.call("getCandidateProfile", data);
+        return this.call("getCandidateProfile", data);
 
-},
-
+    },
 
     getCandidateDashboard(data) {
 
         return this.call("getCandidateDashboard", data);
 
     },
-
-    getCandidateProfile(data) {
-
-    return this.call("getCandidateProfile", data);
-
-},
 
 
 
@@ -113,15 +99,11 @@ const API = {
 
     },
 
-
-
     loginEmployer(data) {
 
         return this.call("loginEmployer", data);
 
     },
-
-
 
     updateEmployerProfile(data) {
 
@@ -129,48 +111,11 @@ const API = {
 
     },
 
-
-
     getEmployerDashboard(data) {
 
         return this.call("getEmployerDashboard", data);
 
     },
-
-    // ======================================
-// EMPLOYER JOB MANAGEMENT
-// ======================================
-
-
-getEmployerJobs(data) {
-
-    return this.call("getEmployerJobs", data);
-
-},
-
-
-
-duplicateJob(data) {
-
-    return this.call("duplicateJob", data);
-
-},
-
-
-
-updateJobStatus(data) {
-
-    return this.call("updateJobStatus", data);
-
-},
-
-
-
-deleteJob(data) {
-
-    return this.call("deleteJob", data);
-
-},
 
 
 
@@ -184,15 +129,11 @@ deleteJob(data) {
 
     },
 
-
-
     getEmployerJobs(data) {
 
         return this.call("getEmployerJobs", data);
 
     },
-
-
 
     getAvailableJobs() {
 
@@ -200,28 +141,35 @@ deleteJob(data) {
 
     },
 
-
-
     getJobDetails(data) {
 
         return this.call("getJobDetails", data);
 
     },
 
-  updateJob(data){
+    updateJob(data) {
 
-    return this.call("updateJob", data);
+        return this.call("updateJob", data);
 
-},
+    },
 
+    duplicateJob(data) {
+
+        return this.call("duplicateJob", data);
+
+    },
+
+    updateJobStatus(data) {
+
+        return this.call("updateJobStatus", data);
+
+    },
 
     closeJob(data) {
 
         return this.call("closeJob", data);
 
     },
-
-
 
     deleteJob(data) {
 
@@ -241,15 +189,11 @@ deleteJob(data) {
 
     },
 
-
-
     getCandidateApplications(data) {
 
         return this.call("getCandidateApplications", data);
 
     },
-
-
 
     getEmployerApplications(data) {
 
@@ -257,19 +201,23 @@ deleteJob(data) {
 
     },
 
-
-
     updateApplicationStatus(data) {
 
-    return this.call("updateApplicationStatus", data);
+        return this.call("updateApplicationStatus", data);
 
-},
+    },
 
-submitEnquiry(data) {
 
-    return this.call("submitEnquiry", data);
 
-}
+    // ======================================
+    // CONTACT
+    // ======================================
+
+    submitEnquiry(data) {
+
+        return this.call("submitEnquiry", data);
+
+    }
 
 };
 
