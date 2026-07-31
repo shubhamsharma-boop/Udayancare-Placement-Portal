@@ -9,122 +9,196 @@
 content="width=device-width, initial-scale=1.0">
 
 <title>
-Manage Jobs | Udayan Care Placement Portal
+
+Manage Jobs | Employer Dashboard | Udayan Care Placement Portal
+
 </title>
 
-<meta name="description"
-content="Manage Employer Jobs">
+<meta
+name="description"
+content="Manage all posted jobs through Employer Dashboard.">
 
-<link rel="stylesheet"
+<link
+rel="stylesheet"
 href="css/style.css">
 
-<link rel="preconnect"
+<link
+rel="preconnect"
 href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
+<link
+rel="preconnect"
 href="https://fonts.gstatic.com"
 crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
 
-<link rel="stylesheet"
+<link
+rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="dashboard">
+<!-- =========================
+TOP BAR
+========================= -->
 
-<!-- ================= SIDEBAR ================= -->
+<div class="topbar">
 
-<aside class="sidebar">
+<div class="container topbar-content">
 
-<div class="sidebar-logo">
+<div class="top-left">
 
-<img class="siteLogo" alt="Logo">
+<span>
+
+<i class="fa-solid fa-phone"></i>
+
++91-11-27821333
+
+</span>
+
+<span>
+
+<i class="fa-solid fa-envelope"></i>
+
+placement@udayancare.org
+
+</span>
 
 </div>
 
-<nav class="sidebar-menu">
+<div class="top-right">
 
-<a href="employer-dashboard.html">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
 
-<i class="fa-solid fa-chart-line"></i>
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
 
-Dashboard
+<a href="#"><i class="fab fa-instagram"></i></a>
 
-</a>
+<a href="#"><i class="fab fa-whatsapp"></i></a>
 
-<a href="post-job.html">
+</div>
 
-<i class="fa-solid fa-circle-plus"></i>
+</div>
 
-Post New Job
+</div>
 
-</a>
+<!-- =========================
+HEADER
+========================= -->
 
-<a class="active"
-href="manage-jobs.html">
+<header class="header">
 
-<i class="fa-solid fa-briefcase"></i>
+<div class="container navbar">
 
-Manage Jobs
+<a
+href="index.html"
+class="logo">
 
-</a>
-
-<a href="applications.html">
-
-<i class="fa-solid fa-users"></i>
-
-Applications
-
-</a>
-
-<a href="reports.html">
-
-<i class="fa-solid fa-chart-column"></i>
-
-Reports
+<img
+class="siteLogo"
+alt="Logo">
 
 </a>
 
-<a id="logoutBtn">
+<nav class="nav-menu">
 
-<i class="fa-solid fa-right-from-bracket"></i>
+<a href="index.html">
 
-Logout
+Home
+
+</a>
+
+<a href="about.html">
+
+About
+
+</a>
+
+<a href="jobs.html">
+
+Jobs
+
+</a>
+
+<a href="contact.html">
+
+Contact
+
+</a>
+
+<a href="candidate-login.html">
+
+Candidate Login
+
+</a>
+
+<a
+href="employer-dashboard.html"
+class="active">
+
+Employer Dashboard
 
 </a>
 
 </nav>
 
-</aside>
+<button class="menu-toggle">
 
-<!-- ================= MAIN ================= -->
+<i class="fa-solid fa-bars"></i>
 
-<main class="dashboard-content">
+</button>
 
-<div class="dashboard-header">
+</div>
 
-<div>
+</header>
+
+<!-- =========================
+PAGE HERO
+========================= -->
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<div class="hero-left">
+
+<span class="hero-tag">
+
+<i class="fa-solid fa-briefcase"></i>
+
+Employer Dashboard
+
+</span>
 
 <h1>
 
-Manage Jobs
+Manage
+
+<span>
+
+Posted Jobs
+
+</span>
 
 </h1>
 
 <p>
 
-View, edit, close and manage all your jobs.
+View, edit, duplicate, close or delete your job postings from one place.
 
 </p>
 
 </div>
 
-<a href="post-job.html"
+<div class="hero-buttons">
+
+<a
+href="post-job.html"
 class="btn btn-primary">
 
 <i class="fa-solid fa-plus"></i>
@@ -135,77 +209,154 @@ Post New Job
 
 </div>
 
-<!-- ================= FILTERS ================= -->
+</div>
 
-<section class="card"
-style="padding:25px;margin-bottom:30px;">
+</section>
+
+<!-- =========================
+SEARCH & FILTER
+========================= -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="card">
 
 <div class="dashboard-grid">
 
 <div>
 
+<label>
+
+Search Job
+
+</label>
+
 <input
-id="searchJob"
 type="text"
+id="searchJob"
 class="form-control"
-placeholder="Search Job Title">
+placeholder="Search by Job Title">
 
 </div>
 
 <div>
+
+<label>
+
+Status
+
+</label>
 
 <select
 id="statusFilter"
 class="form-control">
 
-<option value="All">
+<option value="">
 
 All Status
 
 </option>
 
-<option value="Active">
+<option>
 
 Active
 
 </option>
 
-<option value="Closed">
+<option>
 
 Closed
 
 </option>
 
+<option>
+
+Draft
+
+</option>
+
+<option>
+
+Expired
+
+</option>
+
 </select>
 
 </div>
 
 <div>
+
+<label>
+
+Category
+
+</label>
 
 <select
 id="categoryFilter"
 class="form-control">
 
-<option value="All">
+<option value="">
 
 All Categories
 
 </option>
 
-<option value="IT">IT</option>
+<option>
 
-<option value="Sales">Sales</option>
+IT / Software
 
-<option value="HR">HR</option>
+</option>
 
-<option value="Finance">Finance</option>
+<option>
 
-<option value="Marketing">Marketing</option>
+Sales
 
-<option value="Operations">Operations</option>
+</option>
 
-<option value="Customer Support">
+<option>
+
+HR
+
+</option>
+
+<option>
+
+Finance
+
+</option>
+
+<option>
+
 Customer Support
+
+</option>
+
+<option>
+
+Marketing
+
+</option>
+
+<option>
+
+Operations
+
+</option>
+
+<option>
+
+Retail
+
+</option>
+
+<option>
+
+Healthcare
+
 </option>
 
 </select>
@@ -214,270 +365,243 @@ Customer Support
 
 </div>
 
-</section>
+<div
+style="display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:20px;
+flex-wrap:wrap;
+gap:15px;">
 
-<!-- ================= JOB LIST ================= -->
+<div>
 
-<section class="section">
+<button
+id="searchButton"
+class="btn btn-primary">
 
-<div id="jobContainer">
+<i class="fa-solid fa-magnifying-glass"></i>
 
-<!-- Dynamic Cards -->
+Search
+
+</button>
+
+<button
+id="resetButton"
+class="btn btn-outline">
+
+Reset
+
+</button>
+
+</div>
+
+<div
+id="totalJobs"
+style="font-weight:600;">
+
+Total Jobs : 0
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 </section>
 
-<!-- ================= EMPTY STATE ================= -->
+    <!-- =========================
+MANAGE JOBS TABLE
+========================= -->
+
+<section class="section light-bg">
+
+<div class="container">
+
+<div class="table-wrapper">
+
+<table class="table">
+
+<thead>
+
+<tr>
+
+<th style="width:28%;">
+
+Job Title
+
+</th>
+
+<th style="width:18%;">
+
+Company
+
+</th>
+
+<th style="width:16%;">
+
+Location
+
+</th>
+
+<th style="width:12%;">
+
+Status
+
+</th>
+
+<th style="width:12%;">
+
+Posted
+
+</th>
+
+<th style="width:14%;text-align:center;">
+
+Actions
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="jobsTableBody">
+
+<!-- Dynamic Rows -->
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- =========================
+EMPTY STATE
+========================= -->
 
 <div
 id="emptyJobs"
+
 class="card"
-style="display:none;padding:60px;text-align:center;">
 
-<i class="fa-solid fa-briefcase"
-style="font-size:60px;color:#CBD5E1;"></i>
+style="display:none;
+padding:60px;
+text-align:center;
+margin-top:20px;">
 
-<h2 style="margin-top:20px;">
+<i
+class="fa-solid fa-briefcase"
+
+style="font-size:60px;
+color:#CBD5E1;
+margin-bottom:20px;">
+
+</i>
+
+<h2>
 
 No Jobs Found
 
 </h2>
 
-<p style="margin-top:15px;">
-
-No jobs match your search.
-
-</p>
-
-<a
-href="post-job.html"
-class="btn btn-primary"
-style="margin-top:25px;">
-
-<i class="fa-solid fa-plus"></i>
-
-Post New Job
-
-</a>
-
-</div>
-
-    <!-- ================= FOOTER ================= -->
-
-</main>
-
-</div>
-
-<footer class="footer">
-
-<div class="container">
-
-<div class="footer-grid">
-
-<!-- ABOUT -->
-
-<div>
-
-<img
-class="siteLogo"
-style="height:60px;margin-bottom:20px;"
-alt="Logo">
-
 <p>
 
-Udayan Care Placement Portal connects employers with skilled Shalini Fellows and creates meaningful employment opportunities.
-
-</p>
-
-<div class="social-links">
-
-<a id="facebookLinkFooter" href="#">
-<i class="fab fa-facebook-f"></i>
-</a>
-
-<a id="linkedinLinkFooter" href="#">
-<i class="fab fa-linkedin-in"></i>
-</a>
-
-<a id="instagramLinkFooter" href="#">
-<i class="fab fa-instagram"></i>
-</a>
-
-<a id="whatsappLinkFooter" href="#">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-</div>
-
-</div>
-
-<!-- QUICK LINKS -->
-
-<div>
-
-<h3>
-
-Quick Links
-
-</h3>
-
-<a href="index.html">Home</a>
-
-<a href="about.html">About</a>
-
-<a href="jobs.html">Jobs</a>
-
-<a href="contact.html">Contact</a>
-
-</div>
-
-<!-- EMPLOYER -->
-
-<div>
-
-<h3>
-
-Employer
-
-</h3>
-
-<a href="employer-dashboard.html">
-
-Dashboard
-
-</a>
-
-<a href="post-job.html">
-
-Post Job
-
-</a>
-
-<a href="manage-jobs.html">
-
-Manage Jobs
-
-</a>
-
-</div>
-
-<!-- SUPPORT -->
-
-<div>
-
-<h3>
-
-Support
-
-</h3>
-
-<a href="applications.html">
-
-Applications
-
-</a>
-
-<a href="reports.html">
-
-Reports
-
-</a>
-
-<a href="contact.html">
-
-Contact
-
-</a>
-
-</div>
-
-</div>
-
-<div class="footer-bottom">
-
-<p>
-
-© 2026
-
-<span id="siteName"></span>
-
-|
-
-An Initiative of Udayan Care
+No matching jobs available.
 
 </p>
 
 </div>
 
+<!-- =========================
+PAGINATION
+========================= -->
+
+<div class="pagination-wrapper">
+
+<div
+id="paginationInfo"
+class="pagination-info">
+
+Showing 0–0 of 0 Jobs
+
 </div>
 
-</footer>
+<div
+id="pagination"
+class="pagination">
 
-<div class="back-top">
-
-<i class="fa-solid fa-arrow-up"></i>
+<!-- Dynamic Pagination -->
 
 </div>
 
-<!-- ================= JAVASCRIPT ================= -->
+</div>
+
+</div>
+
+</section>
+
+    <!-- =========================
+JS FILES
+========================= -->
 
 <script src="js/config.js"></script>
-
 <script src="js/api.js"></script>
-
 <script src="js/app.js"></script>
 
 <script>
 
-const employer =
-JSON.parse(localStorage.getItem("employer"));
+// =====================================
+// PAGINATION CONFIG
+// =====================================
 
-if(!employer){
+const JOBS_PER_PAGE = 25;
 
-window.location.href="employer-login.html";
+let allJobs = [];
 
-}
+let filteredJobs = [];
 
-const employerID =
-employer.employerID;
+let currentPage = 1;
 
-let jobs=[];
-
+let totalPages = 1;
 
 
 // =====================================
 // PAGE LOAD
 // =====================================
 
-document.addEventListener("DOMContentLoaded",async()=>{
+document.addEventListener(
 
-await loadJobs();
+"DOMContentLoaded",
 
-document
-.getElementById("searchJob")
+function(){
+
+loadJobs();
+
+document.getElementById("searchButton")
+
+.addEventListener("click",filterJobs);
+
+document.getElementById("resetButton")
+
+.addEventListener("click",resetFilters);
+
+document.getElementById("searchJob")
+
 .addEventListener("keyup",filterJobs);
 
-document
-.getElementById("statusFilter")
+document.getElementById("statusFilter")
+
 .addEventListener("change",filterJobs);
 
-document
-.getElementById("categoryFilter")
+document.getElementById("categoryFilter")
+
 .addEventListener("change",filterJobs);
 
-document
-.getElementById("logoutBtn")
-.addEventListener("click",()=>{
+}
 
-localStorage.removeItem("employer");
-
-window.location.href="employer-login.html";
-
-});
-
-});
-
+);
 
 
 // =====================================
@@ -488,24 +612,53 @@ async function loadJobs(){
 
 try{
 
+const employer =
+
+JSON.parse(
+
+localStorage.getItem("employer")
+
+);
+
+if(!employer){
+
+window.location.href="employer-login.html";
+
+return;
+
+}
+
 const response =
+
 await API.getEmployerJobs({
 
-employerID:employerID
+employerID: employer.employerID
 
 });
 
 if(response.success){
 
-jobs=response.jobs||[];
+allJobs = response.jobs || [];
 
-renderJobs(jobs);
+filteredJobs = [...allJobs];
+
+document.getElementById("totalJobs")
+
+.textContent =
+
+"Total Jobs : " + filteredJobs.length;
+
+renderCurrentPage();
 
 }
 
 else{
 
-showToast(response.message,"error");
+allJobs=[];
+
+filteredJobs=[];
+
+renderCurrentPage();
 
 }
 
@@ -515,677 +668,225 @@ catch(err){
 
 console.log(err);
 
-showToast(
-
-"Unable to load jobs",
-
-"error"
-
-);
-
 }
 
 }
 
     // =====================================
-// RENDER JOBS
+// RENDER CURRENT PAGE
 // =====================================
 
-function renderJobs(jobList){
+function renderCurrentPage(){
 
-const container =
-document.getElementById("jobContainer");
+const tbody =
+document.getElementById("jobsTableBody");
 
-const empty =
-document.getElementById("emptyJobs");
+tbody.innerHTML = "";
 
-container.innerHTML="";
+if(filteredJobs.length===0){
 
-if(jobList.length===0){
+document.querySelector(".table-wrapper").style.display="none";
 
-empty.style.display="block";
+document.getElementById("emptyJobs").style.display="block";
+
+document.getElementById("pagination").innerHTML="";
+
+document.getElementById("paginationInfo").innerHTML="";
 
 return;
 
 }
 
-empty.style.display="none";
+document.querySelector(".table-wrapper").style.display="block";
 
-jobList.forEach(job=>{
+document.getElementById("emptyJobs").style.display="none";
 
-container.innerHTML += createJobCard(job);
+totalPages = Math.ceil(filteredJobs.length/JOBS_PER_PAGE);
+
+const startIndex =
+(currentPage-1)*JOBS_PER_PAGE;
+
+const endIndex =
+startIndex+JOBS_PER_PAGE;
+
+const currentJobs =
+filteredJobs.slice(startIndex,endIndex);
+
+currentJobs.forEach(job=>{
+
+tbody.innerHTML += createJobRow(job);
 
 });
+
+document.getElementById("paginationInfo").innerHTML=
+
+`Showing
+
+${startIndex+1}
+
+-
+
+${Math.min(endIndex,filteredJobs.length)}
+
+of
+
+${filteredJobs.length}
+
+Jobs`;
+
+renderPagination();
 
 }
 
 
-
 // =====================================
-// CREATE JOB CARD
+// CREATE TABLE ROW
 // =====================================
 
-function createJobCard(job){
+function createJobRow(job){
+
+let badge="";
+
+switch(job.jobStatus){
+
+case "Active":
+
+badge='<span class="badge badge-success">Active</span>';
+
+break;
+
+case "Closed":
+
+badge='<span class="badge badge-danger">Closed</span>';
+
+break;
+
+case "Draft":
+
+badge='<span class="badge badge-warning">Draft</span>';
+
+break;
+
+case "Expired":
+
+badge='<span class="badge badge-secondary">Expired</span>';
+
+break;
+
+default:
+
+badge='<span class="badge">'+job.jobStatus+'</span>';
+
+}
 
 return `
 
-<div class="card job-card" data-id="${job.jobID}">
+<tr>
 
-<div class="job-card-header">
+<td>
 
-<div>
-
-<h3 class="job-title">
+<strong>
 
 ${job.jobTitle}
 
-</h3>
+</strong>
 
-<div class="job-meta">
+</td>
 
-<span>
-
-<i class="fa-solid fa-building"></i>
+<td>
 
 ${job.companyName}
 
-</span>
+</td>
 
-<span>
+<td>
 
-<i class="fa-solid fa-location-dot"></i>
+${job.city}
 
-${job.city}, ${job.state}
+</td>
 
-</span>
+<td>
 
-<span>
+${badge}
 
-<i class="fa-solid fa-laptop-house"></i>
+</td>
 
-${job.workMode}
-
-</span>
-
-</div>
-
-</div>
-
-<span class="job-status ${job.jobStatus.toLowerCase()}">
-
-${job.jobStatus}
-
-</span>
-
-</div>
-
-
-
-<div class="job-details">
-
-<div>
-
-<strong>Category</strong>
-
-<p>${job.jobCategory}</p>
-
-</div>
-
-<div>
-
-<strong>Experience</strong>
-
-<p>${job.experience}</p>
-
-</div>
-
-<div>
-
-<strong>Qualification</strong>
-
-<p>${job.qualification}</p>
-
-</div>
-
-<div>
-
-<strong>Salary</strong>
-
-<p>
-
-₹${job.salaryMin} - ₹${job.salaryMax}
-
-</p>
-
-</div>
-
-<div>
-
-<strong>Vacancies</strong>
-
-<p>${job.vacancies}</p>
-
-</div>
-
-<div>
-
-<strong>Deadline</strong>
-
-<p>${job.applicationLastDate}</p>
-
-</div>
-
-</div>
-
-
-
-<div style="margin-top:20px;">
-
-<strong>Skills</strong>
-
-<p>
-
-${job.skills}
-
-</p>
-
-</div>
-
-
-
-<div style="margin-top:15px;">
-
-<strong>Description</strong>
-
-<p>
-
-${job.jobDescription}
-
-</p>
-
-</div>
-
-
-
-<div class="job-footer">
-
-<div class="job-date">
-
-Posted :
+<td>
 
 ${job.postedDate}
 
-</div>
+</td>
 
-<div class="job-actions">
+<td style="text-align:center;white-space:nowrap;">
 
-<button
+<a
 
-class="btn btn-outline editBtn"
+href="job-details.html?id=${job.jobID}"
 
-data-id="${job.jobID}">
+title="View">
+
+<i class="fa-solid fa-eye"></i>
+
+</a>
+
+&nbsp;&nbsp;
+
+<a
+
+href="edit-job.html?id=${job.jobID}"
+
+title="Edit">
 
 <i class="fa-solid fa-pen"></i>
 
-Edit
+</a>
 
-</button>
+&nbsp;&nbsp;
 
-<button
+<a
 
-class="btn btn-warning closeBtn"
+href="#"
 
-data-id="${job.jobID}">
+onclick="duplicateJob('${job.jobID}')"
 
-${job.jobStatus=="Active"
+title="Duplicate">
 
-?
+<i class="fa-solid fa-copy"></i>
 
-'<i class="fa-solid fa-lock"></i> Close'
+</a>
 
-:
+&nbsp;&nbsp;
 
-'<i class="fa-solid fa-lock-open"></i> Reopen'
+<a
 
-}
+href="#"
 
-</button>
+onclick="toggleJobStatus('${job.jobID}')"
 
-<button
+title="Close/Open">
 
-class="btn btn-danger deleteBtn"
+<i class="fa-solid fa-power-off"></i>
 
-data-id="${job.jobID}">
+</a>
+
+&nbsp;&nbsp;
+
+<a
+
+href="#"
+
+onclick="deleteJob('${job.jobID}')"
+
+title="Delete">
 
 <i class="fa-solid fa-trash"></i>
 
-Delete
+</a>
 
-</button>
+</td>
 
-</div>
-
-</div>
-
-</div>
+</tr>
 
 `;
 
 }
-
-    // =====================================
-// SEARCH + FILTER
-// =====================================
-
-function filterJobs(){
-
-const keyword =
-document.getElementById("searchJob").value.toLowerCase();
-
-const status =
-document.getElementById("statusFilter").value;
-
-const category =
-document.getElementById("categoryFilter").value;
-
-const filtered = jobs.filter(job=>{
-
-const matchTitle =
-job.jobTitle.toLowerCase().includes(keyword);
-
-const matchStatus =
-status==="All" || job.jobStatus===status;
-
-const matchCategory =
-category==="All" || job.jobCategory===category;
-
-return matchTitle && matchStatus && matchCategory;
-
-});
-
-renderJobs(filtered);
-
-}
-
-
-
-// =====================================
-// INLINE EDIT
-// =====================================
-
-document.addEventListener("click",async function(e){
-
-// ================= EDIT =================
-
-if(e.target.closest(".editBtn")){
-
-const jobID =
-e.target.closest(".editBtn").dataset.id;
-
-const job =
-jobs.find(j=>j.jobID===jobID);
-
-const card =
-document.querySelector(`[data-id="${jobID}"]`);
-
-card.innerHTML=`
-
-<div class="job-card-header">
-
-<h3>Edit Job</h3>
-
-</div>
-
-<div class="dashboard-grid">
-
-<div>
-
-<label>Job Title</label>
-
-<input
-id="editJobTitle"
-class="form-control"
-value="${job.jobTitle}">
-
-</div>
-
-<div>
-
-<label>Category</label>
-
-<input
-id="editCategory"
-class="form-control"
-value="${job.jobCategory}">
-
-</div>
-
-<div>
-
-<label>Experience</label>
-
-<input
-id="editExperience"
-class="form-control"
-value="${job.experience}">
-
-</div>
-
-<div>
-
-<label>Qualification</label>
-
-<input
-id="editQualification"
-class="form-control"
-value="${job.qualification}">
-
-</div>
-
-<div>
-
-<label>Salary Min</label>
-
-<input
-id="editSalaryMin"
-type="number"
-class="form-control"
-value="${job.salaryMin}">
-
-</div>
-
-<div>
-
-<label>Salary Max</label>
-
-<input
-id="editSalaryMax"
-type="number"
-class="form-control"
-value="${job.salaryMax}">
-
-</div>
-
-<div>
-
-<label>Vacancies</label>
-
-<input
-id="editVacancies"
-type="number"
-class="form-control"
-value="${job.vacancies}">
-
-</div>
-
-<div>
-
-<label>Status</label>
-
-<select
-id="editStatus"
-class="form-control">
-
-<option
-${job.jobStatus=="Active"?"selected":""}>
-
-Active
-
-</option>
-
-<option
-${job.jobStatus=="Closed"?"selected":""}>
-
-Closed
-
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-<div
-style="margin-top:25px;display:flex;gap:15px;">
-
-<button
-class="btn btn-primary saveBtn"
-data-id="${job.jobID}">
-
-<i class="fa-solid fa-floppy-disk"></i>
-
-Save
-
-</button>
-
-<button
-class="btn btn-outline cancelBtn">
-
-Cancel
-
-</button>
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-
-// ================= CANCEL =================
-
-if(e.target.closest(".cancelBtn")){
-
-renderJobs(jobs);
-
-return;
-
-}
-    // ================= SAVE JOB =================
-
-if(e.target.closest(".saveBtn")){
-
-const jobID =
-e.target.closest(".saveBtn").dataset.id;
-
-const updatedJob={
-
-jobID:jobID,
-
-jobTitle:
-document.getElementById("editJobTitle").value.trim(),
-
-jobCategory:
-document.getElementById("editCategory").value.trim(),
-
-experience:
-document.getElementById("editExperience").value.trim(),
-
-qualification:
-document.getElementById("editQualification").value.trim(),
-
-salaryMin:
-document.getElementById("editSalaryMin").value.trim(),
-
-salaryMax:
-document.getElementById("editSalaryMax").value.trim(),
-
-vacancies:
-document.getElementById("editVacancies").value.trim(),
-
-jobStatus:
-document.getElementById("editStatus").value
-
-};
-
-try{
-
-const response =
-await API.updateJob(updatedJob);
-
-if(response.success){
-
-const index=
-jobs.findIndex(j=>j.jobID===jobID);
-
-if(index!=-1){
-
-jobs[index]={
-
-...jobs[index],
-
-...updatedJob
-
-};
-
-}
-
-renderJobs(jobs);
-
-showToast(
-"Job Updated Successfully",
-"success"
-);
-
-}
-
-else{
-
-showToast(
-response.message,
-"error"
-);
-
-}
-
-}
-
-catch(err){
-
-console.log(err);
-
-showToast(
-"Unable to update job",
-"error"
-);
-
-}
-
-return;
-
-}
-
-
-
-// ================= CLOSE / REOPEN =================
-
-if(e.target.closest(".closeBtn")){
-
-const jobID=
-e.target.closest(".closeBtn").dataset.id;
-
-const job=
-jobs.find(j=>j.jobID===jobID);
-
-const newStatus=
-job.jobStatus=="Active"
-?
-"Closed"
-:
-"Active";
-
-const response=
-await API.closeJob({
-
-jobID:jobID,
-
-jobStatus:newStatus
-
-});
-
-if(response.success){
-
-job.jobStatus=newStatus;
-
-renderJobs(jobs);
-
-showToast(
-"Job Status Updated",
-"success"
-);
-
-}
-
-else{
-
-showToast(
-response.message,
-"error"
-);
-
-}
-
-return;
-
-}
-
-
-
-// ================= DELETE =================
-
-if(e.target.closest(".deleteBtn")){
-
-const jobID=
-e.target.closest(".deleteBtn").dataset.id;
-
-if(!confirm("Delete this job permanently?")){
-
-return;
-
-}
-
-const response=
-await API.deleteJob({
-
-jobID:jobID
-
-});
-
-if(response.success){
-
-jobs=
-jobs.filter(j=>j.jobID!==jobID);
-
-renderJobs(jobs);
-
-showToast(
-"Job Deleted",
-"success"
-);
-
-}
-
-else{
-
-showToast(
-response.message,
-"error"
-);
-
-}
-
-return;
-
-}
-
-});     // <-- document.addEventListener ends here
-
-</script>
-    
-</body>
-
-</html>
