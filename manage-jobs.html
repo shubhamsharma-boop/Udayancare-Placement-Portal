@@ -543,6 +543,19 @@ class="pagination">
 </section>
 
     <!-- =========================
+EMPLOYER CTA (Optional)
+========================= -->
+
+<!-- FOOTER -->
+<footer class="footer">
+...
+</footer>
+
+<div class="back-top">
+<i class="fa-solid fa-arrow-up"></i>
+</div>
+
+    <!-- =========================
 JS FILES
 ========================= -->
 
@@ -890,3 +903,298 @@ title="Delete">
 `;
 
 }
+
+    // =====================================
+// RENDER PAGINATION
+// =====================================
+
+function renderPagination(){
+
+const container =
+document.getElementById("pagination");
+
+container.innerHTML = "";
+
+const previous =
+document.createElement("button");
+
+previous.innerHTML =
+"&laquo;";
+
+previous.disabled =
+currentPage===1;
+
+previous.onclick=function(){
+
+currentPage--;
+
+renderCurrentPage();
+
+};
+
+container.appendChild(previous);
+
+
+// ---------- PAGE NUMBERS ----------
+
+let start =
+Math.max(1,currentPage-2);
+
+let end =
+Math.min(totalPages,currentPage+2);
+
+
+// First Page
+
+if(start>1){
+
+container.appendChild(createPageButton(1));
+
+if(start>2){
+
+const dots =
+document.createElement("span");
+
+dots.innerHTML="...";
+
+dots.style.padding="0 8px";
+
+container.appendChild(dots);
+
+}
+
+}
+
+
+// Middle Pages
+
+for(let i=start;i<=end;i++){
+
+container.appendChild(createPageButton(i));
+
+}
+
+
+// Last Page
+
+if(end<totalPages){
+
+if(end<totalPages-1){
+
+const dots =
+document.createElement("span");
+
+dots.innerHTML="...";
+
+dots.style.padding="0 8px";
+
+container.appendChild(dots);
+
+}
+
+container.appendChild(createPageButton(totalPages));
+
+}
+
+
+// Next
+
+const next =
+document.createElement("button");
+
+next.innerHTML =
+"&raquo;";
+
+next.disabled =
+currentPage===totalPages;
+
+next.onclick=function(){
+
+currentPage++;
+
+renderCurrentPage();
+
+};
+
+container.appendChild(next);
+
+}
+
+
+
+// =====================================
+// PAGE BUTTON
+// =====================================
+
+function createPageButton(page){
+
+const button =
+document.createElement("button");
+
+button.innerHTML=page;
+
+if(page===currentPage){
+
+button.classList.add("active");
+
+}
+
+button.onclick=function(){
+
+currentPage=page;
+
+renderCurrentPage();
+
+};
+
+return button;
+
+}
+
+
+
+// =====================================
+// FILTER JOBS
+// =====================================
+
+function filterJobs(){
+
+const keyword =
+document.getElementById("searchJob")
+
+.value
+
+.toLowerCase();
+
+const status =
+document.getElementById("statusFilter")
+
+.value;
+
+const category =
+document.getElementById("categoryFilter")
+
+.value;
+
+filteredJobs =
+allJobs.filter(job=>{
+
+const matchKeyword =
+
+job.jobTitle
+.toLowerCase()
+.includes(keyword);
+
+const matchStatus =
+
+status===""
+
+||
+
+job.jobStatus===status;
+
+const matchCategory =
+
+category===""
+
+||
+
+job.jobCategory===category;
+
+return
+
+matchKeyword
+
+&&
+
+matchStatus
+
+&&
+
+matchCategory;
+
+});
+
+currentPage=1;
+
+document.getElementById("totalJobs")
+
+.innerHTML=
+
+"Total Jobs : "
+
++
+
+filteredJobs.length;
+
+renderCurrentPage();
+
+}
+
+
+
+// =====================================
+// RESET FILTER
+// =====================================
+
+function resetFilters(){
+
+document.getElementById("searchJob").value="";
+
+document.getElementById("statusFilter").value="";
+
+document.getElementById("categoryFilter").value="";
+
+filteredJobs=[...allJobs];
+
+currentPage=1;
+
+document.getElementById("totalJobs")
+
+.innerHTML=
+
+"Total Jobs : "
+
++
+
+filteredJobs.length;
+
+renderCurrentPage();
+
+}
+
+
+
+// =====================================
+// ACTIONS
+// =====================================
+
+function duplicateJob(jobID){
+
+alert("Duplicate : "+jobID);
+
+}
+
+function toggleJobStatus(jobID){
+
+alert("Change Status : "+jobID);
+
+}
+
+function deleteJob(jobID){
+
+if(confirm("Delete this Job?")){
+
+alert("Delete : "+jobID);
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
+
+
