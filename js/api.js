@@ -136,6 +136,41 @@ const API = {
 
     },
 
+    // ======================================
+// EMPLOYER JOB MANAGEMENT
+// ======================================
+
+
+getEmployerJobs(data) {
+
+    return this.call("getEmployerJobs", data);
+
+},
+
+
+
+duplicateJob(data) {
+
+    return this.call("duplicateJob", data);
+
+},
+
+
+
+updateJobStatus(data) {
+
+    return this.call("updateJobStatus", data);
+
+},
+
+
+
+deleteJob(data) {
+
+    return this.call("deleteJob", data);
+
+},
+
 
 
     // ======================================
