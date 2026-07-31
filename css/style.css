@@ -4940,3 +4940,562 @@ font-size:13px;
 white-space:nowrap;
 
 }
+
+/* =========================================================
+   UCPP MANAGE JOBS PAGE
+   Recruiter Dashboard UI Enhancement
+========================================================= */
+
+
+/* =========================
+TABLE CONTAINER
+========================= */
+
+.table-wrapper{
+
+background:#ffffff;
+
+border-radius:16px;
+
+overflow-x:auto;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.06);
+
+}
+
+
+
+/* =========================
+MANAGE JOB TABLE
+========================= */
+
+.table{
+
+width:100%;
+
+border-collapse:collapse;
+
+font-size:14px;
+
+}
+
+
+
+.table thead{
+
+background:#f8fafc;
+
+}
+
+
+
+.table th{
+
+padding:16px 14px;
+
+text-align:left;
+
+font-size:13px;
+
+font-weight:700;
+
+color:#475569;
+
+border-bottom:1px solid #e2e8f0;
+
+text-transform:uppercase;
+
+}
+
+
+
+.table td{
+
+padding:15px 14px;
+
+border-bottom:1px solid #f1f5f9;
+
+color:#334155;
+
+vertical-align:middle;
+
+}
+
+
+
+.table tbody tr{
+
+transition:0.25s ease;
+
+}
+
+
+
+.table tbody tr:hover{
+
+background:#f8fafc;
+
+}
+
+
+
+.table strong{
+
+color:#0f172a;
+
+font-weight:600;
+
+}
+
+
+
+/* =========================
+ACTION ICONS
+========================= */
+
+.table td a{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+width:28px;
+
+height:28px;
+
+border-radius:6px;
+
+color:#475569;
+
+transition:0.25s ease;
+
+}
+
+
+
+.table td a:hover{
+
+background:#eff6ff;
+
+color:#2563eb;
+
+}
+
+
+
+.table td a[title="Delete"]:hover{
+
+background:#fee2e2;
+
+color:#dc2626;
+
+}
+
+
+
+.table td a[title="Close/Open"]:hover{
+
+background:#fef3c7;
+
+color:#d97706;
+
+}
+
+
+
+/* =========================
+STATUS BADGES
+========================= */
+
+
+.badge{
+
+display:inline-block;
+
+padding:5px 12px;
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:600;
+
+line-height:1;
+
+}
+
+
+
+.badge-success{
+
+background:#dcfce7;
+
+color:#15803d;
+
+}
+
+
+
+.badge-danger{
+
+background:#fee2e2;
+
+color:#dc2626;
+
+}
+
+
+
+.badge-warning{
+
+background:#fef3c7;
+
+color:#b45309;
+
+}
+
+
+
+.badge-secondary{
+
+background:#e2e8f0;
+
+color:#475569;
+
+}
+
+
+
+/* =========================
+PAGINATION
+========================= */
+
+
+.pagination-wrapper{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-top:30px;
+
+flex-wrap:wrap;
+
+gap:20px;
+
+}
+
+
+
+.pagination-info{
+
+font-size:14px;
+
+font-weight:500;
+
+color:#64748b;
+
+}
+
+
+
+.pagination{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+}
+
+
+
+.page-btn{
+
+height:36px;
+
+min-width:36px;
+
+padding:0 12px;
+
+border:1px solid #e2e8f0;
+
+background:#ffffff;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-size:14px;
+
+font-weight:600;
+
+color:#475569;
+
+transition:0.25s ease;
+
+}
+
+
+
+.page-btn:hover{
+
+background:#eff6ff;
+
+color:#2563eb;
+
+border-color:#93c5fd;
+
+}
+
+
+
+.page-btn.active{
+
+background:#2563eb;
+
+color:#ffffff;
+
+border-color:#2563eb;
+
+}
+
+
+
+.page-btn:disabled{
+
+opacity:0.5;
+
+cursor:not-allowed;
+
+}
+
+
+
+.page-dots{
+
+padding:0 6px;
+
+color:#64748b;
+
+font-weight:600;
+
+}
+
+
+
+
+/* =========================
+EMPTY STATE
+========================= */
+
+
+#emptyJobs h2{
+
+font-size:22px;
+
+margin-bottom:10px;
+
+color:#1e293b;
+
+}
+
+
+
+#emptyJobs p{
+
+color:#64748b;
+
+}
+
+
+
+
+/* =========================
+SEARCH FILTER CARD
+========================= */
+
+
+#searchJob:focus,
+#statusFilter:focus,
+#categoryFilter:focus{
+
+border-color:#2563eb;
+
+box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+
+}
+
+
+
+
+/* =========================
+MOBILE RESPONSIVE
+TABLE TO CARD
+========================= */
+
+
+@media(max-width:768px){
+
+
+.table-wrapper{
+
+border-radius:12px;
+
+box-shadow:none;
+
+background:transparent;
+
+overflow:visible;
+
+}
+
+
+
+.table,
+.table thead,
+.table tbody,
+.table th,
+.table td,
+.table tr{
+
+display:block;
+
+}
+
+
+
+.table thead{
+
+display:none;
+
+}
+
+
+
+.table tbody tr{
+
+background:#ffffff;
+
+border-radius:14px;
+
+padding:15px;
+
+margin-bottom:15px;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.06);
+
+}
+
+
+
+.table td{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:10px 5px;
+
+border:none;
+
+}
+
+
+
+.table td::before{
+
+font-weight:700;
+
+color:#64748b;
+
+}
+
+
+
+.table td:nth-child(1)::before{
+
+content:"Job Title";
+
+}
+
+
+
+.table td:nth-child(2)::before{
+
+content:"Company";
+
+}
+
+
+
+.table td:nth-child(3)::before{
+
+content:"Location";
+
+}
+
+
+
+.table td:nth-child(4)::before{
+
+content:"Status";
+
+}
+
+
+
+.table td:nth-child(5)::before{
+
+content:"Posted";
+
+}
+
+
+
+.table td:nth-child(6)::before{
+
+content:"Actions";
+
+}
+
+
+
+.table td:last-child{
+
+justify-content:flex-end;
+
+gap:5px;
+
+}
+
+
+
+.pagination-wrapper{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+
+
+.pagination{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+
+
+}
