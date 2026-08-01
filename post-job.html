@@ -12,23 +12,29 @@ content="width=device-width, initial-scale=1.0">
 Post New Job | UCPP
 </title>
 
-<meta name="description"
+<meta
+name="description"
 content="Employer Job Posting">
 
-<link rel="stylesheet"
+<link
+rel="stylesheet"
 href="css/style.css">
 
-<link rel="preconnect"
+<link
+rel="preconnect"
 href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
+<link
+rel="preconnect"
 href="https://fonts.gstatic.com"
 crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
 
-<link rel="stylesheet"
+<link
+rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
@@ -37,7 +43,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 <div class="dashboard">
 
-<!-- ================= SIDEBAR ================= -->
+<!-- ================================================= -->
+<!-- SIDEBAR -->
+<!-- ================================================= -->
 
 <aside class="sidebar">
 
@@ -101,8 +109,7 @@ Reports
 
 </a>
 
-<a
-id="logoutBtn">
+<a id="logoutBtn">
 
 <i class="fa-solid fa-right-from-bracket"></i>
 
@@ -114,7 +121,9 @@ Logout
 
 </aside>
 
-<!-- ================= CONTENT ================= -->
+<!-- ================================================= -->
+<!-- MAIN CONTENT -->
+<!-- ================================================= -->
 
 <main class="dashboard-content">
 
@@ -130,7 +139,7 @@ Post New Job
 
 <p>
 
-Create a new opportunity for Shalini Candidates.
+Publish a verified opportunity for Udayan Care Shalini Candidates.
 
 </p>
 
@@ -138,88 +147,72 @@ Create a new opportunity for Shalini Candidates.
 
 </div>
 
-<!-- ================= COMPANY INFO ================= -->
+<!-- ================================================= -->
+<!-- COMPANY ROW -->
+<!-- ================================================= -->
 
-<section class="card company-card">
+<section
+class="card"
 
-<div class="company-header">
+style="padding:18px 24px;
+margin-bottom:25px;">
+
+<div
+style="display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:15px;">
 
 <div>
 
-<h3 id="companyName">
+<h3
+id="companyName"
+style="margin:0;">
 
 Loading...
 
 </h3>
 
-<p>
-
-Employer Information
-
-</p>
-
 </div>
-
-</div>
-
-<div class="dashboard-grid">
 
 <div>
 
 <strong>
 
-Company Name
+Employer ID :
 
 </strong>
 
-<input
+<span id="companyEmployerID">
 
-type="text"
-
-id="company_name"
-
-class="form-control"
-
-readonly>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ================= JOB FORM ================= -->
-
-<section
-class="card"
-style="margin-top:30px;padding:35px;">
-
-<div class="section-title">
-
-<span>
-
-JOB DETAILS
+--
 
 </span>
 
-<h2>
-
-Create New Job
-
-</h2>
-
-<p>
-
-Fill all mandatory information.
-
-</p>
+</div>
 
 </div>
 
-<form
-id="postJobForm">
+<input
+type="hidden"
+id="company_name">
 
-  <!-- ================= BASIC JOB INFORMATION ================= -->
+</section>
+
+<!-- ================================================= -->
+<!-- JOB FORM -->
+<!-- ================================================= -->
+
+<section
+class="card"
+style="padding:30px;">
+
+<form id="postJobForm">
+
+<!-- ================================================= -->
+<!-- BASIC JOB DETAILS -->
+<!-- ================================================= -->
 
 <h3 style="margin-bottom:20px;">
 
@@ -238,15 +231,10 @@ Job Title *
 </label>
 
 <input
-
 type="text"
-
 id="jobTitle"
-
 class="form-control"
-
 placeholder="Customer Support Executive"
-
 required>
 
 </div>
@@ -260,14 +248,15 @@ Job Category *
 </label>
 
 <select
-
 id="jobCategory"
-
 class="form-control"
-
 required>
 
-<option value="">Select Category</option>
+<option value="">
+
+Select Category
+
+</option>
 
 <option>Administration</option>
 
@@ -316,14 +305,15 @@ Job Type *
 </label>
 
 <select
-
 id="jobType"
-
 class="form-control"
-
 required>
 
-<option value="">Select Job Type</option>
+<option value="">
+
+Select Job Type
+
+</option>
 
 <option>Full Time</option>
 
@@ -350,14 +340,15 @@ Work Mode *
 </label>
 
 <select
-
 id="workMode"
-
 class="form-control"
-
 required>
 
-<option value="">Select Work Mode</option>
+<option value="">
+
+Select Work Mode
+
+</option>
 
 <option>Office</option>
 
@@ -371,9 +362,11 @@ required>
 
 </div>
 
-<hr style="margin:40px 0;">
+<hr style="margin:30px 0;">
 
-<!-- ================= JOB LOCATION ================= -->
+  <!-- ================================================= -->
+<!-- JOB LOCATION -->
+<!-- ================================================= -->
 
 <h3 style="margin-bottom:20px;">
 
@@ -392,15 +385,10 @@ State *
 </label>
 
 <input
-
 type="text"
-
 id="state"
-
 class="form-control"
-
 placeholder="State"
-
 required>
 
 </div>
@@ -414,15 +402,10 @@ District *
 </label>
 
 <input
-
 type="text"
-
 id="district"
-
 class="form-control"
-
 placeholder="District"
-
 required>
 
 </div>
@@ -436,15 +419,10 @@ City *
 </label>
 
 <input
-
 type="text"
-
 id="city"
-
 class="form-control"
-
 placeholder="City"
-
 required>
 
 </div>
@@ -453,29 +431,26 @@ required>
 
 <label>
 
-Address *
+Complete Address *
 
 </label>
 
 <input
-
 type="text"
-
 id="address"
-
 class="form-control"
-
-placeholder="Complete Office Address"
-
+placeholder="Office Address"
 required>
 
 </div>
 
 </div>
 
-<hr style="margin:40px 0;">
+<hr style="margin:30px 0;">
 
-  <!-- ================= ELIGIBILITY ================= -->
+<!-- ================================================= -->
+<!-- ELIGIBILITY -->
+<!-- ================================================= -->
 
 <h3 style="margin-bottom:20px;">
 
@@ -484,37 +459,6 @@ Eligibility & Salary
 </h3>
 
 <div class="dashboard-grid">
-
-<div class="form-group">
-
-<label>
-
-Experience *
-
-</label>
-
-<select
-id="experience"
-class="form-control"
-required>
-
-<option value="">Select Experience</option>
-
-<option>Fresher</option>
-
-<option>0-1 Year</option>
-
-<option>1-2 Years</option>
-
-<option>2-3 Years</option>
-
-<option>3-5 Years</option>
-
-<option>5+ Years</option>
-
-</select>
-
-</div>
 
 <div class="form-group">
 
@@ -529,7 +473,7 @@ id="qualification"
 class="form-control"
 required>
 
-<option value="">Select Qualification</option>
+<option value="">Select</option>
 
 <option>10th Pass</option>
 
@@ -544,6 +488,37 @@ required>
 <option>Post Graduate</option>
 
 <option>Any Qualification</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Experience *
+
+</label>
+
+<select
+id="experience"
+class="form-control"
+required>
+
+<option value="">Select</option>
+
+<option>Fresher</option>
+
+<option>0-1 Year</option>
+
+<option>1-2 Years</option>
+
+<option>2-3 Years</option>
+
+<option>3-5 Years</option>
+
+<option>5+ Years</option>
 
 </select>
 
@@ -570,7 +545,7 @@ required>
 
 <label>
 
-Application Last Date *
+Last Date *
 
 </label>
 
@@ -584,40 +559,9 @@ required>
 
 </div>
 
-<hr style="margin:40px 0;">
-
-<!-- ================= SKILLS ================= -->
-
-<h3 style="margin-bottom:20px;">
-
-Skills & Salary
-
-</h3>
+<br>
 
 <div class="dashboard-grid">
-
-<div class="form-group">
-
-<label>
-
-Skills *
-
-</label>
-
-<input
-type="text"
-id="skills"
-class="form-control"
-placeholder="Communication, Excel, Sales"
-required>
-
-<small>
-
-Separate multiple skills using commas.
-
-</small>
-
-</div>
 
 <div class="form-group">
 
@@ -681,477 +625,23 @@ Closed
 
 </div>
 
-</div>
-
-<hr style="margin:40px 0;">
-
-  <!-- ================= JOB DESCRIPTION ================= -->
-
-<h3 style="margin-bottom:20px;">
-
-Job Details
-
-</h3>
-
 <div class="form-group">
 
 <label>
 
-Job Description *
+Skills *
 
 </label>
-
-<textarea
-
-id="jobDescription"
-
-class="form-control"
-
-rows="6"
-
-placeholder="Write complete job description..."
-
-required>
-
-</textarea>
-
-</div>
-
-<div class="form-group">
-
-<label>
-
-Job Responsibilities *
-
-</label>
-
-<textarea
-
-id="jobResponsibilities"
-
-class="form-control"
-
-rows="5"
-
-placeholder="Daily responsibilities..."
-
-required>
-
-</textarea>
-
-</div>
-
-<div class="form-group">
-
-<label>
-
-Required Skills *
-
-</label>
-
-<textarea
-
-id="requiredSkills"
-
-class="form-control"
-
-rows="5"
-
-placeholder="Required technical & soft skills..."
-
-required>
-
-</textarea>
-
-</div>
-
-<!-- Hidden Employer ID -->
 
 <input
-
-type="hidden"
-
-id="employerID">
-
-<br>
-
-<div style="display:flex;gap:15px;flex-wrap:wrap;">
-
-<button
-
-type="submit"
-
-id="saveJobBtn"
-
-class="btn btn-primary">
-
-<i class="fa-solid fa-floppy-disk"></i>
-
-Save Job
-
-</button>
-
-<button
-
-type="reset"
-
-class="btn btn-outline">
-
-<i class="fa-solid fa-rotate-right"></i>
-
-Reset
-
-</button>
+type="text"
+id="skills"
+class="form-control"
+placeholder="Communication, Excel, Sales"
+required>
 
 </div>
 
-</form>
-
-</section>
-
-</main>
-
 </div>
 
-<!-- ================= FOOTER ================= -->
-
-
-<footer class="footer">
-
-
-<div class="container">
-
-
-<div class="footer-grid">
-
-
-
-<div>
-
-
-<img class="siteLogo"
-style="height:60px;margin-bottom:20px;">
-
-
-<p class="siteDescription"></p>
-
-    <div class="social-links">
-
-<a id="facebookLink" href="#"><i class="fab fa-facebook-f"></i></a>
-
-<a id="linkedinLink" href="#"><i class="fab fa-linkedin-in"></i></a>
-
-<a id="instagramLink" href="#"><i class="fab fa-instagram"></i></a>
-
-<a id="whatsappLink" href="#"><i class="fab fa-whatsapp"></i></a>
-
-</div>
-
-
-</div>
-
-
-
-
-<div>
-
-<h3>
-Quick Links
-</h3>
-
-<a href="index.html">
-Home
-</a>
-
-<a href="about.html">
-About
-</a>
-
-<a href="jobs.html">
-Jobs
-</a>
-
-<a href="contact.html">
-Contact
-</a>
-
-
-</div>
-
-
-
-
-<div>
-
-<h3>
-Candidates
-</h3>
-
-<a href="candidate-register.html">
-Register
-</a>
-
-<a href="candidate-login.html">
-Login
-</a>
-
-<a href="available-jobs.html">
-Jobs
-</a>
-
-
-</div>
-
-
-
-
-<div>
-
-<h3>
-Employers
-</h3>
-
-
-<a href="employer-register.html">
-Register Company
-</a>
-
-
-<a href="employer-login.html">
-Login
-</a>
-
-
-<a href="post-job.html">
-Post Job
-</a>
-
-
-</div>
-
-
-</div>
-
-
-
-<div class="footer-bottom">
-
-
-<p>
-© 2026 <span id="siteName"></span> | An Initiative of Udayan Care
-</p>
-
-
-</div>
-
-
-</div>
-
-
-</footer>
-<div class="back-top">
-
-<i class="fa-solid fa-arrow-up"></i>
-
-</div>
-
-<script src="js/config.js"></script>
-
-<script src="js/api.js"></script>
-
-<script src="js/app.js"></script>
-
-<script>
-
-document.addEventListener("DOMContentLoaded", async ()=>{
-
-// ===============================
-// LOGIN CHECK
-// ===============================
-
-const employer = JSON.parse(localStorage.getItem("employer"));
-
-if(!employer){
-
-location.href="employer-login.html";
-
-return;
-
-}
-
-// Employer ID
-
-document.getElementById("employerID").value =
-employer.employerID;
-
-// Company Name
-
-document.getElementById("companyName").textContent =
-employer.companyName;
-
-
-  
-// ===============================
-// FORM SUBMIT
-// ===============================
-
-const form =
-document.getElementById("postJobForm");
-
-form.addEventListener("submit",async function(e){
-
-e.preventDefault();
-
-const btn =
-document.getElementById("saveJobBtn");
-
-btn.disabled=true;
-
-btn.innerHTML=`
-<i class="fa-solid fa-spinner fa-spin"></i>
-Saving...
-`;
-
-const data={
-
-employerID:
-
-document.getElementById("employerID").value,
-
-companyName:
-
-document.getElementById("company_name").value,
-
-jobTitle:
-
-document.getElementById("jobTitle").value,
-
-jobCategory:
-
-document.getElementById("jobCategory").value,
-
-jobType:
-
-document.getElementById("jobType").value,
-
-workMode:
-
-document.getElementById("workMode").value,
-
-state:
-
-document.getElementById("state").value,
-
-district:
-
-document.getElementById("district").value,
-
-city:
-
-document.getElementById("city").value,
-
-address:
-
-document.getElementById("address").value,
-
-experience:
-
-document.getElementById("experience").value,
-
-qualification:
-
-document.getElementById("qualification").value,
-
-skills:
-
-document.getElementById("skills").value,
-
-salaryMin:
-
-document.getElementById("salaryMin").value,
-
-salaryMax:
-
-document.getElementById("salaryMax").value,
-
-jobDescription:
-
-document.getElementById("jobDescription").value,
-
-jobResponsibilities:
-
-document.getElementById("jobResponsibilities").value,
-
-requiredSkills:
-
-document.getElementById("requiredSkills").value,
-
-vacancies:
-
-document.getElementById("vacancies").value,
-
-applicationLastDate:
-
-document.getElementById("applicationLastDate").value,
-
-jobStatus:
-
-document.getElementById("jobStatus").value
-
-};
-
-  try{
-
-const response =
-await API.postJob(data);
-
-if(response.success){
-
-alert("Job Posted Successfully");
-
-form.reset();
-
-// Employer Details Again
-
-document.getElementById("employerID").value =
-employer.employerID;
-
-document.getElementById("companyName").textContent =
-employer.companyName;
-
-document.getElementById("company_name").value =
-employer.companyName;
-
-}
-else{
-
-alert(response.message);
-
-}
-
-}
-
-catch(error){
-
-console.log(error);
-
-alert("Unable to save job.");
-
-}
-
-btn.disabled=false;
-
-btn.innerHTML=`
-<i class="fa-solid fa-floppy-disk"></i>
-Save Job
-`;
-
-});
-
-});
-
-</script>
-
-</body>
-
-</html>
+<hr style="margin:30px 0;">
