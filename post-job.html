@@ -9,12 +9,12 @@
 content="width=device-width, initial-scale=1.0">
 
 <title>
-Post New Job | UCPP
+Post New Job | Employer Dashboard | Udayan Care Placement Portal
 </title>
 
 <meta
 name="description"
-content="Employer Job Posting">
+content="Post a new job opportunity for Shalini Candidates.">
 
 <link
 rel="stylesheet"
@@ -39,13 +39,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 </head>
 
-<body>
+<body class="post-job-page">
 
 <div class="dashboard">
 
-<!-- ================================================= -->
-<!-- SIDEBAR -->
-<!-- ================================================= -->
+<!-- =====================================
+SIDEBAR
+===================================== -->
 
 <aside class="sidebar">
 
@@ -53,7 +53,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 <img
 src="images/logo.png"
-alt="Logo">
+alt="UCPP Logo">
 
 </div>
 
@@ -121,11 +121,13 @@ Logout
 
 </aside>
 
-<!-- ================================================= -->
-<!-- MAIN CONTENT -->
-<!-- ================================================= -->
+<!-- =====================================
+CONTENT
+===================================== -->
 
 <main class="dashboard-content">
+
+<!-- PAGE HEADER -->
 
 <div class="dashboard-header">
 
@@ -133,13 +135,15 @@ Logout
 
 <h1>
 
+<i class="fa-solid fa-plus-circle"></i>
+
 Post New Job
 
 </h1>
 
 <p>
 
-Publish a verified opportunity for Udayan Care Shalini Candidates.
+Create a verified opportunity for Udayan Shalini candidates.
 
 </p>
 
@@ -147,32 +151,26 @@ Publish a verified opportunity for Udayan Care Shalini Candidates.
 
 </div>
 
-<!-- ================================================= -->
-<!-- COMPANY ROW -->
-<!-- ================================================= -->
+<!-- =====================================
+COMPANY STRIP
+(ONE ROW)
+===================================== -->
 
-<section
-class="card"
-
-style="padding:18px 24px;
-margin-bottom:25px;">
-
-<div
-style="display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-gap:15px;">
+<div class="company-strip">
 
 <div>
 
-<h3
-id="companyName"
-style="margin:0;">
+<h3 id="companyName">
 
 Loading...
 
 </h3>
+
+<span>
+
+Employer Company
+
+</span>
 
 </div>
 
@@ -194,35 +192,37 @@ Employer ID :
 
 </div>
 
+<!-- =====================================
+JOB FORM START
+===================================== -->
+
+<form id="postJobForm">
+
+<input
+type="hidden"
+id="employerID">
+
 <input
 type="hidden"
 id="company_name">
 
-</section>
+<div class="job-card">
 
-<!-- ================================================= -->
-<!-- JOB FORM -->
-<!-- ================================================= -->
+<!-- =====================================
+BASIC JOB DETAILS
+===================================== -->
 
-<section
-class="card"
-style="padding:30px;">
+<div class="section-row">
 
-<form id="postJobForm">
-
-<!-- ================================================= -->
-<!-- BASIC JOB DETAILS -->
-<!-- ================================================= -->
-
-<h3 style="margin-bottom:20px;">
+<h3>
 
 Basic Job Information
 
 </h3>
 
-<div class="dashboard-grid">
+<div class="grid-2">
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -233,13 +233,12 @@ Job Title *
 <input
 type="text"
 id="jobTitle"
-class="form-control"
 placeholder="Customer Support Executive"
 required>
 
 </div>
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -249,7 +248,6 @@ Job Category *
 
 <select
 id="jobCategory"
-class="form-control"
 required>
 
 <option value="">
@@ -296,7 +294,7 @@ Select Category
 
 </div>
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -306,7 +304,6 @@ Job Type *
 
 <select
 id="jobType"
-class="form-control"
 required>
 
 <option value="">
@@ -331,7 +328,7 @@ Select Job Type
 
 </div>
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -341,7 +338,6 @@ Work Mode *
 
 <select
 id="workMode"
-class="form-control"
 required>
 
 <option value="">
@@ -362,21 +358,23 @@ Select Work Mode
 
 </div>
 
-<hr style="margin:30px 0;">
+</div>
 
-  <!-- ================================================= -->
-<!-- JOB LOCATION -->
-<!-- ================================================= -->
+  <!-- =====================================
+JOB LOCATION
+===================================== -->
 
-<h3 style="margin-bottom:20px;">
+<div class="section-row">
+
+<h3>
 
 Job Location
 
 </h3>
 
-<div class="dashboard-grid">
+<div class="grid-4">
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -387,13 +385,12 @@ State *
 <input
 type="text"
 id="state"
-class="form-control"
 placeholder="State"
 required>
 
 </div>
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -404,13 +401,12 @@ District *
 <input
 type="text"
 id="district"
-class="form-control"
 placeholder="District"
 required>
 
 </div>
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -421,13 +417,12 @@ City *
 <input
 type="text"
 id="city"
-class="form-control"
 placeholder="City"
 required>
 
 </div>
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -438,29 +433,31 @@ Complete Address *
 <input
 type="text"
 id="address"
-class="form-control"
-placeholder="Office Address"
+placeholder="Complete Office Address"
 required>
 
 </div>
 
 </div>
 
-<hr style="margin:30px 0;">
+</div>
 
-<!-- ================================================= -->
-<!-- ELIGIBILITY -->
-<!-- ================================================= -->
+<!-- =====================================
+ELIGIBILITY
+(4 Fields in One Row)
+===================================== -->
 
-<h3 style="margin-bottom:20px;">
+<div class="section-row">
 
-Eligibility & Salary
+<h3>
+
+Eligibility
 
 </h3>
 
-<div class="dashboard-grid">
+<div class="grid-4">
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -470,10 +467,13 @@ Qualification *
 
 <select
 id="qualification"
-class="form-control"
 required>
 
-<option value="">Select</option>
+<option value="">
+
+Select Qualification
+
+</option>
 
 <option>10th Pass</option>
 
@@ -493,7 +493,7 @@ required>
 
 </div>
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -503,10 +503,13 @@ Experience *
 
 <select
 id="experience"
-class="form-control"
 required>
 
-<option value="">Select</option>
+<option value="">
+
+Select Experience
+
+</option>
 
 <option>Fresher</option>
 
@@ -524,7 +527,7 @@ required>
 
 </div>
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -535,13 +538,12 @@ Vacancies *
 <input
 type="number"
 id="vacancies"
-class="form-control"
-placeholder="10"
+placeholder="05"
 required>
 
 </div>
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -552,18 +554,66 @@ Last Date *
 <input
 type="date"
 id="applicationLastDate"
-class="form-control"
 required>
 
 </div>
 
 </div>
 
-<br>
+</div>
 
-<div class="dashboard-grid">
+<!-- =====================================
+SKILLS
+===================================== -->
 
-<div class="form-group">
+<div class="section-row">
+
+<h3>
+
+Skills
+
+</h3>
+
+<div>
+
+<label>
+
+Required Skills *
+
+</label>
+
+<input
+type="text"
+id="skills"
+placeholder="Communication, Excel, Sales, Computer Basics"
+required>
+
+<small>
+
+Separate multiple skills using commas.
+
+</small>
+
+</div>
+
+</div>
+
+<!-- =====================================
+SALARY
+(3 Fields in One Row)
+===================================== -->
+
+<div class="section-row">
+
+<h3>
+
+Salary Details
+
+</h3>
+
+<div class="grid-3">
+
+<div>
 
 <label>
 
@@ -574,13 +624,12 @@ Minimum Salary *
 <input
 type="number"
 id="salaryMin"
-class="form-control"
 placeholder="15000"
 required>
 
 </div>
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -591,13 +640,12 @@ Maximum Salary *
 <input
 type="number"
 id="salaryMax"
-class="form-control"
 placeholder="25000"
 required>
 
 </div>
 
-<div class="form-group">
+<div>
 
 <label>
 
@@ -605,9 +653,7 @@ Job Status
 
 </label>
 
-<select
-id="jobStatus"
-class="form-control">
+<select id="jobStatus">
 
 <option selected>
 
@@ -625,23 +671,467 @@ Closed
 
 </div>
 
-<div class="form-group">
+</div>
+
+</div>
+
+  <!-- =====================================
+JOB DESCRIPTION
+===================================== -->
+
+<div class="section-row">
+
+<h3>
+
+Job Description
+
+</h3>
+
+<div>
 
 <label>
 
-Skills *
+Job Description *
 
 </label>
 
-<input
-type="text"
-id="skills"
-class="form-control"
-placeholder="Communication, Excel, Sales"
+<textarea
+
+id="jobDescription"
+
+rows="5"
+
+placeholder="Write complete job description..."
+
 required>
 
-</div>
+</textarea>
 
 </div>
 
-<hr style="margin:30px 0;">
+</div>
+
+<!-- =====================================
+RESPONSIBILITIES
+===================================== -->
+
+<div class="section-row">
+
+<h3>
+
+Responsibilities
+
+</h3>
+
+<div>
+
+<label>
+
+Job Responsibilities *
+
+</label>
+
+<textarea
+
+id="jobResponsibilities"
+
+rows="4"
+
+placeholder="Daily responsibilities..."
+
+required>
+
+</textarea>
+
+</div>
+
+</div>
+
+<!-- =====================================
+REQUIRED SKILLS (DETAIL)
+===================================== -->
+
+<div class="section-row">
+
+<h3>
+
+Additional Requirements
+
+</h3>
+
+<div>
+
+<label>
+
+Required Skills / Instructions *
+
+</label>
+
+<textarea
+
+id="requiredSkills"
+
+rows="4"
+
+placeholder="Mention technical skills, soft skills, documents required, shift timing, joining process etc."
+
+required>
+
+</textarea>
+
+</div>
+
+</div>
+
+<!-- =====================================
+BUTTONS
+===================================== -->
+
+<div class="job-form-footer">
+
+<button
+
+type="submit"
+
+id="saveJobBtn"
+
+class="btn btn-primary">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+Publish Job
+
+</button>
+
+<button
+
+type="reset"
+
+class="btn btn-outline">
+
+<i class="fa-solid fa-rotate-right"></i>
+
+Reset
+
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+</main>
+
+</div>
+
+  <!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<img
+class="siteLogo"
+style="height:60px;margin-bottom:20px;">
+
+<p class="siteDescription"></p>
+
+<div class="social-links">
+
+<a id="facebookLink" href="#"><i class="fab fa-facebook-f"></i></a>
+
+<a id="linkedinLink" href="#"><i class="fab fa-linkedin-in"></i></a>
+
+<a id="instagramLink" href="#"><i class="fab fa-instagram"></i></a>
+
+<a id="whatsappLink" href="#"><i class="fab fa-whatsapp"></i></a>
+
+</div>
+
+</div>
+
+<div>
+
+<h3>
+
+Quick Links
+
+</h3>
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
+<a href="jobs.html">Jobs</a>
+
+<a href="contact.html">Contact</a>
+
+</div>
+
+<div>
+
+<h3>
+
+Candidates
+
+</h3>
+
+<a href="candidate-register.html">Register</a>
+
+<a href="candidate-login.html">Login</a>
+
+<a href="available-jobs.html">Jobs</a>
+
+</div>
+
+<div>
+
+<h3>
+
+Employers
+
+</h3>
+
+<a href="employer-register.html">Register Company</a>
+
+<a href="employer-login.html">Login</a>
+
+<a href="post-job.html">Post Job</a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<p>
+
+© 2026 <span id="siteName"></span> |
+An Initiative of Udayan Care
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<div class="back-top">
+
+<i class="fa-solid fa-arrow-up"></i>
+
+</div>
+
+<!-- ================= JS ================= -->
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",async()=>{
+
+// ===============================
+// LOGIN CHECK
+// ===============================
+
+const employer=
+
+JSON.parse(
+
+localStorage.getItem("employer")
+
+);
+
+if(!employer){
+
+location.href="employer-login.html";
+
+return;
+
+}
+
+// Hidden Employer ID
+
+document.getElementById("employerID").value=
+
+employer.employerID;
+
+// Company Name Card
+
+document.getElementById("companyName").textContent=
+
+employer.companyName;
+
+// Company Name Field
+
+document.getElementById("company_name").value=
+
+employer.companyName;
+
+// ===============================
+// FORM
+// ===============================
+
+const form=
+
+document.getElementById("postJobForm");
+
+form.addEventListener(
+
+"submit",
+
+async function(e){
+
+e.preventDefault();
+
+const btn=
+
+document.getElementById("saveJobBtn");
+
+btn.disabled=true;
+
+btn.innerHTML=`
+
+<i class="fa-solid fa-spinner fa-spin"></i>
+
+Publishing...
+
+`;
+const data={
+
+employerID:
+document.getElementById("employerID").value,
+
+companyName:
+document.getElementById("company_name").value,
+
+jobTitle:
+document.getElementById("jobTitle").value,
+
+jobCategory:
+document.getElementById("jobCategory").value,
+
+jobType:
+document.getElementById("jobType").value,
+
+workMode:
+document.getElementById("workMode").value,
+
+state:
+document.getElementById("state").value,
+
+district:
+document.getElementById("district").value,
+
+city:
+document.getElementById("city").value,
+
+address:
+document.getElementById("address").value,
+
+qualification:
+document.getElementById("qualification").value,
+
+experience:
+document.getElementById("experience").value,
+
+vacancies:
+document.getElementById("vacancies").value,
+
+applicationLastDate:
+document.getElementById("applicationLastDate").value,
+
+salaryMin:
+document.getElementById("salaryMin").value,
+
+salaryMax:
+document.getElementById("salaryMax").value,
+
+skills:
+document.getElementById("skills").value,
+
+jobDescription:
+document.getElementById("jobDescription").value,
+
+jobResponsibilities:
+document.getElementById("jobResponsibilities").value,
+
+requiredSkills:
+document.getElementById("requiredSkills").value,
+
+jobStatus:
+document.getElementById("jobStatus").value
+
+};
+
+try{
+
+const response=
+
+await API.postJob(data);
+
+if(response.success){
+
+alert("✅ Job Published Successfully");
+
+form.reset();
+
+// Restore Employer Details
+
+document.getElementById("employerID").value=
+
+employer.employerID;
+
+document.getElementById("companyName").textContent=
+
+employer.companyName;
+
+document.getElementById("company_name").value=
+
+employer.companyName;
+
+}
+
+else{
+
+alert(response.message);
+
+}
+
+}
+
+catch(error){
+
+console.log(error);
+
+alert("Unable to publish job.");
+
+}
+
+btn.disabled=false;
+
+btn.innerHTML=`
+
+<i class="fa-solid fa-paper-plane"></i>
+
+Publish Job
+
+`;
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
