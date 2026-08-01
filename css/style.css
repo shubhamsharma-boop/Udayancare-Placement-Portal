@@ -5589,3 +5589,169 @@ opacity:.4;
 cursor:not-allowed;
 
 }
+
+/* ==========================================================
+POST JOB V2
+========================================================== */
+
+.post-job-page .dashboard-content{
+padding:24px;
+}
+
+.post-job-page .company-strip{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:14px 20px;
+
+background:#fff;
+
+border-radius:14px;
+
+border:1px solid #E5E7EB;
+
+margin-bottom:20px;
+
+}
+
+.post-job-page .company-strip h3{
+
+margin:0;
+
+font-size:20px;
+
+font-weight:700;
+
+}
+
+.post-job-page .company-strip span{
+
+font-size:14px;
+
+color:#64748B;
+
+}
+
+.post-job-page .job-card{
+
+background:#fff;
+
+border-radius:16px;
+
+padding:24px;
+
+border:1px solid #E5E7EB;
+
+box-shadow:0 4px 12px rgba(0,0,0,.05);
+
+}
+
+.post-job-page .section-row{
+
+margin-bottom:24px;
+
+}
+
+.post-job-page .section-row h3{
+
+font-size:16px;
+
+font-weight:700;
+
+margin-bottom:16px;
+
+color:#0F172A;
+
+}
+
+.post-job-page .grid-2{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+}
+
+.post-job-page .grid-3{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:18px;
+
+}
+
+.post-job-page .grid-4{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:18px;
+
+}
+
+.post-job-page label{
+
+font-size:13px;
+
+font-weight:600;
+
+margin-bottom:6px;
+
+display:block;
+
+color:#334155;
+
+}
+
+.post-job-page input,
+
+.post-job-page select,
+
+.post-job-page textarea{
+
+width:100%;
+
+padding:12px 14px;
+
+border:1px solid #CBD5E1;
+
+border-radius:10px;
+
+font-size:14px;
+
+background:#fff;
+
+transition:.25s;
+
+}
+
+.post-job-page textarea{
+
+resize:vertical;
+
+min-height:120px;
+
+}
+
+.post-job-page input:focus,
+
+.post-job-page select:focus,
+
+.post-job-page textarea:focus{
+
+outline:none;
+
+border-color:#2563EB;
+
+box-shadow:0 0 0 3px rgba(37,99,235,.12);
+
+}
