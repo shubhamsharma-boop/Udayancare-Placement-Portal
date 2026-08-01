@@ -43,51 +43,106 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 <div class="dashboard">
 
-<!-- =====================================
-SIDEBAR
-===================================== -->
+<!-- ================= TOP BAR ================= -->
 
-<aside class="sidebar">
+<div class="topbar">
 
-<div class="sidebar-logo">
+<div class="container topbar-content">
 
-<img
-src="images/logo.png"
-alt="UCPP Logo">
+<div class="top-left">
+
+<span>
+
+<i class="fa-solid fa-phone"></i>
+
+<span id="sitePhone"></span>
+
+</span>
+
+<span>
+
+<i class="fa-solid fa-envelope"></i>
+
+<span id="siteEmail"></span>
+
+</span>
 
 </div>
 
-<nav class="sidebar-menu">
+<div class="top-right">
 
-<a href="employer-dashboard.html">
+<a id="facebookLink" href="#">
+<i class="fab fa-facebook-f"></i>
+</a>
 
-<i class="fa-solid fa-chart-line"></i>
+<a id="linkedinLink" href="#">
+<i class="fab fa-linkedin-in"></i>
+</a>
+
+<a id="instagramLink" href="#">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a id="whatsappLink" href="#">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+<div class="container navbar">
+
+<a href="index.html"
+class="logo">
+
+<img class="siteLogo"
+alt="Logo">
+
+</a>
+
+<nav class="nav-menu">
+
+<a class="active"
+href="employer-dashboard.html">
 
 Dashboard
 
 </a>
 
-<a
-class="active"
-href="post-job.html">
+<a href="post-job.html">
 
-<i class="fa-solid fa-plus"></i>
-
-Post New Job
+Post Job
 
 </a>
 
 <a href="manage-jobs.html">
 
-<i class="fa-solid fa-briefcase"></i>
-
 Manage Jobs
 
 </a>
 
-<a id="logoutBtn">
+<a href="applications.html">
 
-<i class="fa-solid fa-right-from-bracket"></i>
+Applications
+
+</a>
+
+<a href="reports.html">
+
+Reports
+
+</a>
+
+<a
+class="btn btn-primary"
+id="logoutBtn">
 
 Logout
 
@@ -95,37 +150,15 @@ Logout
 
 </nav>
 
-</aside>
+<button class="menu-toggle">
 
-<!-- =====================================
-CONTENT
-===================================== -->
+<i class="fa-solid fa-bars"></i>
 
-<main class="dashboard-content">
-
-<!-- PAGE HEADER -->
-
-<div class="dashboard-header">
-
-<div>
-
-<h1>
-
-<i class="fa-solid fa-plus-circle"></i>
-
-Post New Job
-
-</h1>
-
-<p>
-
-Create a verified opportunity for Udayan Shalini candidates.
-
-</p>
+</button>
 
 </div>
 
-</div>
+</header>
 
 <!-- =====================================
 COMPANY STRIP
