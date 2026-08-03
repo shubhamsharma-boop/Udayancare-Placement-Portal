@@ -473,64 +473,6 @@ CANDIDATE PROFILE MODAL
 
 </div>
 
-<!-- =====================================
-STATISTICS
-===================================== -->
-
-<div class="application-stats">
-
-<div class="stat-card">
-
-<h3 id="totalJobs">
-0
-</h3>
-
-<p>Total Jobs</p>
-
-</div>
-
-<div class="stat-card">
-
-<h3 id="totalApplications">
-0
-</h3>
-
-<p>Applications</p>
-
-</div>
-
-<div class="stat-card">
-
-<h3 id="shortlistedCount">
-0
-</h3>
-
-<p>Shortlisted</p>
-
-</div>
-
-<div class="stat-card">
-
-<h3 id="pendingCount">
-0
-</h3>
-
-<p>Pending</p>
-
-</div>
-
-<div class="stat-card">
-
-<h3 id="rejectedCount">
-0
-</h3>
-
-<p>Rejected</p>
-
-</div>
-
-</div>
-
 <!-- FILTERS START HERE -->
 
 <!-- JOB TABLE START HERE -->
@@ -850,7 +792,7 @@ renderCandidateTable();
 
 }
 
-
+window.viewApplications = viewApplications;
 
 // ===================================
 // RENDER CANDIDATE TABLE
@@ -1090,6 +1032,7 @@ document.getElementById("candidateModal").style.display="flex";
 
 }
 
+window.openCandidateModal = openCandidateModal;
 
 // ===================================
 // CLOSE MODAL
