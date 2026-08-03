@@ -3,2228 +3,1154 @@
 
 <head>
 
-
 <meta charset="UTF-8">
 
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>
-
-Applications | Udayan Care Placement Portal
-
+Applications | Employer Dashboard | Udayan Care Placement Portal
 </title>
 
-
-
-
 <meta name="description"
-content="Manage candidate applications received for employer job postings.">
+content="Manage received job applications.">
 
+<link rel="stylesheet" href="css/style.css">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-
-
-<link rel="stylesheet"
-href="css/style.css">
-
-
-
-
-
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
-
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-
-
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-rel="stylesheet">
-
-
-
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-
 </head>
 
+<body class="applications-page">
 
+<!-- =====================================
+EMPLOYER HEADER
+===================================== -->
 
+<header class="employer-header">
 
+<div class="container employer-navbar">
 
+<a href="employer-dashboard.html" class="logo">
 
+<img class="siteLogo" alt="Logo">
 
-<body>
+</a>
 
-
-
-
-
-
-
-
-<!-- ================= DASHBOARD ================= -->
-
-
-<div class="dashboard">
-
-
-
-
-
-
-
-
-<!-- ================= SIDEBAR ================= -->
-
-
-<aside class="sidebar">
-
-
-
-
-
-<div class="sidebar-logo">
-
-
-<img src="images/logo.png"
-alt="Udayan Care Logo">
-
-
-</div>
-
-
-
-
-
-
-
-
-<nav class="sidebar-menu">
-
-
-
-
+<nav class="employer-menu">
 
 <a href="employer-dashboard.html">
-
-
-<i class="fa-solid fa-chart-line"></i>
-
-
 Dashboard
-
-
 </a>
-
-
-
-
-
-
-
-
-<a href="company-profile.html">
-
-
-<i class="fa-solid fa-building"></i>
-
-
-Company Profile
-
-
-</a>
-
-
-
-
-
-
-
 
 <a href="post-job.html">
-
-
-<i class="fa-solid fa-circle-plus"></i>
-
-
-Post New Job
-
-
+Post Job
 </a>
-
-
-
-
-
-
-
 
 <a href="manage-jobs.html">
-
-
-<i class="fa-solid fa-briefcase"></i>
-
-
 Manage Jobs
-
-
 </a>
 
-
-
-
-
-
-
-
-<a href="applications.html"
-class="active">
-
-
-<i class="fa-solid fa-users"></i>
-
-
+<a class="active" href="applications.html">
 Applications
-
-
 </a>
 
-
-
-
-
-
-
-
-<a href="shortlisted.html">
-
-
-<i class="fa-solid fa-user-check"></i>
-
-
-Shortlisted Candidates
-
-
-</a>
-
-
-
-
-
-
-
-
-<a href="#">
-
-
-<i class="fa-solid fa-gear"></i>
-
-
-Settings
-
-
-</a>
-
-
-
-
-
-
-
-
-<a href="employer-login.html">
-
-
-<i class="fa-solid fa-right-from-bracket"></i>
-
-
+<a id="logoutBtn">
 Logout
-
-
 </a>
-
-
-
-
-
 
 </nav>
 
+</div>
 
+</header>
 
+<!-- =====================================
+PAGE
+===================================== -->
 
+<main class="applications-container">
 
+<!-- PAGE TITLE -->
 
-</aside>
-
-
-
-
-
-
-
-
-
-<!-- ================= MAIN CONTENT ================= -->
-
-
-<main class="dashboard-content">
-
-
-
-
-
-
-
-<!-- ================= HEADER ================= -->
-
-
-<div class="dashboard-header">
-
-
-
-
-
-<div>
-
+<div class="applications-header">
 
 <h1>
 
-Candidate Applications
-
-</h1>
-
-
-
-<p>
-
-Review and manage candidates who applied for your jobs.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="user-profile">
-
-
-
-<img src="images/company-placeholder.png"
-alt="Company">
-
-
-
-
-
-<div>
-
-
-<h4>
-
-ABC Technologies
-
-</h4>
-
-
-<span>
-
-Employer
-
-</span>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- ================= FILTER SECTION ================= -->
-
-
-<section class="card"
-style="padding:30px;">
-
-
-
-
-
-
-<div class="dashboard-grid">
-
-
-
-
-
-
-<div class="form-group">
-
-
-<label>
-
-Select Job
-
-</label>
-
-
-
-
-<select id="jobFilter"
-class="form-control">
-
-
-
-<option>
-
-All Jobs
-
-</option>
-
-
-
-<option>
-
-Customer Support Executive
-
-</option>
-
-
-
-<option>
-
-HR Associate
-
-</option>
-
-
-
-<option>
-
-Operations Executive
-
-</option>
-
-
-
-</select>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="form-group">
-
-
-<label>
-
-Application Status
-
-</label>
-
-
-
-
-<select id="statusFilter"
-class="form-control">
-
-
-
-<option>
-
-All Status
-
-</option>
-
-
-
-<option>
-
-Applied
-
-</option>
-
-
-
-<option>
-
-Shortlisted
-
-</option>
-
-
-
-<option>
-
-Interview
-
-</option>
-
-
-
-<option>
-
-Selected
-
-</option>
-
-
-
-<option>
-
-Rejected
-
-</option>
-
-
-
-</select>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-</div>
-
-    </section>
-
-
-
-
-
-
-
-
-
-<!-- ================= APPLICATION TABLE ================= -->
-
-
-<section class="section"
-style="padding:50px 0;">
-
-
-
-
-
-<div class="table-wrapper">
-
-
-
-
-
-<table class="table">
-
-
-
-
-
-<thead>
-
-
-<tr>
-
-
-
-<th>
-
-Candidate
-
-</th>
-
-
-
-
-<th>
-
-Applied For
-
-</th>
-
-
-
-
-<th>
-
-Experience
-
-</th>
-
-
-
-
-<th>
-
-Applied Date
-
-</th>
-
-
-
-
-<th>
-
-Status
-
-</th>
-
-
-
-
-<th>
-
-Action
-
-</th>
-
-
-
-
-</tr>
-
-
-
-</thead>
-
-
-
-
-
-
-
-
-<tbody id="applicationTableBody">
-
-
-
-
-
-
-<tr>
-
-
-
-<td>
-
-
-<div class="client">
-
-
-
-<img src="images/user-placeholder.png"
-alt="Candidate">
-
-
-
-
-
-<div>
-
-
-<h4>
-
-Priya Sharma
-
-</h4>
-
-
-
-<p>
-
-CAND000101
-
-</p>
-
-
-
-</div>
-
-
-
-</div>
-
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-Customer Support Executive
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-Fresher
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-23 July 2026
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-
-<span class="status status-pending">
-
-Applied
-
-</span>
-
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-
-
-<div style="display:flex;gap:8px;flex-wrap:wrap;">
-
-
-
-
-
-
-<a href="candidate-profile-view.html"
-class="btn btn-primary">
-
-
-<i class="fa-solid fa-eye"></i>
-
-
-View
-
-
-</a>
-
-
-
-
-
-
-
-<button
-class="btn"
-onclick="shortlistCandidate()">
-
-
-
-<i class="fa-solid fa-user-check"></i>
-
-
-Shortlist
-
-
-</button>
-
-
-
-
-
-
-
-<button
-class="btn"
-onclick="rejectCandidate()">
-
-
-
-<i class="fa-solid fa-xmark"></i>
-
-
-Reject
-
-
-</button>
-
-
-
-
-
-</div>
-
-
-
-</td>
-
-
-
-
-
-
-
-</tr>
-
-
-
-
-
-
-
-
-
-<tr>
-
-
-
-<td>
-
-
-<div class="client">
-
-
-
-<img src="images/user-placeholder.png"
-alt="Candidate">
-
-
-
-
-
-<div>
-
-
-<h4>
-
-Neha Verma
-
-</h4>
-
-
-
-<p>
-
-CAND000102
-
-</p>
-
-
-
-</div>
-
-
-
-</div>
-
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-HR Associate
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-1 Year
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-22 July 2026
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-
-<span class="status status-approved">
-
-Shortlisted
-
-</span>
-
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-
-
-<div style="display:flex;gap:8px;flex-wrap:wrap;">
-
-
-
-
-
-
-<a href="candidate-profile-view.html"
-class="btn btn-primary">
-
-
-<i class="fa-solid fa-eye"></i>
-
-
-View
-
-
-</a>
-
-
-
-
-
-
-
-<button
-class="btn">
-
-
-
-<i class="fa-solid fa-calendar"></i>
-
-
-Interview
-
-
-</button>
-
-
-
-
-
-
-
-</div>
-
-
-
-</td>
-
-
-
-
-
-
-
-</tr>
-
-
-
-
-
-
-
-
-
-<tr>
-
-
-
-<td>
-
-
-<div class="client">
-
-
-
-<img src="images/user-placeholder.png"
-alt="Candidate">
-
-
-
-
-
-<div>
-
-
-<h4>
-
-Anjali Singh
-
-</h4>
-
-
-
-<p>
-
-CAND000103
-
-</p>
-
-
-
-</div>
-
-
-
-</div>
-
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-Operations Executive
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-2 Years
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-21 July 2026
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-
-<span class="status status-rejected">
-
-Rejected
-
-</span>
-
-
-</td>
-
-
-
-
-
-
-
-<td>
-
-
-
-<a href="candidate-profile-view.html"
-class="btn btn-primary">
-
-
-View Profile
-
-
-</a>
-
-
-
-</td>
-
-
-
-
-
-
-
-</tr>
-
-
-
-
-
-
-
-
-</tbody>
-
-
-
-
-
-
-</table>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-</section>
-
-    <!-- ================= APPLICATION PIPELINE ================= -->
-
-
-<section class="section light-bg">
-
-
-
-<div class="container">
-
-
-
-
-
-<div class="section-title">
-
-
-<span>
-
-HIRING PIPELINE
-
-</span>
-
-
-
-<h2>
-
-Candidate Progress Tracking
-
-</h2>
-
-
-
-<p>
-
-Track candidates through different hiring stages.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="dashboard-grid">
-
-
-
-
-
-<div class="dashboard-card">
-
-
-<i class="fa-solid fa-file-circle-check"></i>
-
-
-
-<h3>
-
-246
-
-</h3>
-
-
-
-<p>
-
-Total Applications
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="dashboard-card">
-
-
-<i class="fa-solid fa-user-check"></i>
-
-
-
-<h3>
-
-32
-
-</h3>
-
-
-
-<p>
-
-Shortlisted
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="dashboard-card">
-
-
-<i class="fa-solid fa-calendar-check"></i>
-
-
-
-<h3>
-
-18
-
-</h3>
-
-
-
-<p>
-
-Interviews Scheduled
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="dashboard-card">
-
-
-<i class="fa-solid fa-trophy"></i>
-
-
-
-<h3>
-
-12
-
-</h3>
-
-
-
-<p>
-
-Selected
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= INTERVIEW MANAGEMENT ================= -->
-
-
-<section class="section">
-
-
-
-<div class="container">
-
-
-
-
-
-<div class="section-title">
-
-
-<span>
-
-INTERVIEW TRACKING
-
-</span>
-
-
-
-<h2>
-
-Upcoming Interviews
-
-</h2>
-
-
-
-<p>
-
-Manage candidate interview schedules and hiring decisions.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="table-wrapper">
-
-
-
-
-
-<table class="table">
-
-
-
-
-
-<thead>
-
-
-<tr>
-
-
-
-<th>
-
-Candidate
-
-</th>
-
-
-
-
-<th>
-
-Position
-
-</th>
-
-
-
-
-<th>
-
-Interview Date
-
-</th>
-
-
-
-
-<th>
-
-Mode
-
-</th>
-
-
-
-
-<th>
-
-Status
-
-</th>
-
-
-
-
-</tr>
-
-
-
-</thead>
-
-
-
-
-
-
-
-
-<tbody>
-
-
-
-
-
-
-
-<tr>
-
-
-<td>
-
-Priya Sharma
-
-</td>
-
-
-
-
-<td>
-
-Customer Support Executive
-
-</td>
-
-
-
-
-<td>
-
-25 July 2026
-
-</td>
-
-
-
-
-<td>
-
-Online
-
-</td>
-
-
-
-
-<td>
-
-
-<span class="status status-approved">
-
-Scheduled
-
-</span>
-
-
-</td>
-
-
-
-</tr>
-
-
-
-
-
-
-
-
-
-<tr>
-
-
-<td>
-
-Neha Verma
-
-</td>
-
-
-
-
-<td>
-
-HR Associate
-
-</td>
-
-
-
-
-<td>
-
-27 July 2026
-
-</td>
-
-
-
-
-<td>
-
-Offline
-
-</td>
-
-
-
-
-<td>
-
-
-<span class="status status-pending">
-
-Pending
-
-</span>
-
-
-</td>
-
-
-
-</tr>
-
-
-
-
-
-
-</tbody>
-
-
-
-
-
-
-</table>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= EMPLOYER NOTES ================= -->
-
-
-<section class="section light-bg">
-
-
-
-<div class="container">
-
-
-
-
-
-<div class="card"
-style="padding:35px;">
-
-
-
-
-
-<h2>
-
-Recruitment Notes
-
-</h2>
-
-
-
-
-<p>
-
-Add internal notes regarding candidate evaluation and interview feedback.
-
-</p>
-
-
-
-
-
-
-<textarea
-class="form-control"
-rows="5"
-placeholder="Write your notes here...">
-
-</textarea>
-
-
-
-
-
-
-<br>
-
-
-
-
-<button
-class="btn btn-primary">
-
-
-<i class="fa-solid fa-save"></i>
-
-
-Save Notes
-
-
-</button>
-
-
-
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-</section>
-
-    <!-- ================= FOOTER ================= -->
-
-
-<footer class="footer">
-
-
-<div class="container">
-
-
-<div class="footer-grid">
-
-
-
-<div>
-
-
-<img src="images/logo.png"
-alt="Udayan Care Logo"
-style="height:60px;">
-
-
-
-<p>
-
-Udayan Care Placement Portal helps employers connect with talented candidates and manage recruitment efficiently.
-
-</p>
-
-
-
-
-
-<div class="social-links">
-
-
-<a href="#">
-
-<i class="fab fa-facebook-f"></i>
-
-</a>
-
-
-
-<a href="#">
-
-<i class="fab fa-linkedin-in"></i>
-
-</a>
-
-
-
-<a href="#">
-
-<i class="fab fa-instagram"></i>
-
-</a>
-
-
-
-<a href="#">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div>
-
-
-<h3>
-
-Employer
-
-</h3>
-
-
-
-<a href="employer-dashboard.html">
-
-Dashboard
-
-</a>
-
-
-
-<a href="company-profile.html">
-
-Company Profile
-
-</a>
-
-
-
-<a href="post-job.html">
-
-Post Job
-
-</a>
-
-
-
-<a href="manage-jobs.html">
-
-Manage Jobs
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div>
-
-
-<h3>
-
-Candidates
-
-</h3>
-
-
-
-<a href="jobs.html">
-
-Browse Jobs
-
-</a>
-
-
-
-<a href="candidate-register.html">
-
-Register
-
-</a>
-
-
-
-<a href="candidate-login.html">
-
-Login
-
-</a>
-
-
-
-<a href="my-applications.html">
+<i class="fa-solid fa-users"></i>
 
 Applications
 
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div>
-
-
-<h3>
-
-Support
-
-</h3>
-
-
-
-<a href="contact.html">
-
-Contact
-
-</a>
-
-
-
-<a href="#">
-
-Help Center
-
-</a>
-
-
-
-<a href="#">
-
-Privacy Policy
-
-</a>
-
-
-
-<a href="#">
-
-Terms
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="footer-bottom">
-
+</h1>
 
 <p>
 
-© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.
+Track and manage received job applications.
 
 </p>
 
+</div>
+
+    <!-- =====================================
+APPLICATION SUMMARY
+===================================== -->
+
+<div class="application-summary">
+
+    <div class="summary-card">
+        <span>Total Jobs</span>
+        <h2 id="totalJobs">0</h2>
+    </div>
+
+    <div class="summary-card">
+        <span>Total Applications</span>
+        <h2 id="totalApplications">0</h2>
+    </div>
+
+    <div class="summary-card">
+        <span>Shortlisted</span>
+        <h2 id="shortlistedCount">0</h2>
+    </div>
+
+    <div class="summary-card">
+        <span>Pending</span>
+        <h2 id="pendingCount">0</h2>
+    </div>
+
+    <div class="summary-card">
+        <span>Rejected</span>
+        <h2 id="rejectedCount">0</h2>
+    </div>
+
+</div>
+
+
+<!-- =====================================
+SEARCH FILTER
+===================================== -->
+
+<div class="application-filter">
+
+    <input
+        type="text"
+        id="searchApplication"
+        placeholder="Search Candidate / Job">
+
+    <select id="jobFilter">
+        <option value="">All Jobs</option>
+    </select>
+
+    <select id="statusFilter">
+        <option value="">All Status</option>
+        <option value="Applied">Applied</option>
+        <option value="Viewed">Viewed</option>
+        <option value="Shortlisted">Shortlisted</option>
+        <option value="Interview">Interview</option>
+        <option value="Rejected">Rejected</option>
+    </select>
+
+    <input
+        type="date"
+        id="dateFilter">
+
+    <button
+        class="btn btn-primary"
+        id="searchBtn">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        Search
+
+    </button>
+
+</div>
+
+    <!-- =====================================
+JOB APPLICATION LIST
+===================================== -->
+
+<div class="table-card">
+
+    <div class="table-header">
+
+        <h3>
+
+            Posted Jobs
+
+        </h3>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="application-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Job Title</th>
+
+                    <th>Job ID</th>
+
+                    <th>Applications</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="jobApplicationTable">
+
+                <tr>
+
+                    <td colspan="4" class="text-center">
+
+                        Loading Jobs...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
 
 
 
+<!-- =====================================
+APPLICATION DETAILS
+===================================== -->
 
+<div class="table-card application-details">
+
+    <div class="table-header">
+
+        <h3 id="selectedJobTitle">
+
+            Applications
+
+        </h3>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="application-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Candidate</th>
+
+                    <th>Qualification</th>
+
+                    <th>Experience</th>
+
+                    <th>Location</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="candidateApplicationTable">
+
+                <tr>
+
+                    <td colspan="6" class="text-center">
+
+                        Select a Job to View Applications
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
 
 
-</footer>
 
+<!-- =====================================
+PAGINATION
+===================================== -->
 
+<div class="pagination">
 
+    <button id="prevPage">
 
+        ← Previous
 
+    </button>
 
+    <span id="pageNumbers">
 
+        1
 
+    </span>
 
-<!-- ================= BACK TO TOP ================= -->
+    <button id="nextPage">
 
+        Next →
 
-<div class="back-top">
-
-
-<i class="fa-solid fa-arrow-up"></i>
-
+    </button>
 
 </div>
 
+    <!-- =====================================
+CANDIDATE PROFILE MODAL
+===================================== -->
 
+<div class="modal-overlay" id="candidateModal">
 
+    <div class="candidate-modal">
 
+        <div class="modal-header">
 
+            <h2>
 
+                Candidate Details
 
+            </h2>
 
+            <button id="closeModal">
 
-<!-- ================= JAVASCRIPT ================= -->
+                <i class="fa-solid fa-xmark"></i>
 
+            </button>
 
+        </div>
+
+        <div class="modal-body">
+
+            <div class="candidate-grid">
+
+                <div>
+
+                    <label>Candidate Name</label>
+
+                    <p id="viewCandidateName">--</p>
+
+                </div>
+
+                <div>
+
+                    <label>Shalini ID</label>
+
+                    <p id="viewShaliniID">--</p>
+
+                </div>
+
+                <div>
+
+                    <label>Email</label>
+
+                    <p id="viewEmail">--</p>
+
+                </div>
+
+                <div>
+
+                    <label>Mobile</label>
+
+                    <p id="viewMobile">--</p>
+
+                </div>
+
+                <div>
+
+                    <label>Qualification</label>
+
+                    <p id="viewQualification">--</p>
+
+                </div>
+
+                <div>
+
+                    <label>Experience</label>
+
+                    <p id="viewExperience">--</p>
+
+                </div>
+
+                <div>
+
+                    <label>Location</label>
+
+                    <p id="viewLocation">--</p>
+
+                </div>
+
+                <div>
+
+                    <label>Status</label>
+
+                    <p id="viewStatus">Applied</p>
+
+                </div>
+
+            </div>
+
+            <div class="remarks-box">
+
+                <label>
+
+                    Employer Remarks
+
+                </label>
+
+                <textarea
+
+                    id="employerRemarks"
+
+                    rows="4"
+
+                    placeholder="Write remarks here...">
+
+                </textarea>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-outline status-btn"
+                data-status="Viewed">
+
+                Viewed
+
+            </button>
+
+            <button
+                class="btn btn-primary status-btn"
+                data-status="Shortlisted">
+
+                Shortlist
+
+            </button>
+
+            <button
+                class="btn btn-warning status-btn"
+                data-status="Interview">
+
+                Interview
+
+            </button>
+
+            <button
+                class="btn btn-danger status-btn"
+                data-status="Rejected">
+
+                Reject
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+STATISTICS
+===================================== -->
+
+<div class="application-stats">
+
+<div class="stat-card">
+
+<h3 id="totalJobs">
+0
+</h3>
+
+<p>Total Jobs</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3 id="totalApplications">
+0
+</h3>
+
+<p>Applications</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3 id="shortlistedCount">
+0
+</h3>
+
+<p>Shortlisted</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3 id="pendingCount">
+0
+</h3>
+
+<p>Pending</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3 id="rejectedCount">
+0
+</h3>
+
+<p>Rejected</p>
+
+</div>
+
+</div>
+
+<!-- FILTERS START HERE -->
+
+<!-- JOB TABLE START HERE -->
+
+<!-- APPLICATION TABLE START HERE -->
+
+<!-- MODAL START HERE -->
+
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
 <script src="js/app.js"></script>
-
-
-
-
-
-
-
 
 <script>
 
+document.addEventListener("DOMContentLoaded", async () => {
 
-document.addEventListener(
-"DOMContentLoaded",
-function(){
+let employer =
+JSON.parse(localStorage.getItem("employer"));
 
+if (!employer) {
 
+location.href = "employer-login.html";
 
-console.log(
-"Applications Page Loaded"
-);
+return;
 
+}
 
+// ===================================
+// Global Variables
+// ===================================
 
+let allApplications = [];
 
+let filteredApplications = [];
+
+let selectedJob = "";
+
+let currentPage = 1;
+
+const pageSize = 10;
+
+// ===================================
+// Logout
+// ===================================
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+logoutBtn.onclick = function () {
+
+localStorage.removeItem("employer");
+
+location.href = "employer-login.html";
+
+};
+
+}
+
+// ===================================
+// Load Everything
+// ===================================
+
+await loadApplications();
 
 });
 
+    // ===================================
+// LOAD APPLICATIONS
+// ===================================
 
+async function loadApplications() {
 
+try {
 
+const response =
+await API.getEmployerApplications({
 
+employerID: employer.employerID
 
+});
 
+if (!response.success) {
 
+alert(response.message);
 
-// Shortlist Candidate
+return;
 
+}
 
-function shortlistCandidate(){
+allApplications = response.applications || [];
 
+filteredApplications = [...allApplications];
 
+// ===============================
+// Dashboard Counts
+// ===============================
 
-let confirmAction =
-confirm(
-"Move this candidate to shortlist?"
-);
+document.getElementById("totalApplications").textContent =
+allApplications.length;
 
+document.getElementById("shortlistedCount").textContent =
+allApplications.filter(a =>
+a.applicationStatus === "Shortlisted").length;
 
+document.getElementById("rejectedCount").textContent =
+allApplications.filter(a =>
+a.applicationStatus === "Rejected").length;
 
+document.getElementById("pendingCount").textContent =
+allApplications.filter(a =>
+a.applicationStatus === "Applied" ||
+a.applicationStatus === "Viewed").length;
 
+// ===============================
+// Total Jobs
+// ===============================
 
+const uniqueJobs =
+[...new Set(allApplications.map(a => a.jobID))];
 
-if(confirmAction){
+document.getElementById("totalJobs").textContent =
+uniqueJobs.length;
 
+// ===============================
+// Fill Job Filter
+// ===============================
 
+fillJobFilter();
 
-alert(
-"Candidate shortlisted successfully."
-);
+// ===============================
+// Render Job Table
+// ===============================
 
+renderJobTable();
 
+}
 
+catch(error){
 
+console.log(error);
 
-/*
+alert("Unable to load applications.");
 
-Future Google Apps Script:
+}
 
+}
+    // ===================================
+// FILL JOB FILTER
+// ===================================
 
+function fillJobFilter(){
 
-Update Applications Sheet
+const jobFilter =
+document.getElementById("jobFilter");
 
-Status = Shortlisted
+jobFilter.innerHTML =
+'<option value="">All Jobs</option>';
 
+const jobs = {};
 
-*/
+allApplications.forEach(app=>{
 
+if(!jobs[app.jobID]){
 
+jobs[app.jobID]={
+
+jobID:app.jobID,
+
+jobTitle:app.jobTitle,
+
+count:0
+
+};
+
+}
+
+jobs[app.jobID].count++;
+
+});
+
+Object.values(jobs).forEach(job=>{
+
+const option =
+document.createElement("option");
+
+option.value = job.jobID;
+
+option.textContent =
+`${job.jobTitle} (${job.count})`;
+
+jobFilter.appendChild(option);
+
+});
 
 }
 
 
 
+// ===================================
+// RENDER JOB TABLE
+// ===================================
+
+function renderJobTable(){
+
+const tbody =
+document.getElementById("jobApplicationTable");
+
+tbody.innerHTML="";
+
+const jobs = {};
+
+allApplications.forEach(app=>{
+
+if(!jobs[app.jobID]){
+
+jobs[app.jobID]={
+
+jobID:app.jobID,
+
+jobTitle:app.jobTitle,
+
+count:0
+
+};
+
+}
+
+jobs[app.jobID].count++;
+
+});
+
+Object.values(jobs).forEach(job=>{
+
+tbody.innerHTML += `
+
+<tr>
+
+<td>${job.jobTitle}</td>
+
+<td>${job.jobID}</td>
+
+<td>
+
+${job.count}
+
+</td>
+
+<td>
+
+<button
+
+class="btn btn-primary btn-sm"
+
+onclick="viewApplications('${job.jobID}')">
+
+View
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+if(Object.keys(jobs).length===0){
+
+tbody.innerHTML=`
+
+<tr>
+
+<td colspan="4"
+
+class="text-center">
+
+No Jobs Found
+
+</td>
+
+</tr>
+
+`;
+
+}
+
+}
+    // ===================================
+// VIEW APPLICATIONS OF SELECTED JOB
+// ===================================
+
+function viewApplications(jobID){
+
+selectedJob = jobID;
+
+currentPage = 1;
+
+// Filter only selected Job
+
+filteredApplications =
+
+allApplications.filter(app=>app.jobID===jobID);
+
+// Update Heading
+
+document.getElementById("selectedJobTitle").innerHTML =
+
+`Applications (${filteredApplications.length})`;
+
+renderCandidateTable();
+
 }
 
 
 
+// ===================================
+// RENDER CANDIDATE TABLE
+// ===================================
+
+function renderCandidateTable(){
+
+const tbody =
+
+document.getElementById("candidateApplicationTable");
+
+tbody.innerHTML = "";
+
+if(filteredApplications.length===0){
+
+tbody.innerHTML = `
+
+<tr>
+
+<td colspan="6"
+
+class="text-center">
+
+No Applications Found
+
+</td>
+
+</tr>
+
+`;
+
+return;
+
+}
+
+const start =
+
+(currentPage-1)*pageSize;
+
+const end =
+
+start + pageSize;
+
+const data =
+
+filteredApplications.slice(start,end);
+
+data.forEach(app=>{
+
+let badge="";
+
+switch(app.applicationStatus){
+
+case "Applied":
+
+badge='<span class="status-badge status-applied">Applied</span>';
+
+break;
+
+case "Viewed":
+
+badge='<span class="status-badge status-viewed">Viewed</span>';
+
+break;
+
+case "Shortlisted":
+
+badge='<span class="status-badge status-shortlisted">Shortlisted</span>';
+
+break;
+
+case "Rejected":
+
+badge='<span class="status-badge status-rejected">Rejected</span>';
+
+break;
+
+case "Interview":
+
+badge='<span class="status-badge status-interview">Interview</span>';
+
+break;
+
+default:
+
+badge=app.applicationStatus;
+
+}
+
+tbody.innerHTML += `
+
+<tr>
+
+<td>
+
+${app.candidateName}
+
+</td>
+
+<td>
+
+${app.qualification || "-"}
+
+</td>
+
+<td>
+
+${app.experience || "-"}
+
+</td>
+
+<td>
+
+${app.location || "-"}
+
+</td>
+
+<td>
+
+${badge}
+
+</td>
+
+<td>
+
+<button
+
+class="btn btn-primary btn-sm"
+
+onclick="openCandidateModal('${app.applicationID}')">
+
+View
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+renderPagination();
+
+}
+    // ===================================
+// PAGINATION
+// ===================================
+
+function renderPagination(){
+
+const totalPages =
+Math.ceil(filteredApplications.length / pageSize);
+
+document.getElementById("pageNumbers").textContent =
+currentPage + " / " + (totalPages || 1);
+
+document.getElementById("prevPage").disabled =
+(currentPage===1);
+
+document.getElementById("nextPage").disabled =
+(currentPage>=totalPages);
+
+}
+
+document.getElementById("prevPage").onclick=function(){
+
+if(currentPage>1){
+
+currentPage--;
+
+renderCandidateTable();
+
+}
+
+};
+
+document.getElementById("nextPage").onclick=function(){
+
+const totalPages=
+Math.ceil(filteredApplications.length/pageSize);
+
+if(currentPage<totalPages){
+
+currentPage++;
+
+renderCandidateTable();
+
+}
+
+};
 
 
+// ===================================
+// OPEN CANDIDATE MODAL
+// ===================================
 
+function openCandidateModal(applicationID){
 
+const app =
+allApplications.find(a=>a.applicationID===applicationID);
 
+if(!app) return;
 
-// Reject Candidate
+window.currentApplicationID =
+applicationID;
 
+document.getElementById("viewCandidateName").textContent =
+app.candidateName;
 
-function rejectCandidate(){
+document.getElementById("viewShaliniID").textContent =
+app.shaliniID;
 
+document.getElementById("viewEmail").textContent =
+app.candidateEmail;
 
+document.getElementById("viewMobile").textContent =
+app.candidateMobile;
 
-let confirmAction =
-confirm(
-"Reject this candidate?"
-);
+document.getElementById("viewQualification").textContent =
+app.qualification || "-";
 
+document.getElementById("viewExperience").textContent =
+app.experience || "-";
 
+document.getElementById("viewLocation").textContent =
+app.location || "-";
 
+document.getElementById("viewStatus").textContent =
+app.applicationStatus;
 
+document.getElementById("employerRemarks").value =
+app.employerRemarks || "";
 
-
-if(confirmAction){
-
-
-
-alert(
-"Candidate rejected."
-);
-
-
-
-
-
-
-/*
-
-Future Google Apps Script:
-
-
-
-Update Applications Sheet
-
-Status = Rejected
-
-
-*/
-
-
+document.getElementById("candidateModal").style.display="flex";
 
 }
 
 
+// ===================================
+// CLOSE MODAL
+// ===================================
+
+document.getElementById("closeModal").onclick=function(){
+
+document.getElementById("candidateModal").style.display="none";
+
+};
+
+
+// ===================================
+// STATUS UPDATE
+// ===================================
+
+document.querySelectorAll(".status-btn").forEach(btn=>{
+
+btn.onclick = async function(){
+
+const status =
+this.dataset.status;
+
+const remarks =
+document.getElementById("employerRemarks").value;
+
+const response =
+await API.updateApplicationStatus({
+
+applicationID:
+window.currentApplicationID,
+
+status:status,
+
+remarks:remarks
+
+});
+
+if(response.success){
+
+alert("Status Updated Successfully.");
+
+document.getElementById("candidateModal").style.display="none";
+
+await loadApplications();
+
+if(selectedJob){
+
+viewApplications(selectedJob);
 
 }
 
+}else{
 
+alert(response.message);
 
+}
 
+};
 
-
-
-
+});
 
 </script>
 
-
-
-
-
-
-
-
-
 </body>
-
-
 </html>
