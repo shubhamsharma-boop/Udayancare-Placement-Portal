@@ -473,6 +473,8 @@ CANDIDATE PROFILE MODAL
 
 </div>
 
+    
+
 <!-- FILTERS START HERE -->
 
 <!-- JOB TABLE START HERE -->
@@ -489,7 +491,12 @@ CANDIDATE PROFILE MODAL
 
 <script>
 
-    let employer = null;
+let employer = null;
+let allApplications = [];
+let filteredApplications = [];
+let selectedJob = "";
+let currentPage = 1;
+const pageSize = 10;
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -503,20 +510,6 @@ location.href = "employer-login.html";
 return;
 
 }
-
-// ===================================
-// Global Variables
-// ===================================
-
-let allApplications = [];
-
-let filteredApplications = [];
-
-let selectedJob = "";
-
-let currentPage = 1;
-
-const pageSize = 10;
 
 // ===================================
 // Logout
@@ -882,7 +875,7 @@ badge=app.applicationStatus;
 
 }
 
-<tbody.innerHTML += `
+tbody.innerHTML += `
 <tr>
 
 <td>${app.candidateName}</td>
