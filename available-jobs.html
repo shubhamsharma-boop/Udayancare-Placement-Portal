@@ -8,1361 +8,965 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-
 <title>
-
 Available Jobs | Udayan Care Placement Portal
-
 </title>
 
+<meta
+name="description"
+content="Browse verified jobs and apply online.">
 
-<meta name="description"
-content="Explore verified job opportunities through Udayan Care Placement Portal.">
-
-
-
-<link rel="stylesheet"
+<link
+rel="stylesheet"
 href="css/style.css">
 
-
-
-<link rel="preconnect"
+<link
+rel="preconnect"
 href="https://fonts.googleapis.com">
 
-
-<link rel="preconnect"
+<link
+rel="preconnect"
 href="https://fonts.gstatic.com"
 crossorigin>
 
-
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
 
-
-
-<link rel="stylesheet"
+<link
+rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
 
 </head>
 
+<body class="available-jobs-page">
 
-<body>
+<!-- ===========================
+TOP BAR
+=========================== -->
 
+<div class="topbar">
 
+<div class="container topbar-content">
 
-<!-- ================= DASHBOARD ================= -->
+<div class="top-left">
 
+<span>
+<i class="fa-solid fa-phone"></i>
++91-11-27821333
+</span>
 
-<div class="dashboard">
-
-
-
-
-
-<!-- ================= SIDEBAR ================= -->
-
-
-<aside class="sidebar">
-
-
-
-<div class="sidebar-logo">
-
-
-<img src="images/logo.png"
-alt="Udayan Care">
-
+<span>
+<i class="fa-solid fa-envelope"></i>
+placement@udayancare.org
+</span>
 
 </div>
 
+<div class="top-right">
 
+<a href="#">
+<i class="fab fa-facebook-f"></i>
+</a>
 
+<a href="#">
+<i class="fab fa-linkedin-in"></i>
+</a>
 
+<a href="#">
+<i class="fab fa-instagram"></i>
+</a>
 
-<nav class="sidebar-menu">
+<a href="#">
+<i class="fab fa-whatsapp"></i>
+</a>
 
+</div>
+
+</div>
+
+</div>
+
+<!-- ===========================
+HEADER
+=========================== -->
+
+<header class="header">
+
+<div class="container navbar">
+
+<a href="index.html" class="logo">
+
+<img class="siteLogo" alt="Logo">
+
+</a>
+
+<nav class="nav-menu">
 
 <a href="candidate-dashboard.html">
-
-
-<i class="fa-solid fa-house"></i>
-
-
 Dashboard
-
-
 </a>
 
-
-
-
-
-<a href="candidate-profile.html">
-
-
-<i class="fa-solid fa-user"></i>
-
-
-My Profile
-
-
+<a class="active" href="available-jobs.html">
+Jobs
 </a>
-
-
-
-
-
-<a href="available-jobs.html"
-class="active">
-
-
-<i class="fa-solid fa-briefcase"></i>
-
-
-Available Jobs
-
-
-</a>
-
-
-
-
 
 <a href="my-applications.html">
-
-
-<i class="fa-solid fa-file-lines"></i>
-
-
 My Applications
-
-
 </a>
 
-
-
-
-
-<a href="#">
-
-
-<i class="fa-solid fa-bookmark"></i>
-
-
-Saved Jobs
-
-
+<a href="candidate-profile.html">
+Profile
 </a>
 
-
-
-
-
-<a href="#">
-
-
-<i class="fa-solid fa-gear"></i>
-
-
-Settings
-
-
-</a>
-
-
-
-
-
-<a href="candidate-login.html">
-
-
-<i class="fa-solid fa-right-from-bracket"></i>
-
-
+<a id="logoutBtn" href="#">
 Logout
-
-
 </a>
-
-
 
 </nav>
 
+<button class="menu-toggle">
 
-</aside>
+<i class="fa-solid fa-bars"></i>
 
+</button>
 
+</div>
 
+</header>
 
+<!-- ===========================
+MAIN CONTAINER
+=========================== -->
 
+<main class="jobs-container">
 
-
-<!-- ================= MAIN CONTENT ================= -->
-
-
-<main class="dashboard-content">
-
-
-
-
-
-<!-- ================= PAGE HEADER ================= -->
-
-
-<div class="dashboard-header">
-
-
-
-<div>
-
+<div class="jobs-header">
 
 <h1>
+
+<i class="fa-solid fa-briefcase"></i>
 
 Available Jobs
 
 </h1>
 
-
 <p>
 
-Find verified opportunities matching your skills and preferences.
+Browse verified job opportunities and apply instantly.
 
 </p>
 
-
 </div>
 
+    <!-- =====================================
+SEARCH & FILTER BAR
+===================================== -->
 
+<div class="jobs-toolbar">
 
+<div class="jobs-count">
 
+<strong>
+Showing :
+</strong>
 
-<div class="user-profile">
-
-
-<img src="images/user-placeholder.png"
-alt="Candidate">
-
-
-
-<div>
-
-
-<h4>
-
-Priya Sharma
-
-</h4>
-
-
-<span>
-
-Candidate
-
+<span id="totalJobs">
+0
 </span>
 
+Active Jobs
 
 </div>
 
-
-</div>
-
-
-
-
-</div>
-
-    <!-- ================= JOB SEARCH & FILTER ================= -->
-
-
-<section class="card"
-style="padding:30px;">
-
-
-
-<form id="jobSearchForm">
-
-
-
-<div class="dashboard-grid">
-
-
-
-
-
-<div class="form-group">
-
-
-<label>
-
-Search Job
-
-</label>
-
+<div class="jobs-filters">
 
 <input
 type="text"
-id="jobKeyword"
-class="form-control"
-placeholder="Job title, company or skill">
+id="searchJob"
+placeholder="Search Job Title...">
 
+<select id="filterCategory">
 
-</div>
+<option value="">
+Category
+</option>
 
+</select>
 
+<select id="filterLocation">
 
-
-
-<div class="form-group">
-
-
-<label>
-
+<option value="">
 Location
-
-</label>
-
-
-<select
-id="jobLocation"
-class="form-control">
-
-
-<option>
-
-All Locations
-
 </option>
-
-
-<option>
-
-Delhi
-
-</option>
-
-
-<option>
-
-Noida
-
-</option>
-
-
-<option>
-
-Gurugram
-
-</option>
-
-
-<option>
-
-Faridabad
-
-</option>
-
 
 </select>
 
+<select id="filterWorkMode">
 
-</div>
-
-
-
-
-
-
-<div class="form-group">
-
-
-<label>
-
-Experience
-
-</label>
-
-
-<select
-id="jobExperience"
-class="form-control">
-
-
-<option>
-
-All Experience
-
+<option value="">
+Work Mode
 </option>
 
-
-<option>
-
-Fresher
-
+<option value="Office">
+Office
 </option>
 
-
-<option>
-
-0-1 Year
-
+<option value="Hybrid">
+Hybrid
 </option>
 
-
-<option>
-
-1-3 Years
-
+<option value="Remote">
+Remote
 </option>
-
-
-<option>
-
-3+ Years
-
-</option>
-
 
 </select>
-
-
-</div>
-
-
-
-
-
-
-<div class="form-group">
-
-
-<label>
-
-Job Type
-
-</label>
-
-
-<select
-id="jobType"
-class="form-control">
-
-
-<option>
-
-All Types
-
-</option>
-
-
-<option>
-
-Full Time
-
-</option>
-
-
-<option>
-
-Part Time
-
-</option>
-
-
-<option>
-
-Work From Home
-
-</option>
-
-
-<option>
-
-Internship
-
-</option>
-
-
-</select>
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-
 
 <button
-type="submit"
+id="searchBtn"
 class="btn btn-primary">
-
 
 <i class="fa-solid fa-magnifying-glass"></i>
 
-
-Search Jobs
-
+Search
 
 </button>
 
-
-
-</form>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= JOB LISTING ================= -->
-
-
-<section class="section"
-style="padding:40px 0;">
-
-
-
-<div class="section-title">
-
-
-<span>
-
-JOB OPPORTUNITIES
-
-</span>
-
-
-
-<h2>
-
-Latest Available Jobs
-
-</h2>
-
-
-
-<p>
-
-Apply for verified opportunities from trusted employers.
-
-</p>
-
-
+</div>
 
 </div>
 
-
-
-
-
-
-
-<div class="jobs-grid"
-id="availableJobs">
-
-
-
-
-
-
-
-<!-- JOB CARD 1 -->
-
-
-<div class="job-card">
-
-
-
-<span class="badge">
-
-Full Time
-
-</span>
-
-
-
-
-<h3>
-
-Customer Support Executive
-
-</h3>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-building"></i>
-
-
-ABC Technologies
-
-</p>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-
-Noida
-
-</p>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-indian-rupee-sign"></i>
-
-
-₹22,000 / Month
-
-</p>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-briefcase"></i>
-
-
-Fresher
-
-</p>
-
-
-
-
-<a href="job-details.html"
-class="btn btn-primary">
-
-
-View Details
-
-
-</a>
-
-
+<!-- =====================================
+JOB LIST START
+===================================== -->
+
+<div
+id="jobsContainer"
+class="jobs-list">
+
+<!-- Jobs will load here -->
 
 </div>
 
+<!-- =====================================
+PAGINATION
+===================================== -->
 
+<div
+class="pagination"
+id="pagination">
 
+<button id="prevPage">
 
+<i class="fa-solid fa-angle-left"></i>
 
+Previous
 
+</button>
 
-<!-- JOB CARD 2 -->
-
-
-<div class="job-card">
-
-
-
-<span class="badge">
-
-Work From Office
-
-</span>
-
-
-
-
-<h3>
-
-HR Associate
-
-</h3>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-building"></i>
-
-
-XYZ Solutions
-
-</p>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-
-Gurugram
-
-</p>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-indian-rupee-sign"></i>
-
-
-₹25,000 / Month
-
-</p>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-briefcase"></i>
-
-
-1-2 Years
-
-</p>
-
-
-
-
-<a href="job-details.html"
-class="btn btn-primary">
-
-
-View Details
-
-
-</a>
-
-
+<div id="pageNumbers">
 
 </div>
 
+<button id="nextPage">
 
-
-
-
-
-
-
-<!-- JOB CARD 3 -->
-
-
-<div class="job-card">
-
-
-
-<span class="badge">
-
-Full Time
-
-</span>
-
-
-
-
-<h3>
-
-Operations Executive
-
-</h3>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-building"></i>
-
-
-ABC Services
-
-</p>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-
-Delhi
-
-</p>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-indian-rupee-sign"></i>
-
-
-₹20,000 / Month
-
-</p>
-
-
-
-
-<p>
-
-<i class="fa-solid fa-briefcase"></i>
-
-
-Fresher
-
-</p>
-
-
-
-
-<a href="job-details.html"
-class="btn btn-primary">
-
-
-View Details
-
-
-</a>
-
-
-
-</div>
-
-
-
-
-</div>
-
-    <!-- ================= PAGINATION ================= -->
-
-
-<div class="pagination">
-
-
-<a href="#"
-class="active">
-
-1
-
-</a>
-
-
-<a href="#">
-
-2
-
-</a>
-
-
-<a href="#">
-
-3
-
-</a>
-
-
-<a href="#">
+Next
 
 <i class="fa-solid fa-angle-right"></i>
 
-</a>
-
-
-</div>
-
-
-
-
-
-
-<!-- ================= NO JOB FOUND ================= -->
-
-
-<section class="section text-center"
-id="noJobs"
-style="display:none;">
-
-
-<div class="container">
-
-
-<img src="images/empty-state.png"
-alt="No Jobs"
-style="max-width:250px;margin:auto;">
-
-
-
-<h2>
-
-No Jobs Available
-
-</h2>
-
-
-
-<p>
-
-We couldn't find any job matching your search criteria.
-
-New opportunities will be added soon.
-
-</p>
-
-
-
-<a href="jobs.html"
-class="btn btn-primary mt-20">
-
-Browse All Jobs
-
-</a>
-
-
+</button>
 
 </div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- ================= CAREER SUPPORT CTA ================= -->
-
-
-<section class="cta">
-
-
-
-<div class="container">
-
-
-
-<div class="cta-box">
-
-
-
-<h2>
-
-Need Help Finding The Right Opportunity?
-
-</h2>
-
-
-
-<p>
-
-Our placement team supports candidates with career guidance, interview preparation and employer connections.
-
-</p>
-
-
-
-<a href="contact.html"
-class="btn">
-
-
-Contact Placement Team
-
-
-</a>
-
-
-
-
-</div>
-
-
-</div>
-
-
-</section>
-
-    <!-- ================= FOOTER ================= -->
-
-
-<footer class="footer">
-
-
-<div class="container">
-
-
-<div class="footer-grid">
-
-
-
-<div>
-
-
-<img src="images/logo.png"
-alt="Udayan Care Logo"
-style="height:60px;">
-
-
-
-<p>
-
-Udayan Care Placement Portal connects Shalini Fellows with verified employers and creates meaningful employment opportunities.
-
-</p>
-
-
-
-
-<div class="social-links">
-
-
-<a href="#">
-
-<i class="fab fa-facebook-f"></i>
-
-</a>
-
-
-
-<a href="#">
-
-<i class="fab fa-linkedin-in"></i>
-
-</a>
-
-
-
-<a href="#">
-
-<i class="fab fa-instagram"></i>
-
-</a>
-
-
-
-<a href="#">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-<div>
-
-
-<h3>
-
-Quick Links
-
-</h3>
-
-
-<a href="index.html">
-
-Home
-
-</a>
-
-
-<a href="about.html">
-
-About
-
-</a>
-
-
-<a href="jobs.html">
-
-Jobs
-
-</a>
-
-
-<a href="contact.html">
-
-Contact
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-<div>
-
-
-<h3>
-
-Candidates
-
-</h3>
-
-
-<a href="candidate-dashboard.html">
-
-Dashboard
-
-</a>
-
-
-<a href="candidate-profile.html">
-
-My Profile
-
-</a>
-
-
-<a href="available-jobs.html">
-
-Available Jobs
-
-</a>
-
-
-<a href="my-applications.html">
-
-Applications
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div>
-
-
-<h3>
-
-Employers
-
-</h3>
-
-
-<a href="employer-register.html">
-
-Register
-
-</a>
-
-
-<a href="employer-login.html">
-
-Login
-
-</a>
-
-
-<a href="post-job.html">
-
-Post Job
-
-</a>
-
-
-<a href="manage-jobs.html">
-
-Manage Jobs
-
-</a>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="footer-bottom">
-
-
-<p>
-
-© 2026 Udayan Care Placement Portal | An Initiative of Udayan Care | All Rights Reserved.
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-</footer>
-
-
-
-
-
-
-
-
-
-<!-- ================= BACK TO TOP ================= -->
-
-
-<div class="back-top">
-
-
-<i class="fa-solid fa-arrow-up"></i>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
-
-
-<script src="js/config.js"></script>
-<script src="js/api.js"></script>
-<script src="js/storage.js"></script>
-<script src="js/auth.js"></script>
-<script src="js/app.js"></script>
-<script src="js/candidate.js"></script>
-<script src="js/jobs.js"></script>
-
-
-<script>
-
-
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
-
-
-console.log(
-"Available Jobs Page Loaded"
-);
-
-
-
-
-
-/*
-
-Future Google Apps Script Integration
-
-
-1. Fetch Jobs from Jobs Sheet
-
-2. Apply Candidate Preference Matching
-
-3. Search & Filter Jobs
-
-4. Pagination
-
-5. Apply Job API
-
-
-*/
-
-
-const searchForm =
-document.getElementById("jobSearchForm");
-
-
-
-if(searchForm){
-
-
-searchForm.addEventListener(
-"submit",
-function(e){
-
-
-e.preventDefault();
-
-
-console.log(
-"Searching Jobs..."
-);
-
-
-});
-
-
-}
-
-
-
-});
-
-
-
-</script>
-
-
-
-
-
 
 </main>
 
+    <!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<img
+class="siteLogo"
+style="height:60px;margin-bottom:20px;">
+
+<p class="siteDescription"></p>
+
+<div class="social-links">
+
+<a id="facebookLink" href="#">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+<a id="linkedinLink" href="#">
+<i class="fab fa-linkedin-in"></i>
+</a>
+
+<a id="instagramLink" href="#">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a id="whatsappLink" href="#">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 </div>
 
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
+<a href="jobs.html">Jobs</a>
+
+<a href="contact.html">Contact</a>
+
+</div>
+
+<div>
+
+<h3>Candidates</h3>
+
+<a href="candidate-dashboard.html">Dashboard</a>
+
+<a href="available-jobs.html">Available Jobs</a>
+
+<a href="my-applications.html">My Applications</a>
+
+</div>
+
+<div>
+
+<h3>Support</h3>
+
+<a href="#">Privacy Policy</a>
+
+<a href="#">Terms & Conditions</a>
+
+<a href="#">Help</a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<p>
+
+© 2026
+<span id="siteName"></span>
+
+|
+
+An Initiative of Udayan Care
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- Back To Top -->
+
+<div class="back-top">
+
+<i class="fa-solid fa-arrow-up"></i>
+
+</div>
+
+<!-- ================= JS ================= -->
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+
+    
+<script>
+
+    document.addEventListener("DOMContentLoaded", async () => {
+
+    // ======================================
+    // LOGIN CHECK
+    // ======================================
+
+    const candidate =
+    JSON.parse(localStorage.getItem("candidate"));
+
+    if (!candidate) {
+
+        location.href = "candidate-login.html";
+
+        return;
+
+    }
+
+    // ======================================
+    // VARIABLES
+    // ======================================
+
+    let allJobs = [];
+
+    let filteredJobs = [];
+
+    let currentPage = 1;
+
+    const jobsPerPage = 5;
+
+    // ======================================
+    // LOAD AVAILABLE JOBS
+    // ======================================
+
+    async function loadJobs() {
+
+        try {
+
+            const response =
+            await API.getAvailableJobs();
+
+            if (!response.success) {
+
+                document.getElementById("jobsContainer").innerHTML = `
+
+                <div class="empty-state">
+
+                    <h3>No Jobs Available</h3>
+
+                    <p>Please check again later.</p>
+
+                </div>
+
+                `;
+
+                return;
+
+            }
+
+            allJobs = response.jobs || [];
+
+            // Latest jobs first
+
+            allJobs.sort((a, b) => {
+
+                return new Date(b.postedDate) - new Date(a.postedDate);
+
+            });
+
+            filteredJobs = [...allJobs];
+
+            document.getElementById("totalJobs").textContent =
+            filteredJobs.length;
+
+            loadFilters();
+
+            renderJobs();
+
+        }
+
+        catch (error) {
+
+            console.log(error);
+
+            document.getElementById("jobsContainer").innerHTML = `
+
+            <div class="empty-state">
+
+                <h3>Unable to Load Jobs</h3>
+
+            </div>
+
+            `;
+
+        }
+
+    }
+
+    // ======================================
+    // LOAD FILTER DROPDOWNS
+    // ======================================
+
+    function loadFilters() {
+
+        const category =
+        document.getElementById("filterCategory");
+
+        const location =
+        document.getElementById("filterLocation");
+
+        let categories = [];
+
+        let locations = [];
+
+        allJobs.forEach(job => {
+
+            if (!categories.includes(job.jobCategory))
+                categories.push(job.jobCategory);
+
+            if (!locations.includes(job.location))
+                locations.push(job.location);
+
+        });
+
+        categories.sort();
+
+        locations.sort();
+
+        categories.forEach(item => {
+
+            category.innerHTML +=
+            `<option>${item}</option>`;
+
+        });
+
+        locations.forEach(item => {
+
+            location.innerHTML +=
+            `<option>${item}</option>`;
+
+        });
+
+    }
+
+    // First Load
+
+    loadJobs();
+
+            // ======================================
+// RENDER JOBS
+// ======================================
+
+function renderJobs() {
+
+    const container =
+    document.getElementById("jobsContainer");
+
+    container.innerHTML = "";
+
+    const start =
+    (currentPage - 1) * jobsPerPage;
+
+    const end =
+    start + jobsPerPage;
+
+    const jobs =
+    filteredJobs.slice(start, end);
+
+    if (jobs.length === 0) {
+
+        container.innerHTML = `
+
+        <div class="empty-state">
+
+            <h3>No Jobs Found</h3>
+
+            <p>Please try another search.</p>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+    jobs.forEach(job => {
+
+        container.innerHTML += `
+
+<div class="job-item">
+
+<div class="job-header">
+
+<div>
+
+<h3>${job.jobTitle}</h3>
+
+<p>${job.companyName}</p>
+
+</div>
+
+<div class="salary">
+
+₹${job.salaryMin} - ₹${job.salaryMax}
+
+</div>
+
+</div>
+
+<div class="job-meta">
+
+<span>
+
+<i class="fa-solid fa-location-dot"></i>
+
+${job.location}
+
+</span>
+
+<span>
+
+<i class="fa-solid fa-briefcase"></i>
+
+${job.jobType}
+
+</span>
+
+<span>
+
+<i class="fa-solid fa-building"></i>
+
+${job.workMode}
+
+</span>
+
+<span>
+
+<i class="fa-solid fa-calendar"></i>
+
+${job.postedDate}
+
+</span>
+
+</div>
+
+<div class="job-meta">
+
+<span>
+
+<b>Qualification :</b>
+
+${job.qualification}
+
+</span>
+
+<span>
+
+<b>Experience :</b>
+
+${job.experience}
+
+</span>
+
+<span>
+
+<b>Last Date :</b>
+
+${job.applicationLastDate}
+
+</span>
+
+</div>
+
+<div class="job-skills">
+
+<b>Skills :</b>
+
+${job.skills}
+
+</div>
+
+<div class="job-footer">
+
+<button
+class="btn btn-outline viewJob"
+data-id="${job.jobID}">
+
+View Details
+
+</button>
+
+<button
+class="btn btn-primary applyJob"
+data-id="${job.jobID}">
+
+Apply Now
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+    });
+
+    renderPagination();
+
+}
+
+// ======================================
+// PAGINATION
+// ======================================
+
+function renderPagination() {
+
+    const pageBox =
+    document.getElementById("pageNumbers");
+
+    pageBox.innerHTML = "";
+
+    const totalPages =
+    Math.ceil(filteredJobs.length / jobsPerPage);
+
+    document.getElementById("prevPage").disabled =
+    currentPage === 1;
+
+    document.getElementById("nextPage").disabled =
+    currentPage === totalPages;
+
+    for (let i = 1; i <= totalPages; i++) {
+
+        pageBox.innerHTML += `
+
+<button
+class="page-btn ${i===currentPage?'active':''}"
+data-page="${i}">
+
+${i}
+
+</button>
+
+`;
+
+    }
+
+    document.querySelectorAll(".page-btn").forEach(btn=>{
+
+        btn.addEventListener("click",()=>{
+
+            currentPage =
+            Number(btn.dataset.page);
+
+            renderJobs();
+
+        });
+
+    });
+
+}
+
+// ======================================
+// PREVIOUS PAGE
+// ======================================
+
+document
+.getElementById("prevPage")
+.addEventListener("click",()=>{
+
+    if(currentPage>1){
+
+        currentPage--;
+
+        renderJobs();
+
+    }
+
+});
+
+// ======================================
+// NEXT PAGE
+// ======================================
+
+document
+.getElementById("nextPage")
+.addEventListener("click",()=>{
+
+    const totalPages =
+    Math.ceil(filteredJobs.length/jobsPerPage);
+
+    if(currentPage<totalPages){
+
+        currentPage++;
+
+        renderJobs();
+
+    }
+
+});
+
+// ======================================
+// SEARCH + FILTER
+// ======================================
+
+document
+.getElementById("searchBtn")
+.addEventListener("click",()=>{
+
+    const keyword =
+    document
+    .getElementById("searchJob")
+    .value
+    .toLowerCase();
+
+    const category =
+    document
+    .getElementById("filterCategory")
+    .value;
+
+    const location =
+    document
+    .getElementById("filterLocation")
+    .value;
+
+    const mode =
+    document
+    .getElementById("filterWorkMode")
+    .value;
+
+    filteredJobs =
+    allJobs.filter(job=>{
+
+        return (
+
+            (keyword==="" ||
+
+            job.jobTitle.toLowerCase().includes(keyword) ||
+
+            job.companyName.toLowerCase().includes(keyword))
+
+            &&
+
+            (category==="" ||
+
+            job.jobCategory===category)
+
+            &&
+
+            (location==="" ||
+
+            job.location===location)
+
+            &&
+
+            (mode==="" ||
+
+            job.workMode===mode)
+
+        );
+
+    });
+
+    currentPage=1;
+
+    document
+    .getElementById("totalJobs")
+    .textContent =
+    filteredJobs.length;
+
+    renderJobs();
+
+});
+
+// ======================================
+// VIEW DETAILS
+// ======================================
+
+document.addEventListener("click", async function(e){
+
+    // ------------------------------
+    // VIEW DETAILS
+    // ------------------------------
+
+    if(e.target.classList.contains("viewJob")){
+
+        const jobID =
+        e.target.dataset.id;
+
+        const response =
+        await API.getJobDetails({
+
+            jobID:jobID
+
+        });
+
+        if(response.success){
+
+            const job =
+            response.job;
+
+            alert(
+
+`Job Title : ${job.jobTitle}
+
+Company : ${job.companyName}
+
+Location : ${job.location}
+
+Qualification : ${job.qualification}
+
+Experience : ${job.experience}
+
+Salary : ₹${job.salaryMin} - ₹${job.salaryMax}
+
+Description :
+
+${job.jobDescription}
+
+Responsibilities :
+
+${job.jobResponsibilities}`
+
+            );
+
+        }
+
+    }
+
+    // ------------------------------
+    // APPLY JOB
+    // ------------------------------
+
+    if(e.target.classList.contains("applyJob")){
+
+        const confirmApply =
+        confirm("Apply for this Job?");
+
+        if(!confirmApply){
+
+            return;
+
+        }
+
+        const response =
+        await API.applyJob({
+
+            jobID:e.target.dataset.id,
+
+            candidateID:candidate.candidateID
+
+        });
+
+        if(response.success){
+
+            alert("✅ Job Applied Successfully.");
+
+        }
+
+        else{
+
+            alert(response.message);
+
+        }
+
+    }
+
+});
+
+});   // DOMContentLoaded END
+
+</script>
 
 </body>
-
 
 </html>
