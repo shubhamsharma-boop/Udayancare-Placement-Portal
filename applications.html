@@ -547,9 +547,11 @@ STATISTICS
 
 <script>
 
+    let employer = null;
+
 document.addEventListener("DOMContentLoaded", async () => {
 
-let employer =
+employer =
 JSON.parse(localStorage.getItem("employer"));
 
 if (!employer) {
