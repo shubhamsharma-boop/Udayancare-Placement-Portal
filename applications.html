@@ -882,46 +882,23 @@ badge=app.applicationStatus;
 
 }
 
-tbody.innerHTML += `
-
+<tbody.innerHTML += `
 <tr>
 
-<td>
+<td>${app.candidateName}</td>
 
-${app.candidateName}
+<td>${app.candidateMobile}</td>
 
-</td>
+<td>${app.candidateEmail}</td>
 
-<td>
+<td>${app.qualification || "-"}</td>
 
-${app.qualification || "-"}
-
-</td>
-
-<td>
-
-${app.experience || "-"}
-
-</td>
-
-<td>
-
-${app.location || "-"}
-
-</td>
-
-<td>
-
-${badge}
-
-</td>
+<td>${badge}</td>
 
 <td>
 
 <button
-
 class="btn btn-primary btn-sm"
-
 onclick="openCandidateModal('${app.applicationID}')">
 
 View
@@ -931,9 +908,8 @@ View
 </td>
 
 </tr>
-
 `;
-
+    
 });
 
 renderPagination();
