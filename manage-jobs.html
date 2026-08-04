@@ -923,7 +923,7 @@ return `
 
 <strong>
 
-${job.jobTitle}
+${String(job.jobTitle || "")}
 
 </strong>
 
@@ -931,13 +931,13 @@ ${job.jobTitle}
 
 <td>
 
-${job.companyName}
+${String(job.companyName || "")}
 
 </td>
 
 <td>
 
-${job.city}
+${String(job.city || "")}
 
 </td>
 
@@ -1195,18 +1195,15 @@ document.getElementById("categoryFilter").value;
 filteredJobs = allJobs.filter(job=>{
 
 const matchKeyword =
-(job.jobTitle || "")
+String(job.jobTitle || "")
 .toLowerCase()
 .includes(keyword);
 
-
 const matchStatus =
-status === "" || job.jobStatus === status;
-
+status === "" || String(job.jobStatus) === status;
 
 const matchCategory =
-category === "" || job.jobCategory === category;
-
+category === "" || String(job.jobCategory) === category;
 
 return (
 matchKeyword &&
