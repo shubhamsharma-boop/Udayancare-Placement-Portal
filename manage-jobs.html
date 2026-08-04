@@ -1199,53 +1199,39 @@ document.getElementById("categoryFilter")
 
 .value;
 
-filteredJobs =
-allJobs.filter(job=>{
+function filterJobs(){
+
+const keyword = document.getElementById("searchJob").value.toLowerCase();
+const status = document.getElementById("statusFilter").value;
+const category = document.getElementById("categoryFilter").value;
+
+filteredJobs = allJobs.filter(job=>{
 
 const matchKeyword =
-
-job.jobTitle
-.toLowerCase()
-.includes(keyword);
+(job.jobTitle || "").toLowerCase().includes(keyword);
 
 const matchStatus =
-
-status===""
-
-||
-
-job.jobStatus===status;
+status === "" || job.jobStatus === status;
 
 const matchCategory =
-
-category===""
-
-||
-
-job.jobCategory===category;
+category === "" || job.jobCategory === category;
 
 return (
-    matchKeyword &&
-    matchStatus &&
-    matchCategory
+matchKeyword &&
+matchStatus &&
+matchCategory
 );
-    
-currentPage=1;
 
-document.getElementById("totalJobs")
+});
 
-.innerHTML=
+currentPage = 1;
 
-"Total Jobs : "
-
-+
-
-filteredJobs.length;
+document.getElementById("totalJobs").innerHTML =
+"Total Jobs : " + filteredJobs.length;
 
 renderCurrentPage();
 
 }
-
 
 
 // =====================================
