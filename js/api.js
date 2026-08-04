@@ -207,6 +207,15 @@ const API = {
 
     },
 
+    getCandidateDigitalProfile(data){
+
+    return this.call(
+        "getCandidateDigitalProfile",
+        data
+    );
+
+},
+
 
 
     // ======================================
