@@ -5542,54 +5542,59 @@ flex-wrap:wrap;
 
 .pagination button{
 
-min-width:38px;
+width:42px;
+height:42px;
 
-height:38px;
+border:1px solid #dbe3ef;
 
-border:1px solid #CBD5E1;
+background:white;
 
-background:#FFFFFF;
+color:#2563eb;
 
-border-radius:8px;
+border-radius:10px;
 
-cursor:pointer;
-
-transition:.25s;
-
-font-size:14px;
+font-size:15px;
 
 font-weight:600;
 
+cursor:pointer;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
 }
+
 
 .pagination button:hover{
 
-background:#2563EB;
+background:#2563eb;
 
-color:#FFFFFF;
-
-border-color:#2563EB;
+color:white;
 
 }
+
 
 .pagination button.active{
 
-background:#2563EB;
+background:#2563eb;
 
-color:#FFFFFF;
+color:white;
 
-border-color:#2563EB;
+border-color:#2563eb;
 
 }
 
+
 .pagination button:disabled{
 
-opacity:.4;
+opacity:0.5;
 
 cursor:not-allowed;
 
 }
-
 /* ==========================================================
 POST JOB PAGE V3
 ========================================================== */
