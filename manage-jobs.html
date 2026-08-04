@@ -753,6 +753,10 @@ employerID: employer.employerID
 
 });
 
+    console.log("Employer", employer);
+console.log("Response", response);
+console.log("Jobs", response.jobs);
+
 if(response.success){
 
 allJobs = response.jobs || [];
@@ -829,12 +833,16 @@ startIndex+JOBS_PER_PAGE;
 const currentJobs =
 filteredJobs.slice(startIndex,endIndex);
 
-currentJobs.forEach(job=>{
+console.log(currentJobs);
+
+currentJobs.forEach((job,index)=>{
+
+console.log(index,job);
 
 tbody.innerHTML += createJobRow(job);
 
 });
-
+    
 document.getElementById("paginationInfo").innerHTML=
 
 `Showing
@@ -861,6 +869,17 @@ renderPagination();
 // =====================================
 
 function createJobRow(job){
+
+    console.log("createJobRow",job);
+
+    if(!job){
+
+console.error("Job is undefined");
+
+return "";
+
+}
+    
 
 let badge="";
 
@@ -1205,20 +1224,12 @@ category===""
 
 job.jobCategory===category;
 
-return
-
-matchKeyword
-
-&&
-
-matchStatus
-
-&&
-
-matchCategory;
-
-});
-
+return (
+    matchKeyword &&
+    matchStatus &&
+    matchCategory
+);
+    
 currentPage=1;
 
 document.getElementById("totalJobs")
