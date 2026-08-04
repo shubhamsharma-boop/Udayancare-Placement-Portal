@@ -37,106 +37,76 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 <body>
 
 
-<!-- ================= DASHBOARD ================= -->
+<!-- ================= DASHBOARD HEADER ================= -->
 
+<div class="dashboard-header">
 
-<div class="dashboard">
+    <div class="dashboard-header-left">
 
+        <h1>
+            👋 Welcome Back,
+            <span id="candidateName">Candidate</span>
+        </h1>
 
-<!-- ================= SIDEBAR ================= -->
+        <div class="candidate-meta">
 
+            <div>
+                <strong>Candidate ID</strong>
+                <span id="candidateID">CAN000245</span>
+            </div>
 
-<aside class="sidebar">
+            <div>
+                <strong>Profile Completion</strong>
 
+                <div class="mini-progress">
 
-<div class="sidebar-logo">
+                    <div
+                        id="profileCompletionBar"
+                        class="mini-progress-fill"
+                        style="width:75%;"></div>
 
+                </div>
 
-<img src="images/logo.png"
-alt="Udayan Care">
+                <span id="profileCompletion">75%</span>
 
+            </div>
+
+            <div>
+                <strong>Last Login</strong>
+                <span id="lastLogin">
+                    Today • 10:45 AM
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-header-right">
+
+        <a
+        href="candidate-profile.html"
+        class="btn btn-primary">
+
+        <i class="fa-solid fa-user-pen"></i>
+
+        Complete Profile
+
+        </a>
+
+        <a
+        href="available-jobs.html"
+        class="btn">
+
+        <i class="fa-solid fa-briefcase"></i>
+
+        Browse Jobs
+
+        </a>
+
+    </div>
 
 </div>
-
-
-
-<nav class="sidebar-menu">
-
-
-<a href="candidate-dashboard.html"
-class="active">
-
-<i class="fa-solid fa-house"></i>
-
-Dashboard
-
-</a>
-
-
-
-<a href="candidate-profile.html">
-
-<i class="fa-solid fa-user"></i>
-
-My Profile
-
-</a>
-
-
-
-<a href="available-jobs.html">
-
-<i class="fa-solid fa-briefcase"></i>
-
-Available Jobs
-
-</a>
-
-
-
-<a href="my-applications.html">
-
-<i class="fa-solid fa-file-lines"></i>
-
-My Applications
-
-</a>
-
-
-<a href="#">
-
-<i class="fa-solid fa-bookmark"></i>
-
-Saved Jobs
-
-</a>
-
-
-
-<a href="#">
-
-<i class="fa-solid fa-gear"></i>
-
-Settings
-
-</a>
-
-
-
-<a href="candidate-login.html">
-
-<i class="fa-solid fa-right-from-bracket"></i>
-
-Logout
-
-</a>
-
-
-</nav>
-
-
-</aside>
-
 
 
 
@@ -218,83 +188,49 @@ Profile Completion
 
 
 
-<div class="dashboard-card">
+<div class="dashboard-grid dashboard-stats">
 
+    <div class="dashboard-card">
 
-<i class="fa-solid fa-paper-plane"></i>
+        <i class="fa-solid fa-briefcase"></i>
 
+        <h3 id="totalJobs">156</h3>
 
-<h3 id="totalApplications">
+        <p>Total Jobs</p>
 
-12
+    </div>
 
-</h3>
+    <div class="dashboard-card">
 
+        <i class="fa-solid fa-paper-plane"></i>
 
-<p>
+        <h3 id="totalApplications">0</h3>
 
-Jobs Applied
+        <p>Applied</p>
 
-</p>
+    </div>
 
+    <div class="dashboard-card">
 
-</div>
+        <i class="fa-solid fa-star"></i>
 
+        <h3 id="shortlistedJobs">0</h3>
 
+        <p>Shortlisted</p>
 
+    </div>
 
-<div class="dashboard-card">
+    <div class="dashboard-card">
 
+        <i class="fa-solid fa-calendar-check"></i>
 
-<i class="fa-solid fa-star"></i>
+        <h3 id="interviewCount">0</h3>
 
+        <p>Interviews</p>
 
-<h3 id="shortlistedJobs">
-
-5
-
-</h3>
-
-
-<p>
-
-Shortlisted Jobs
-
-</p>
-
+    </div>
 
 </div>
-
-
-
-
-
-<div class="dashboard-card">
-
-
-<i class="fa-solid fa-calendar-check"></i>
-
-
-<h3 id="interviewCount">
-
-2
-
-</h3>
-
-
-<p>
-
-Interviews
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
 
 
 
@@ -357,479 +293,75 @@ style="width:75%;">
 
 </section>
 
-  <!-- ================= RECOMMENDED JOBS ================= -->
-
-
-<section class="section"
-style="padding:40px 0;">
-
-
-<div class="section-title"
-style="margin-bottom:40px;">
-
-
-<span>
-
-RECOMMENDED JOBS
-
-</span>
-
-
-<h2>
-
-Jobs Matching Your Profile
-
-</h2>
-
-
-<p>
-
-Explore opportunities based on your skills, education and preferences.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="jobs-grid"
-id="recommendedJobs">
-
-
-
-
-
-<!-- JOB CARD 1 -->
-
-
-<div class="job-card">
-
-
-<span class="badge">
-
-Full Time
-
-</span>
-
-
-
-<h3>
-
-Customer Support Executive
-
-</h3>
-
-
-
-<p>
-
-<i class="fa-solid fa-building"></i>
-
-ABC Technologies
-
-</p>
-
-
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-Noida
-
-</p>
-
-
-
-<p>
-
-<i class="fa-solid fa-indian-rupee-sign"></i>
-
-₹22,000 / Month
-
-</p>
-
-
-
-<a href="job-details.html"
-class="btn btn-primary">
-
-View Details
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-<!-- JOB CARD 2 -->
-
-
-<div class="job-card">
-
-
-<span class="badge">
-
-Work From Office
-
-</span>
-
-
-
-<h3>
-
-HR Associate
-
-</h3>
-
-
-
-<p>
-
-<i class="fa-solid fa-building"></i>
-
-XYZ Solutions
-
-</p>
-
-
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-Gurugram
-
-</p>
-
-
-
-<p>
-
-<i class="fa-solid fa-indian-rupee-sign"></i>
-
-₹25,000 / Month
-
-</p>
-
-
-
-<a href="job-details.html"
-class="btn btn-primary">
-
-View Details
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-
-<!-- JOB CARD 3 -->
-
-
-<div class="job-card">
-
-
-<span class="badge">
-
-Full Time
-
-</span>
-
-
-
-<h3>
-
-Operations Executive
-
-</h3>
-
-
-
-<p>
-
-<i class="fa-solid fa-building"></i>
-
-ABC Services
-
-</p>
-
-
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-Delhi
-
-</p>
-
-
-
-<p>
-
-<i class="fa-solid fa-indian-rupee-sign"></i>
-
-₹20,000 / Month
-
-</p>
-
-
-
-<a href="job-details.html"
-class="btn btn-primary">
-
-View Details
-
-</a>
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-</section>
-
   <!-- ================= RECENT APPLICATIONS ================= -->
 
+<section class="section dashboard-section">
 
-<section class="section"
-style="padding:40px 0;">
+    <div class="section-title">
 
+        <span>RECENT APPLICATIONS</span>
 
-<div class="section-title"
-style="margin-bottom:40px;">
+        <h2>My Recent Applications</h2>
 
+        <p>
+            Track your latest job applications and hiring progress.
+        </p>
 
-<span>
+    </div>
 
-RECENT ACTIVITY
+    <div class="table-wrapper">
 
-</span>
+        <table class="table">
 
+            <thead>
 
-<h2>
+                <tr>
 
-My Recent Applications
+                    <th>Job Title</th>
 
-</h2>
+                    <th>Company</th>
 
+                    <th>Applied Date</th>
 
-<p>
+                    <th>Status</th>
 
-Track your applied jobs and hiring progress.
+                </tr>
 
-</p>
+            </thead>
 
+            <tbody id="applicationTable">
 
-</div>
+                <tr>
 
+                    <td colspan="4" class="text-center">
 
+                        <i class="fa-solid fa-spinner fa-spin"></i>
 
+                        Loading Applications...
 
+                    </td>
 
-<div class="table-wrapper">
+                </tr>
 
+            </tbody>
 
-<table class="table"
-id="applicationTable">
+        </table>
 
+    </div>
 
-<thead>
+    <div class="dashboard-link">
 
+        <a href="my-applications.html">
 
-<tr>
+            View All Applications
 
+            <i class="fa-solid fa-arrow-right"></i>
 
-<th>
+        </a>
 
-Job Title
-
-</th>
-
-
-<th>
-
-Company
-
-</th>
-
-
-<th>
-
-Applied Date
-
-</th>
-
-
-<th>
-
-Status
-
-</th>
-
-
-</tr>
-
-
-</thead>
-
-
-
-<tbody>
-
-
-<tr>
-
-
-<td>
-
-Customer Support Executive
-
-</td>
-
-
-<td>
-
-ABC Technologies
-
-</td>
-
-
-<td>
-
-20 July 2026
-
-</td>
-
-
-<td>
-
-<span class="status status-approved">
-
-Shortlisted
-
-</span>
-
-</td>
-
-
-</tr>
-
-
-
-
-
-<tr>
-
-
-<td>
-
-HR Associate
-
-</td>
-
-
-<td>
-
-XYZ Solutions
-
-</td>
-
-
-<td>
-
-18 July 2026
-
-</td>
-
-
-<td>
-
-<span class="status status-pending">
-
-Under Review
-
-</span>
-
-</td>
-
-
-</tr>
-
-
-
-
-
-<tr>
-
-
-<td>
-
-Operations Executive
-
-</td>
-
-
-<td>
-
-ABC Services
-
-</td>
-
-
-<td>
-
-15 July 2026
-
-</td>
-
-
-<td>
-
-<span class="status status-rejected">
-
-Not Selected
-
-</span>
-
-</td>
-
-
-</tr>
-
-
-</tbody>
-
-
-
-</table>
-
-
-</div>
-
+    </div>
 
 </section>
-
 
 
 
@@ -837,159 +369,63 @@ Not Selected
 <!-- ================= ACTIVITY TIMELINE ================= -->
 
 
-<section class="section light-bg"
-style="padding:40px 0;">
+<section class="dashboard-section">
 
+    <div class="section-title">
 
+        <span>CAREER JOURNEY</span>
 
-<div class="container">
+        <h2>Your Placement Progress</h2>
 
+    </div>
 
-<div class="section-title"
-style="margin-bottom:40px;">
+    <div class="journey-box">
 
+        <div class="step active">
 
-<span>
+            <i class="fa-solid fa-user-check"></i>
 
-ACTIVITY
+            Registered
 
-</span>
+        </div>
 
+        <div class="step active">
 
-<h2>
+            <i class="fa-solid fa-id-card"></i>
 
-Career Journey Updates
+            Profile Complete
 
-</h2>
+        </div>
 
+        <div class="step">
 
-</div>
+            <i class="fa-solid fa-paper-plane"></i>
 
+            Applied
 
+        </div>
 
+        <div class="step">
 
+            <i class="fa-solid fa-comments"></i>
 
-<div class="journey-box">
+            Interview
 
+        </div>
 
+        <div class="step">
 
-<div class="step">
+            <i class="fa-solid fa-trophy"></i>
 
+            Selected
 
-<i class="fa-solid fa-user-check"></i>
+        </div>
 
-Profile Created
-
-</div>
-
-
-
-<div class="step">
-
-
-<i class="fa-solid fa-file-pen"></i>
-
-Digital Profile Updated
-
-</div>
-
-
-
-<div class="step">
-
-
-<i class="fa-solid fa-paper-plane"></i>
-
-Applied For Jobs
-
-</div>
-
-
-
-<div class="step">
-
-
-<i class="fa-solid fa-comments"></i>
-
-Interview Scheduled
-
-</div>
-
-
-
-<div class="step">
-
-
-<i class="fa-solid fa-trophy"></i>
-
-Selection Process
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
+    </div>
 
 </section>
-
-  <!-- ================= EMPTY STATE ================= -->
-
-
-<section class="section text-center"
-style="padding:40px 0;">
-
-
-<div class="container">
-
-
-<img src="images/empty-state.png"
-alt="No Data"
-style="max-width:250px;margin:auto;">
-
-
-<h2>
-
-No Saved Jobs Yet
-
-</h2>
-
-
-<p>
-
-Save interesting job opportunities and access them anytime.
-
-</p>
-
-
-<a href="available-jobs.html"
-class="btn btn-primary mt-20">
-
-Explore Jobs
-
-</a>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-</main>
-
-</div>
-
-
-
-
-
+  
+  
 <!-- ================= JAVASCRIPT ================= -->
 
 
