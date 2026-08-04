@@ -1267,19 +1267,107 @@ alert("Duplicate : "+jobID);
 
 }
 
-function toggleJobStatus(jobID){
+async function toggleJobStatus(jobID){
 
-alert("Change Status : "+jobID);
+try{
+
+const job = allJobs.find(j => j.jobID === jobID);
+
+if(!job){
+    alert("Job not found");
+    return;
+}
+
+
+let newStatus = 
+job.jobStatus === "Active" 
+? "Closed" 
+: "Active";
+
+
+const response = await API.updateJobStatus({
+
+jobID: jobID,
+
+jobStatus: newStatus
+
+});
+
+
+console.log("Status Update Response:",response);
+
+
+if(response.success){
+
+alert("Job status updated successfully");
+
+loadEmployerJobs();
+
+}
+else{
+
+alert(response.message || "Status update failed");
 
 }
 
-function deleteJob(jobID){
-
-if(confirm("Delete this Job?")){
-
-alert("Delete : "+jobID);
 
 }
+catch(error){
+
+console.log(error);
+
+alert("Something went wrong");
+
+}
+
+}
+
+    async function deleteJob(jobID){
+
+
+if(!confirm("Are you sure you want to delete this job?")){
+
+return;
+
+}
+
+
+try{
+
+
+const response = await API.deleteJob({
+
+jobID:jobID
+
+});
+
+
+console.log("Delete Response:",response);
+
+
+if(response.success){
+
+alert("Job deleted successfully");
+
+loadEmployerJobs();
+
+}
+else{
+
+alert(response.message || "Delete failed");
+
+}
+
+
+}
+catch(error){
+
+console.log(error);
+
+alert("Something went wrong");
+
+}
+
 
 }
 
