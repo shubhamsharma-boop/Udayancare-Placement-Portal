@@ -892,9 +892,11 @@ tbody.innerHTML += `
 
 <button
 class="btn btn-primary btn-sm"
-onclick="openCandidateModal('${app.applicationID}')">
+onclick="viewCandidateProfile('${app.applicationID}')">
 
-View
+<i class="fa-solid fa-id-card"></i>
+
+View Profile
 
 </button>
 
@@ -1003,6 +1005,8 @@ document.getElementById("candidateModal").style.display="flex";
 
 window.openCandidateModal = openCandidateModal;
 
+    
+
 // ===================================
 // CLOSE MODAL
 // ===================================
@@ -1013,6 +1017,16 @@ document.getElementById("candidateModal").style.display="none";
 
 };
 
+function viewCandidateProfile(applicationID){
+
+    window.open(
+        `candidate-profile-view.html?applicationID=${applicationID}`,
+        "_blank"
+    );
+
+}
+
+window.viewCandidateProfile = viewCandidateProfile;    
 
 // ===================================
 // STATUS UPDATE
