@@ -1182,39 +1182,31 @@ return button;
 
 function filterJobs(){
 
-const keyword =
-document.getElementById("searchJob")
-
-.value
-
-.toLowerCase();
+const keyword = 
+document.getElementById("searchJob").value.toLowerCase();
 
 const status =
-document.getElementById("statusFilter")
-
-.value;
+document.getElementById("statusFilter").value;
 
 const category =
-document.getElementById("categoryFilter")
+document.getElementById("categoryFilter").value;
 
-.value;
-
-function filterJobs(){
-
-const keyword = document.getElementById("searchJob").value.toLowerCase();
-const status = document.getElementById("statusFilter").value;
-const category = document.getElementById("categoryFilter").value;
 
 filteredJobs = allJobs.filter(job=>{
 
 const matchKeyword =
-(job.jobTitle || "").toLowerCase().includes(keyword);
+(job.jobTitle || "")
+.toLowerCase()
+.includes(keyword);
+
 
 const matchStatus =
 status === "" || job.jobStatus === status;
 
+
 const matchCategory =
 category === "" || job.jobCategory === category;
+
 
 return (
 matchKeyword &&
@@ -1224,15 +1216,17 @@ matchCategory
 
 });
 
+
 currentPage = 1;
+
 
 document.getElementById("totalJobs").innerHTML =
 "Total Jobs : " + filteredJobs.length;
 
+
 renderCurrentPage();
 
 }
-
 
 // =====================================
 // RESET FILTER
