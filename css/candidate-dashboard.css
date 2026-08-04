@@ -1,23 +1,33 @@
-/* =====================================================
+/*==================================================
 UCPP CANDIDATE DASHBOARD
 Version : 1.0
-===================================================== */
+==================================================*/
 
-/* =====================================================
-HERO
-===================================================== */
+/*====================================
+MAIN CONTENT
+====================================*/
 
-.dashboard-hero{
+.dashboard-content{
+
+padding:40px;
 
 background:#F8FAFC;
 
-padding:55px 0;
-
-border-bottom:1px solid #E5E7EB;
+min-height:100vh;
 
 }
 
-.dashboard-hero-content{
+/*====================================
+HEADER
+====================================*/
+
+.dashboard-header{
+
+background:#ffffff;
+
+padding:35px;
+
+border-radius:20px;
 
 display:flex;
 
@@ -27,75 +37,15 @@ align-items:center;
 
 gap:40px;
 
-flex-wrap:wrap;
+box-shadow:0 10px 35px rgba(0,0,0,.06);
+
+margin-bottom:40px;
 
 }
 
-.dashboard-title{
+.dashboard-header h1{
 
-flex:1;
-
-min-width:320px;
-
-}
-
-.dashboard-title h1{
-
-font-size:42px;
-
-font-weight:700;
-
-color:#0F172A;
-
-margin-bottom:12px;
-
-}
-
-.dashboard-title p{
-
-font-size:16px;
-
-color:#64748B;
-
-line-height:1.7;
-
-}
-
-.dashboard-buttons{
-
-display:flex;
-
-gap:15px;
-
-flex-wrap:wrap;
-
-margin-top:30px;
-
-}
-
-/* =====================================================
-PROFILE CARD
-===================================================== */
-
-.profile-summary{
-
-width:360px;
-
-background:#FFFFFF;
-
-border-radius:18px;
-
-padding:28px;
-
-box-shadow:0 12px 35px rgba(0,0,0,.06);
-
-border:1px solid #E5E7EB;
-
-}
-
-.profile-summary h3{
-
-font-size:22px;
+font-size:34px;
 
 margin-bottom:18px;
 
@@ -103,63 +53,83 @@ color:#0F172A;
 
 }
 
-.profile-item{
+.dashboard-header p{
 
-display:flex;
+margin:0;
 
-justify-content:space-between;
-
-padding:12px 0;
-
-border-bottom:1px solid #F1F5F9;
+color:#64748B;
 
 font-size:15px;
 
 }
 
-.profile-item:last-child{
+.dashboard-header-right{
 
-border:none;
+display:flex;
+
+gap:15px;
+
+flex-wrap:wrap;
 
 }
 
-.profile-item strong{
+/*====================================
+CANDIDATE META
+====================================*/
+
+.candidate-meta{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:35px;
+
+margin-top:20px;
+
+}
+
+.candidate-meta div{
+
+display:flex;
+
+flex-direction:column;
+
+gap:8px;
+
+}
+
+.candidate-meta strong{
+
+font-size:13px;
+
+font-weight:700;
+
+color:#64748B;
+
+text-transform:uppercase;
+
+letter-spacing:.5px;
+
+}
+
+.candidate-meta span{
+
+font-size:17px;
+
+font-weight:600;
 
 color:#0F172A;
 
 }
 
-.profile-item span{
+/*====================================
+PROFILE PROGRESS
+====================================*/
 
-color:#64748B;
+.mini-progress{
 
-}
-
-.profile-progress{
-
-margin-top:25px;
-
-}
-
-.profile-progress-top{
-
-display:flex;
-
-justify-content:space-between;
-
-margin-bottom:10px;
-
-font-weight:600;
-
-font-size:14px;
-
-color:#334155;
-
-}
-
-.progress{
-
-width:100%;
+width:220px;
 
 height:10px;
 
@@ -169,25 +139,23 @@ border-radius:30px;
 
 overflow:hidden;
 
+margin-top:6px;
+
 }
 
-.progress div{
+.mini-progress-fill{
 
 height:100%;
-
-width:0;
 
 background:#2563EB;
 
 border-radius:30px;
 
-transition:.4s;
-
 }
 
-/* =====================================================
-DASHBOARD STATISTICS
-===================================================== */
+/*====================================
+DASHBOARD STATS
+====================================*/
 
 .dashboard-stats{
 
@@ -195,29 +163,23 @@ display:grid;
 
 grid-template-columns:repeat(4,1fr);
 
-gap:25px;
+gap:22px;
 
-margin-bottom:50px;
+margin:40px 0;
 
 }
 
 .dashboard-card{
 
-background:#FFFFFF;
-
-border:1px solid #E5E7EB;
+background:#ffffff;
 
 border-radius:18px;
 
 padding:28px;
 
-display:flex;
+text-align:center;
 
-align-items:center;
-
-gap:18px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.05);
+box-shadow:0 8px 25px rgba(0,0,0,.05);
 
 transition:.30s;
 
@@ -227,185 +189,65 @@ transition:.30s;
 
 transform:translateY(-5px);
 
-box-shadow:0 18px 40px rgba(37,99,235,.12);
+box-shadow:0 18px 35px rgba(37,99,235,.12);
 
 }
 
-.dashboard-card-icon{
-
-width:68px;
-
-height:68px;
-
-border-radius:16px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
+.dashboard-card i{
 
 font-size:28px;
 
-color:#FFFFFF;
+color:#2563EB;
 
-flex-shrink:0;
-
-}
-
-.dashboard-card-icon.blue{
-
-background:#2563EB;
+margin-bottom:18px;
 
 }
 
-.dashboard-card-icon.green{
-
-background:#16A34A;
-
-}
-
-.dashboard-card-icon.orange{
-
-background:#F59E0B;
-
-}
-
-.dashboard-card-icon.purple{
-
-background:#7C3AED;
-
-}
-
-.dashboard-card-content{
-
-flex:1;
-
-}
-
-.dashboard-card-content h3{
+.dashboard-card h3{
 
 font-size:34px;
 
 font-weight:700;
 
+margin-bottom:10px;
+
 color:#0F172A;
-
-margin:0 0 6px;
-
-line-height:1;
 
 }
 
-.dashboard-card-content p{
+.dashboard-card p{
+
+margin:0;
 
 font-size:15px;
 
-font-weight:500;
-
 color:#64748B;
-
-margin:0;
 
 }
 
-/* =====================================================
-SECTION HEADER
-===================================================== */
+/*====================================
+SECTION
+====================================*/
 
 .dashboard-section{
 
-background:#FFFFFF;
-
-border:1px solid #E5E7EB;
-
-border-radius:18px;
-
-padding:30px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.05);
+margin:40px 0;
 
 }
 
-.dashboard-section-header{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-bottom:25px;
-
-gap:20px;
-
-}
-
-.dashboard-section-header span{
-
-display:block;
-
-font-size:13px;
-
-font-weight:700;
-
-letter-spacing:1px;
-
-color:#2563EB;
-
-margin-bottom:6px;
-
-}
-
-.dashboard-section-header h2{
-
-font-size:28px;
-
-font-weight:700;
-
-color:#0F172A;
-
-margin:0;
-
-}
-
-.view-all{
-
-display:flex;
-
-align-items:center;
-
-gap:8px;
-
-text-decoration:none;
-
-font-weight:600;
-
-color:#2563EB;
-
-transition:.30s;
-
-}
-
-.view-all:hover{
-
-gap:12px;
-
-}
-
-/* =====================================================
+/*====================================
 TABLE
-===================================================== */
+====================================*/
 
 .table-wrapper{
 
-background:#FFFFFF;
+background:#ffffff;
 
-border-radius:16px;
+border-radius:18px;
 
 overflow-x:auto;
 
-border:1px solid #E5E7EB;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
 
 }
 
@@ -414,8 +256,6 @@ border:1px solid #E5E7EB;
 width:100%;
 
 border-collapse:collapse;
-
-min-width:750px;
 
 }
 
@@ -427,9 +267,7 @@ background:#F8FAFC;
 
 .table th{
 
-padding:18px 20px;
-
-text-align:left;
+padding:16px;
 
 font-size:13px;
 
@@ -441,27 +279,21 @@ letter-spacing:.5px;
 
 color:#64748B;
 
+text-align:left;
+
 border-bottom:1px solid #E5E7EB;
 
 }
 
 .table td{
 
-padding:18px 20px;
+padding:16px;
 
 font-size:15px;
 
 color:#334155;
 
 border-bottom:1px solid #F1F5F9;
-
-vertical-align:middle;
-
-}
-
-.table tbody tr{
-
-transition:.25s;
 
 }
 
@@ -471,35 +303,25 @@ background:#F8FAFC;
 
 }
 
-.table tbody tr:last-child td{
-
-border-bottom:none;
-
-}
-
-/* =====================================================
+/*====================================
 STATUS BADGES
-===================================================== */
+====================================*/
 
 .status{
 
-display:inline-flex;
-
-align-items:center;
-
-gap:8px;
-
-padding:8px 14px;
+padding:6px 14px;
 
 border-radius:30px;
 
 font-size:13px;
 
-font-weight:600;
+font-weight:700;
+
+display:inline-block;
 
 }
 
-.status.applied{
+.status-approved{
 
 background:#DCFCE7;
 
@@ -507,7 +329,7 @@ color:#15803D;
 
 }
 
-.status.shortlisted{
+.status-pending{
 
 background:#DBEAFE;
 
@@ -515,15 +337,7 @@ color:#2563EB;
 
 }
 
-.status.interview{
-
-background:#FEF3C7;
-
-color:#D97706;
-
-}
-
-.status.rejected{
+.status-rejected{
 
 background:#FEE2E2;
 
@@ -531,9 +345,115 @@ color:#DC2626;
 
 }
 
-/* =====================================================
+/*====================================
+CAREER JOURNEY
+====================================*/
+
+.journey-box{
+
+display:flex;
+
+justify-content:space-between;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+background:#ffffff;
+
+padding:30px;
+
+border-radius:18px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+}
+
+.step{
+
+flex:1;
+
+min-width:150px;
+
+background:#F8FAFC;
+
+padding:20px;
+
+border-radius:14px;
+
+text-align:center;
+
+font-size:15px;
+
+font-weight:600;
+
+color:#334155;
+
+transition:.25s;
+
+}
+
+.step:hover{
+
+background:#EFF6FF;
+
+}
+
+.step i{
+
+display:block;
+
+font-size:24px;
+
+margin-bottom:12px;
+
+color:#2563EB;
+
+}
+
+/*====================================
+EMPTY STATE
+====================================*/
+
+.empty-state{
+
+background:#ffffff;
+
+padding:40px;
+
+border-radius:18px;
+
+text-align:center;
+
+box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+}
+
+.empty-state img{
+
+max-width:220px;
+
+margin-bottom:20px;
+
+}
+
+.empty-state h2{
+
+margin-bottom:10px;
+
+}
+
+.empty-state p{
+
+color:#64748B;
+
+margin-bottom:25px;
+
+}
+
+/*====================================
 RESPONSIVE
-===================================================== */
+====================================*/
 
 @media(max-width:1200px){
 
@@ -547,21 +467,7 @@ grid-template-columns:repeat(2,1fr);
 
 @media(max-width:992px){
 
-.dashboard-hero-content{
-
-flex-direction:column;
-
-align-items:flex-start;
-
-}
-
-.profile-summary{
-
-width:100%;
-
-}
-
-.dashboard-section-header{
+.dashboard-header{
 
 flex-direction:column;
 
@@ -573,25 +479,9 @@ align-items:flex-start;
 
 @media(max-width:768px){
 
-.dashboard-title h1{
+.dashboard-content{
 
-font-size:32px;
-
-}
-
-.dashboard-buttons{
-
-flex-direction:column;
-
-width:100%;
-
-}
-
-.dashboard-buttons .btn{
-
-width:100%;
-
-text-align:center;
+padding:20px;
 
 }
 
@@ -599,75 +489,55 @@ text-align:center;
 
 grid-template-columns:1fr;
 
-gap:18px;
+}
+
+.candidate-meta{
+
+flex-direction:column;
+
+gap:20px;
 
 }
 
-.dashboard-card{
+.dashboard-header-right{
 
-padding:22px;
-
-}
-
-.dashboard-card-icon{
-
-width:60px;
-
-height:60px;
-
-font-size:24px;
+width:100%;
 
 }
 
-.dashboard-card-content h3{
+.dashboard-header-right .btn{
 
-font-size:30px;
+flex:1;
 
-}
-
-.dashboard-section{
-
-padding:20px;
+text-align:center;
 
 }
 
-.table{
+.mini-progress{
 
-min-width:650px;
-
-}
+width:100%;
 
 }
 
-@media(max-width:576px){
+.journey-box{
 
-.dashboard-hero{
-
-padding:40px 0;
+flex-direction:column;
 
 }
 
-.dashboard-title h1{
+.step{
 
-font-size:28px;
-
-}
-
-.profile-summary{
-
-padding:22px;
+width:100%;
 
 }
 
-.dashboard-card{
+.table th,
 
-gap:15px;
+.table td{
 
-}
+padding:12px;
 
-.dashboard-card-content h3{
-
-font-size:26px;
+font-size:14px;
 
 }
 
