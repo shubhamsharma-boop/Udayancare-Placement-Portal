@@ -23,10 +23,12 @@ this.initProfile();
 
 this.initJobs();
 
+this.initMyApplications();
+
 this.initJobDetails();
 
 },
-
+    
 // ======================================
 // REGISTER FORM
 // ======================================
@@ -149,8 +151,6 @@ return;
 
 }
 
-
-
 // ======================================
 // BUTTON LOADING
 // ======================================
@@ -168,8 +168,7 @@ button.disabled = true;
 button.innerHTML =
 '<i class="fa-solid fa-spinner fa-spin"></i> Creating Account...';
 
-    
-    // ======================================
+ // ======================================
 // API CALL
 // ======================================
 
@@ -189,8 +188,6 @@ password:password
 
 });
 
-
-
 // ======================================
 // RESET BUTTON
 // ======================================
@@ -198,8 +195,6 @@ password:password
 button.disabled=false;
 
 button.innerHTML=oldText;
-
-
 
 // ======================================
 // RESPONSE
@@ -224,8 +219,6 @@ window.location.href=
 return;
 
 }
-
-
 
 alert(response.message);
 
@@ -279,8 +272,6 @@ const password=
 document.getElementById("password")
 .value;
 
-
-
 // ======================================
 // VALIDATION
 // ======================================
@@ -292,8 +283,6 @@ alert("Please enter Email and Password.");
 return;
 
 }
-
-
 
 // ======================================
 // BUTTON LOADING
@@ -314,8 +303,6 @@ button.innerHTML;
 button.disabled=true;
 
 button.innerHTML="Logging In...";
-
-
 
 // ======================================
 // API CALL
@@ -339,8 +326,6 @@ button.disabled=false;
 
 button.innerHTML=oldText;
 
-
-
 // ======================================
 // LOGIN FAILED
 // ======================================
@@ -352,8 +337,6 @@ alert(response.message);
 return;
 
 }
-
-
 
 // ======================================
 // SAVE SESSION
@@ -374,8 +357,6 @@ profileStatus:response.data.profileStatus,
 accountStatus:response.data.accountStatus
 
 });
-
-
 
 // ======================================
 // SUCCESS
@@ -486,8 +467,6 @@ return;
 const dashboard=
 response.data;
 
-
-
 // ======================================
 // WELCOME NAME
 // ======================================
@@ -502,8 +481,6 @@ name.innerHTML=
 session.fullName;
 
 }
-
-
 
 // ======================================
 // TOTAL APPLICATIONS
@@ -520,8 +497,6 @@ dashboard.totalApplications || 0;
 
 }
 
-
-
 // ======================================
 // SHORTLISTED
 // ======================================
@@ -537,9 +512,7 @@ dashboard.shortlistedJobs || 0;
 
 }
 
-
-
-// ======================================
+    // ======================================
 // INTERVIEW
 // ======================================
 
@@ -554,9 +527,7 @@ dashboard.interviewCalls || 0;
 
 }
 
-
-
-// ======================================
+    // ======================================
 // SELECTED
 // ======================================
 
@@ -570,8 +541,6 @@ selected.innerHTML=
 dashboard.selectedJobs || 0;
 
 }
-
-
 
 // ======================================
 // PROFILE STATUS
@@ -1253,7 +1222,119 @@ this.loadJobs();
 }
 
 },
+    // ======================================
+// MY APPLICATIONS INIT
+// ======================================
 
+initMyApplications(){
+
+const page=
+
+window.location.pathname;
+
+if(page.includes("my-applications.html")){
+
+this.loadMyApplications();
+
+}
+
+},
+
+// ======================================
+// LOAD MY APPLICATIONS
+// ======================================
+
+async loadMyApplications(){
+
+const session=Storage.getCandidate();
+
+if(!session) return;
+
+const response=
+await API.getCandidateApplications({
+
+candidateID:session.candidateID
+
+});
+
+if(!response.success){
+
+return;
+
+}
+
+const tbody=
+document.getElementById("applicationTable");
+
+if(!tbody) return;
+
+tbody.innerHTML="";
+
+response.applications.forEach(app=>{
+
+let statusClass="status-pending";
+
+if(app.applicationStatus=="Shortlisted"){
+
+statusClass="status-approved";
+
+}
+
+else if(app.applicationStatus=="Rejected"){
+
+statusClass="status-rejected";
+
+}
+
+const appliedDate=
+new Date(app.appliedDate).toLocaleDateString("en-GB");
+
+tbody.innerHTML+=`
+
+<tr>
+
+<td>${app.jobTitle}</td>
+
+<td>${app.companyName}</td>
+
+<td>${appliedDate}</td>
+
+<td>
+
+<span class="status ${statusClass}">
+
+${app.applicationStatus}
+
+</span>
+
+</td>
+
+<td>
+
+<button
+class="btn btn-primary btn-sm"
+onclick="Candidate.viewJob('${app.jobID}')">
+
+View
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+if(response.applications.length==0){
+
+document.getElementById("noApplications").style.display="block";
+
+}
+
+}
+    
 
 // ======================================
 // JOB DETAILS INIT
