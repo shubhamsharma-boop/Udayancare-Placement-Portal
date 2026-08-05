@@ -593,7 +593,28 @@ await this.loadRecentApplications();
     
 },
 
-    // ======================================
+// ======================================
+// LOAD RECENT APPLICATIONS
+// ======================================
+
+async loadRecentApplications(){
+
+const session=Storage.getCandidate();
+
+if(!session) return;
+
+const response=
+await API.getCandidateApplications({
+
+candidateID:session.candidateID
+
+});
+
+console.log(response);
+
+},    
+
+ // ======================================
 // LOAD PROFILE
 // ======================================
 
@@ -629,27 +650,6 @@ return;
 
 const profile=
 response.data;
-
-// ======================================
-// LOAD RECENT APPLICATIONS
-// ======================================
-
-async loadRecentApplications(){
-
-const session = Storage.getCandidate();
-
-if(!session) return;
-
-const response = await API.getCandidateApplications({
-
-candidateID:session.candidateID
-
-});
-
-console.log(response);
-
-}    
-
 
 // ======================================
 // UPDATE LOCAL STORAGE
