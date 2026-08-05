@@ -8,59 +8,32 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-
 <title>
 My Applications | Udayan Care Placement Portal
 </title>
 
-
-
 <meta name="description"
 content="Track your job applications and hiring progress through Udayan Care Placement Portal.">
-
-
-
-
 
 <link rel="stylesheet"
 href="css/style.css">
 
-
-
-
-
 <link rel="preconnect"
 href="https://fonts.googleapis.com">
-
-
 
 <link rel="preconnect"
 href="https://fonts.gstatic.com"
 crossorigin>
 
-
-
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
-
-
-
-
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-
 </head>
 
-
-
 <body>
-
-
-
-
 
 <!-- ================= TOP BAR ================= -->
 
@@ -171,24 +144,15 @@ Logout
   
   <!-- ================= HEADER ================= -->
 
-
-
 <div class="dashboard-header">
 
-
-
-
-
 <div>
-
 
 <h1>
 
 My Applications
 
 </h1>
-
-
 
 <p>
 
@@ -208,20 +172,11 @@ Track your applied jobs and hiring progress.
 
 <section class="dashboard-grid">
 
-
-
 <div class="dashboard-card">
-
 
 <i class="fa-solid fa-paper-plane"></i>
 
-
-<h3>
-
-12
-
-</h3>
-
+<h3 id="totalApplications">0</h3>
 
 <p>
 
@@ -234,16 +189,9 @@ Total Applications
 
 <div class="dashboard-card">
 
-
 <i class="fa-solid fa-clock"></i>
 
-
-<h3>
-
-5
-
-</h3>
-
+<h3 id="underReview">0</h3>
 
 <p>
 
@@ -258,11 +206,7 @@ Under Review
 
 <i class="fa-solid fa-user-check"></i>
 
-<h3>
-
-3
-
-</h3>
+<h3 id="shortlisted">0</h3>
 
 
 <p>
@@ -280,11 +224,7 @@ Shortlisted
 <i class="fa-solid fa-trophy"></i>
 
 
-<h3>
-
-1
-
-</h3>
+<h3 id="interview">0</h3>
 
 
 <p>
@@ -325,14 +265,11 @@ All Applied Jobs
 
 </h2>
 
-
-
 <p>
 
 View complete history of your job applications.
 
 </p>
-
 
 
 </div>
@@ -707,22 +644,6 @@ Future Google Apps Script Integration:
 
 
 */
-
-function loadApplications(){
-
-
-console.log(
-"Loading Applications..."
-);
-
-
-
-}
-
-loadApplications();
-
-});
-
 
 </script>
 
