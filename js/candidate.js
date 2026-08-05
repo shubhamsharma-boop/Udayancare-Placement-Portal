@@ -1333,9 +1333,8 @@ document.getElementById("noApplications").style.display="block";
 
 }
 
-}
+},
     
-
 // ======================================
 // JOB DETAILS INIT
 // ======================================
@@ -1387,8 +1386,6 @@ el.innerHTML=map[id];
 }
 
 };
-
-
 
 // ======================================
 // START MODULE
