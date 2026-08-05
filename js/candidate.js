@@ -649,7 +649,15 @@ tbody.innerHTML+=`
 
 <td>${app.companyName}</td>
 
-<td>${app.appliedDate}</td>
+<td>${new Date(app.appliedDate).toLocaleDateString("en-GB",{
+
+day:"2-digit",
+
+month:"short",
+
+year:"numeric"
+
+})}</td>
 
 <td>
 
