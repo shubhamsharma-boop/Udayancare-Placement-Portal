@@ -610,10 +610,76 @@ candidateID:session.candidateID
 
 });
 
-console.log(response);
+if(!response.success){
 
-},    
+return;
 
+}
+
+const tbody=
+document.getElementById("applicationTableBody");
+
+if(!tbody) return;
+
+tbody.innerHTML="";
+
+response.applications
+.slice(0,5)
+.forEach(app=>{
+
+let statusClass="status-pending";
+
+if(app.applicationStatus=="Shortlisted"){
+
+statusClass="status-approved";
+
+}
+
+else if(app.applicationStatus=="Rejected"){
+
+statusClass="status-rejected";
+
+}
+
+tbody.innerHTML+=`
+
+<tr>
+
+<td>${app.jobTitle}</td>
+
+<td>${app.companyName}</td>
+
+<td>${app.appliedDate}</td>
+
+<td>
+
+<span class="status ${statusClass}">
+
+${app.applicationStatus}
+
+</span>
+
+</td>
+
+<td>
+
+<button
+class="btn btn-primary btn-sm"
+onclick="Candidate.viewJob('${app.jobID}')">
+
+View
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
  // ======================================
 // LOAD PROFILE
 // ======================================
