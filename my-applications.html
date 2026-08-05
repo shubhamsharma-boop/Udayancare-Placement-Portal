@@ -62,200 +62,114 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 
 
-<!-- ================= DASHBOARD ================= -->
+<!-- ================= TOP BAR ================= -->
 
+<div class="topbar">
 
+<div class="container topbar-content">
 
-<div class="dashboard">
+<div class="top-left">
 
+<span>
 
+<i class="fa-solid fa-phone"></i>
 
+<span id="sitePhone"></span>
 
+</span>
 
+<span>
 
-<!-- ================= SIDEBAR ================= -->
+<i class="fa-solid fa-envelope"></i>
 
+<span id="siteEmail"></span>
 
-
-<aside class="sidebar">
-
-
-
-
-
-<div class="sidebar-logo">
-
-
-<img src="images/logo.png"
-alt="Udayan Care">
-
+</span>
 
 </div>
 
+<div class="top-right">
 
+<a id="facebookLink" href="#">
+<i class="fab fa-facebook-f"></i>
+</a>
 
+<a id="linkedinLink" href="#">
+<i class="fab fa-linkedin-in"></i>
+</a>
 
+<a id="instagramLink" href="#">
+<i class="fab fa-instagram"></i>
+</a>
 
+<a id="whatsappLink" href="#">
+<i class="fab fa-whatsapp"></i>
+</a>
 
+</div>
 
+</div>
 
-<nav class="sidebar-menu">
+</div>
 
+<!-- ================= HEADER ================= -->
 
+<header class="header">
 
+<div class="container navbar">
 
+<a href="index.html"
+class="logo">
 
-<a href="candidate-dashboard.html">
+<img class="siteLogo"
+alt="Logo">
 
+</a>
 
-<i class="fa-solid fa-house"></i>
+<nav class="nav-menu">
 
+<a href="candidate-dashboard.html"
+class="active">
 
 Dashboard
 
-
 </a>
-
-
-
-
-
 
 <a href="candidate-profile.html">
 
-
-<i class="fa-solid fa-user"></i>
-
-
 My Profile
 
-
-</a>
-
-
-
-
-
-
+</a>  
 
 <a href="available-jobs.html">
 
-
-<i class="fa-solid fa-briefcase"></i>
-
-
 Available Jobs
-
 
 </a>
 
-
-
-
-
-
-
-<a href="my-applications.html"
-class="active">
-
-
-<i class="fa-solid fa-file-lines"></i>
-
+<a href="my-applications.html">
 
 My Applications
 
-
 </a>
 
-
-
-
-
-
-
-
-<a href="#">
-
-
-<i class="fa-solid fa-bookmark"></i>
-
-
-Saved Jobs
-
-
-</a>
-
-
-
-
-
-
-
-<a href="#">
-
-
-<i class="fa-solid fa-gear"></i>
-
-
-Settings
-
-
-</a>
-
-
-
-
-
-
-
-
-<a href="candidate-login.html">
-
-
-<i class="fa-solid fa-right-from-bracket"></i>
-
-
+<a href="candidate-login.html">  
 Logout
-
-
 </a>
-
-
-
-
-
 
 </nav>
 
+<button class="menu-toggle">
 
+<i class="fa-solid fa-bars"></i>
 
+</button>
 
+</div>
 
-</aside>
-
-
-
-
-
-
-
-
-
-
-<!-- ================= MAIN CONTENT ================= -->
-
-
-
-<main class="dashboard-content">
-
-
-
-
-
-
-
-
-<!-- ================= HEADER ================= -->
+</header>
+  
+  <!-- ================= HEADER ================= -->
 
 
 
@@ -282,55 +196,10 @@ Track your applied jobs and hiring progress.
 
 </p>
 
-
 </div>
 
 
-
-
-
-
-
-
-
-<div class="user-profile">
-
-
-
-<img src="images/user-placeholder.png"
-alt="Candidate">
-
-
-
-
-
-<div>
-
-
-<h4>
-
-Priya Sharma
-
-</h4>
-
-
-<span>
-
-Candidate
-
-</span>
-
-
 </div>
-
-
-
-
-</div>
-
-
-
-
 
 </div>
 
@@ -363,11 +232,6 @@ Total Applications
 
 </div>
 
-
-
-
-
-
 <div class="dashboard-card">
 
 
@@ -390,17 +254,9 @@ Under Review
 
 </div>
 
-
-
-
-
-
-
 <div class="dashboard-card">
 
-
 <i class="fa-solid fa-user-check"></i>
-
 
 <h3>
 
@@ -417,13 +273,6 @@ Shortlisted
 
 
 </div>
-
-
-
-
-
-
-
 
 <div class="dashboard-card">
 
@@ -447,444 +296,6 @@ Selected
 
 </div>
 
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= APPLICATION TRACKING ================= -->
-
-
-<section class="section"
-style="padding:50px 0;">
-
-
-
-
-
-<div class="section-title">
-
-
-<span>
-
-APPLICATION TRACKER
-
-</span>
-
-
-
-<h2>
-
-Track Your Hiring Journey
-
-</h2>
-
-
-
-<p>
-
-Stay updated about every stage of your recruitment process.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="card"
-style="padding:35px;">
-
-
-
-
-
-
-
-<!-- APPLICATION ITEM -->
-
-
-<div class="job-details">
-
-
-
-<div class="d-flex justify-between align-center"
-style="flex-wrap:wrap;gap:20px;">
-
-
-
-<div>
-
-
-<h2>
-
-Customer Support Executive
-
-</h2>
-
-
-
-<p>
-
-<i class="fa-solid fa-building"></i>
-
-ABC Technologies
-
-</p>
-
-
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-Noida
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div>
-
-
-<span class="status status-approved">
-
-Shortlisted
-
-</span>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-<div class="job-meta">
-
-
-<span>
-
-Applied: 20 July 2026
-
-</span>
-
-
-
-<span>
-
-Interview: 25 July 2026
-
-</span>
-
-
-
-<span>
-
-₹22,000 / Month
-
-</span>
-
-
-
-</div>
-
-
-
-
-
-
-<a href="job-details.html"
-class="btn btn-primary">
-
-
-View Job
-
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- APPLICATION ITEM 2 -->
-
-
-
-<div class="job-details"
-style="margin-top:25px;">
-
-
-
-<div class="d-flex justify-between align-center"
-style="flex-wrap:wrap;gap:20px;">
-
-
-
-<div>
-
-
-<h2>
-
-HR Associate
-
-</h2>
-
-
-
-<p>
-
-<i class="fa-solid fa-building"></i>
-
-XYZ Solutions
-
-</p>
-
-
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-Gurugram
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-<div>
-
-
-<span class="status status-pending">
-
-Under Review
-
-</span>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="job-meta">
-
-
-<span>
-
-Applied: 18 July 2026
-
-</span>
-
-
-
-<span>
-
-Waiting For Employer Response
-
-</span>
-
-
-
-</div>
-
-
-
-
-
-
-
-<a href="job-details.html"
-class="btn btn-primary">
-
-
-View Job
-
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- APPLICATION ITEM 3 -->
-
-
-
-<div class="job-details"
-style="margin-top:25px;">
-
-
-
-<div class="d-flex justify-between align-center"
-style="flex-wrap:wrap;gap:20px;">
-
-
-
-<div>
-
-
-<h2>
-
-Operations Executive
-
-</h2>
-
-
-
-<p>
-
-<i class="fa-solid fa-building"></i>
-
-ABC Services
-
-</p>
-
-
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-Delhi
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-<div>
-
-
-<span class="status status-rejected">
-
-Rejected
-
-</span>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="job-meta">
-
-
-<span>
-
-Applied: 10 July 2026
-
-</span>
-
-
-
-<span>
-
-Position Closed
-
-</span>
-
-
-
-</div>
-
-
-
-
-
-
-<a href="job-details.html"
-class="btn btn-primary">
-
-
-View Job
-
-
-</a>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
 </section>
 
   <!-- ================= APPLICATION TABLE ================= -->
@@ -896,10 +307,6 @@ style="padding:50px 0;">
 
 
 <div class="container">
-
-
-
-
 
 <div class="section-title">
 
@@ -930,25 +337,9 @@ View complete history of your job applications.
 
 </div>
 
-
-
-
-
-
-
-
-
 <div class="table-wrapper">
 
-
-
-
-
 <table class="table">
-
-
-
-
 
 <thead>
 
@@ -1001,16 +392,7 @@ Action
 
 </thead>
 
-
-
-
-
-
 <tbody id="applicationTable">
-
-
-
-
 
 <tr>
 
@@ -1037,8 +419,6 @@ ABC Technologies
 
 </td>
 
-
-
 <td>
 
 
@@ -1051,8 +431,6 @@ Shortlisted
 
 </td>
 
-
-
 <td>
 
 
@@ -1062,21 +440,11 @@ class="btn btn-primary">
 
 View
 
-
 </a>
-
 
 </td>
 
-
-
 </tr>
-
-
-
-
-
-
 
 <tr>
 
@@ -1086,8 +454,6 @@ View
 HR Associate
 
 </td>
-
-
 
 <td>
 
@@ -1134,15 +500,7 @@ View
 
 </td>
 
-
-
 </tr>
-
-
-
-
-
-
 
 <tr>
 
@@ -1210,61 +568,26 @@ View
 
 </tbody>
 
-
-
-
 </table>
 
-
-
-
 </div>
 
-
-
-
-
 </div>
-
-
 
 </section>
 
-
-
-
-
-
-
-
-
 <!-- ================= EMPTY STATE ================= -->
-
 
 <section class="section text-center"
 id="noApplications"
 style="display:none;">
-
-
-
 <div class="container">
-
-
 
 <img src="images/empty-state.png"
 alt="No Applications"
 style="max-width:250px;margin:auto;">
 
-
-
-
-
-<h2>
-
-No Applications Yet
-
-</h2>
-
+<h2>No Applications Yet</h2>
 
 
 <p>
@@ -1275,10 +598,6 @@ Explore available opportunities and start your career journey.
 
 </p>
 
-
-
-
-
 <a href="available-jobs.html"
 class="btn btn-primary mt-20">
 
@@ -1288,79 +607,11 @@ Find Jobs
 
 </a>
 
-
-
-
 </div>
-
-
 
 </section>
 
-
-
-
-
-
-
-
-
-<!-- ================= SUPPORT CTA ================= -->
-
-
-<section class="cta">
-
-
-
-<div class="container">
-
-
-
-<div class="cta-box">
-
-
-
-<h2>
-
-Need Assistance With Your Applications?
-
-</h2>
-
-
-
-<p>
-
-Connect with our placement team for interview preparation, career guidance and hiring support.
-
-</p>
-
-
-
-
-
-<a href="contact.html"
-class="btn">
-
-
-Contact Placement Team
-
-
-</a>
-
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-</section>
-
-  <!-- ================= FOOTER ================= -->
+ <!-- ================= FOOTER ================= -->
 
 
 <footer class="footer">
@@ -1388,10 +639,6 @@ Udayan Care Placement Portal connects Shalini Fellows with verified employers an
 
 </p>
 
-
-
-
-
 <div class="social-links">
 
 
@@ -1409,15 +656,11 @@ Udayan Care Placement Portal connects Shalini Fellows with verified employers an
 
 </a>
 
-
-
 <a href="#">
 
 <i class="fab fa-instagram"></i>
 
 </a>
-
-
 
 <a href="#">
 
@@ -1431,11 +674,6 @@ Udayan Care Placement Portal connects Shalini Fellows with verified employers an
 
 
 </div>
-
-
-
-
-
 
 <div>
 
@@ -1482,12 +720,6 @@ Contact
 
 </div>
 
-
-
-
-
-
-
 <div>
 
 
@@ -1496,8 +728,6 @@ Contact
 Candidates
 
 </h3>
-
-
 
 <a href="candidate-dashboard.html">
 
@@ -1532,12 +762,6 @@ Applications
 
 
 </div>
-
-
-
-
-
-
 
 <div>
 
@@ -1584,18 +808,7 @@ Manage Jobs
 
 </div>
 
-
-
-
-
 </div>
-
-
-
-
-
-
-
 
 <div class="footer-bottom">
 
@@ -1610,23 +823,10 @@ Manage Jobs
 
 </div>
 
-
-
-
-
 </div>
 
 
 </footer>
-
-
-
-
-
-
-
-
-
 
 <!-- ================= BACK TO TOP ================= -->
 
@@ -1639,22 +839,10 @@ Manage Jobs
 
 </div>
 
-
-
-
-
-
-
-
-
-
 <!-- ================= JAVASCRIPT ================= -->
 
 
 <script src="js/app.js"></script>
-
-
-
 
 <script>
 
@@ -1668,10 +856,6 @@ function(){
 console.log(
 "My Applications Page Loaded"
 );
-
-
-
-
 
 /*
 
@@ -1691,10 +875,6 @@ Future Google Apps Script Integration:
 
 */
 
-
-
-
-
 function loadApplications(){
 
 
@@ -1706,27 +886,12 @@ console.log(
 
 }
 
-
-
-
-
 loadApplications();
-
-
-
-
 
 });
 
 
-
 </script>
-
-
-
-
-
-
 
 </main>
 
