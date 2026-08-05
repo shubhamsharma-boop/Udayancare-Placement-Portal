@@ -1,684 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+Candidate Dashboard | Udayan Care Placement Portal
+</title>
+
+<meta name="description"
+content="Candidate dashboard for managing profile, jobs and applications through Udayan Care Placement Portal.">
+
+
+<link rel="stylesheet" href="css/style.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+
 <body>
 
-<!-- ==========================================================
-     CANDIDATE DASHBOARD
-========================================================== -->
 
-<div class="candidate-dashboard">
+<!-- ================= DASHBOARD ================= -->
 
-    <!-- ================= HEADER ================= -->
 
-    <header class="dashboard-header">
+<div class="dashboard">
 
-        <div class="header-left">
 
-            <h1>
-                👋 Welcome Back,
-                <span id="candidateName">
-                    Shalini
-                </span>
-            </h1>
+<!-- ================= SIDEBAR ================= -->
 
-            <p>
-                Welcome to your Placement Dashboard.
-                Manage your profile, applications and career journey.
-            </p>
 
-        </div>
+<aside class="sidebar">
 
-        <div class="header-right">
 
-            <a href="candidate-profile.html"
-               class="btn btn-primary">
+<div class="sidebar-logo">
 
-                <i class="fa-solid fa-user-pen"></i>
 
-                Complete Profile
+<img src="images/logo.png"
+alt="Udayan Care">
 
-            </a>
-
-            <a href="available-jobs.html"
-               class="btn btn-outline">
-
-                <i class="fa-solid fa-briefcase"></i>
-
-                Browse Jobs
-
-            </a>
-
-        </div>
-
-    </header>
-
-
-
-    <!-- ================= HERO ================= -->
-
-    <section class="hero-card">
-
-        <div class="hero-left">
-
-            <div class="avatar">
-
-                <i class="fa-solid fa-user"></i>
-
-            </div>
-
-            <div>
-
-                <h2 id="candidateName">
-
-                    Shalini Fellow
-
-                </h2>
-
-                <p>
-
-                    Candidate ID :
-                    <strong id="candidateID">
-
-                        CAN000245
-
-                    </strong>
-
-                </p>
-
-                <p>
-
-                    Last Login :
-                    <span id="lastLogin">
-
-                        Today • 10:45 AM
-
-                    </span>
-
-                </p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="hero-right">
-
-            <h4>
-
-                Profile Completion
-
-            </h4>
-
-            <div class="progress">
-
-                <div
-                     class="progress-bar"
-                     id="profileCompletionBar"
-                     style="width:75%;">
-
-                </div>
-
-            </div>
-
-            <strong id="profileCompletion">
-
-                75%
-
-            </strong>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= STATS ================= -->
-
-    <section class="stats-grid">
-
-        <div class="stat-card">
-
-            <div class="icon">
-
-                <i class="fa-solid fa-briefcase"></i>
-
-            </div>
-
-            <h2 id="totalJobs">
-
-                156
-
-            </h2>
-
-            <span>
-
-                Total Jobs
-
-            </span>
-
-        </div>
-
-
-
-        <div class="stat-card">
-
-            <div class="icon">
-
-                <i class="fa-solid fa-paper-plane"></i>
-
-            </div>
-
-            <h2 id="totalApplications">
-
-                10
-
-            </h2>
-
-            <span>
-
-                Applications
-
-            </span>
-
-        </div>
-
-
-
-        <div class="stat-card">
-
-            <div class="icon">
-
-                <i class="fa-solid fa-star"></i>
-
-            </div>
-
-            <h2 id="shortlistedJobs">
-
-                3
-
-            </h2>
-
-            <span>
-
-                Shortlisted
-
-            </span>
-
-        </div>
-
-
-
-        <div class="stat-card">
-
-            <div class="icon">
-
-                <i class="fa-solid fa-calendar-check"></i>
-
-            </div>
-
-            <h2 id="interviewCount">
-
-                1
-
-            </h2>
-
-            <span>
-
-                Interviews
-
-            </span>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= TWO COLUMN ================= -->
-
-    <section class="dashboard-main">
-
-        <!-- LEFT -->
-
-        <div class="left-column">
-
-            <!-- Profile Strength -->
-
-            <div class="dashboard-card">
-
-                <div class="card-header">
-
-                    <h3>
-
-                        Profile Strength
-
-                    </h3>
-
-                    <strong>
-
-                        75%
-
-                    </strong>
-
-                </div>
-
-                <p>
-
-                    Complete your profile to improve hiring chances.
-
-                </p>
-
-                <div class="progress mt-20">
-
-                    <div
-                        class="progress-bar"
-                        style="width:75%;">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-
-            <!-- Quick Actions -->
-
-            <div class="dashboard-card mt-30">
-
-                <div class="card-header">
-
-                    <h3>
-
-                        Quick Actions
-
-                    </h3>
-
-                </div>
-
-                <div class="quick-grid">
-
-                    <a href="available-jobs.html"
-                       class="quick-card">
-
-                        <i class="fa-solid fa-briefcase"></i>
-
-                        <span>
-
-                            Browse Jobs
-
-                        </span>
-
-                    </a>
-
-                    <a href="my-applications.html"
-                       class="quick-card">
-
-                        <i class="fa-solid fa-file-lines"></i>
-
-                        <span>
-
-                            My Applications
-
-                        </span>
-
-                    </a>
-
-                    <a href="candidate-profile.html"
-                       class="quick-card">
-
-                        <i class="fa-solid fa-user"></i>
-
-                        <span>
-
-                            My Profile
-
-                        </span>
-
-                    </a>
-
-                    <a href="#"
-                       class="quick-card">
-
-                        <i class="fa-solid fa-file-arrow-up"></i>
-
-                        <span>
-
-                            Resume
-
-                        </span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- RIGHT -->
-
-        <div class="right-column">
-
-            <!-- Recent Applications -->
-
-            <div class="dashboard-card">
-
-                <div class="card-header">
-
-                    <h3>
-
-                        Recent Applications
-
-                    </h3>
-
-                    <a href="my-applications.html">
-
-                        View All
-
-                    </a>
-
-                </div>
-
-                <div class="table-wrapper">
-
-                    <table class="table">
-
-                        <thead>
-
-                            <tr>
-
-                                <th>Job</th>
-                                <th>Company</th>
-                                <th>Status</th>
-
-                            </tr>
-
-                        </thead>
-
-                        <tbody id="applicationTable">
-
-                            <tr>
-
-                                <td colspan="3">
-
-                                    Loading...
-
-                                </td>
-
-                            </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-            </div>
-
-                        <!-- ================= RECOMMENDED JOBS ================= -->
-
-            <div class="dashboard-card mt-30">
-
-                <div class="card-header">
-
-                    <h3>
-
-                        Recommended Jobs
-
-                    </h3>
-
-                    <a href="available-jobs.html">
-
-                        View All
-
-                    </a>
-
-                </div>
-
-                <div class="recommended-jobs">
-
-                    <div class="job-item">
-
-                        <div>
-
-                            <h4>HR Executive</h4>
-
-                            <p>ABC Pvt. Ltd. • New Delhi</p>
-
-                        </div>
-
-                        <a href="#" class="btn btn-sm">
-
-                            Apply
-
-                        </a>
-
-                    </div>
-
-                    <div class="job-item">
-
-                        <div>
-
-                            <h4>MIS Executive</h4>
-
-                            <p>XYZ Technologies • Noida</p>
-
-                        </div>
-
-                        <a href="#" class="btn btn-sm">
-
-                            Apply
-
-                        </a>
-
-                    </div>
-
-                    <div class="job-item">
-
-                        <div>
-
-                            <h4>Customer Support Executive</h4>
-
-                            <p>Infosys BPM • Gurugram</p>
-
-                        </div>
-
-                        <a href="#" class="btn btn-sm">
-
-                            Apply
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= DASHBOARD BOTTOM ================= -->
-
-    <section class="dashboard-bottom">
-
-        <!-- Career Journey -->
-
-        <div class="dashboard-card">
-
-            <div class="card-header">
-
-                <h3>
-
-                    Placement Journey
-
-                </h3>
-
-            </div>
-
-            <div class="timeline">
-
-                <div class="timeline-step active">
-
-                    <div class="circle">
-
-                        <i class="fa-solid fa-user-check"></i>
-
-                    </div>
-
-                    <span>
-
-                        Registered
-
-                    </span>
-
-                </div>
-
-                <div class="timeline-line active"></div>
-
-                <div class="timeline-step active">
-
-                    <div class="circle">
-
-                        <i class="fa-solid fa-id-card"></i>
-
-                    </div>
-
-                    <span>
-
-                        Profile
-
-                    </span>
-
-                </div>
-
-                <div class="timeline-line"></div>
-
-                <div class="timeline-step">
-
-                    <div class="circle">
-
-                        <i class="fa-solid fa-paper-plane"></i>
-
-                    </div>
-
-                    <span>
-
-                        Applied
-
-                    </span>
-
-                </div>
-
-                <div class="timeline-line"></div>
-
-                <div class="timeline-step">
-
-                    <div class="circle">
-
-                        <i class="fa-solid fa-comments"></i>
-
-                    </div>
-
-                    <span>
-
-                        Interview
-
-                    </span>
-
-                </div>
-
-                <div class="timeline-line"></div>
-
-                <div class="timeline-step">
-
-                    <div class="circle">
-
-                        <i class="fa-solid fa-trophy"></i>
-
-                    </div>
-
-                    <span>
-
-                        Selected
-
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- Upcoming Interviews -->
-
-        <div class="dashboard-card mt-30">
-
-            <div class="card-header">
-
-                <h3>
-
-                    Upcoming Interviews
-
-                </h3>
-
-            </div>
-
-            <div class="empty-state">
-
-                <i class="fa-solid fa-calendar-days"></i>
-
-                <h4>
-
-                    No Interview Scheduled
-
-                </h4>
-
-                <p>
-
-                    Apply for more jobs to receive interview invitations.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="dashboard-footer">
-
-        <p>
-
-            © 2026 Udayan Care Placement Portal
-
-        </p>
-
-        <p>
-
-            Making Young Lives Shine Through Employment
-
-        </p>
-
-    </footer>
 
 </div>
 
 
 
+<nav class="sidebar-menu">
+
+
+<a href="candidate-dashboard.html"
+class="active">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+
+
+<a href="candidate-profile.html">
+
+<i class="fa-solid fa-user"></i>
+
+My Profile
+
+</a>
+
+
+
+<a href="available-jobs.html">
+
+<i class="fa-solid fa-briefcase"></i>
+
+Available Jobs
+
+</a>
+
+
+
+<a href="my-applications.html">
+
+<i class="fa-solid fa-file-lines"></i>
+
+My Applications
+
+</a>
+
+
+<a href="#">
+
+<i class="fa-solid fa-bookmark"></i>
+
+Saved Jobs
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fa-solid fa-gear"></i>
+
+Settings
+
+</a>
+
+
+
+<a href="candidate-login.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+
+<main class="dashboard-content">
+
+
+
+<!-- ================= DASHBOARD HEADER ================= -->
+
+
+<div class="dashboard-header">
+
+
+<div>
+
+
+<h1>
+
+Welcome,
+
+<span id="candidateName">
+
+Shalini Fellow
+
+</span>
+
+</h1>
+
+
+<p>
+
+Manage your profile, applications and career opportunities.
+
+</p>
+
+  </div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+  <!-- ================= DASHBOARD STATISTICS ================= -->
+
+
+<div class="dashboard-grid">
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-id-card"></i>
+
+
+<h3 id="profileCompletion">
+
+75%
+
+</h3>
+
+
+<p>
+
+Profile Completion
+
+</p>
+
+
+</div>
+
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-paper-plane"></i>
+
+
+<h3 id="totalApplications">
+
+12
+
+</h3>
+
+
+<p>
+
+Jobs Applied
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-star"></i>
+
+
+<h3 id="shortlistedJobs">
+
+5
+
+</h3>
+
+
+<p>
+
+Shortlisted Jobs
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="dashboard-card">
+
+
+<i class="fa-solid fa-calendar-check"></i>
+
+
+<h3 id="interviewCount">
+
+2
+
+</h3>
+
+
+<p>
+
+Interviews
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- ================= PROFILE COMPLETION ================= -->
+
+
+<section class="card mt-30"
+style="padding:30px;">
+
+
+<div class="d-flex justify-between align-center">
+
+
+<div>
+
+
+<h3>
+
+Profile Strength
+
+</h3>
+
+
+<p>
+
+Complete your profile to increase your hiring chances.
+
+</p>
+
+
+</div>
+
+
+
+<strong>
+
+75%
+
+</strong>
+
+
+
+</div>
+
+
+
+<div class="progress mt-20">
+
+
+<div class="progress-bar"
+style="width:75%;">
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+  <!-- ================= RECOMMENDED JOBS ================= -->
+
+
+<section class="section"
+style="padding:40px 0;">
+
+
+<div class="section-title"
+style="margin-bottom:40px;">
+
+
+<span>
+
+RECOMMENDED JOBS
+
+</span>
+
+
+<h2>
+
+Jobs Matching Your Profile
+
+</h2>
+
+
+<p>
+
+Explore opportunities based on your skills, education and preferences.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="jobs-grid"
+id="recommendedJobs">
+
+
+
+
+
+<!-- JOB CARD 1 -->
+
+
+<div class="job-card">
+
+
+<span class="badge">
+
+Full Time
+
+</span>
+
+
+
+<h3>
+
+Customer Support Executive
+
+</h3>
+
+
+
+<p>
+
+<i class="fa-solid fa-building"></i>
+
+ABC Technologies
+
+</p>
+
+
+
+<p>
+
+<i class="fa-solid fa-location-dot"></i>
+
+Noida
+
+</p>
+
+
+
+<p>
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+₹22,000 / Month
+
+</p>
+
+
+
+<a href="job-details.html"
+class="btn btn-primary">
+
+View Details
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+<!-- JOB CARD 2 -->
+
+
+<div class="job-card">
+
+
+<span class="badge">
+
+Work From Office
+
+</span>
+
+
+
+<h3>
+
+HR Associate
+
+</h3>
+
+
+
+<p>
+
+<i class="fa-solid fa-building"></i>
+
+XYZ Solutions
+
+</p>
+
+
+
+<p>
+
+<i class="fa-solid fa-location-dot"></i>
+
+Gurugram
+
+</p>
+
+
+
+<p>
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+₹25,000 / Month
+
+</p>
+
+
+
+<a href="job-details.html"
+class="btn btn-primary">
+
+View Details
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- JOB CARD 3 -->
+
+
+<div class="job-card">
+
+
+<span class="badge">
+
+Full Time
+
+</span>
+
+
+
+<h3>
+
+Operations Executive
+
+</h3>
+
+
+
+<p>
+
+<i class="fa-solid fa-building"></i>
+
+ABC Services
+
+</p>
+
+
+
+<p>
+
+<i class="fa-solid fa-location-dot"></i>
+
+Delhi
+
+</p>
+
+
+
+<p>
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+₹20,000 / Month
+
+</p>
+
+
+
+<a href="job-details.html"
+class="btn btn-primary">
+
+View Details
+
+</a>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</section>
+
+  <!-- ================= RECENT APPLICATIONS ================= -->
+
+
+<section class="section"
+style="padding:40px 0;">
+
+
+<div class="section-title"
+style="margin-bottom:40px;">
+
+
+<span>
+
+RECENT ACTIVITY
+
+</span>
+
+
+<h2>
+
+My Recent Applications
+
+</h2>
+
+
+<p>
+
+Track your applied jobs and hiring progress.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="table-wrapper">
+
+
+<table class="table"
+id="applicationTable">
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Job Title
+
+</th>
+
+
+<th>
+
+Company
+
+</th>
+
+
+<th>
+
+Applied Date
+
+</th>
+
+
+<th>
+
+Status
+
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody>
+
+
+<tr>
+
+
+<td>
+
+Customer Support Executive
+
+</td>
+
+
+<td>
+
+ABC Technologies
+
+</td>
+
+
+<td>
+
+20 July 2026
+
+</td>
+
+
+<td>
+
+<span class="status status-approved">
+
+Shortlisted
+
+</span>
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td>
+
+HR Associate
+
+</td>
+
+
+<td>
+
+XYZ Solutions
+
+</td>
+
+
+<td>
+
+18 July 2026
+
+</td>
+
+
+<td>
+
+<span class="status status-pending">
+
+Under Review
+
+</span>
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td>
+
+Operations Executive
+
+</td>
+
+
+<td>
+
+ABC Services
+
+</td>
+
+
+<td>
+
+15 July 2026
+
+</td>
+
+
+<td>
+
+<span class="status status-rejected">
+
+Not Selected
+
+</span>
+
+</td>
+
+
+</tr>
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- ================= ACTIVITY TIMELINE ================= -->
+
+
+<section class="section light-bg"
+style="padding:40px 0;">
+
+
+
+<div class="container">
+
+
+<div class="section-title"
+style="margin-bottom:40px;">
+
+
+<span>
+
+ACTIVITY
+
+</span>
+
+
+<h2>
+
+Career Journey Updates
+
+</h2>
+
+
+</div>
+
+
+
+
+
+<div class="journey-box">
+
+
+
+<div class="step">
+
+
+<i class="fa-solid fa-user-check"></i>
+
+Profile Created
+
+</div>
+
+
+
+<div class="step">
+
+
+<i class="fa-solid fa-file-pen"></i>
+
+Digital Profile Updated
+
+</div>
+
+
+
+<div class="step">
+
+
+<i class="fa-solid fa-paper-plane"></i>
+
+Applied For Jobs
+
+</div>
+
+
+
+<div class="step">
+
+
+<i class="fa-solid fa-comments"></i>
+
+Interview Scheduled
+
+</div>
+
+
+
+<div class="step">
+
+
+<i class="fa-solid fa-trophy"></i>
+
+Selection Process
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+  <!-- ================= EMPTY STATE ================= -->
+
+
+<section class="section text-center"
+style="padding:40px 0;">
+
+
+<div class="container">
+
+
+<img src="images/empty-state.png"
+alt="No Data"
+style="max-width:250px;margin:auto;">
+
+
+<h2>
+
+No Saved Jobs Yet
+
+</h2>
+
+
+<p>
+
+Save interesting job opportunities and access them anytime.
+
+</p>
+
+
+<a href="available-jobs.html"
+class="btn btn-primary mt-20">
+
+Explore Jobs
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+</main>
+
+</div>
+
+
+
+
+
 <!-- ================= JAVASCRIPT ================= -->
+
+
 
 <script src="js/config.js"></script>
 <script src="js/api.js"></script>
@@ -687,16 +1001,42 @@
 <script src="js/app.js"></script>
 <script src="js/candidate.js"></script>
 
+
 <script>
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("Candidate Dashboard Loaded");
+/*
+
+Future Google Apps Script Integration
+
+
+1. Validate Candidate Session
+
+2. Load Candidate Profile
+
+3. Load Dashboard Statistics
+
+4. Load Applications
+
+
+*/
+
+
+document.addEventListener("DOMContentLoaded",function(){
+
+
+console.log("Candidate Dashboard Loaded");
+
 
 });
 
+
+
 </script>
 
+
+
 </body>
+
 
 </html>
