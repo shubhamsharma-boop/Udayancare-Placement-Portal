@@ -1115,28 +1115,11 @@ View Details
 
 async viewJob(jobID){
 
-const response=
-
-await API.getJobDetails({
-
-jobID:jobID
-
-});
-
-if(!response.success){
-
-alert(response.message);
-
-return;
-
-}
-
-Storage.saveJob(response.data);
-
-window.location.href="job-details.html";
+window.location.href =
+"job-details.html?id=" + jobID;
 
 },
-
+    
 
 // ======================================
 // APPLY JOB
