@@ -485,15 +485,18 @@ session.fullName;
 // DASHBOARD CARDS
 // ======================================
 
-const total = document.getElementById("totalApplications");
+const total =
+document.getElementById("totalApplications");
 
 if(total){
+
 total.innerHTML =
 dashboard.totalApplications || 0;
 
 }
 
-const viewed = document.getElementById("viewed");
+const viewed =
+document.getElementById("viewed");
 
 if(viewed){
 
@@ -502,7 +505,8 @@ dashboard.viewed || 0;
 
 }
 
-const shortlisted = document.getElementById("shortlisted");
+const shortlisted =
+document.getElementById("shortlisted");
 
 if(shortlisted){
 
@@ -511,7 +515,8 @@ dashboard.shortlisted || 0;
 
 }
 
-const interview = document.getElementById("interview");
+const interview =
+document.getElementById("interview");
 
 if(interview){
 
@@ -519,7 +524,6 @@ interview.innerHTML =
 dashboard.interview || 0;
 
 }
-
 // ======================================
 // PROFILE STATUS
 // ======================================
