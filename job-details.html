@@ -683,6 +683,7 @@ JS FILES
 
 <script src="js/config.js"></script>
 <script src="js/api.js"></script>
+<script src="js/storage.js"></script>
 <script src="js/app.js"></script>
 
 <script>
@@ -979,6 +980,7 @@ response.job;
 // -----------------------------
 
 fillJob(currentJob);
+  await checkApplicationStatus();
 
 }
 
@@ -1009,6 +1011,69 @@ loadJobDetails();
 }
 
 );
+
+  // =====================================
+// CHECK APPLICATION STATUS
+// =====================================
+
+async function checkApplicationStatus(){
+
+const candidate =
+Storage.getCandidate();
+
+if(!candidate || !currentJob) return;
+
+const response =
+await API.getCandidateApplications({
+
+candidateID:candidate.candidateID
+
+});
+
+if(!response.success) return;
+
+const application =
+response.applications.find(
+
+x => x.jobID == currentJob.jobID
+
+);
+
+if(!application) return;
+
+// Hide Apply Button
+
+document.getElementById("applyButton").style.display =
+"none";
+
+// Show Application Info
+
+document.getElementById("applicationInfo").style.display =
+"block";
+
+document.getElementById("applicationStatus").innerHTML =
+
+"Applied on <b>" +
+
+new Date(application.appliedDate).toLocaleDateString("en-GB",{
+
+day:"2-digit",
+
+month:"short",
+
+year:"numeric"
+
+})
+
++
+
+"</b><br>Status : <b>" +
+
+application.applicationStatus +
+
+"</b>";
+
+}
 
   // =====================================
 // APPLY BUTTON
