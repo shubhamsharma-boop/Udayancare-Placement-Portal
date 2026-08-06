@@ -101,8 +101,6 @@ const terms=
 document.getElementById("terms")
 .checked;
 
-
-
 // ======================================
 // VALIDATION
 // ======================================
