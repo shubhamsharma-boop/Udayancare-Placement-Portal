@@ -948,9 +948,7 @@ jobID:jobID
 
 });
 
-console.log("Full Response:", response);
-console.log("response.data:", response.data);
-console.log("response.job:", response.job);
+console.log(response);
 
 // -----------------------------
 // JOB NOT FOUND
@@ -969,7 +967,7 @@ return;
 // -----------------------------
 
 currentJob =
-response.data;
+response.job;
 
 // -----------------------------
 // FILL PAGE
