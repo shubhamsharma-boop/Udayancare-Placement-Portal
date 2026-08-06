@@ -11,13 +11,15 @@ const CONFIG = {
 
     API_URL: "https://script.google.com/macros/s/AKfycbzZok-P42uLsnpwr2ENRACeUVL7_xRZWu-meomwR64zyYuytLHunLsDaLSx2CVvd5dI/exec",
 
-    STORAGE: {
+    STORAGE:{
 
-    CANDIDATE: "ucpp_candidate",
+CANDIDATE:"ucpp_candidate",
 
-    EMPLOYER: "ucpp_employer",
+EMPLOYER:"ucpp_employer",
 
-    ADMIN: "ucpp_admin"
+ADMIN:"ucpp_admin",
+
+JOB:"ucpp_job"
 
 },
 
