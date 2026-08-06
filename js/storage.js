@@ -99,20 +99,54 @@ const Storage = {
 
     },
 
+    // ============================
+// JOB
+// ============================
+
+saveJob(data){
+
+localStorage.setItem(
+CONFIG.STORAGE.JOB,
+JSON.stringify(data)
+);
+
+},
+
+getJob(){
+
+const data=
+localStorage.getItem(
+CONFIG.STORAGE.JOB
+);
+
+return data ?
+JSON.parse(data)
+:null;
+
+},
+
+removeJob(){
+
+localStorage.removeItem(
+CONFIG.STORAGE.JOB
+);
+
+},
 
 
     // ============================
     // LOGOUT ALL
     // ============================
 
-    clearAll() {
+    clearAll(){
 
-        this.removeCandidate();
-        this.removeEmployer();
-        this.removeAdmin();
+this.removeCandidate();
+this.removeEmployer();
+this.removeAdmin();
+this.removeJob();
 
-    }
-
+}
+    
 };
 
 Object.freeze(Storage);
