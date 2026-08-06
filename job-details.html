@@ -979,7 +979,9 @@ fillJob(currentJob);
 
 catch(err){
 
-console.log(err);
+console.error(err);
+
+alert(err.message);
 
 showError("Unable to load Job Details.");
 
