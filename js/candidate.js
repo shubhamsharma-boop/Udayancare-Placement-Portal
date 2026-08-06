@@ -513,20 +513,19 @@ dashboard.shortlistedJobs || 0;
 }
 
     // ======================================
-// INTERVIEW
+// Under Review
 // ======================================
 
-const interview=
+const underReview =
+document.getElementById("underReview");
 
-document.getElementById("interviewCalls");
+if(underReview){
 
-if(interview){
-
-interview.innerHTML=
-dashboard.interviewCalls || 0;
+underReview.innerHTML=
+dashboard.underReview || 0;
 
 }
-
+    
     // ======================================
 // SELECTED
 // ======================================
@@ -1257,11 +1256,38 @@ candidateID:session.candidateID
 
 });
 
+console.log(response);
+
 if(!response.success){
+
+alert(response.message);
 
 return;
 
 }
+
+const applications=
+response.applications || [];
+
+// ================================
+// UPDATE SUMMARY CARDS
+// ================================
+
+document.getElementById("totalApplications").innerHTML=
+applications.length;
+
+document.getElementById("underReview").innerHTML=
+applications.filter(x=>x.applicationStatus=="Under Review").length;
+
+document.getElementById("shortlisted").innerHTML=
+applications.filter(x=>x.applicationStatus=="Shortlisted").length;
+
+document.getElementById("interview").innerHTML=
+applications.filter(x=>x.applicationStatus=="Selected").length;
+
+// ================================
+// TABLE
+// ================================
 
 const tbody=
 document.getElementById("applicationTable");
@@ -1270,7 +1296,7 @@ if(!tbody) return;
 
 tbody.innerHTML="";
 
-response.applications.forEach(app=>{
+applications.forEach(app=>{
 
 let statusClass="status-pending";
 
@@ -1286,8 +1312,11 @@ statusClass="status-rejected";
 
 }
 
-const appliedDate=
-new Date(app.appliedDate).toLocaleDateString("en-GB");
+else if(app.applicationStatus=="Selected"){
+
+statusClass="status-approved";
+
+}
 
 tbody.innerHTML+=`
 
@@ -1297,7 +1326,7 @@ tbody.innerHTML+=`
 
 <td>${app.companyName}</td>
 
-<td>${appliedDate}</td>
+<td>${new Date(app.appliedDate).toLocaleDateString("en-GB")}</td>
 
 <td>
 
@@ -1327,9 +1356,17 @@ View
 
 });
 
-if(response.applications.length==0){
+// ================================
+// EMPTY STATE
+// ================================
 
-document.getElementById("noApplications").style.display="block";
+const empty=
+document.getElementById("noApplications");
+
+if(empty){
+
+empty.style.display=
+applications.length==0 ? "block" : "none";
 
 }
 
