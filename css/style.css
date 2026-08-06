@@ -1909,15 +1909,13 @@ select.form-control{
 
 .dashboard-grid{
 
-    display:grid;
+display:grid;
 
-    grid-template-columns:repeat(4,1fr);
+grid-template-columns:repeat(5,1fr);
 
-    gap:25px;
+gap:25px;
 
 }
-
-
 
 .dashboard-card{
 
@@ -2778,9 +2776,6 @@ grid-template-columns:repeat(2,1fr);
 
 
 @media(max-width:992px){
-
-
-
 h1{
 
 font-size:45px;
