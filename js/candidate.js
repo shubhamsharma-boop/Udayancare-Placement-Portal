@@ -481,63 +481,42 @@ name.innerHTML=
 session.fullName;
 
 }
-
 // ======================================
-// TOTAL APPLICATIONS
+// DASHBOARD CARDS
 // ======================================
 
-const total=
-
-document.getElementById("totalApplications");
+const total = document.getElementById("totalApplications");
 
 if(total){
-
-total.innerHTML=
+total.innerHTML =
 dashboard.totalApplications || 0;
 
 }
 
-// ======================================
-// SHORTLISTED
-// ======================================
+const viewed = document.getElementById("viewed");
 
-const shortlisted=
+if(viewed){
 
-document.getElementById("shortlistedJobs");
+viewed.innerHTML =
+dashboard.viewed || 0;
+
+}
+
+const shortlisted = document.getElementById("shortlisted");
 
 if(shortlisted){
 
-shortlisted.innerHTML=
-dashboard.shortlistedJobs || 0;
+shortlisted.innerHTML =
+dashboard.shortlisted || 0;
 
 }
 
-    // ======================================
-// Under Review
-// ======================================
+const interview = document.getElementById("interview");
 
-const underReview =
-document.getElementById("underReview");
+if(interview){
 
-if(underReview){
-
-underReview.innerHTML=
-dashboard.underReview || 0;
-
-}
-    
-    // ======================================
-// SELECTED
-// ======================================
-
-const selected=
-
-document.getElementById("selectedJobs");
-
-if(selected){
-
-selected.innerHTML=
-dashboard.selectedJobs || 0;
+interview.innerHTML =
+dashboard.interview || 0;
 
 }
 
@@ -705,8 +684,6 @@ Storage.saveCandidate({
 ...profile
 
 });
-
-
 
 // ======================================
 // FILL FORM
@@ -1266,28 +1243,63 @@ return;
 
 }
 
-const applications=
-response.applications || [];
+const applications=response.applications || [];
 
-// ================================
-// UPDATE SUMMARY CARDS
-// ================================
+// ======================
+// COUNTS
+// ======================
+
+let viewed=0;
+let shortlisted=0;
+let interview=0;
+let rejected=0;
+
+applications.forEach(app=>{
+
+switch(app.applicationStatus){
+
+case "Viewed":
+viewed++;
+break;
+
+case "Shortlisted":
+shortlisted++;
+break;
+
+case "Interview":
+interview++;
+break;
+
+case "Rejected":
+rejected++;
+break;
+
+}
+
+});
+
+// ======================
+// UPDATE CARDS
+// ======================
 
 document.getElementById("totalApplications").innerHTML=
 applications.length;
 
-document.getElementById("underReview").innerHTML=
-applications.filter(x=>x.applicationStatus=="Under Review").length;
+document.getElementById("viewedCount").innerHTML=
+viewed;
 
-document.getElementById("shortlisted").innerHTML=
-applications.filter(x=>x.applicationStatus=="Shortlisted").length;
+document.getElementById("shortlistedCount").innerHTML=
+shortlisted;
 
-document.getElementById("interview").innerHTML=
-applications.filter(x=>x.applicationStatus=="Selected").length;
+document.getElementById("interviewCount").innerHTML=
+interview;
 
-// ================================
+document.getElementById("rejectedCount").innerHTML=
+rejected;
+
+// ======================
 // TABLE
-// ================================
+// ======================
 
 const tbody=
 document.getElementById("applicationTable");
@@ -1300,21 +1312,23 @@ applications.forEach(app=>{
 
 let statusClass="status-pending";
 
-if(app.applicationStatus=="Shortlisted"){
+switch(app.applicationStatus){
 
+case "Viewed":
+statusClass="status-info";
+break;
+
+case "Shortlisted":
 statusClass="status-approved";
+break;
 
-}
+case "Interview":
+statusClass="status-warning";
+break;
 
-else if(app.applicationStatus=="Rejected"){
-
+case "Rejected":
 statusClass="status-rejected";
-
-}
-
-else if(app.applicationStatus=="Selected"){
-
-statusClass="status-approved";
+break;
 
 }
 
@@ -1356,9 +1370,9 @@ View
 
 });
 
-// ================================
+// ======================
 // EMPTY STATE
-// ================================
+// ======================
 
 const empty=
 document.getElementById("noApplications");
@@ -1366,7 +1380,7 @@ document.getElementById("noApplications");
 if(empty){
 
 empty.style.display=
-applications.length==0 ? "block" : "none";
+applications.length==0 ? "block":"none";
 
 }
 
