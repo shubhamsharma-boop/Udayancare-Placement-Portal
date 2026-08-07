@@ -25,13 +25,13 @@ const Auth = {
 
     },
 
-    logoutCandidate(loginPage = "../candidate/candidate-login.html") {
+    logoutCandidate(loginPage = "candidate-login.html") {
 
-        Storage.removeCandidate();
+    Storage.removeCandidate();
 
-        window.location.href = loginPage;
+    window.location.replace(loginPage);
 
-    },
+},
 
 
 
