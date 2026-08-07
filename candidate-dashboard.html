@@ -127,11 +127,11 @@ My Applications
 
 </a>
 
-<a href="candidate-login.html">  
-Logout
-</a>
+<a href="#" id="logoutBtn">
 
-</nav>
+Logout
+
+</a>
 
 <button class="menu-toggle">
 
@@ -602,6 +602,25 @@ Post Job
 <script src="js/app.js"></script>
 <script src="js/candidate.js"></script>
 
+ <script>
+   
+  document.addEventListener("DOMContentLoaded", function () {
+
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (logoutBtn) {
+
+        logoutBtn.addEventListener("click", function (e) {
+
+            e.preventDefault();
+
+            Auth.logoutCandidate("candidate-login.html");
+
+        });
+
+    }
+
+});
 
 <script>
 
