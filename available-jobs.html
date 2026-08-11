@@ -1313,45 +1313,8 @@ document.addEventListener("click", async function(e){
     }
 
 });
-    // ------------------------------
-    // APPLY JOB
-    // ------------------------------
-
-    if(e.target.classList.contains("applyJob")){
-
-        const confirmApply =
-        confirm("Apply for this Job?");
-
-        if(!confirmApply){
-
-            return;
-
-        }
-
-        const response =
-        await API.applyJob({
-
-            jobID:e.target.dataset.id,
-
-            candidateID:candidate.candidateID
-
-        });
-
-        if(response.success){
-
-            alert("✅ Job Applied Successfully.");
-
-        }
-
-        else{
-
-            alert(response.message);
-
-        }
-
-    }
-
-});
+    
+});   // document click END
 
 });   // DOMContentLoaded END
 
