@@ -1,6 +1,6 @@
 // ======================================
 // UCPP AUTH SERVICE
-// Version: 1.0.0
+// Version: 1.1.0
 // ======================================
 
 const Auth = {
@@ -15,24 +15,40 @@ const Auth = {
 
     },
 
-    requireCandidateLogin(loginPage = "../candidate/candidate-login.html") {
+
+    requireCandidateLogin(
+        loginPage = "candidate-login.html"
+    ) {
 
         if (!this.isCandidateLoggedIn()) {
 
-            window.location.href = loginPage;
+            window.location.replace(loginPage);
 
         }
 
     },
 
-    logoutCandidate(loginPage = "candidate-login.html") {
 
-    Storage.removeCandidate();
+    logoutCandidate(
+        loginPage = "candidate-login.html"
+    ) {
 
-    window.location.replace(loginPage);
+        try {
 
-},
+            Storage.removeCandidate();
 
+        } catch (error) {
+
+            console.error(
+                "Candidate logout error:",
+                error
+            );
+
+        }
+
+        window.location.replace(loginPage);
+
+    },
 
 
     // ============================
@@ -45,24 +61,40 @@ const Auth = {
 
     },
 
-    requireEmployerLogin(loginPage = "../employer/employer-login.html") {
+
+    requireEmployerLogin(
+        loginPage = "employer-login.html"
+    ) {
 
         if (!this.isEmployerLoggedIn()) {
 
-            window.location.href = loginPage;
+            window.location.replace(loginPage);
 
         }
 
     },
 
-    logoutEmployer(loginPage = "../employer/employer-login.html") {
 
-        Storage.removeEmployer();
+    logoutEmployer(
+        loginPage = "employer-login.html"
+    ) {
 
-        window.location.href = loginPage;
+        try {
+
+            Storage.removeEmployer();
+
+        } catch (error) {
+
+            console.error(
+                "Employer logout error:",
+                error
+            );
+
+        }
+
+        window.location.replace(loginPage);
 
     },
-
 
 
     // ============================
@@ -75,35 +107,64 @@ const Auth = {
 
     },
 
-    requireAdminLogin(loginPage = "../admin/admin-login.html") {
+
+    requireAdminLogin(
+        loginPage = "admin-login.html"
+    ) {
 
         if (!this.isAdminLoggedIn()) {
 
-            window.location.href = loginPage;
+            window.location.replace(loginPage);
 
         }
 
     },
 
-    logoutAdmin(loginPage = "../admin/admin-login.html") {
 
-        Storage.removeAdmin();
+    logoutAdmin(
+        loginPage = "admin-login.html"
+    ) {
 
-        window.location.href = loginPage;
+        try {
+
+            Storage.removeAdmin();
+
+        } catch (error) {
+
+            console.error(
+                "Admin logout error:",
+                error
+            );
+
+        }
+
+        window.location.replace(loginPage);
 
     },
-
 
 
     // ============================
     // LOGOUT ALL
     // ============================
 
-    logoutAll(homePage = "../index.html") {
+    logoutAll(
+        homePage = "../index.html"
+    ) {
 
-        Storage.clearAll();
+        try {
 
-        window.location.href = homePage;
+            Storage.clearAll();
+
+        } catch (error) {
+
+            console.error(
+                "Logout all error:",
+                error
+            );
+
+        }
+
+        window.location.replace(homePage);
 
     }
 
