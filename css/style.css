@@ -7826,3 +7826,592 @@ font-size:14px;
 
 }
 
+/* =========================================================
+   AVAILABLE JOBS - JOB DETAILS MODAL
+   Scoped only to Available Jobs page
+========================================================= */
+
+.available-job-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:25px;
+
+}
+
+
+/* =========================================================
+   MODAL OVERLAY
+========================================================= */
+
+.available-job-modal-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(15,23,42,.68);
+
+    backdrop-filter:blur(5px);
+
+}
+
+
+/* =========================================================
+   MODAL CARD
+========================================================= */
+
+.available-job-modal-card{
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(950px, 100%);
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    box-shadow:0 25px 70px rgba(15,23,42,.28);
+
+    padding:32px;
+
+    animation:availableJobModalIn .22s ease;
+
+}
+
+
+/* Smooth scrollbar */
+
+.available-job-modal-card::-webkit-scrollbar{
+
+    width:7px;
+
+}
+
+.available-job-modal-card::-webkit-scrollbar-track{
+
+    background:#F8FAFC;
+
+    border-radius:10px;
+
+}
+
+.available-job-modal-card::-webkit-scrollbar-thumb{
+
+    background:#CBD5E1;
+
+    border-radius:10px;
+
+}
+
+
+/* =========================================================
+   MODAL ANIMATION
+========================================================= */
+
+@keyframes availableJobModalIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px) scale(.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.available-job-modal-close{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#F1F5F9;
+
+    color:#475569;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:.2s ease;
+
+}
+
+
+.available-job-modal-close:hover{
+
+    background:#E2E8F0;
+
+    color:#0F172A;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.available-job-modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:25px;
+
+    padding-right:45px;
+
+    padding-bottom:22px;
+
+    border-bottom:1px solid #E5E7EB;
+
+}
+
+
+.available-job-modal-header h2{
+
+    margin:0 0 8px;
+
+    font-size:28px;
+
+    line-height:1.3;
+
+    font-weight:700;
+
+    color:#0F172A;
+
+}
+
+
+.available-job-modal-header p{
+
+    margin:0;
+
+    font-size:15px;
+
+    color:#64748B;
+
+}
+
+
+.available-job-modal-header p i{
+
+    color:#2563EB;
+
+    margin-right:6px;
+
+}
+
+
+/* =========================================================
+   SALARY
+========================================================= */
+
+.available-job-modal-salary{
+
+    flex-shrink:0;
+
+    background:#DCFCE7;
+
+    color:#166534;
+
+    padding:10px 16px;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+}
+
+
+/* =========================================================
+   META INFORMATION
+========================================================= */
+
+.available-job-modal-meta{
+
+    display:grid;
+
+    grid-template-columns:repeat(4, 1fr);
+
+    gap:12px;
+
+    margin:22px 0;
+
+}
+
+
+.available-job-modal-meta > div{
+
+    background:#F8FAFC;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:12px;
+
+    padding:13px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    min-width:0;
+
+}
+
+
+.available-job-modal-meta > div > i{
+
+    color:#2563EB;
+
+    margin-top:3px;
+
+    min-width:16px;
+
+}
+
+
+.available-job-modal-meta span{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:3px;
+
+    font-size:13px;
+
+    color:#334155;
+
+    min-width:0;
+
+    word-break:break-word;
+
+}
+
+
+.available-job-modal-meta strong{
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.3px;
+
+    color:#64748B;
+
+}
+
+
+/* =========================================================
+   CONTENT SECTIONS
+========================================================= */
+
+.available-job-modal-section{
+
+    margin-top:24px;
+
+}
+
+
+.available-job-modal-section h3{
+
+    margin:0 0 10px;
+
+    font-size:18px;
+
+    line-height:1.4;
+
+    font-weight:700;
+
+    color:#0F172A;
+
+}
+
+
+.available-job-modal-section h3 i{
+
+    color:#2563EB;
+
+    margin-right:7px;
+
+}
+
+
+.available-job-modal-section p{
+
+    margin:0;
+
+    font-size:14px;
+
+    line-height:1.8;
+
+    color:#475569;
+
+    white-space:pre-line;
+
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.available-job-modal-skills{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+}
+
+
+.available-job-modal-skills span{
+
+    background:#EFF6FF;
+
+    color:#2563EB;
+
+    border:1px solid #DBEAFE;
+
+    padding:7px 12px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.available-job-modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:30px;
+
+    padding-top:20px;
+
+    border-top:1px solid #E5E7EB;
+
+}
+
+
+.available-job-modal-footer .btn{
+
+    min-width:130px;
+
+    height:44px;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+}
+
+
+/* =========================================================
+   APPLIED BUTTON
+========================================================= */
+
+.available-job-modal-footer .modalAppliedJob{
+
+    background:#E2E8F0;
+
+    color:#475569;
+
+    border:1px solid #CBD5E1;
+
+    cursor:not-allowed;
+
+    opacity:.9;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+    .available-job-modal{
+
+        padding:12px;
+
+    }
+
+
+    .available-job-modal-card{
+
+        padding:22px;
+
+        max-height:94vh;
+
+        border-radius:16px;
+
+    }
+
+
+    .available-job-modal-header{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        padding-right:40px;
+
+    }
+
+
+    .available-job-modal-header h2{
+
+        font-size:22px;
+
+    }
+
+
+    .available-job-modal-header p{
+
+        font-size:14px;
+
+    }
+
+
+    .available-job-modal-salary{
+
+        font-size:14px;
+
+    }
+
+
+    .available-job-modal-meta{
+
+        grid-template-columns:repeat(2, 1fr);
+
+    }
+
+
+    .available-job-modal-footer{
+
+        flex-direction:column;
+
+    }
+
+
+    .available-job-modal-footer .btn{
+
+        width:100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+    .available-job-modal-meta{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .available-job-modal-card{
+
+        padding:18px;
+
+    }
+
+
+    .available-job-modal-header h2{
+
+        font-size:20px;
+
+    }
+
+
+    .available-job-modal-section h3{
+
+        font-size:17px;
+
+    }
+
+
+    .available-job-modal-section p{
+
+        font-size:13px;
+
+    }
+
+}
