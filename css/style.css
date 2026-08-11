@@ -7500,3 +7500,57 @@ color:#64748B;
 font-size:14px;
 
 }
+
+/* =========================================================
+   ABOUT PAGE - TYPOGRAPHY FIX
+   Keeps About page headings professional and balanced
+========================================================= */
+
+/* Main About Us heading */
+.page-banner h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+/* About page secondary heading */
+.page-banner h1 + p {
+    margin-bottom: 35px;
+}
+
+/* Udayan Care Placement Portal heading */
+.section > .container > h2 {
+    font-size: 38px;
+    line-height: 1.25;
+    margin-bottom: 18px;
+}
+
+/* About page paragraphs */
+.page-banner p,
+.section > .container > p {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Better spacing between paragraphs */
+.section > .container > p {
+    margin-bottom: 18px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .page-banner h1 {
+        font-size: 36px;
+    }
+
+    .section > .container > h2 {
+        font-size: 30px;
+    }
+
+    .page-banner p,
+    .section > .container > p {
+        font-size: 15px;
+    }
+
+}
