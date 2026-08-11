@@ -414,13 +414,67 @@ if (!candidate) {
     // VARIABLES
     // ======================================
 
-    let allJobs = [];
+   let allJobs = [];
 
-    let filteredJobs = [];
+let filteredJobs = [];
 
-    let currentPage = 1;
+let appliedJobIDs = new Set();
 
-    const jobsPerPage = 5;
+let currentPage = 1;
+
+const jobsPerPage = 5;
+
+
+// ======================================
+// LOAD CANDIDATE APPLIED JOBS
+// ======================================
+
+async function loadAppliedJobs() {
+
+    try {
+
+        const response =
+            await API.getCandidateApplications({
+
+                candidateID: candidate.candidateID
+
+            });
+
+        if (
+            response &&
+            response.success &&
+            Array.isArray(response.applications)
+        ) {
+
+            appliedJobIDs = new Set(
+
+                response.applications
+                    .map(application => String(
+                        application.jobID ||
+                        application.jobId ||
+                        application.JobID ||
+                        ""
+                    ))
+                    .filter(id => id !== "")
+
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.log(
+            "Unable to load applied jobs:",
+            error
+        );
+
+        appliedJobIDs = new Set();
+
+    }
+
+}        
 
     // ======================================
     // LOAD AVAILABLE JOBS
@@ -538,9 +592,11 @@ if (!candidate) {
 
     // First Load
 
-    loadJobs();
+await loadAppliedJobs();
 
-            // ======================================
+await loadJobs();
+
+// ======================================
 // RENDER JOBS
 // ======================================
 
@@ -684,13 +740,36 @@ View Details
 
 </button>
 
-<button
-class="btn btn-primary applyJob"
-data-id="${job.jobID}">
+${
+    appliedJobIDs.has(String(job.jobID))
 
-Apply Now
+    ?
 
-</button>
+    `
+    <button
+        class="btn btn-primary"
+        disabled
+        style="opacity:0.65;cursor:not-allowed;">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        Applied
+
+    </button>
+    `
+
+    :
+
+    `
+    <button
+        class="btn btn-primary applyJob"
+        data-id="${job.jobID}">
+
+        Apply Now
+
+    </button>
+    `
+}
 
 </div>
 
@@ -868,60 +947,372 @@ document
 });
 
 // ======================================
-// VIEW DETAILS
+// VIEW JOB DETAILS - PROFESSIONAL MODAL
 // ======================================
 
 document.addEventListener("click", async function(e){
 
-    // ------------------------------
-    // VIEW DETAILS
-    // ------------------------------
-
     if(e.target.classList.contains("viewJob")){
 
-        const jobID =
-        e.target.dataset.id;
+        const jobID = e.target.dataset.id;
 
-        const response =
-        await API.getJobDetails({
+        try {
 
-            jobID:jobID
+            const response = await API.getJobDetails({
+                jobID: jobID
+            });
 
-        });
+            if(!response.success){
 
-        if(response.success){
+                alert(
+                    response.message || "Unable to load job details."
+                );
 
-            const job =
-            response.job;
+                return;
+
+            }
+
+            const job = response.job;
+
+            // Remove old modal if already exists
+            const oldModal =
+                document.getElementById("jobDetailsModal");
+
+            if(oldModal){
+                oldModal.remove();
+            }
+
+            // Create modal
+            const modal =
+                document.createElement("div");
+
+            modal.id = "jobDetailsModal";
+
+            modal.className =
+                "available-job-modal";
+
+            modal.innerHTML = `
+
+                <div class="available-job-modal-overlay"></div>
+
+                <div class="available-job-modal-card">
+
+                    <button
+                        type="button"
+                        class="available-job-modal-close"
+                        id="closeJobDetails">
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </button>
+
+
+                    <!-- ================= JOB HEADER ================= -->
+
+                    <div class="available-job-modal-header">
+
+                        <div>
+
+                            <h2>
+                                ${job.jobTitle || "Job Opportunity"}
+                            </h2>
+
+                            <p>
+                                <i class="fa-solid fa-building"></i>
+                                ${job.companyName || "Company"}
+                            </p>
+
+                        </div>
+
+
+                        <div class="available-job-modal-salary">
+
+                            ₹${job.salaryMin || "—"}
+                            -
+                            ₹${job.salaryMax || "—"}
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= JOB SUMMARY ================= -->
+
+                    <div class="available-job-modal-meta">
+
+                        <div>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>
+                                <strong>Location</strong>
+                                ${job.location || "—"}
+                            </span>
+                        </div>
+
+
+                        <div>
+                            <i class="fa-solid fa-briefcase"></i>
+                            <span>
+                                <strong>Job Type</strong>
+                                ${job.jobType || "—"}
+                            </span>
+                        </div>
+
+
+                        <div>
+                            <i class="fa-solid fa-building"></i>
+                            <span>
+                                <strong>Work Mode</strong>
+                                ${job.workMode || "—"}
+                            </span>
+                        </div>
+
+
+                        <div>
+                            <i class="fa-solid fa-layer-group"></i>
+                            <span>
+                                <strong>Category</strong>
+                                ${job.jobCategory || "—"}
+                            </span>
+                        </div>
+
+
+                        <div>
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification</strong>
+                                ${job.qualification || "—"}
+                            </span>
+                        </div>
+
+
+                        <div>
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>
+                                <strong>Experience</strong>
+                                ${job.experience || "—"}
+                            </span>
+                        </div>
+
+
+                        <div>
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>
+                                <strong>Posted Date</strong>
+                                ${job.postedDate || "—"}
+                            </span>
+                        </div>
+
+
+                        <div>
+                            <i class="fa-solid fa-calendar-check"></i>
+                            <span>
+                                <strong>Last Date to Apply</strong>
+                                ${job.applicationLastDate || "—"}
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= DESCRIPTION ================= -->
+
+                    <div class="available-job-modal-section">
+
+                        <h3>
+                            <i class="fa-solid fa-file-lines"></i>
+                            Job Description
+                        </h3>
+
+                        <p>
+                            ${job.jobDescription || "No description provided."}
+                        </p>
+
+                    </div>
+
+
+                    <!-- ================= RESPONSIBILITIES ================= -->
+
+                    <div class="available-job-modal-section">
+
+                        <h3>
+                            <i class="fa-solid fa-list-check"></i>
+                            Key Responsibilities
+                        </h3>
+
+                        <p>
+                            ${job.jobResponsibilities || "No responsibilities provided."}
+                        </p>
+
+                    </div>
+
+
+                    <!-- ================= SKILLS ================= -->
+
+                    <div class="available-job-modal-section">
+
+                        <h3>
+                            <i class="fa-solid fa-gears"></i>
+                            Required Skills
+                        </h3>
+
+                        <div class="available-job-modal-skills">
+
+                            ${job.skills
+                                ? job.skills
+                                    .split(",")
+                                    .map(skill =>
+                                        `<span>${skill.trim()}</span>`
+                                    )
+                                    .join("")
+                                : "<span>Not specified</span>"
+                            }
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= FOOTER ================= -->
+
+                    <div class="available-job-modal-footer">
+
+                        <button
+                            type="button"
+                            class="btn btn-outline"
+                            id="closeJobDetailsBottom">
+
+                            Close
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-primary modalApplyJob"
+                            data-id="${job.jobID}">
+
+                            <i class="fa-solid fa-paper-plane"></i>
+
+                            Apply Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            document.body.appendChild(modal);
+
+
+            // ==============================
+            // CLOSE BUTTON
+            // ==============================
+
+            document
+                .getElementById("closeJobDetails")
+                .addEventListener("click", closeJobModal);
+
+
+            document
+                .getElementById("closeJobDetailsBottom")
+                .addEventListener("click", closeJobModal);
+
+
+            document
+                .querySelector(
+                    ".available-job-modal-overlay"
+                )
+                .addEventListener(
+                    "click",
+                    closeJobModal
+                );
+
+
+            function closeJobModal(){
+
+                const modal =
+                    document.getElementById(
+                        "jobDetailsModal"
+                    );
+
+                if(modal){
+                    modal.remove();
+                }
+
+            }
+
+
+            // ==============================
+            // APPLY FROM MODAL
+            // ==============================
+
+            document
+                .querySelector(".modalApplyJob")
+                .addEventListener("click", async function(){
+
+                    const confirmApply =
+                        confirm(
+                            "Apply for this Job?"
+                        );
+
+                    if(!confirmApply){
+                        return;
+                    }
+
+
+                    const response =
+                        await API.applyJob({
+
+                            jobID:
+                                this.dataset.id,
+
+                            candidateID:
+                                candidate.candidateID
+
+                        });
+
+
+                    if(response.success){
+
+                        alert(
+                            "✅ Job Applied Successfully."
+                        );
+
+                        closeJobModal();
+
+                    }
+
+                    else{
+
+                        alert(
+                            response.message ||
+                            "Unable to apply for this job."
+                        );
+
+                    }
+
+                });
+
+        }
+
+        catch(error){
+
+            console.error(
+                "Job Details Error:",
+                error
+            );
 
             alert(
-
-`Job Title : ${job.jobTitle}
-
-Company : ${job.companyName}
-
-Location : ${job.location}
-
-Qualification : ${job.qualification}
-
-Experience : ${job.experience}
-
-Salary : ₹${job.salaryMin} - ₹${job.salaryMax}
-
-Description :
-
-${job.jobDescription}
-
-Responsibilities :
-
-${job.jobResponsibilities}`
-
+                "Unable to load complete job details."
             );
 
         }
 
     }
 
+});
     // ------------------------------
     // APPLY JOB
     // ------------------------------
