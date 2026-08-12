@@ -11,6 +11,8 @@ const API = {
 
     async call(action, data = {}) {
 
+    console.log("API Action:", action);
+
     try {
 
         const response = await fetch(CONFIG.API_URL, {
@@ -18,59 +20,53 @@ const API = {
             method: "POST",
 
             headers: {
-
                 "Content-Type": "text/plain;charset=utf-8"
-
             },
 
             body: JSON.stringify({
-
                 action: action,
-
                 data: data
-
             })
 
         });
 
+        console.log("API HTTP Status:", response.status);
+
         const text = await response.text();
 
-        console.log("API Action:", action);
-        console.log("API HTTP Status:", response.status);
-        console.log("API Response:", text);
+        console.log("API Raw Response:", text);
+
+        let result;
 
         try {
 
-            return JSON.parse(text);
+            result = JSON.parse(text);
 
         } catch (parseError) {
 
-            console.error("Invalid JSON response:", text);
+            console.error("API JSON Parse Error:", parseError);
 
             return {
-
                 success: false,
-
-                message: "Server returned invalid response",
-                rawResponse: text,
-                status: response.status
-
+                message: "Invalid API response.",
+                rawResponse: text
             };
 
         }
+
+        console.log("API Parsed Response:", result);
+
+        return result;
 
     }
 
     catch (error) {
 
-        console.error("API Request Error:", error);
+        console.error("API Fetch Error:", error);
 
         return {
-
             success: false,
-
             message: error.message
-
         };
 
     }
