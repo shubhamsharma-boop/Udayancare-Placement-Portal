@@ -11,67 +11,47 @@ const API = {
 
     async call(action, data = {}) {
 
-    console.log("API Action:", action);
-
-    try {
-
-        const response = await fetch(CONFIG.API_URL, {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "text/plain;charset=utf-8"
-            },
-
-            body: JSON.stringify({
-                action: action,
-                data: data
-            })
-
-        });
-
-        console.log("API HTTP Status:", response.status);
-
-        const text = await response.text();
-
-        console.log("API Raw Response:", text);
-
-        let result;
-
         try {
 
-            result = JSON.parse(text);
+            const response = await fetch(CONFIG.API_URL, {
 
-        } catch (parseError) {
+                method: "POST",
 
-            console.error("API JSON Parse Error:", parseError);
+                headers: {
+
+                    "Content-Type": "text/plain;charset=utf-8"
+
+                },
+
+                body: JSON.stringify({
+
+                    action: action,
+
+                    data: data
+
+                })
+
+            });
+
+            return await response.json();
+
+        }
+
+        catch (error) {
 
             return {
+
                 success: false,
-                message: "Invalid API response.",
-                rawResponse: text
+
+                message: error.message
+
             };
 
         }
 
-        console.log("API Parsed Response:", result);
+    },
 
-        return result;
 
-    }
-
-    catch (error) {
-
-        console.error("API Fetch Error:", error);
-
-        return {
-            success: false,
-            message: error.message
-        };
-
-    }
-
-},
 
     // ======================================
     // CANDIDATE
@@ -251,4 +231,3 @@ const API = {
 };
 
 Object.freeze(API);
-
