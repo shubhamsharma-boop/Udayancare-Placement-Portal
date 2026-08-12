@@ -11,47 +11,71 @@ const API = {
 
     async call(action, data = {}) {
 
+    try {
+
+        const response = await fetch(CONFIG.API_URL, {
+
+            method: "POST",
+
+            headers: {
+
+                "Content-Type": "text/plain;charset=utf-8"
+
+            },
+
+            body: JSON.stringify({
+
+                action: action,
+
+                data: data
+
+            })
+
+        });
+
+        const text = await response.text();
+
+        console.log("API Action:", action);
+        console.log("API HTTP Status:", response.status);
+        console.log("API Response:", text);
+
         try {
 
-            const response = await fetch(CONFIG.API_URL, {
+            return JSON.parse(text);
 
-                method: "POST",
+        } catch (parseError) {
 
-                headers: {
-
-                    "Content-Type": "text/plain;charset=utf-8"
-
-                },
-
-                body: JSON.stringify({
-
-                    action: action,
-
-                    data: data
-
-                })
-
-            });
-
-            return await response.json();
-
-        }
-
-        catch (error) {
+            console.error("Invalid JSON response:", text);
 
             return {
 
                 success: false,
 
-                message: error.message
+                message: "Server returned invalid response",
+                rawResponse: text,
+                status: response.status
 
             };
 
         }
 
-    },
+    }
 
+    catch (error) {
 
+        console.error("API Request Error:", error);
+
+        return {
+
+            success: false,
+
+            message: error.message
+
+        };
+
+    }
+
+},
 
     // ======================================
     // CANDIDATE
