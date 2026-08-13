@@ -217,6 +217,35 @@ const API = {
 },
 
     // ======================================
+// CERTIFICATIONS
+// ======================================
+
+saveCandidateCertification(data) {
+
+    return this.call("saveCandidateCertification", data);
+
+},
+
+getCandidateCertifications(data) {
+
+    return this.call("getCandidateCertifications", data);
+
+},
+
+updateCandidateCertification(data) {
+
+    return this.call("updateCandidateCertification", data);
+
+},
+
+deleteCandidateCertification(data) {
+
+    return this.call("deleteCandidateCertification", data);
+
+},
+    
+
+    // ======================================
 // CANDIDATE PROFILE DETAILS
 // ======================================
 
