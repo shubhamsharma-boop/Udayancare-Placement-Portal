@@ -273,80 +273,130 @@ deleteCandidateSocialProfiles(data) {
 },
     
     // ======================================
-// CANDIDATE PROFILE DETAILS
-// ======================================
+    // CANDIDATE PROFILE DETAILS
+    // ======================================
 
-addCandidateExperience(data) {
+    // ======================================
+    // EXPERIENCE
+    // ======================================
 
-    return this.call("addCandidateExperience", data);
+    addCandidateExperience(data) {
 
-},
+        return this.call(
+            "addCandidateExperience",
+            data
+        );
 
-getCandidateExperience(data) {
+    },
 
-    return this.call("getCandidateExperience", data);
+    getCandidateExperience(data) {
 
-},
+        return this.call(
+            "getCandidateExperience",
+            data
+        );
 
-updateCandidateExperience(data) {
+    },
 
-    return this.call("updateCandidateExperience", data);
+    updateCandidateExperience(data) {
 
-},
+        return this.call(
+            "updateCandidateExperience",
+            data
+        );
 
-deleteCandidateExperience(data) {
+    },
 
-    return this.call("deleteCandidateExperience", data);
+    deleteCandidateExperience(data) {
 
-},
+        return this.call(
+            "deleteCandidateExperience",
+            data
+        );
 
-addCandidateCertification(data) {
+    },
 
-    return this.call("addCandidateCertification", data);
 
-},
+    // ======================================
+    // CERTIFICATIONS
+    // ======================================
 
-getCandidateCertifications(data) {
+    addCandidateCertification(data) {
 
-    return this.call("getCandidateCertifications", data);
+        return this.call(
+            "addCandidateCertification",
+            data
+        );
 
-},
+    },
 
-deleteCandidateCertification(data) {
+    getCandidateCertifications(data) {
 
-    return this.call("deleteCandidateCertification", data);
+        return this.call(
+            "getCandidateCertifications",
+            data
+        );
 
-},
+    },
 
-addCandidateLanguage(data) {
+    updateCandidateCertification(data) {
 
-    return this.call("addCandidateLanguage", data);
+        return this.call(
+            "updateCandidateCertification",
+            data
+        );
 
-},
+    },
 
-getCandidateLanguages(data) {
+    deleteCandidateCertification(data) {
 
-    return this.call("getCandidateLanguages", data);
+        return this.call(
+            "deleteCandidateCertification",
+            data
+        );
 
-},
+    },
 
-deleteCandidateLanguage(data) {
 
-    return this.call("deleteCandidateLanguage", data);
+    // ======================================
+    // SOCIAL LINKS
+    // ======================================
 
-},
+    saveCandidateLinks(data) {
 
-updateCandidateLinks(data) {
+        return this.call(
+            "saveCandidateLinks",
+            data
+        );
 
-    return this.call("updateCandidateLinks", data);
+    },
 
-},
+    getCandidateLinks(data) {
 
-getCandidateLinks(data) {
+        return this.call(
+            "getCandidateLinks",
+            data
+        );
 
-    return this.call("getCandidateLinks", data);
+    },
 
-},
+    updateCandidateLinks(data) {
+
+        return this.call(
+            "updateCandidateLinks",
+            data
+        );
+
+    },
+
+    deleteCandidateLinks(data) {
+
+        return this.call(
+            "deleteCandidateLinks",
+            data
+        );
+
+    },
 
     // ======================================
     // CONTACT
