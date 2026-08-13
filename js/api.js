@@ -244,29 +244,33 @@ deleteCandidateCertification(data) {
 
 },
 
-    // ===============================
-// Candidate Social Links
-// ===============================
+// ======================================
+// SOCIAL PROFILES
+// ======================================
 
-case "saveCandidateSocialLinks":
+saveCandidateSocialLinks(data) {
 
-return saveCandidateSocialLinks(requestData.data);
+    return this.call("saveCandidateSocialLinks", data);
 
+},
 
-case "getCandidateSocialLinks":
+getCandidateSocialLinks(data) {
 
-return getCandidateSocialLinks(requestData.data);
+    return this.call("getCandidateSocialLinks", data);
 
+},
 
-case "updateCandidateSocialLinks":
+updateCandidateSocialLinks(data) {
 
-return updateCandidateSocialLinks(requestData.data);
+    return this.call("updateCandidateSocialLinks", data);
 
+},
 
-case "deleteCandidateSocialLinks":
+deleteCandidateSocialLinks(data) {
 
-return deleteCandidateSocialLinks(requestData.data);
-    
+    return this.call("deleteCandidateSocialLinks", data);
+
+},  
 
     // ======================================
 // CANDIDATE PROFILE DETAILS
