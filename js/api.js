@@ -248,30 +248,30 @@ deleteCandidateCertification(data) {
 // SOCIAL PROFILES
 // ======================================
 
-saveCandidateSocialLinks(data) {
+saveCandidateSocialProfiles(data) {
 
-    return this.call("saveCandidateSocialLinks", data);
-
-},
-
-getCandidateSocialLinks(data) {
-
-    return this.call("getCandidateSocialLinks", data);
+    return this.call("saveCandidateSocialProfiles", data);
 
 },
 
-updateCandidateSocialLinks(data) {
+getCandidateSocialProfiles(data) {
 
-    return this.call("updateCandidateSocialLinks", data);
+    return this.call("getCandidateSocialProfiles", data);
 
 },
 
-deleteCandidateSocialLinks(data) {
+updateCandidateSocialProfiles(data) {
 
-    return this.call("deleteCandidateSocialLinks", data);
+    return this.call("updateCandidateSocialProfiles", data);
 
-},  
+},
 
+deleteCandidateSocialProfiles(data) {
+
+    return this.call("deleteCandidateSocialProfiles", data);
+
+},
+    
     // ======================================
 // CANDIDATE PROFILE DETAILS
 // ======================================
