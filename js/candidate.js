@@ -1439,3 +1439,482 @@ Candidate.init();
 
 );  
 
+// ======================================
+// CANDIDATE WORK EXPERIENCE
+// ======================================
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const addExperienceBtn =
+    document.getElementById("addExperienceBtn");
+
+    const cancelExperienceBtn =
+    document.getElementById("cancelExperienceBtn");
+
+    const saveExperienceBtn =
+    document.getElementById("saveExperienceBtn");
+
+    const experienceForm =
+    document.getElementById("experienceForm");
+
+    const experienceList =
+    document.getElementById("experienceList");
+
+
+    if(!addExperienceBtn || !experienceForm){
+
+        return;
+
+    }
+
+
+    // ==================================
+    // SHOW EXPERIENCE FORM
+    // ==================================
+
+    addExperienceBtn.addEventListener("click", function(){
+
+        experienceForm.style.display = "block";
+
+        experienceForm.scrollIntoView({
+
+            behavior:"smooth",
+            block:"start"
+
+        });
+
+    });
+
+
+    // ==================================
+    // CANCEL EXPERIENCE
+    // ==================================
+
+    if(cancelExperienceBtn){
+
+        cancelExperienceBtn.addEventListener("click", function(){
+
+            experienceForm.style.display = "none";
+
+            clearExperienceForm();
+
+        });
+
+    }
+
+
+    // ==================================
+    // SAVE EXPERIENCE
+    // ==================================
+
+    if(saveExperienceBtn){
+
+        saveExperienceBtn.addEventListener("click", async function(){
+
+            const candidate =
+            Storage.getCandidate();
+
+            if(!candidate || !candidate.candidateID){
+
+                alert("Candidate session not found. Please login again.");
+
+                return;
+
+            }
+
+
+            const companyName =
+            document.getElementById(
+                "experienceCompanyName"
+            ).value.trim();
+
+
+            const jobTitle =
+            document.getElementById(
+                "experienceJobTitle"
+            ).value.trim();
+
+
+            const employmentType =
+            document.getElementById(
+                "experienceEmploymentType"
+            ).value;
+
+
+            const location =
+            document.getElementById(
+                "experienceLocation"
+            ).value.trim();
+
+
+            const startDate =
+            document.getElementById(
+                "experienceStartDate"
+            ).value;
+
+
+            const endDate =
+            document.getElementById(
+                "experienceEndDate"
+            ).value;
+
+
+            const currentlyWorking =
+            document.getElementById(
+                "experienceCurrentlyWorking"
+            ).value;
+
+
+            const responsibilities =
+            document.getElementById(
+                "experienceResponsibilities"
+            ).value.trim();
+
+
+            if(!companyName || !jobTitle || !startDate){
+
+                alert(
+                    "Company Name, Job Title and Start Date are required."
+                );
+
+                return;
+
+            }
+
+
+            saveExperienceBtn.disabled = true;
+
+            saveExperienceBtn.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+
+
+            const result =
+            await API.addCandidateExperience({
+
+                candidateID:
+                candidate.candidateID,
+
+                companyName:
+                companyName,
+
+                jobTitle:
+                jobTitle,
+
+                employmentType:
+                employmentType,
+
+                startDate:
+                startDate,
+
+                endDate:
+                endDate,
+
+                currentlyWorking:
+                currentlyWorking,
+
+                location:
+                location,
+
+                responsibilities:
+                responsibilities
+
+            });
+
+
+            saveExperienceBtn.disabled = false;
+
+            saveExperienceBtn.innerHTML =
+            '<i class="fa-solid fa-floppy-disk"></i> Save Experience';
+
+
+            if(result && result.success){
+
+                clearExperienceForm();
+
+                experienceForm.style.display = "none";
+
+                loadCandidateExperience();
+
+            }
+            else{
+
+                alert(
+                    result && result.message
+                    ? result.message
+                    : "Unable to save experience."
+                );
+
+            }
+
+        });
+
+    }
+
+
+    // ==================================
+    // LOAD EXPERIENCE
+    // ==================================
+
+    loadCandidateExperience();
+
+
+    // ==================================
+    // LOAD FUNCTION
+    // ==================================
+
+    async function loadCandidateExperience(){
+
+        const candidate =
+        Storage.getCandidate();
+
+
+        if(!candidate || !candidate.candidateID){
+
+            return;
+
+        }
+
+
+        const result =
+        await API.getCandidateExperience({
+
+            candidateID:
+            candidate.candidateID
+
+        });
+
+
+        if(!result || !result.success){
+
+            return;
+
+        }
+
+
+        renderCandidateExperience(
+            result.experiences || []
+        );
+
+    }
+
+
+    // ==================================
+    // RENDER EXPERIENCE
+    // ==================================
+
+    function renderCandidateExperience(experiences){
+
+        if(!experienceList){
+
+            return;
+
+        }
+
+
+        experienceList.innerHTML = "";
+
+
+        if(experiences.length === 0){
+
+            experienceList.innerHTML = `
+
+                <div style="
+                    padding:20px;
+                    border:1px solid #e5e7eb;
+                    border-radius:10px;
+                    margin-bottom:20px;
+                ">
+
+                    <p style="margin:0;">
+                        No work experience added yet.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        experiences.forEach(function(experience){
+
+            const card =
+            document.createElement("div");
+
+
+            card.style.cssText =
+            `
+                padding:25px;
+                border:1px solid #e5e7eb;
+                border-radius:10px;
+                margin-bottom:20px;
+            `;
+
+
+            card.innerHTML = `
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    gap:20px;
+                    flex-wrap:wrap;
+                ">
+
+                    <div>
+
+                        <h3 style="margin-bottom:5px;">
+                            ${escapeHTML(
+                                experience.jobTitle || ""
+                            )}
+                        </h3>
+
+                        <strong>
+                            ${escapeHTML(
+                                experience.companyName || ""
+                            )}
+                        </strong>
+
+                        <p style="margin-top:8px;">
+
+                            ${
+                                escapeHTML(
+                                    experience.startDate || ""
+                                )
+                            }
+
+                            -
+
+                            ${
+                                experience.currentlyWorking === "Yes"
+                                ? "Present"
+                                : escapeHTML(
+                                    experience.endDate || ""
+                                  )
+                            }
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                ${
+                    experience.location
+                    ?
+                    `<p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        ${escapeHTML(
+                            experience.location
+                        )}
+                    </p>`
+                    :
+                    ""
+                }
+
+
+                ${
+                    experience.employmentType
+                    ?
+                    `<p>
+                        <strong>Employment Type:</strong>
+                        ${escapeHTML(
+                            experience.employmentType
+                        )}
+                    </p>`
+                    :
+                    ""
+                }
+
+
+                ${
+                    experience.responsibilities
+                    ?
+                    `<p style="
+                        white-space:pre-line;
+                        margin-top:15px;
+                    ">
+                        ${escapeHTML(
+                            experience.responsibilities
+                        )}
+                    </p>`
+                    :
+                    ""
+                }
+
+            `;
+
+
+            experienceList.appendChild(card);
+
+        });
+
+    }
+
+
+    // ==================================
+    // CLEAR FORM
+    // ==================================
+
+    function clearExperienceForm(){
+
+        document.getElementById(
+            "experienceCompanyName"
+        ).value = "";
+
+
+        document.getElementById(
+            "experienceJobTitle"
+        ).value = "";
+
+
+        document.getElementById(
+            "experienceEmploymentType"
+        ).value = "";
+
+
+        document.getElementById(
+            "experienceLocation"
+        ).value = "";
+
+
+        document.getElementById(
+            "experienceStartDate"
+        ).value = "";
+
+
+        document.getElementById(
+            "experienceEndDate"
+        ).value = "";
+
+
+        document.getElementById(
+            "experienceCurrentlyWorking"
+        ).value = "No";
+
+
+        document.getElementById(
+            "experienceResponsibilities"
+        ).value = "";
+
+    }
+
+
+    // ==================================
+    // HTML SECURITY
+    // ==================================
+
+    function escapeHTML(value){
+
+        return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+    }
+
+});
