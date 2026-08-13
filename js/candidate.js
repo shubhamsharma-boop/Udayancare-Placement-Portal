@@ -2311,3 +2311,63 @@ document.addEventListener(
 
     }
 );
+
+<!--================ SOCIAL PROFILES ================-->
+
+<div class="form-container" style="margin-top:40px;">
+
+<div class="section-title">
+
+<span>SOCIAL PROFILES</span>
+
+<h2>Professional Links</h2>
+
+<p>
+Add your professional online profiles so employers can learn more about you.
+</p>
+
+</div>
+
+<div class="dashboard-grid">
+
+<div class="form-group">
+
+<label>LinkedIn Profile</label>
+
+<input
+type="url"
+id="linkedinURL"
+class="form-control"
+placeholder="https://www.linkedin.com/in/your-profile">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Naukri Profile</label>
+
+<input
+type="url"
+id="naukriURL"
+class="form-control"
+placeholder="https://www.naukri.com/mnjuser/profile">
+
+</div>
+
+
+<div class="form-group full-width">
+
+<label>Other Professional Profile</label>
+
+<input
+type="url"
+id="otherProfileURL"
+class="form-control"
+placeholder="https://...">
+
+</div>
+
+</div>
+
+</div>
