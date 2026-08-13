@@ -216,6 +216,82 @@ const API = {
 
 },
 
+    // ======================================
+// CANDIDATE PROFILE DETAILS
+// ======================================
+
+addCandidateExperience(data) {
+
+    return this.call("addCandidateExperience", data);
+
+},
+
+getCandidateExperience(data) {
+
+    return this.call("getCandidateExperience", data);
+
+},
+
+updateCandidateExperience(data) {
+
+    return this.call("updateCandidateExperience", data);
+
+},
+
+deleteCandidateExperience(data) {
+
+    return this.call("deleteCandidateExperience", data);
+
+},
+
+addCandidateCertification(data) {
+
+    return this.call("addCandidateCertification", data);
+
+},
+
+getCandidateCertifications(data) {
+
+    return this.call("getCandidateCertifications", data);
+
+},
+
+deleteCandidateCertification(data) {
+
+    return this.call("deleteCandidateCertification", data);
+
+},
+
+addCandidateLanguage(data) {
+
+    return this.call("addCandidateLanguage", data);
+
+},
+
+getCandidateLanguages(data) {
+
+    return this.call("getCandidateLanguages", data);
+
+},
+
+deleteCandidateLanguage(data) {
+
+    return this.call("deleteCandidateLanguage", data);
+
+},
+
+updateCandidateLinks(data) {
+
+    return this.call("updateCandidateLinks", data);
+
+},
+
+getCandidateLinks(data) {
+
+    return this.call("getCandidateLinks", data);
+
+},
+
 
 
     // ======================================
