@@ -250,25 +250,25 @@ deleteCandidateCertification(data) {
 
 saveCandidateSocialProfiles(data) {
 
-    return this.call("saveCandidateSocialProfiles", data);
+    return this.call("saveCandidateSocialLinks", data);
 
 },
 
 getCandidateSocialProfiles(data) {
 
-    return this.call("getCandidateSocialProfiles", data);
+    return this.call("getCandidateSocialLinks", data);
 
 },
 
 updateCandidateSocialProfiles(data) {
 
-    return this.call("updateCandidateSocialProfiles", data);
+    return this.call("updateCandidateSocialLinks", data);
 
 },
 
 deleteCandidateSocialProfiles(data) {
 
-    return this.call("deleteCandidateSocialProfiles", data);
+    return this.call("deleteCandidateSocialLinks", data);
 
 },
     
