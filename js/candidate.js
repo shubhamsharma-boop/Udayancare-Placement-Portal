@@ -2312,62 +2312,154 @@ document.addEventListener(
     }
 );
 
-<!--================ SOCIAL PROFILES ================-->
+// ======================================
+// CANDIDATE SOCIAL PROFILES
+// ======================================
 
-<div class="form-container" style="margin-top:40px;">
+document.addEventListener("DOMContentLoaded", function(){
 
-<div class="section-title">
+    const linkedinURL =
+    document.getElementById("linkedinURL");
 
-<span>SOCIAL PROFILES</span>
+    const naukriURL =
+    document.getElementById("naukriURL");
 
-<h2>Professional Links</h2>
-
-<p>
-Add your professional online profiles so employers can learn more about you.
-</p>
-
-</div>
-
-<div class="dashboard-grid">
-
-<div class="form-group">
-
-<label>LinkedIn Profile</label>
-
-<input
-type="url"
-id="linkedinURL"
-class="form-control"
-placeholder="https://www.linkedin.com/in/your-profile">
-
-</div>
+    const otherProfileURL =
+    document.getElementById("otherProfileURL");
 
 
-<div class="form-group">
+    // ==================================
+    // LOAD SOCIAL PROFILES
+    // ==================================
 
-<label>Naukri Profile</label>
-
-<input
-type="url"
-id="naukriURL"
-class="form-control"
-placeholder="https://www.naukri.com/mnjuser/profile">
-
-</div>
+    loadCandidateSocialProfiles();
 
 
-<div class="form-group full-width">
+    async function loadCandidateSocialProfiles(){
 
-<label>Other Professional Profile</label>
+        const candidate =
+        Storage.getCandidate();
 
-<input
-type="url"
-id="otherProfileURL"
-class="form-control"
-placeholder="https://...">
+        if(!candidate || !candidate.candidateID){
 
-</div>
+            return;
 
-</div>
+        }
 
-</div>
+
+        const result =
+        await API.getCandidateSocialProfiles({
+
+            candidateID:
+            candidate.candidateID
+
+        });
+
+
+        if(!result || !result.success){
+
+            return;
+
+        }
+
+
+        const social =
+        result.data || {};
+
+
+        if(linkedinURL){
+
+            linkedinURL.value =
+            social.linkedinURL || "";
+
+        }
+
+
+        if(naukriURL){
+
+            naukriURL.value =
+            social.naukriURL || "";
+
+        }
+
+
+        if(otherProfileURL){
+
+            otherProfileURL.value =
+            social.otherProfileURL || "";
+
+        }
+
+    }
+
+
+    // ==================================
+    // SAVE SOCIAL PROFILES
+    // ==================================
+
+    const saveProfileButton =
+    document.querySelector(
+        "#candidateProfileForm button[type='submit']"
+    );
+
+
+    if(saveProfileButton){
+
+        saveProfileButton.addEventListener(
+            "click",
+            async function(){
+
+                const candidate =
+                Storage.getCandidate();
+
+                if(!candidate || !candidate.candidateID){
+
+                    return;
+
+                }
+
+
+                const socialData = {
+
+                    candidateID:
+                    candidate.candidateID,
+
+                    linkedinURL:
+                    linkedinURL
+                    ? linkedinURL.value.trim()
+                    : "",
+
+                    naukriURL:
+                    naukriURL
+                    ? naukriURL.value.trim()
+                    : "",
+
+                    otherProfileURL:
+                    otherProfileURL
+                    ? otherProfileURL.value.trim()
+                    : ""
+
+                };
+
+
+                const result =
+                await API.saveCandidateSocialProfiles(
+                    socialData
+                );
+
+
+                if(!result || !result.success){
+
+                    console.error(
+                        result?.message ||
+                        "Unable to save social profiles."
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+});
