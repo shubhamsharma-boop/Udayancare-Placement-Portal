@@ -321,6 +321,28 @@ getCandidateLinks(data) {
 
 },
 
+// ===============================
+// Candidate Social Links
+// ===============================
+
+case "saveCandidateSocialLinks":
+
+return saveCandidateSocialLinks(requestData.data);
+
+
+case "getCandidateSocialLinks":
+
+return getCandidateSocialLinks(requestData.data);
+
+
+case "updateCandidateSocialLinks":
+
+return updateCandidateSocialLinks(requestData.data);
+
+
+case "deleteCandidateSocialLinks":
+
+return deleteCandidateSocialLinks(requestData.data);
 
 
     // ======================================
