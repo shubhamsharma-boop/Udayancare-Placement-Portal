@@ -217,30 +217,42 @@ const API = {
 },
 
     // ======================================
-// CERTIFICATIONS
+// CANDIDATE CERTIFICATIONS
 // ======================================
 
-saveCandidateCertification(data) {
+saveCandidateCertification(data){
 
-    return this.call("saveCandidateCertification", data);
-
-},
-
-getCandidateCertifications(data) {
-
-    return this.call("getCandidateCertifications", data);
+    return this.call(
+        "saveCandidateCertification",
+        data
+    );
 
 },
 
-updateCandidateCertification(data) {
+getCandidateCertifications(data){
 
-    return this.call("updateCandidateCertification", data);
+    return this.call(
+        "getCandidateCertifications",
+        data
+    );
 
 },
 
-deleteCandidateCertification(data) {
+updateCandidateCertification(data){
 
-    return this.call("deleteCandidateCertification", data);
+    return this.call(
+        "updateCandidateCertification",
+        data
+    );
+
+},
+
+deleteCandidateCertification(data){
+
+    return this.call(
+        "deleteCandidateCertification",
+        data
+    );
 
 },
 
