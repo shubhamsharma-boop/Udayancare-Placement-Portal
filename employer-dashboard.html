@@ -655,6 +655,7 @@ Post Job
 
 <script src="js/config.js"></script>
 <script src="js/api.js"></script>
+<script src="js/auth.js"></script>
 <script src="js/app.js"></script>
 
 <script>
@@ -769,38 +770,16 @@ console.log(error);
 showToast("Unable to load dashboard.","error");
 
 }
-
-// =========================
-// DEMO NOTIFICATIONS
-// =========================
-
-document.getElementById("notificationList").innerHTML=`
-
-<li>📌 Welcome to Employer Dashboard.</li>
-
-<li>📌 Start by posting your first job.</li>
-
-<li>📌 Applications will appear automatically.</li>
-
-`;
-        
+       
 // =========================
 // LOGOUT
 // =========================
 
-function logout(){
+document.getElementById("logoutBtn").addEventListener("click", function(e){
 
-localStorage.removeItem("employerID");
+    e.preventDefault();
 
-localStorage.removeItem("companyName");
-
-localStorage.removeItem("employer");
-
-window.location.href="employer-login.html";
-
-}
-
-document.getElementById("logoutBtn").onclick=logout;
+    Auth.logoutEmployer("employer-login.html");
 
 });
 
