@@ -788,13 +788,22 @@ document.getElementById("notificationList").innerHTML=`
 // LOGOUT
 // =========================
 
-document.getElementById("logoutBtn").addEventListener("click", function(e){
+function logout(){
 
-    e.preventDefault();
+localStorage.removeItem("employerID");
 
-    Auth.logoutEmployer("employer-login.html");
+localStorage.removeItem("companyName");
+
+localStorage.removeItem("employer");
+
+window.location.href="employer-login.html";
+
+}
+
+document.getElementById("logoutBtn").onclick=logout;
 
 });
+
     // =========================
 // EDIT COMPANY DETAILS
 // =========================
