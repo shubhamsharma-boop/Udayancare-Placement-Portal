@@ -3253,42 +3253,913 @@ document.addEventListener("DOMContentLoaded",function(){
 });
 
 // ======================================
-// CANDIDATE SOCIAL PROFILES
+// CANDIDATE SOCIAL LINKS
 // ======================================
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded",function(){
 
-    const linkedinURL =
-    document.getElementById("linkedinURL");
+    const container =
+    document.getElementById("socialLinksContainer");
 
-    const naukriURL =
-    document.getElementById("naukriURL");
+    const addButton =
+    document.getElementById("addSocialLinksBtn");
 
-    const otherProfileURL =
-    document.getElementById("otherProfileURL");
+    if(!container || !addButton){
+
+        return;
+
+    }
 
 
     // ==================================
-    // LOAD SOCIAL PROFILES
+    // INITIAL LOAD
     // ==================================
 
-    loadCandidateSocialProfiles();
+    loadCandidateSocialLinks();
 
 
-    async function loadCandidateSocialProfiles(){
+    // ==================================
+    // ADD SOCIAL LINKS
+    // ==================================
 
-        const candidate =
-        Storage.getCandidate();
+    addButton.addEventListener(
+        "click",
+        function(){
 
-        if(!candidate || !candidate.candidateID){
+            showSocialLinksForm();
+
+        }
+    );
+
+
+    // ==================================
+    // SHOW SOCIAL LINKS FORM
+    // ==================================
+
+    function showSocialLinksForm(data = {}){
+
+        // Prevent duplicate form
+        const existingForm =
+        container.querySelector(
+            ".social-links-form"
+        );
+
+        if(existingForm){
+
+            existingForm.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
 
             return;
 
         }
 
 
+        const candidate =
+        Storage.getCandidate();
+
+
+        if(
+            !candidate ||
+            !candidate.candidateID
+        ){
+
+            alert(
+                "Candidate session not found. Please login again."
+            );
+
+            return;
+
+        }
+
+
+        const socialLinkID =
+        data.socialLinkID || "";
+
+
+        const form =
+        document.createElement("div");
+
+        form.className =
+        "form-container social-links-form";
+
+        form.style.marginTop =
+        "25px";
+
+
+        form.innerHTML = `
+
+            <div class="dashboard-grid">
+
+
+                <!-- ==============================
+                     LINKEDIN
+                =============================== -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="fa-brands fa-linkedin"></i>
+
+                        LinkedIn Profile
+
+                    </label>
+
+                    <input
+                        type="url"
+                        class="form-control linkedin"
+                        value="${escapeHTML(
+                            data.linkedin ||
+                            data.LinkedIn ||
+                            ""
+                        )}"
+                        placeholder="https://www.linkedin.com/in/..."
+                    >
+
+                </div>
+
+
+                <!-- ==============================
+                     NAUKRI
+                =============================== -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="fa-solid fa-briefcase"></i>
+
+                        Naukri Profile
+
+                    </label>
+
+                    <input
+                        type="url"
+                        class="form-control naukri"
+                        value="${escapeHTML(
+                            data.naukri ||
+                            data.Naukri ||
+                            ""
+                        )}"
+                        placeholder="https://www.naukri.com/..."
+                    >
+
+                </div>
+
+
+                <!-- ==============================
+                     INDEED
+                =============================== -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="fa-solid fa-briefcase"></i>
+
+                        Indeed Profile
+
+                    </label>
+
+                    <input
+                        type="url"
+                        class="form-control indeed"
+                        value="${escapeHTML(
+                            data.indeed ||
+                            data.Indeed ||
+                            ""
+                        )}"
+                        placeholder="https://profile.indeed.com/..."
+                    >
+
+                </div>
+
+
+                <!-- ==============================
+                     PORTFOLIO
+                =============================== -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="fa-solid fa-globe"></i>
+
+                        Portfolio / Personal Website
+
+                    </label>
+
+                    <input
+                        type="url"
+                        class="form-control portfolio"
+                        value="${escapeHTML(
+                            data.portfolio ||
+                            data.Portfolio ||
+                            ""
+                        )}"
+                        placeholder="https://yourwebsite.com"
+                    >
+
+                </div>
+
+
+                <!-- ==============================
+                     GITHUB
+                =============================== -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="fa-brands fa-github"></i>
+
+                        GitHub Profile
+
+                    </label>
+
+                    <input
+                        type="url"
+                        class="form-control github"
+                        value="${escapeHTML(
+                            data.github ||
+                            data.GitHub ||
+                            ""
+                        )}"
+                        placeholder="https://github.com/username"
+                    >
+
+                </div>
+
+
+                <!-- ==============================
+                     OTHER LINK
+                =============================== -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="fa-solid fa-link"></i>
+
+                        Other Professional Link
+
+                    </label>
+
+                    <input
+                        type="url"
+                        class="form-control otherLink"
+                        value="${escapeHTML(
+                            data.otherLink ||
+                            data.OtherLink ||
+                            ""
+                        )}"
+                        placeholder="https://example.com"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- ==============================
+                 BUTTONS
+            =============================== -->
+
+            <div
+                style="
+                    display:flex;
+                    gap:15px;
+                    flex-wrap:wrap;
+                    margin-top:20px;
+                "
+            >
+
+                <button
+                    type="button"
+                    class="btn btn-primary save-social-links"
+                >
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    ${
+                        socialLinkID
+                        ?
+                        "Update Social Links"
+                        :
+                        "Save Social Links"
+                    }
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn cancel-social-links"
+                >
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(form);
+
+
+        form.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+
+        // ==================================
+        // SAVE / UPDATE
+        // ==================================
+
+        form
+        .querySelector(".save-social-links")
+        .addEventListener(
+            "click",
+            async function(){
+
+                const socialData = {
+
+                    candidateID:
+                    candidate.candidateID,
+
+                    socialLinkID:
+                    socialLinkID,
+
+                    linkedin:
+                    form
+                    .querySelector(".linkedin")
+                    .value
+                    .trim(),
+
+                    naukri:
+                    form
+                    .querySelector(".naukri")
+                    .value
+                    .trim(),
+
+                    indeed:
+                    form
+                    .querySelector(".indeed")
+                    .value
+                    .trim(),
+
+                    portfolio:
+                    form
+                    .querySelector(".portfolio")
+                    .value
+                    .trim(),
+
+                    github:
+                    form
+                    .querySelector(".github")
+                    .value
+                    .trim(),
+
+                    otherLink:
+                    form
+                    .querySelector(".otherLink")
+                    .value
+                    .trim()
+
+                };
+
+
+                // ==================================
+                // VALIDATION
+                // ==================================
+
+                const hasAnyLink =
+                    socialData.linkedin ||
+                    socialData.naukri ||
+                    socialData.indeed ||
+                    socialData.portfolio ||
+                    socialData.github ||
+                    socialData.otherLink;
+
+
+                if(!hasAnyLink){
+
+                    alert(
+                        "Please add at least one professional link."
+                    );
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // BUTTON LOADING
+                // ==================================
+
+                const saveButton =
+                form.querySelector(
+                    ".save-social-links"
+                );
+
+
+                const oldText =
+                saveButton.innerHTML;
+
+
+                saveButton.disabled =
+                true;
+
+
+                saveButton.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+
+
+                let result;
+
+
+                // ==================================
+                // UPDATE EXISTING
+                // ==================================
+
+                if(socialLinkID){
+
+                    result =
+                    await API.updateCandidateLinks(
+                        socialData
+                    );
+
+                }
+
+
+                // ==================================
+                // CREATE NEW
+                // ==================================
+
+                else{
+
+                    result =
+                    await API.saveCandidateLinks(
+                        socialData
+                    );
+
+                }
+
+
+                // ==================================
+                // RESPONSE
+                // ==================================
+
+                if(
+                    result &&
+                    result.success
+                ){
+
+                    alert(
+                        result.message ||
+                        (
+                            socialLinkID
+                            ?
+                            "Social links updated successfully."
+                            :
+                            "Social links saved successfully."
+                        )
+                    );
+
+
+                    loadCandidateSocialLinks();
+
+                }
+
+                else{
+
+                    saveButton.disabled =
+                    false;
+
+                    saveButton.innerHTML =
+                    oldText;
+
+
+                    alert(
+                        result &&
+                        result.message
+                        ?
+                        result.message
+                        :
+                        "Unable to save social links."
+                    );
+
+                }
+
+            }
+        );
+
+
+        // ==================================
+        // CANCEL
+        // ==================================
+
+        form
+        .querySelector(".cancel-social-links")
+        .addEventListener(
+            "click",
+            function(){
+
+                form.remove();
+
+            }
+        );
+
+    }
+
+
+    // ==================================
+    // RENDER SAVED SOCIAL LINKS
+    // ==================================
+
+    function renderSocialLinks(data){
+
+        const card =
+        document.createElement("div");
+
+        card.className =
+        "social-links-card";
+
+        card.style.marginTop =
+        "20px";
+
+
+        const links = [];
+
+
+        // LinkedIn
+        if(data.linkedin || data.LinkedIn){
+
+            links.push({
+
+                label:"LinkedIn Profile",
+
+                icon:"fa-brands fa-linkedin",
+
+                url:
+                data.linkedin ||
+                data.LinkedIn
+
+            });
+
+        }
+
+
+        // Naukri
+        if(data.naukri || data.Naukri){
+
+            links.push({
+
+                label:"Naukri Profile",
+
+                icon:"fa-solid fa-briefcase",
+
+                url:
+                data.naukri ||
+                data.Naukri
+
+            });
+
+        }
+
+
+        // Indeed
+        if(data.indeed || data.Indeed){
+
+            links.push({
+
+                label:"Indeed Profile",
+
+                icon:"fa-solid fa-briefcase",
+
+                url:
+                data.indeed ||
+                data.Indeed
+
+            });
+
+        }
+
+
+        // Portfolio
+        if(data.portfolio || data.Portfolio){
+
+            links.push({
+
+                label:"Portfolio / Personal Website",
+
+                icon:"fa-solid fa-globe",
+
+                url:
+                data.portfolio ||
+                data.Portfolio
+
+            });
+
+        }
+
+
+        // GitHub
+        if(data.github || data.GitHub){
+
+            links.push({
+
+                label:"GitHub Profile",
+
+                icon:"fa-brands fa-github",
+
+                url:
+                data.github ||
+                data.GitHub
+
+            });
+
+        }
+
+
+        // Other
+        if(data.otherLink || data.OtherLink){
+
+            links.push({
+
+                label:"Other Professional Link",
+
+                icon:"fa-solid fa-link",
+
+                url:
+                data.otherLink ||
+                data.OtherLink
+
+            });
+
+        }
+
+
+        let linksHTML = "";
+
+
+        links.forEach(
+            function(link){
+
+                let safeURL =
+                escapeHTML(link.url);
+
+
+                linksHTML += `
+
+                    <a
+                        href="${safeURL}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style="
+                            display:inline-flex;
+                            align-items:center;
+                            gap:8px;
+                            margin-right:20px;
+                            margin-bottom:12px;
+                            color:#2563eb;
+                            font-weight:600;
+                            text-decoration:none;
+                        "
+                    >
+
+                        <i class="${link.icon}"></i>
+
+                        ${escapeHTML(link.label)}
+
+                    </a>
+
+                `;
+
+            }
+        );
+
+
+        card.innerHTML = `
+
+            <div
+                style="
+                    padding:25px;
+                    border:1px solid #e5e7eb;
+                    border-radius:12px;
+                    background:#ffffff;
+                "
+            >
+
+                <div
+                    style="
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:flex-start;
+                        gap:20px;
+                        flex-wrap:wrap;
+                    "
+                >
+
+                    <div>
+
+                        <h3
+                            style="
+                                margin:0 0 8px;
+                                font-size:20px;
+                                font-weight:700;
+                            "
+                        >
+
+                            Professional Links
+
+                        </h3>
+
+                        <p
+                            style="
+                                margin:0;
+                                color:#6b7280;
+                                font-size:14px;
+                            "
+                        >
+
+                            Your professional and career-related online profiles.
+
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        style="
+                            display:flex;
+                            gap:10px;
+                            flex-wrap:wrap;
+                        "
+                    >
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-primary edit-social-links"
+                        >
+
+                            <i class="fa-solid fa-pen"></i>
+
+                            Edit
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn delete-social-links"
+                        >
+
+                            <i class="fa-solid fa-trash"></i>
+
+                            Delete
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    style="
+                        margin-top:20px;
+                        line-height:1.8;
+                    "
+                >
+
+                    ${linksHTML}
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+
+        // ==================================
+        // EDIT
+        // ==================================
+
+        card
+        .querySelector(".edit-social-links")
+        .addEventListener(
+            "click",
+            function(){
+
+                card.remove();
+
+                showSocialLinksForm(data);
+
+            }
+        );
+
+
+        // ==================================
+        // DELETE
+        // ==================================
+
+        card
+        .querySelector(".delete-social-links")
+        .addEventListener(
+            "click",
+            async function(){
+
+                if(
+                    !confirm(
+                        "Are you sure you want to delete all social links?"
+                    )
+                ){
+
+                    return;
+
+                }
+
+
+                const result =
+                await API.deleteCandidateLinks({
+
+                    socialLinkID:
+                    data.socialLinkID ||
+                    data.SocialLinkID
+
+                });
+
+
+                if(
+                    result &&
+                    result.success
+                ){
+
+                    alert(
+                        result.message ||
+                        "Social links deleted successfully."
+                    );
+
+
+                    loadCandidateSocialLinks();
+
+                }
+
+                else{
+
+                    alert(
+                        result &&
+                        result.message
+                        ?
+                        result.message
+                        :
+                        "Unable to delete social links."
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // ==================================
+    // LOAD SOCIAL LINKS
+    // ==================================
+
+    async function loadCandidateSocialLinks(){
+
+        const candidate =
+        Storage.getCandidate();
+
+
+        if(
+            !candidate ||
+            !candidate.candidateID
+        ){
+
+            return;
+
+        }
+
+
+        container.innerHTML = "";
+
+
         const result =
-        await API.getCandidateSocialProfiles({
+        await API.getCandidateLinks({
 
             candidateID:
             candidate.candidateID
@@ -3296,109 +4167,89 @@ document.addEventListener("DOMContentLoaded", function(){
         });
 
 
-        if(!result || !result.success){
+        console.log(
+            "Social Links Response:",
+            result
+        );
+
+
+        if(
+            !result ||
+            !result.success
+        ){
+
+            container.innerHTML = `
+
+                <div
+                    style="
+                        padding:20px;
+                        border:1px solid #e5e7eb;
+                        border-radius:10px;
+                        margin-top:20px;
+                        color:#6b7280;
+                    "
+                >
+
+                    <p style="margin:0;">
+
+                        Unable to load social links.
+
+                    </p>
+
+                </div>
+
+            `;
 
             return;
 
         }
 
 
-        const social =
-        result.data || {};
+        const data =
+        result.data;
 
 
-        if(linkedinURL){
+        // ==================================
+        // NO SAVED LINKS
+        // ==================================
 
-            linkedinURL.value =
-            social.linkedinURL || "";
+        if(
+            !data
+        ){
 
-        }
+            addButton.style.display =
+            "inline-flex";
 
-
-        if(naukriURL){
-
-            naukriURL.value =
-            social.naukriURL || "";
-
-        }
-
-
-        if(otherProfileURL){
-
-            otherProfileURL.value =
-            social.otherProfileURL || "";
+            return;
 
         }
+
+
+        // ==================================
+        // SAVED LINKS
+        // ==================================
+
+        addButton.style.display =
+        "none";
+
+
+        renderSocialLinks(data);
 
     }
 
 
     // ==================================
-    // SAVE SOCIAL PROFILES
+    // HTML SECURITY
     // ==================================
 
-    const saveProfileButton =
-    document.querySelector(
-        "#candidateProfileForm button[type='submit']"
-    );
+    function escapeHTML(value){
 
-
-    if(saveProfileButton){
-
-        saveProfileButton.addEventListener(
-            "click",
-            async function(){
-
-                const candidate =
-                Storage.getCandidate();
-
-                if(!candidate || !candidate.candidateID){
-
-                    return;
-
-                }
-
-
-                const socialData = {
-
-                    candidateID:
-                    candidate.candidateID,
-
-                    linkedinURL:
-                    linkedinURL
-                    ? linkedinURL.value.trim()
-                    : "",
-
-                    naukriURL:
-                    naukriURL
-                    ? naukriURL.value.trim()
-                    : "",
-
-                    otherProfileURL:
-                    otherProfileURL
-                    ? otherProfileURL.value.trim()
-                    : ""
-
-                };
-
-
-                const result =
-                await API.saveCandidateSocialProfiles(
-                    socialData
-                );
-
-
-                if(!result || !result.success){
-
-                    console.error(
-                        result?.message ||
-                        "Unable to save social profiles."
-                    );
-
-                }
-
-            }
-        );
+        return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
     }
 
