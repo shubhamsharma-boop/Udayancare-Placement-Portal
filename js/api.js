@@ -273,49 +273,47 @@ deleteCandidateSocialProfiles(data) {
 },
     
     // ======================================
-    // CANDIDATE PROFILE DETAILS
+    // CANDIDATE PROFILE
     // ======================================
 
     // ======================================
-    // EXPERIENCE
-    // ======================================
+// CANDIDATE EXPERIENCE
+// ======================================
 
-    addCandidateExperience(data) {
+addCandidateExperience(data) {
 
-        return this.call(
-            "addCandidateExperience",
-            data
-        );
+    return this.call(
+        "addCandidateExperience",
+        data
+    );
 
-    },
+},
 
-    getCandidateExperience(data) {
+getCandidateExperience(data) {
 
-        return this.call(
-            "getCandidateExperience",
-            data
-        );
+    return this.call(
+        "getCandidateExperience",
+        data
+    );
 
-    },
+},
 
-    updateCandidateExperience(data) {
+updateCandidateExperience(data) {
 
-        return this.call(
-            "updateCandidateExperience",
-            data
-        );
+    return this.call(
+        "updateCandidateExperience",
+        data
+    );
 
-    },
+},
 
-    deleteCandidateExperience(data) {
+deleteCandidateExperience(data) {
 
-        return this.call(
-            "deleteCandidateExperience",
-            data
-        );
-
-    },
-
+    return this.call(
+        "deleteCandidateExperience",
+        data
+    );
+},
 
     // ======================================
     // CERTIFICATIONS
