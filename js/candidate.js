@@ -1761,6 +1761,8 @@ if(saveExperienceBtn){
 
             });
 
+        console.log("EXPERIENCE API RESULT:", result);
+
 
         if(!result || !result.success){
 
