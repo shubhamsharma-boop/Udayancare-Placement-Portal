@@ -685,3 +685,168 @@ DIGITAL CANDIDATE PROFILE
     }
 }
 
+/* ======================================
+   DIGITAL PROFILE EXPERIENCE
+====================================== */
+
+.profile-experience-card,
+.profile-certification-card{
+
+    border:1px solid #e5e7eb;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    margin-bottom:15px;
+
+    background:#ffffff;
+
+}
+
+.experience-header,
+.certification-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+}
+
+.profile-experience-card h4,
+.profile-certification-card h4{
+
+    margin:0 0 6px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#0f4c81;
+
+}
+
+.experience-company{
+
+    margin:0;
+
+    font-weight:500;
+
+    color:#555;
+
+}
+
+.experience-duration{
+
+    font-size:13px;
+
+    padding:6px 10px;
+
+    border-radius:20px;
+
+    background:#eef5fb;
+
+    color:#0f4c81;
+
+    white-space:nowrap;
+
+}
+
+.experience-details,
+.certification-details{
+
+    margin-top:15px;
+
+}
+
+.experience-details p,
+.certification-details p{
+
+    margin:7px 0;
+
+    line-height:1.6;
+
+}
+
+.experience-description,
+.certification-description{
+
+    color:#555;
+
+    margin-top:12px !important;
+
+}
+
+.profile-certification-card a{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    margin-top:12px;
+
+    text-decoration:none;
+
+    color:#0f4c81;
+
+    font-weight:600;
+
+}
+
+.profile-social-links{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.profile-social-links a{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px 15px;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    color:#0f4c81;
+
+    background:#fff;
+
+    transition:0.2s;
+
+}
+
+.profile-social-links a:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
+}
+
+.empty-profile-message{
+
+    color:#777;
+
+    font-size:14px;
+
+    margin:0;
+
+}
