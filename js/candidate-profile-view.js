@@ -6,6 +6,30 @@ let applicationID = "";
 
 let profile = {};
 
+// ======================================
+// DATE FORMATTER
+// ======================================
+
+function formatDate(dateValue) {
+
+    if (!dateValue) return "";
+
+    const date = new Date(dateValue);
+
+    if (isNaN(date.getTime())) {
+        return dateValue;
+    }
+
+    const day = String(date.getDate()).padStart(2, "0");
+
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     // ===============================
@@ -141,10 +165,10 @@ function fillProfile() {
         profile.profileStatus || "";
 
     document.getElementById("registrationDate").textContent =
-        profile.registrationDate || "";
+    formatDate(profile.registrationDate);
 
-    document.getElementById("lastLogin").textContent =
-        profile.lastLogin || "";
+document.getElementById("lastLogin").textContent =
+    formatDate(profile.lastLogin);
 
     document.getElementById("accountStatus").textContent =
         profile.accountStatus || "";
