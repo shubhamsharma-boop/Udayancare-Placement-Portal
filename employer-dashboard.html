@@ -85,7 +85,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 </div>
 
-    
 <!-- ================= HEADER ================= -->
 
 <header class="header">
@@ -143,7 +142,6 @@ Logout
 
 </header>
 
-    
 <!-- ================= WELCOME BANNER ================= -->
 
 <section class="section">
@@ -771,7 +769,21 @@ console.log(error);
 showToast("Unable to load dashboard.","error");
 
 }
-       
+
+// =========================
+// DEMO NOTIFICATIONS
+// =========================
+
+document.getElementById("notificationList").innerHTML=`
+
+<li>📌 Welcome to Employer Dashboard.</li>
+
+<li>📌 Start by posting your first job.</li>
+
+<li>📌 Applications will appear automatically.</li>
+
+`;
+        
 // =========================
 // LOGOUT
 // =========================
@@ -783,7 +795,6 @@ document.getElementById("logoutBtn").addEventListener("click", function(e){
     Auth.logoutEmployer("employer-login.html");
 
 });
-
     // =========================
 // EDIT COMPANY DETAILS
 // =========================
