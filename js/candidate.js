@@ -2218,398 +2218,723 @@ saveExperienceBtn.innerHTML =
 
 });
 
-// ================================
-// CANDIDATE CERTIFICATION UI
-// ================================
+// ======================================
+// CANDIDATE CERTIFICATIONS
+// ======================================
 
-function addCertificationForm(data = {}){
+document.addEventListener("DOMContentLoaded",function(){
 
     const container =
     document.getElementById("certificationContainer");
 
-    if(!container) return;
+    const addButton =
+    document.getElementById("addCertificationBtn");
 
-    const certificationID =
-    data.certificationID || "";
-
-    const card =
-    document.createElement("div");
-
-    card.className = "form-container certification-item";
-
-    card.style.marginTop = "25px";
-
-    card.innerHTML = `
-
-        <div class="dashboard-grid">
-
-            <div class="form-group">
-
-                <label>Certification / Course Name *</label>
-
-                <input
-                    type="text"
-                    class="form-control certificationName"
-                    value="${data.certificationName || ""}"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>Issuing Organization *</label>
-
-                <input
-                    type="text"
-                    class="form-control issuingOrganization"
-                    value="${data.issuingOrganization || ""}"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>Issue Date</label>
-
-                <input
-                    type="date"
-                    class="form-control issueDate"
-                    value="${data.issueDate || ""}">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>Expiry Date</label>
-
-                <input
-                    type="date"
-                    class="form-control expiryDate"
-                    value="${data.expiryDate || ""}">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>Credential ID</label>
-
-                <input
-                    type="text"
-                    class="form-control credentialID"
-                    value="${data.credentialID || ""}"
-                    placeholder="Optional">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>Credential URL</label>
-
-                <input
-                    type="url"
-                    class="form-control credentialURL"
-                    value="${data.credentialURL || ""}"
-                    placeholder="https://...">
-
-            </div>
-
-
-            <div class="form-group full-width">
-
-                <label>Description</label>
-
-                <textarea
-                    class="form-control description"
-                    rows="4"
-                    placeholder="Briefly describe this certification or course.">${data.description || ""}</textarea>
-
-            </div>
-
-        </div>
-
-
-        <div style="display:flex;gap:15px;flex-wrap:wrap;margin-top:20px;">
-
-            <button
-                type="button"
-                class="btn btn-primary save-certification">
-
-                <i class="fa-solid fa-floppy-disk"></i>
-
-                Save Certification
-
-            </button>
-
-
-            <button
-                type="button"
-                class="btn delete-certification">
-
-                <i class="fa-solid fa-trash"></i>
-
-                Delete
-
-            </button>
-
-        </div>
-
-    `;
-
-
-    container.appendChild(card);
-
-
-    // ================================
-    // SAVE CERTIFICATION
-    // ================================
-
-    card
-    .querySelector(".save-certification")
-    .addEventListener("click", async function(){
-
-        const certificationData = {
-
-            candidateID:
-            Storage.getCandidate()?.candidateID,
-
-            certificationID:
-            certificationID,
-
-            certificationName:
-            card.querySelector(".certificationName").value.trim(),
-
-            issuingOrganization:
-            card.querySelector(".issuingOrganization").value.trim(),
-
-            issueDate:
-            card.querySelector(".issueDate").value,
-
-            expiryDate:
-            card.querySelector(".expiryDate").value,
-
-            credentialID:
-            card.querySelector(".credentialID").value.trim(),
-
-            credentialURL:
-            card.querySelector(".credentialURL").value.trim(),
-
-            description:
-            card.querySelector(".description").value.trim()
-
-        };
-
-
-        if(!certificationData.certificationName){
-
-            alert("Certification name is required.");
-
-            return;
-
-        }
-
-
-        if(!certificationData.issuingOrganization){
-
-            alert("Issuing organization is required.");
-
-            return;
-
-        }
-
-
-        let result;
-
-
-        if(certificationData.certificationID){
-
-            result =
-            await API.updateCandidateCertification(
-                certificationData
-            );
-
-        }
-        else{
-
-            result =
-            await API.saveCandidateCertification(
-                certificationData
-            );
-
-        }
-
-
-        if(result && result.success){
-
-            alert(result.message);
-
-            loadCandidateCertifications();
-
-        }
-        else{
-
-            alert(
-                result?.message ||
-                "Unable to save certification."
-            );
-
-        }
-
-    });
-
-
-    // ================================
-    // DELETE CERTIFICATION
-    // ================================
-
-    card
-    .querySelector(".delete-certification")
-    .addEventListener("click", async function(){
-
-        if(!certificationID){
-
-            card.remove();
-
-            return;
-
-        }
-
-
-        if(!confirm(
-            "Are you sure you want to delete this certification?"
-        )){
-
-            return;
-
-        }
-
-
-        const result =
-        await API.deleteCandidateCertification({
-
-            certificationID:
-            certificationID
-
-        });
-
-
-        if(result && result.success){
-
-            alert(result.message);
-
-            loadCandidateCertifications();
-
-        }
-        else{
-
-            alert(
-                result?.message ||
-                "Unable to delete certification."
-            );
-
-        }
-
-    });
-
-}
-
-
-// ================================
-// LOAD CERTIFICATIONS
-// ================================
-
-async function loadCandidateCertifications(){
-
-    const container =
-    document.getElementById("certificationContainer");
-
-    if(!container) return;
-
-
-    const candidate =
-    Storage.getCandidate();
-
-
-    if(!candidate || !candidate.candidateID){
+    if(!container || !addButton){
 
         return;
 
     }
 
 
-    container.innerHTML = "";
+    // ==================================
+    // LOAD CERTIFICATIONS
+    // ==================================
+
+    loadCandidateCertifications();
 
 
-    const result =
-    await API.getCandidateCertifications({
+    // ==================================
+    // ADD CERTIFICATION
+    // ==================================
 
-        candidateID:
-        candidate.candidateID
+    addButton.addEventListener(
+        "click",
+        function(){
 
-    });
+            addCertificationForm();
+
+        }
+    );
 
 
-    if(!result || !result.success){
+    // ==================================
+    // ADD / EDIT CERTIFICATION FORM
+    // ==================================
 
-        console.error(
-            result?.message ||
-            "Unable to load certifications."
+    function addCertificationForm(data = {}){
+
+        const card =
+        document.createElement("div");
+
+        card.className =
+        "form-container certification-item";
+
+        card.style.marginTop =
+        "25px";
+
+
+        const certificationID =
+        data.certificationID || "";
+
+
+        card.innerHTML = `
+
+            <div class="dashboard-grid">
+
+                <div class="form-group">
+
+                    <label>
+                        Certification / Course Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control certificationName"
+                        value="${escapeHTML(
+                            data.certificationName || ""
+                        )}"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Issuing Organization *
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control issuingOrganization"
+                        value="${escapeHTML(
+                            data.issuingOrganization || ""
+                        )}"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Issue Date
+                    </label>
+
+                    <input
+                        type="date"
+                        class="form-control issueDate"
+                        value="${escapeHTML(
+                            formatDateForInput(
+                                data.issueDate || ""
+                            )
+                        )}">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Expiry Date
+                    </label>
+
+                    <input
+                        type="date"
+                        class="form-control expiryDate"
+                        value="${escapeHTML(
+                            formatDateForInput(
+                                data.expiryDate || ""
+                            )
+                        )}">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Credential ID
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control credentialID"
+                        value="${escapeHTML(
+                            data.credentialID || ""
+                        )}"
+                        placeholder="Optional">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Credential URL
+                    </label>
+
+                    <input
+                        type="url"
+                        class="form-control credentialURL"
+                        value="${escapeHTML(
+                            data.credentialURL || ""
+                        )}"
+                        placeholder="https://...">
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <label>
+                        Description
+                    </label>
+
+                    <textarea
+                        class="form-control description"
+                        rows="4"
+                        placeholder="Briefly describe this certification or course.">${escapeHTML(
+                            data.description || ""
+                        )}</textarea>
+
+                </div>
+
+            </div>
+
+
+            <div
+                style="
+                    display:flex;
+                    gap:15px;
+                    flex-wrap:wrap;
+                    margin-top:20px;
+                "
+            >
+
+                <button
+                    type="button"
+                    class="btn btn-primary save-certification">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    ${certificationID
+                        ? "Update Certification"
+                        : "Save Certification"
+                    }
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn cancel-certification">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                    Cancel
+
+                </button>
+
+
+                ${
+                    certificationID
+                    ?
+                    `
+                    <button
+                        type="button"
+                        class="btn delete-certification">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                        Delete
+
+                    </button>
+                    `
+                    :
+                    ""
+                }
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+
+        // ==================================
+        // SAVE / UPDATE
+        // ==================================
+
+        card
+        .querySelector(".save-certification")
+        .addEventListener(
+            "click",
+            async function(){
+
+                const candidate =
+                Storage.getCandidate();
+
+
+                if(
+                    !candidate ||
+                    !candidate.candidateID
+                ){
+
+                    alert(
+                        "Candidate session not found. Please login again."
+                    );
+
+                    return;
+
+                }
+
+
+                const certificationData = {
+
+                    candidateID:
+                    candidate.candidateID,
+
+                    certificationID:
+                    certificationID,
+
+                    certificationName:
+                    card
+                    .querySelector(
+                        ".certificationName"
+                    )
+                    .value
+                    .trim(),
+
+                    issuingOrganization:
+                    card
+                    .querySelector(
+                        ".issuingOrganization"
+                    )
+                    .value
+                    .trim(),
+
+                    issueDate:
+                    card
+                    .querySelector(
+                        ".issueDate"
+                    )
+                    .value,
+
+                    expiryDate:
+                    card
+                    .querySelector(
+                        ".expiryDate"
+                    )
+                    .value,
+
+                    credentialID:
+                    card
+                    .querySelector(
+                        ".credentialID"
+                    )
+                    .value
+                    .trim(),
+
+                    credentialURL:
+                    card
+                    .querySelector(
+                        ".credentialURL"
+                    )
+                    .value
+                    .trim(),
+
+                    description:
+                    card
+                    .querySelector(
+                        ".description"
+                    )
+                    .value
+                    .trim()
+
+                };
+
+
+                // ==============================
+                // VALIDATION
+                // ==============================
+
+                if(
+                    !certificationData.certificationName
+                ){
+
+                    alert(
+                        "Certification / Course Name is required."
+                    );
+
+                    return;
+
+                }
+
+
+                if(
+                    !certificationData.issuingOrganization
+                ){
+
+                    alert(
+                        "Issuing Organization is required."
+                    );
+
+                    return;
+
+                }
+
+
+                // ==============================
+                // BUTTON LOADING
+                // ==============================
+
+                const saveButton =
+                card.querySelector(
+                    ".save-certification"
+                );
+
+
+                const oldText =
+                saveButton.innerHTML;
+
+
+                saveButton.disabled =
+                true;
+
+
+                saveButton.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+
+
+                let result;
+
+
+                // ==============================
+                // UPDATE EXISTING
+                // ==============================
+
+                if(certificationID){
+
+                    result =
+                    await API.updateCandidateCertification(
+                        certificationData
+                    );
+
+                }
+
+
+                // ==============================
+                // CREATE NEW
+                // ==============================
+
+                else{
+
+                    result =
+                    await API.saveCandidateCertification(
+                        certificationData
+                    );
+
+                }
+
+
+                // ==============================
+                // RESET BUTTON
+                // ==============================
+
+                saveButton.disabled =
+                false;
+
+                saveButton.innerHTML =
+                oldText;
+
+
+                // ==============================
+                // RESPONSE
+                // ==============================
+
+                if(
+                    result &&
+                    result.success
+                ){
+
+                    alert(
+                        result.message ||
+                        (
+                            certificationID
+                            ?
+                            "Certification updated successfully."
+                            :
+                            "Certification saved successfully."
+                        )
+                    );
+
+
+                    loadCandidateCertifications();
+
+                }
+
+                else{
+
+                    alert(
+                        result &&
+                        result.message
+                        ?
+                        result.message
+                        :
+                        "Unable to save certification."
+                    );
+
+                }
+
+            }
         );
 
-        return;
 
-    }
+        // ==================================
+        // CANCEL
+        // ==================================
 
+        card
+        .querySelector(".cancel-certification")
+        .addEventListener(
+            "click",
+            function(){
 
-    const certifications =
-    result.data || [];
+                card.remove();
 
-
-    certifications.forEach(function(certification){
-
-        addCertificationForm(certification);
-
-    });
-
-}
-
-
-// ================================
-// ADD CERTIFICATION BUTTON
-// ================================
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        const addButton =
-        document.getElementById(
-            "addCertificationBtn"
+            }
         );
 
 
-        if(addButton){
+        // ==================================
+        // DELETE
+        // ==================================
 
-            addButton.addEventListener(
+        const deleteButton =
+        card.querySelector(
+            ".delete-certification"
+        );
+
+
+        if(deleteButton){
+
+            deleteButton.addEventListener(
                 "click",
-                function(){
+                async function(){
 
-                    addCertificationForm();
+                    if(
+                        !confirm(
+                            "Are you sure you want to delete this certification?"
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    const result =
+                    await API.deleteCandidateCertification({
+
+                        certificationID:
+                        certificationID
+
+                    });
+
+
+                    if(
+                        result &&
+                        result.success
+                    ){
+
+                        alert(
+                            result.message ||
+                            "Certification deleted successfully."
+                        );
+
+
+                        loadCandidateCertifications();
+
+                    }
+
+                    else{
+
+                        alert(
+                            result &&
+                            result.message
+                            ?
+                            result.message
+                            :
+                            "Unable to delete certification."
+                        );
+
+                    }
 
                 }
             );
 
         }
 
+    }
 
-        loadCandidateCertifications();
+
+    // ==================================
+    // LOAD CERTIFICATIONS
+    // ==================================
+
+    async function loadCandidateCertifications(){
+
+        const candidate =
+        Storage.getCandidate();
+
+
+        if(
+            !candidate ||
+            !candidate.candidateID
+        ){
+
+            return;
+
+        }
+
+
+        container.innerHTML = "";
+
+
+        const result =
+        await API.getCandidateCertifications({
+
+            candidateID:
+            candidate.candidateID
+
+        });
+
+
+        console.log(
+            "Certification Response:",
+            result
+        );
+
+
+        if(
+            !result ||
+            !result.success
+        ){
+
+            console.error(
+                result &&
+                result.message
+                ?
+                result.message
+                :
+                "Unable to load certifications."
+            );
+
+            return;
+
+        }
+
+
+        const certifications =
+        result.data || [];
+
+
+        if(
+            certifications.length === 0
+        ){
+
+            container.innerHTML = `
+
+                <div
+                    style="
+                        padding:20px;
+                        border:1px solid #e5e7eb;
+                        border-radius:10px;
+                        margin-bottom:20px;
+                    "
+                >
+
+                    <p style="margin:0;">
+
+                        No certifications added yet.
+
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        certifications.forEach(
+            function(certification){
+
+                addCertificationForm(
+                    certification
+                );
+
+            }
+        );
 
     }
-);
+
+
+    // ==================================
+    // FORMAT DATE
+    // ==================================
+
+    function formatDateForInput(value){
+
+        if(!value){
+
+            return "";
+
+        }
+
+
+        const date =
+        new Date(value);
+
+
+        if(
+            isNaN(date.getTime())
+        ){
+
+            return String(value)
+            .substring(0,10);
+
+        }
+
+
+        return date
+        .toISOString()
+        .substring(0,10);
+
+    }
+
+
+    // ==================================
+    // HTML SECURITY
+    // ==================================
+
+    function escapeHTML(value){
+
+        return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+    }
+
+});
 
 // ======================================
 // CANDIDATE SOCIAL PROFILES
