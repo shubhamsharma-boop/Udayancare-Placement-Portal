@@ -257,33 +257,85 @@ deleteCandidateCertification(data){
 },
 
 // ======================================
-// SOCIAL PROFILES
+// CANDIDATE SOCIAL LINKS
 // ======================================
 
-saveCandidateSocialProfiles(data) {
 
-    return this.call("saveCandidateSocialLinks", data);
+// ======================================
+// SAVE CANDIDATE SOCIAL LINKS
+// ======================================
 
-},
+API.saveCandidateLinks = async function(data){
 
-getCandidateSocialProfiles(data) {
+    return await API.request({
 
-    return this.call("getCandidateSocialLinks", data);
+        action:
+        "saveCandidateLinks",
 
-},
+        data:
+        data
 
-updateCandidateSocialProfiles(data) {
+    });
 
-    return this.call("updateCandidateSocialLinks", data);
+};
 
-},
 
-deleteCandidateSocialProfiles(data) {
+// ======================================
+// GET CANDIDATE SOCIAL LINKS
+// ======================================
 
-    return this.call("deleteCandidateSocialLinks", data);
+API.getCandidateLinks = async function(data){
 
-},
-    
+    return await API.request({
+
+        action:
+        "getCandidateLinks",
+
+        data:
+        data
+
+    });
+
+};
+
+
+// ======================================
+// UPDATE CANDIDATE SOCIAL LINKS
+// ======================================
+
+API.updateCandidateLinks = async function(data){
+
+    return await API.request({
+
+        action:
+        "updateCandidateLinks",
+
+        data:
+        data
+
+    });
+
+};
+
+
+// ======================================
+// DELETE CANDIDATE SOCIAL LINKS
+// ======================================
+
+API.deleteCandidateLinks = async function(data){
+
+    return await API.request({
+
+        action:
+        "deleteCandidateLinks",
+
+        data:
+        data
+
+    });
+
+};
+
     // ======================================
     // CANDIDATE PROFILE
     // ======================================
