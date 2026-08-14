@@ -2238,7 +2238,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
     // ==================================
-    // LOAD CERTIFICATIONS
+    // INITIAL LOAD
     // ==================================
 
     loadCandidateCertifications();
@@ -2259,16 +2259,34 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
     // ==================================
-    // ADD / EDIT CERTIFICATION FORM
+    // ADD / EDIT FORM
     // ==================================
 
     function addCertificationForm(data = {}){
+
+        // Prevent multiple blank forms
+        const existingForm =
+        container.querySelector(
+            ".certification-form"
+        );
+
+        if(existingForm && !data.certificationID){
+
+            existingForm.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+
+            return;
+
+        }
+
 
         const card =
         document.createElement("div");
 
         card.className =
-        "form-container certification-item";
+        "form-container certification-form";
 
         card.style.marginTop =
         "25px";
@@ -2325,10 +2343,8 @@ document.addEventListener("DOMContentLoaded",function(){
                     <input
                         type="date"
                         class="form-control issueDate"
-                        value="${escapeHTML(
-                            formatDateForInput(
-                                data.issueDate || ""
-                            )
+                        value="${formatDateForInput(
+                            data.issueDate || ""
                         )}">
 
                 </div>
@@ -2343,10 +2359,8 @@ document.addEventListener("DOMContentLoaded",function(){
                     <input
                         type="date"
                         class="form-control expiryDate"
-                        value="${escapeHTML(
-                            formatDateForInput(
-                                data.expiryDate || ""
-                            )
+                        value="${formatDateForInput(
+                            data.expiryDate || ""
                         )}">
 
                 </div>
@@ -2437,31 +2451,18 @@ document.addEventListener("DOMContentLoaded",function(){
 
                 </button>
 
-
-                ${
-                    certificationID
-                    ?
-                    `
-                    <button
-                        type="button"
-                        class="btn delete-certification">
-
-                        <i class="fa-solid fa-trash"></i>
-
-                        Delete
-
-                    </button>
-                    `
-                    :
-                    ""
-                }
-
             </div>
 
         `;
 
 
         container.appendChild(card);
+
+
+        card.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
 
 
         // ==================================
@@ -2557,9 +2558,9 @@ document.addEventListener("DOMContentLoaded",function(){
                 };
 
 
-                // ==============================
+                // ==================================
                 // VALIDATION
-                // ==============================
+                // ==================================
 
                 if(
                     !certificationData.certificationName
@@ -2587,9 +2588,9 @@ document.addEventListener("DOMContentLoaded",function(){
                 }
 
 
-                // ==============================
+                // ==================================
                 // BUTTON LOADING
-                // ==============================
+                // ==================================
 
                 const saveButton =
                 card.querySelector(
@@ -2612,9 +2613,9 @@ document.addEventListener("DOMContentLoaded",function(){
                 let result;
 
 
-                // ==============================
+                // ==================================
                 // UPDATE EXISTING
-                // ==============================
+                // ==================================
 
                 if(certificationID){
 
@@ -2626,9 +2627,9 @@ document.addEventListener("DOMContentLoaded",function(){
                 }
 
 
-                // ==============================
+                // ==================================
                 // CREATE NEW
-                // ==============================
+                // ==================================
 
                 else{
 
@@ -2640,20 +2641,9 @@ document.addEventListener("DOMContentLoaded",function(){
                 }
 
 
-                // ==============================
-                // RESET BUTTON
-                // ==============================
-
-                saveButton.disabled =
-                false;
-
-                saveButton.innerHTML =
-                oldText;
-
-
-                // ==============================
+                // ==================================
                 // RESPONSE
-                // ==============================
+                // ==================================
 
                 if(
                     result &&
@@ -2677,6 +2667,13 @@ document.addEventListener("DOMContentLoaded",function(){
                 }
 
                 else{
+
+                    saveButton.disabled =
+                    false;
+
+                    saveButton.innerHTML =
+                    oldText;
+
 
                     alert(
                         result &&
@@ -2708,75 +2705,334 @@ document.addEventListener("DOMContentLoaded",function(){
             }
         );
 
+    }
+
+
+    // ==================================
+    // RENDER CERTIFICATION CARD
+    // ==================================
+
+    function renderCertificationCard(
+        certification
+    ){
+
+        const card =
+        document.createElement("div");
+
+        card.className =
+        "certification-item";
+
+        card.style.marginTop =
+        "20px";
+
+
+        const issueDate =
+        formatDisplayDate(
+            certification.issueDate
+        );
+
+
+        const expiryDate =
+        formatDisplayDate(
+            certification.expiryDate
+        );
+
+
+        const credentialID =
+        certification.credentialID
+        ?
+        escapeHTML(
+            certification.credentialID
+        )
+        :
+        "Not provided";
+
+
+        const description =
+        certification.description
+        ?
+        escapeHTML(
+            certification.description
+        )
+        :
+        "";
+
+
+        const credentialURL =
+        certification.credentialURL
+        ?
+        escapeHTML(
+            certification.credentialURL
+        )
+        :
+        "";
+
+
+        card.innerHTML = `
+
+            <div
+                style="
+                    padding:25px;
+                    border:1px solid #e5e7eb;
+                    border-radius:12px;
+                    background:#ffffff;
+                "
+            >
+
+                <div
+                    style="
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:flex-start;
+                        gap:20px;
+                        flex-wrap:wrap;
+                    "
+                >
+
+                    <div>
+
+                        <h3
+                            style="
+                                margin:0 0 8px;
+                                font-size:20px;
+                                font-weight:700;
+                            "
+                        >
+
+                            ${escapeHTML(
+                                certification.certificationName
+                            )}
+
+                        </h3>
+
+
+                        <div
+                            style="
+                                font-size:15px;
+                                font-weight:600;
+                                color:#374151;
+                            "
+                        >
+
+                            ${escapeHTML(
+                                certification.issuingOrganization
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        style="
+                            display:flex;
+                            gap:10px;
+                            flex-wrap:wrap;
+                        "
+                    >
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-primary edit-certification"
+                        >
+
+                            <i class="fa-solid fa-pen"></i>
+                            Edit
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn delete-certification"
+                        >
+
+                            <i class="fa-solid fa-trash"></i>
+                            Delete
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    style="
+                        margin-top:18px;
+                        color:#4b5563;
+                        font-size:14px;
+                    "
+                >
+
+                    <div>
+
+                        <strong>Issue Date:</strong>
+                        ${issueDate || "Not provided"}
+
+                        &nbsp;&nbsp;–&nbsp;&nbsp;
+
+                        <strong>Expiry Date:</strong>
+                        ${expiryDate || "Not provided"}
+
+                    </div>
+
+
+                    <div
+                        style="
+                            margin-top:8px;
+                        "
+                    >
+
+                        <strong>Credential ID:</strong>
+                        ${credentialID}
+
+                    </div>
+
+                </div>
+
+
+                ${
+                    description
+                    ?
+                    `
+                    <div
+                        style="
+                            margin-top:18px;
+                            line-height:1.6;
+                            color:#4b5563;
+                        "
+                    >
+
+                        ${description}
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+                ${
+                    credentialURL
+                    ?
+                    `
+                    <div
+                        style="
+                            margin-top:15px;
+                        "
+                    >
+
+                        <a
+                            href="${credentialURL}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="
+                                color:#2563eb;
+                                font-weight:600;
+                                text-decoration:none;
+                            "
+                        >
+
+                            <i class="fa-solid fa-link"></i>
+                            View Credential
+
+                        </a>
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+
+        // ==================================
+        // EDIT
+        // ==================================
+
+        card
+        .querySelector(".edit-certification")
+        .addEventListener(
+            "click",
+            function(){
+
+                card.remove();
+
+                addCertificationForm(
+                    certification
+                );
+
+            }
+        );
+
 
         // ==================================
         // DELETE
         // ==================================
 
-        const deleteButton =
-        card.querySelector(
-            ".delete-certification"
-        );
+        card
+        .querySelector(".delete-certification")
+        .addEventListener(
+            "click",
+            async function(){
 
+                if(
+                    !confirm(
+                        "Are you sure you want to delete this certification?"
+                    )
+                ){
 
-        if(deleteButton){
-
-            deleteButton.addEventListener(
-                "click",
-                async function(){
-
-                    if(
-                        !confirm(
-                            "Are you sure you want to delete this certification?"
-                        )
-                    ){
-
-                        return;
-
-                    }
-
-
-                    const result =
-                    await API.deleteCandidateCertification({
-
-                        certificationID:
-                        certificationID
-
-                    });
-
-
-                    if(
-                        result &&
-                        result.success
-                    ){
-
-                        alert(
-                            result.message ||
-                            "Certification deleted successfully."
-                        );
-
-
-                        loadCandidateCertifications();
-
-                    }
-
-                    else{
-
-                        alert(
-                            result &&
-                            result.message
-                            ?
-                            result.message
-                            :
-                            "Unable to delete certification."
-                        );
-
-                    }
+                    return;
 
                 }
-            );
 
-        }
+
+                const result =
+                await API.deleteCandidateCertification({
+
+                    certificationID:
+                    certification.certificationID
+
+                });
+
+
+                if(
+                    result &&
+                    result.success
+                ){
+
+                    alert(
+                        result.message ||
+                        "Certification deleted successfully."
+                    );
+
+
+                    loadCandidateCertifications();
+
+                }
+
+                else{
+
+                    alert(
+                        result &&
+                        result.message
+                        ?
+                        result.message
+                        :
+                        "Unable to delete certification."
+                    );
+
+                }
+
+            }
+        );
 
     }
 
@@ -2824,14 +3080,26 @@ document.addEventListener("DOMContentLoaded",function(){
             !result.success
         ){
 
-            console.error(
-                result &&
-                result.message
-                ?
-                result.message
-                :
-                "Unable to load certifications."
-            );
+            container.innerHTML = `
+
+                <div
+                    style="
+                        padding:20px;
+                        border:1px solid #e5e7eb;
+                        border-radius:10px;
+                        margin-top:20px;
+                    "
+                >
+
+                    <p style="margin:0;">
+
+                        Unable to load certifications.
+
+                    </p>
+
+                </div>
+
+            `;
 
             return;
 
@@ -2841,6 +3109,10 @@ document.addEventListener("DOMContentLoaded",function(){
         const certifications =
         result.data || [];
 
+
+        // ==================================
+        // EMPTY STATE
+        // ==================================
 
         if(
             certifications.length === 0
@@ -2853,7 +3125,8 @@ document.addEventListener("DOMContentLoaded",function(){
                         padding:20px;
                         border:1px solid #e5e7eb;
                         border-radius:10px;
-                        margin-bottom:20px;
+                        margin-top:20px;
+                        color:#6b7280;
                     "
                 >
 
@@ -2872,10 +3145,14 @@ document.addEventListener("DOMContentLoaded",function(){
         }
 
 
+        // ==================================
+        // RENDER SAVED CARDS
+        // ==================================
+
         certifications.forEach(
             function(certification){
 
-                addCertificationForm(
+                renderCertificationCard(
                     certification
                 );
 
@@ -2886,7 +3163,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
     // ==================================
-    // FORMAT DATE
+    // FORMAT DATE FOR INPUT
     // ==================================
 
     function formatDateForInput(value){
@@ -2915,6 +3192,45 @@ document.addEventListener("DOMContentLoaded",function(){
         return date
         .toISOString()
         .substring(0,10);
+
+    }
+
+
+    // ==================================
+    // FORMAT DATE DISPLAY
+    // ==================================
+
+    function formatDisplayDate(value){
+
+        if(!value){
+
+            return "";
+
+        }
+
+
+        const date =
+        new Date(value);
+
+
+        if(
+            isNaN(date.getTime())
+        ){
+
+            return String(value)
+            .substring(0,10);
+
+        }
+
+
+        return date.toLocaleDateString(
+            "en-GB",
+            {
+                day:"2-digit",
+                month:"short",
+                year:"numeric"
+            }
+        );
 
     }
 
