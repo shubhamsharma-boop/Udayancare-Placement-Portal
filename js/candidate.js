@@ -1743,43 +1743,52 @@ if(saveExperienceBtn){
 
     async function loadCandidateExperience(){
 
-        const candidate =
-            Storage.getCandidate();
+    const candidate =
+    Storage.getCandidate();
 
-        if(!candidate || !candidate.candidateID){
+    console.log("CANDIDATE SESSION:", candidate);
 
-            return;
+    if(!candidate || !candidate.candidateID){
 
-        }
+        console.log("NO CANDIDATE SESSION");
 
-
-        const result =
-            await API.getCandidateExperience({
-
-                candidateID:
-                    candidate.candidateID
-
-            });
-
-        console.log("EXPERIENCE API RESULT:", result);
-
-
-        if(!result || !result.success){
-
-            return;
-
-        }
-
-
-        // IMPORTANT:
-        // Backend returns "data"
-
-        renderCandidateExperience(
-            result.data || []
-        );
+        return;
 
     }
 
+    const result =
+    await API.getCandidateExperience({
+
+        candidateID:
+        candidate.candidateID
+
+    });
+
+    console.log("EXPERIENCE API RESULT:", result);
+
+    if(!result){
+
+        console.log("NO API RESULT");
+
+        return;
+
+    }
+
+    if(!result.success){
+
+        console.log("EXPERIENCE API ERROR:", result.message);
+
+        return;
+
+    }
+
+    console.log("EXPERIENCE DATA:", result.data);
+
+    renderCandidateExperience(
+        result.data || []
+    );
+
+}
 
     // ==================================
 // RENDER EXPERIENCE
