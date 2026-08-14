@@ -336,7 +336,7 @@ function renderExperience(){
                     ?
                     `<p>
                         <strong>Start:</strong>
-                        ${escapeHTML(exp.startDate)}
+                        ${escapeHTML(formatDate(exp.startDate))}
                     </p>`
                     :
                     ""
@@ -347,7 +347,7 @@ function renderExperience(){
                     ?
                     `<p>
                         <strong>End:</strong>
-                        ${escapeHTML(exp.endDate)}
+                        ${escapeHTML(formatDate(exp.endDate))}
                     </p>`
                     :
                     ""
@@ -468,7 +468,7 @@ function renderCertifications(){
                     ?
                     `<p>
                         <strong>Issue Date:</strong>
-                        ${escapeHTML(cert.issueDate)}
+                        ${escapeHTML(formatDate(cert.issueDate))}
                     </p>`
                     :
                     ""
@@ -479,7 +479,7 @@ function renderCertifications(){
                     ?
                     `<p>
                         <strong>Expiry Date:</strong>
-                        ${escapeHTML(cert.expiryDate)}
+                        ${escapeHTML(formatDate(cert.expiryDate))}
                     </p>`
                     :
                     ""
