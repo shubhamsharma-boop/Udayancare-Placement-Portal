@@ -788,23 +788,21 @@ document.getElementById("notificationList").innerHTML=`
 // LOGOUT
 // =========================
 
-const logoutBtn = document.getElementById("logoutBtn");
+function logout(){
 
-if(logoutBtn){
+localStorage.removeItem("employerID");
 
-    logoutBtn.addEventListener("click", function(e){
+localStorage.removeItem("companyName");
 
-        e.preventDefault();
+localStorage.removeItem("employer");
 
-        localStorage.removeItem("employerID");
-        localStorage.removeItem("companyName");
-        localStorage.removeItem("employer");
-
-        window.location.href = "employer-login.html";
-
-    });
+window.location.href="employer-login.html";
 
 }
+
+document.getElementById("logoutBtn").onclick=logout;
+
+});
 
     // =========================
 // EDIT COMPANY DETAILS
