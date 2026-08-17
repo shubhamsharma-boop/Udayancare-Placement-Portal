@@ -714,7 +714,7 @@ document.getElementById("companyWelcome").innerHTML =
 "Welcome, " + employer.companyName;
 
     document.getElementById("welcomeCompanyName").innerText =
-employer.companyName;
+employer.companyName || "Employer";
 
 const lastLogin = localStorage.getItem("lastLogin");
 
