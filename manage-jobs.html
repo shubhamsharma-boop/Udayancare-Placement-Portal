@@ -123,7 +123,7 @@ Applications
 
 </a>
 
-<a id="logoutBtn" href="#">
+<a href="#" id="logoutBtn">
 Logout
 </a>
     
@@ -1368,6 +1368,28 @@ alert("Something went wrong");
 
 }
 
+
+}
+
+    // =====================================
+// LOGOUT
+// =====================================
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if(logoutBtn){
+
+    logoutBtn.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        localStorage.removeItem("employerID");
+        localStorage.removeItem("companyName");
+        localStorage.removeItem("employer");
+
+        window.location.href = "employer-login.html";
+
+    });
 
 }
 
