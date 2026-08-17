@@ -200,7 +200,7 @@ Manage Jobs
 
     <i class="fa-solid fa-building"></i>
 
-    <h4 id="welcomeCompanyName">
+    <h4 id="employerUserName">
         Employer
     </h4>
 
@@ -209,7 +209,6 @@ Manage Jobs
     </p>
 
 </div>
-
     
 <div class="welcome-mini-card">
 
@@ -713,8 +712,8 @@ const d=response.data;
 document.getElementById("companyWelcome").innerHTML =
 "Welcome, " + employer.companyName;
 
-    document.getElementById("welcomeCompanyName").innerText =
-employer.companyName || "Employer";
+    document.getElementById("employerUserName").innerText =
+employer.contactPerson || "Employer";
 
 const lastLogin = localStorage.getItem("lastLogin");
 
