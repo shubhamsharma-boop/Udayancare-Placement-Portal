@@ -776,16 +776,23 @@ showToast("Unable to load dashboard.","error");
 // DEMO NOTIFICATIONS
 // =========================
 
-document.getElementById("notificationList").innerHTML=`
+const notificationList =
+document.getElementById("notificationList");
 
-<li>📌 Welcome to Employer Dashboard.</li>
+if(notificationList){
 
-<li>📌 Start by posting your first job.</li>
+    notificationList.innerHTML = `
 
-<li>📌 Applications will appear automatically.</li>
+    <li>📌 Welcome to Employer Dashboard.</li>
 
-`;
-        
+    <li>📌 Start by posting your first job.</li>
+
+    <li>📌 Applications will appear automatically.</li>
+
+    `;
+
+}
+
 // =========================
 // LOGOUT
 // =========================
@@ -805,7 +812,7 @@ window.location.href="employer-login.html";
 document.getElementById("logoutBtn").onclick=logout;
 
 });
-
+    
     // =========================
 // EDIT COMPANY DETAILS
 // =========================
