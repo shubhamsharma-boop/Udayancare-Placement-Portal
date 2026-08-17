@@ -382,6 +382,37 @@ deleteCandidateExperience(data) {
     },
 
     // ======================================
+// PASSWORD RESET
+// ======================================
+
+requestPasswordReset(data) {
+
+    return this.call(
+        "requestPasswordReset",
+        data
+    );
+
+},
+
+verifyPasswordResetOTP(data) {
+
+    return this.call(
+        "verifyPasswordResetOTP",
+        data
+    );
+
+},
+
+resetPassword(data) {
+
+    return this.call(
+        "resetPassword",
+        data
+    );
+
+},
+
+    // ======================================
     // CONTACT
     // ======================================
 
