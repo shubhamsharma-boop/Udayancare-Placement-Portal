@@ -1,7 +1,6 @@
-```javascript
 // ======================================
 // UCPP FORGOT PASSWORD
-// Version: 2.0.0
+// Version: 2.1.0
 // ======================================
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -11,16 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!form) return;
 
+
     const emailInput =
         document.getElementById("email");
+
 
     const submitButton =
         form.querySelector("button[type='submit']");
 
-
-    // ======================================
-    // RESET STATE
-    // ======================================
 
     let resetEmail = "";
     let otpVerified = false;
@@ -33,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", async function (event) {
 
         event.preventDefault();
+
 
         if (otpVerified) return;
 
@@ -77,6 +75,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
 
+            console.log(
+                "UCPP: Requesting password reset for:",
+                email
+            );
+
+
             const response =
                 await API.requestPasswordReset({
 
@@ -85,15 +89,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
 
-            if (response && response.success) {
+            console.log(
+                "UCPP: Password reset response:",
+                response
+            );
+
+
+            if (
+                response &&
+                response.success
+            ) {
 
                 resetEmail = email;
 
                 showOTPSection();
 
+
                 alert(
                     response.message ||
-                    "OTP has been sent to your registered email address."
+                    "If this email is registered, an OTP has been sent to your email address."
                 );
 
             }
@@ -120,18 +134,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 error
             );
 
+
             alert(
-                "Something went wrong. Please try again later."
+                "Something went wrong while requesting OTP. Please try again."
             );
 
         }
 
         finally {
 
-            submitButton.disabled = false;
+            if (submitButton) {
 
-            submitButton.innerHTML =
-                originalText;
+                submitButton.disabled = false;
+
+                submitButton.innerHTML =
+                    originalText;
+
+            }
 
         }
 
@@ -150,89 +169,69 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-        formContainer.innerHTML = `
+        formContainer.innerHTML =
+            '<div class="form-group">' +
 
-            <div class="form-group">
+                '<label for="resetOTP">' +
+                    'Enter OTP' +
+                '</label>' +
 
-                <label for="resetOTP">
+                '<input ' +
+                    'type="text" ' +
+                    'id="resetOTP" ' +
+                    'class="form-control" ' +
+                    'placeholder="Enter 6-digit OTP" ' +
+                    'maxlength="6" ' +
+                    'inputmode="numeric" ' +
+                    'autocomplete="one-time-code">' +
 
-                    Enter OTP
+                '<small ' +
+                    'style="display:block;margin-top:8px;color:#6b7280;">' +
 
-                </label>
+                    'Enter the 6-digit OTP sent to your email address.' +
 
-                <input
-                    type="text"
-                    id="resetOTP"
-                    class="form-control"
-                    placeholder="Enter 6-digit OTP"
-                    maxlength="6"
-                    inputmode="numeric"
-                    autocomplete="one-time-code"
-                >
+                '</small>' +
 
-                <small
-                    style="
-                        display:block;
-                        margin-top:8px;
-                        color:#6b7280;
-                    "
-                >
-
-                    Enter the 6-digit OTP sent to your email address.
-
-                </small>
-
-            </div>
+            '</div>' +
 
 
-            <button
-                type="button"
-                id="verifyOTPButton"
-                class="btn btn-primary"
-                style="width:100%;"
-            >
+            '<button ' +
+                'type="button" ' +
+                'id="verifyOTPButton" ' +
+                'class="btn btn-primary" ' +
+                'style="width:100%;">' +
 
-                <i class="fa-solid fa-shield-halved"></i>
+                '<i class="fa-solid fa-shield-halved"></i>' +
+                ' Verify OTP' +
 
-                Verify OTP
-
-            </button>
+            '</button>' +
 
 
-            <button
-                type="button"
-                id="resendOTPButton"
-                class="btn"
-                style="
-                    width:100%;
-                    margin-top:12px;
-                "
-            >
+            '<button ' +
+                'type="button" ' +
+                'id="resendOTPButton" ' +
+                'class="btn" ' +
+                'style="width:100%;margin-top:12px;">' +
 
-                <i class="fa-solid fa-rotate-right"></i>
+                '<i class="fa-solid fa-rotate-right"></i>' +
+                ' Resend OTP' +
 
-                Resend OTP
-
-            </button>
+            '</button>' +
 
 
-            <p
-                class="text-center mt-30"
-            >
+            '<p class="text-center mt-30">' +
 
-                <a href="candidate-login.html">
+                '<a href="candidate-login.html">' +
+                    'Back to Login' +
+                '</a>' +
 
-                    Back to Login
-
-                </a>
-
-            </p>
-
-        `;
+            '</p>';
 
 
         const otpInput =
-            document.getElementById("resetOTP");
+            document.getElementById(
+                "resetOTP"
+            );
 
 
         otpInput.addEventListener(
@@ -264,6 +263,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 resendOTP
             );
 
+
+        otpInput.focus();
+
     }
 
 
@@ -274,13 +276,18 @@ document.addEventListener("DOMContentLoaded", function () {
     async function verifyOTP() {
 
         const otpInput =
-            document.getElementById("resetOTP");
+            document.getElementById(
+                "resetOTP"
+            );
+
 
         const verifyButton =
-            document.getElementById("verifyOTPButton");
+            document.getElementById(
+                "verifyOTPButton"
+            );
 
 
-        if (!otpInput) return;
+        if (!otpInput || !verifyButton) return;
 
 
         const otp =
@@ -306,6 +313,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
 
+            console.log(
+                "UCPP: Verifying password reset OTP."
+            );
+
+
             const response =
                 await API.verifyPasswordResetOTP({
 
@@ -314,6 +326,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     otp: otp
 
                 });
+
+
+            console.log(
+                "UCPP: OTP verification response:",
+                response
+            );
 
 
             if (
@@ -349,6 +367,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 error
             );
 
+
             alert(
                 "Unable to verify OTP. Please try again."
             );
@@ -357,10 +376,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         finally {
 
-            verifyButton.disabled = false;
+            if (!otpVerified) {
 
-            verifyButton.innerHTML =
-                '<i class="fa-solid fa-shield-halved"></i> Verify OTP';
+                verifyButton.disabled = false;
+
+                verifyButton.innerHTML =
+                    '<i class="fa-solid fa-shield-halved"></i> Verify OTP';
+
+            }
 
         }
 
@@ -382,6 +405,9 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
+        if (!resendButton) return;
+
+
         resendButton.disabled = true;
 
         resendButton.innerHTML =
@@ -390,12 +416,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
 
+            console.log(
+                "UCPP: Resending password reset OTP."
+            );
+
+
             const response =
                 await API.requestPasswordReset({
 
                     email: resetEmail
 
                 });
+
+
+            console.log(
+                "UCPP: Resend OTP response:",
+                response
+            );
 
 
             if (
@@ -432,6 +469,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 error
             );
 
+
             alert(
                 "Unable to resend OTP. Please try again."
             );
@@ -462,75 +500,60 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-        formContainer.innerHTML = `
+        formContainer.innerHTML =
+            '<div class="form-group">' +
 
-            <div class="form-group">
+                '<label for="newPassword">' +
+                    'New Password' +
+                '</label>' +
 
-                <label for="newPassword">
+                '<input ' +
+                    'type="password" ' +
+                    'id="newPassword" ' +
+                    'class="form-control" ' +
+                    'placeholder="Enter new password" ' +
+                    'minlength="8" ' +
+                    'autocomplete="new-password">' +
 
-                    New Password
-
-                </label>
-
-                <input
-                    type="password"
-                    id="newPassword"
-                    class="form-control"
-                    placeholder="Enter new password"
-                    minlength="8"
-                    autocomplete="new-password"
-                >
-
-            </div>
+            '</div>' +
 
 
-            <div class="form-group">
+            '<div class="form-group">' +
 
-                <label for="confirmPassword">
+                '<label for="confirmPassword">' +
+                    'Confirm Password' +
+                '</label>' +
 
-                    Confirm Password
+                '<input ' +
+                    'type="password" ' +
+                    'id="confirmPassword" ' +
+                    'class="form-control" ' +
+                    'placeholder="Confirm new password" ' +
+                    'minlength="8" ' +
+                    'autocomplete="new-password">' +
 
-                </label>
-
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    class="form-control"
-                    placeholder="Confirm new password"
-                    minlength="8"
-                    autocomplete="new-password"
-                >
-
-            </div>
+            '</div>' +
 
 
-            <button
-                type="button"
-                id="resetPasswordButton"
-                class="btn btn-primary"
-                style="width:100%;"
-            >
+            '<button ' +
+                'type="button" ' +
+                'id="resetPasswordButton" ' +
+                'class="btn btn-primary" ' +
+                'style="width:100%;">' +
 
-                <i class="fa-solid fa-key"></i>
+                '<i class="fa-solid fa-key"></i>' +
+                ' Reset Password' +
 
-                Reset Password
-
-            </button>
+            '</button>' +
 
 
-            <p
-                class="text-center mt-30"
-            >
+            '<p class="text-center mt-30">' +
 
-                <a href="candidate-login.html">
+                '<a href="candidate-login.html">' +
+                    'Back to Login' +
+                '</a>' +
 
-                    Back to Login
-
-                </a>
-
-            </p>
-
-        `;
+            '</p>';
 
 
         document
@@ -549,22 +572,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function resetPassword() {
 
-        const newPassword =
-            document
-                .getElementById("newPassword")
-                .value;
+        const newPasswordInput =
+            document.getElementById(
+                "newPassword"
+            );
 
 
-        const confirmPassword =
-            document
-                .getElementById("confirmPassword")
-                .value;
+        const confirmPasswordInput =
+            document.getElementById(
+                "confirmPassword"
+            );
 
 
         const resetButton =
             document.getElementById(
                 "resetPasswordButton"
             );
+
+
+        if (
+            !newPasswordInput ||
+            !confirmPasswordInput ||
+            !resetButton
+        ) return;
+
+
+        const newPassword =
+            newPasswordInput.value;
+
+
+        const confirmPassword =
+            confirmPasswordInput.value;
 
 
         if (!newPassword) {
@@ -608,6 +646,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
 
+            console.log(
+                "UCPP: Resetting candidate password."
+            );
+
+
             const response =
                 await API.resetPassword({
 
@@ -616,6 +659,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     newPassword: newPassword
 
                 });
+
+
+            console.log(
+                "UCPP: Password reset response:",
+                response
+            );
 
 
             if (
@@ -656,6 +705,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 error
             );
 
+
             alert(
                 "Unable to reset password. Please try again."
             );
@@ -674,4 +724,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
-```
