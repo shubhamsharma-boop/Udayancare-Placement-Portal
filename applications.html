@@ -179,13 +179,22 @@ JOB APPLICATION LIST
 
     <div class="table-header">
 
-        <h3>
+    <h3>
+        Posted Jobs
+    </h3>
 
-            Posted Jobs
+    <button
+        class="btn btn-primary btn-sm"
+        id="downloadAllApplications">
 
-        </h3>
+        <i class="fa-solid fa-file-excel"></i>
 
-    </div>
+        Download All Applications
+
+    </button>
+
+</div>
+
 
     <div class="table-responsive">
 
@@ -488,6 +497,7 @@ CANDIDATE PROFILE MODAL
 <script src="js/config.js"></script>
 <script src="js/api.js"></script>
 <script src="js/app.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 
 <script>
 
@@ -721,12 +731,23 @@ ${job.count}
 <td>
 
 <button
-
 class="btn btn-primary btn-sm"
-
 onclick="viewApplications('${job.jobID}')">
 
+<i class="fa-solid fa-eye"></i>
+
 View
+
+</button>
+
+<button
+class="btn btn-success btn-sm"
+onclick="downloadJobApplications('${job.jobID}')"
+style="margin-left:5px;">
+
+<i class="fa-solid fa-file-excel"></i>
+
+Excel
 
 </button>
 
@@ -1077,6 +1098,219 @@ alert(response.message);
 };
 
 });
+
+// ===================================
+// EXCEL EXPORT
+// ===================================
+
+// ===================================
+// PREPARE APPLICATION DATA
+// ===================================
+
+function prepareApplicationExcelData(applications){
+
+    return applications.map(app => ({
+
+        "Application ID":
+            app.applicationID || "",
+
+        "Job ID":
+            app.jobID || "",
+
+        "Job Title":
+            app.jobTitle || "",
+
+        "Candidate ID":
+            app.candidateID || "",
+
+        "Shalini ID":
+            app.shaliniID || "",
+
+        "Candidate Name":
+            app.candidateName || "",
+
+        "Candidate Email":
+            app.candidateEmail || "",
+
+        "Candidate Mobile":
+            app.candidateMobile || "",
+
+        "Qualification":
+            app.qualification || "",
+
+        "Current City":
+            app.location || "",
+
+        "Experience":
+            app.experience || "",
+
+        "Skills":
+            app.skills || "",
+
+        "Expected Salary":
+            app.expectedSalary || "",
+
+        "Applied Date":
+            app.appliedDate || "",
+
+        "Application Status":
+            app.applicationStatus || "",
+
+        "Employer Remarks":
+            app.employerRemarks || ""
+
+    }));
+
+}
+
+
+// ===================================
+// DOWNLOAD EXCEL
+// ===================================
+
+function downloadApplicationsExcel(applications, fileName){
+
+    if(!applications || applications.length === 0){
+
+        alert("No applications available to download.");
+
+        return;
+
+    }
+
+    if(typeof XLSX === "undefined"){
+
+        alert(
+            "Excel download library could not be loaded. Please refresh the page and try again."
+        );
+
+        return;
+
+    }
+
+
+    const excelData =
+        prepareApplicationExcelData(applications);
+
+
+    const worksheet =
+        XLSX.utils.json_to_sheet(excelData);
+
+
+    // ===================================
+    // COLUMN WIDTHS
+    // ===================================
+
+    worksheet["!cols"] = [
+
+        { wch: 18 },
+        { wch: 15 },
+        { wch: 28 },
+        { wch: 18 },
+        { wch: 18 },
+        { wch: 25 },
+        { wch: 30 },
+        { wch: 18 },
+        { wch: 22 },
+        { wch: 20 },
+        { wch: 15 },
+        { wch: 35 },
+        { wch: 18 },
+        { wch: 18 },
+        { wch: 20 },
+        { wch: 35 }
+
+    ];
+
+
+    const workbook =
+        XLSX.utils.book_new();
+
+
+    XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        "Applications"
+    );
+
+
+    XLSX.writeFile(
+        workbook,
+        fileName
+    );
+
+}
+
+
+// ===================================
+// DOWNLOAD ALL APPLICATIONS
+// ===================================
+
+document
+.getElementById("downloadAllApplications")
+.addEventListener("click", function(){
+
+    downloadApplicationsExcel(
+
+        allApplications,
+
+        "UCPP_All_Applications.xlsx"
+
+    );
+
+});
+
+
+// ===================================
+// DOWNLOAD JOB-WISE APPLICATIONS
+// ===================================
+
+function downloadJobApplications(jobID){
+
+    const jobApplications =
+        allApplications.filter(
+            app => app.jobID === jobID
+        );
+
+
+    if(jobApplications.length === 0){
+
+        alert("No applications found for this job.");
+
+        return;
+
+    }
+
+
+    const jobTitle =
+        jobApplications[0].jobTitle || "Job";
+
+
+    const safeJobTitle =
+        jobTitle
+        .replace(/[\\\/:*?"<>|]/g, "")
+        .replace(/\s+/g, "_");
+
+
+    const fileName =
+        "UCPP_" +
+        safeJobTitle +
+        "_Applications.xlsx";
+
+
+    downloadApplicationsExcel(
+
+        jobApplications,
+
+        fileName
+
+    );
+
+}
+
+
+window.downloadJobApplications =
+    downloadJobApplications;
 
 </script>
 
