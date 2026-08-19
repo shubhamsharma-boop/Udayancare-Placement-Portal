@@ -1312,6 +1312,231 @@ function downloadJobApplications(jobID){
 window.downloadJobApplications =
     downloadJobApplications;
 
+    // ===================================
+// APPLICATION SEARCH & FILTER
+// ===================================
+
+document
+.getElementById("searchBtn")
+.addEventListener("click", function(){
+
+    applyApplicationFilters();
+
+});
+
+
+// ===================================
+// APPLY FILTERS
+// ===================================
+
+function applyApplicationFilters(){
+
+    const searchText =
+        document
+        .getElementById("searchApplication")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const jobID =
+        document
+        .getElementById("jobFilter")
+        .value;
+
+    const status =
+        document
+        .getElementById("statusFilter")
+        .value;
+
+    const date =
+        document
+        .getElementById("dateFilter")
+        .value;
+
+
+    filteredApplications =
+        allApplications.filter(app => {
+
+            // =================================
+            // SEARCH CANDIDATE / JOB
+            // =================================
+
+            const candidateName =
+                (app.candidateName || "")
+                .toLowerCase();
+
+            const candidateEmail =
+                (app.candidateEmail || "")
+                .toLowerCase();
+
+            const candidateMobile =
+                (app.candidateMobile || "")
+                .toLowerCase();
+
+            const jobTitle =
+                (app.jobTitle || "")
+                .toLowerCase();
+
+            const currentJobID =
+                (app.jobID || "")
+                .toLowerCase();
+
+
+            const matchesSearch =
+                searchText === "" ||
+
+                candidateName.includes(searchText) ||
+
+                candidateEmail.includes(searchText) ||
+
+                candidateMobile.includes(searchText) ||
+
+                jobTitle.includes(searchText) ||
+
+                currentJobID.includes(searchText);
+
+
+            // =================================
+            // JOB FILTER
+            // =================================
+
+            const matchesJob =
+                jobID === "" ||
+                app.jobID === jobID;
+
+
+            // =================================
+            // STATUS FILTER
+            // =================================
+
+            const matchesStatus =
+                status === "" ||
+                app.applicationStatus === status;
+
+
+            // =================================
+            // DATE FILTER
+            // =================================
+
+            let matchesDate = true;
+
+            if(date){
+
+                const applicationDate =
+                    formatApplicationDateForFilter(
+                        app.appliedDate
+                    );
+
+                matchesDate =
+                    applicationDate === date;
+
+            }
+
+
+            return (
+
+                matchesSearch &&
+
+                matchesJob &&
+
+                matchesStatus &&
+
+                matchesDate
+
+            );
+
+        });
+
+
+    // =================================
+    // RESET PAGE
+    // =================================
+
+    currentPage = 1;
+
+
+    // =================================
+    // UPDATE SELECTED JOB VIEW
+    // =================================
+
+    renderCandidateTable();
+
+
+    // =================================
+    // UPDATE HEADING
+    // =================================
+
+    document.getElementById(
+        "selectedJobTitle"
+    ).textContent =
+        "Filtered Applications (" +
+        filteredApplications.length +
+        ")";
+
+}
+
+
+// ===================================
+// DATE FORMATTER
+// ===================================
+
+function formatApplicationDateForFilter(value){
+
+    if(!value){
+
+        return "";
+
+    }
+
+
+    // If already YYYY-MM-DD
+
+    if(/^\d{4}-\d{2}-\d{2}$/.test(value)){
+
+        return value;
+
+    }
+
+
+    const date =
+        new Date(value);
+
+
+    if(isNaN(date.getTime())){
+
+        return "";
+
+    }
+
+
+    const year =
+        date.getFullYear();
+
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2,"0");
+
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2,"0");
+
+
+    return (
+
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+
+    );
+
+}
+
 </script>
 
 </body>
