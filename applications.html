@@ -614,20 +614,101 @@ fillJobFilter();
 // Render Job Table
 // ===============================
 
-renderJobTable();
+function renderJobTable(jobsSource = allApplications){
+
+    const tbody =
+        document.getElementById("jobApplicationTable");
+
+    tbody.innerHTML = "";
+
+    const jobs = {};
+
+    jobsSource.forEach(app => {
+
+        if(!jobs[app.jobID]){
+
+            jobs[app.jobID] = {
+
+                jobID: app.jobID,
+
+                jobTitle: app.jobTitle,
+
+                count: 0
+
+            };
+
+        }
+
+        jobs[app.jobID].count++;
+
+    });
+
+
+    Object.values(jobs).forEach(job => {
+
+        tbody.innerHTML += `
+
+        <tr>
+
+            <td>${job.jobTitle}</td>
+
+            <td>${job.jobID}</td>
+
+            <td>${job.count}</td>
+
+            <td>
+
+                <button
+                    class="btn btn-primary btn-sm"
+                    onclick="viewApplications('${job.jobID}')">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                    View
+
+                </button>
+
+                <button
+                    class="btn btn-success btn-sm"
+                    onclick="downloadJobApplications('${job.jobID}')"
+                    style="margin-left:5px;">
+
+                    <i class="fa-solid fa-file-excel"></i>
+
+                    Excel
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+
+    if(Object.keys(jobs).length === 0){
+
+        tbody.innerHTML = `
+
+        <tr>
+
+            <td colspan="4" class="text-center">
+
+                No matching jobs found.
+
+            </td>
+
+        </tr>
+
+        `;
+
+    }
 
 }
 
-catch(error){
-
-console.log(error);
-
-alert("Unable to load applications.");
-
-}
-
-}
-    // ===================================
+// ===================================
 // FILL JOB FILTER
 // ===================================
 
@@ -802,7 +883,20 @@ document.getElementById("selectedJobTitle").innerHTML =
 
 `Applications (${filteredApplications.length})`;
 
-renderCandidateTable();
+    renderJobTable(filteredApplications);
+
+    renderCandidateTable();
+
+    setTimeout(() => {
+
+    document
+        .querySelector(".application-details")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+}, 100);
 
 }
 
@@ -1447,7 +1541,26 @@ function applyApplicationFilters(){
 document.getElementById("searchBtn").onclick =
 function(){
 
-    applyApplicationFilters();
+    const btn =
+        document.getElementById("searchBtn");
+
+    const originalHTML =
+        btn.innerHTML;
+
+    btn.disabled = true;
+
+    btn.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Searching...';
+
+    setTimeout(() => {
+
+        applyApplicationFilters();
+
+        btn.disabled = false;
+
+        btn.innerHTML = originalHTML;
+
+    }, 150);
 
 };
 
