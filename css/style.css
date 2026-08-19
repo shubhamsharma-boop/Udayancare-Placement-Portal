@@ -8417,23 +8417,50 @@ font-size:14px;
 }
 
 /* ======================================
-   PAGINATION
+   PAGINATION - FINAL
 ====================================== */
 
 .pagination .page-link{
-    background:#fff;
-    color:#000;
-    border-color:#dee2e6;
+
+    background:#FFFFFF;
+
+    color:#000000;
+
+    border-color:#DEE2E6;
+
 }
+
 
 .pagination .page-link:hover{
-    background:#2563eb;
-    color:#fff;
-    border-color:#2563eb;
+
+    background:#2563EB;
+
+    color:#FFFFFF;
+
+    border-color:#2563EB;
+
 }
 
+
 .pagination .page-item.active .page-link{
-    background:#2563eb;
-    color:#fff;
-    border-color:#2563eb;
+
+    background:#2563EB;
+
+    color:#FFFFFF;
+
+    border-color:#2563EB;
+
+}
+
+
+.pagination .page-item.disabled .page-link{
+
+    background:#FFFFFF;
+
+    color:#000000;
+
+    border-color:#DEE2E6;
+
+    opacity:.6;
+
 }
