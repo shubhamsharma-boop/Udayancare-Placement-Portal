@@ -257,7 +257,8 @@ Remember Me
 
 <div style="text-align:right;">
 
-<a href="#"
+<a href="javascript:void(0)"
+id="forgotPasswordLink"
 style="color:var(--primary);font-weight:600;">
 
 Forgot Password?
@@ -327,6 +328,215 @@ Register Here
 </p>
 
 </form>
+
+    <!-- ================= PASSWORD RESET ================= -->
+
+<div
+id="passwordResetPanel"
+style="display:none;margin-top:30px;">
+
+<div class="section-title">
+
+<span>
+PASSWORD RESET
+</span>
+
+<h2>
+Reset Employer Password
+</h2>
+
+<p id="resetStepDescription">
+Enter your registered email address to receive an OTP.
+</p>
+
+</div>
+
+
+<!-- ================= STEP 1 ================= -->
+
+<div id="resetStep1">
+
+<div class="form-group">
+
+<label>
+Registered Email *
+</label>
+
+<input
+type="email"
+id="resetEmail"
+class="form-control"
+placeholder="Enter Registered Email">
+
+</div>
+
+<div id="resetMessage"></div>
+
+<button
+type="button"
+id="sendOTPBtn"
+class="btn btn-primary"
+style="width:100%;margin-top:15px;">
+
+<span id="sendOTPText">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+Send OTP
+
+</span>
+
+<span
+id="sendOTPLoader"
+style="display:none;">
+
+<i class="fa-solid fa-spinner fa-spin"></i>
+
+Sending OTP...
+
+</span>
+
+</button>
+
+</div>
+
+
+<!-- ================= STEP 2 ================= -->
+
+<div
+id="resetStep2"
+style="display:none;">
+
+<div class="form-group">
+
+<label>
+Enter OTP *
+</label>
+
+<input
+type="text"
+id="resetOTP"
+class="form-control"
+placeholder="Enter 6-digit OTP"
+maxlength="6"
+inputmode="numeric">
+
+</div>
+
+<div id="otpMessage"></div>
+
+<button
+type="button"
+id="verifyOTPBtn"
+class="btn btn-primary"
+style="width:100%;margin-top:15px;">
+
+<span id="verifyOTPText">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+Verify OTP
+
+</span>
+
+<span
+id="verifyOTPLoader"
+style="display:none;">
+
+<i class="fa-solid fa-spinner fa-spin"></i>
+
+Verifying...
+
+</span>
+
+</button>
+
+</div>
+
+
+<!-- ================= STEP 3 ================= -->
+
+<div
+id="resetStep3"
+style="display:none;">
+
+<div class="form-group">
+
+<label>
+New Password *
+</label>
+
+<input
+type="password"
+id="newPassword"
+class="form-control"
+placeholder="Enter New Password">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Confirm New Password *
+</label>
+
+<input
+type="password"
+id="confirmPassword"
+class="form-control"
+placeholder="Confirm New Password">
+
+</div>
+
+<div id="passwordResetMessage"></div>
+
+<button
+type="button"
+id="resetPasswordBtn"
+class="btn btn-primary"
+style="width:100%;margin-top:15px;">
+
+<span id="resetPasswordText">
+
+<i class="fa-solid fa-key"></i>
+
+Reset Password
+
+</span>
+
+<span
+id="resetPasswordLoader"
+style="display:none;">
+
+<i class="fa-solid fa-spinner fa-spin"></i>
+
+Resetting...
+
+</span>
+
+</button>
+
+</div>
+
+
+<!-- ================= BACK TO LOGIN ================= -->
+
+<div
+style="text-align:center;margin-top:20px;">
+
+<a
+href="javascript:void(0)"
+id="backToLogin"
+style="color:var(--primary);font-weight:600;">
+
+← Back to Employer Login
+
+</a>
+
+</div>
+
+</div>
 
 </div>
 
@@ -625,6 +835,433 @@ showToast(response.message,"error");
 }
     
 });
+
+});
+
+    // ======================================
+// EMPLOYER PASSWORD RESET
+// ======================================
+
+const forgotPasswordLink =
+document.getElementById("forgotPasswordLink");
+
+const passwordResetPanel =
+document.getElementById("passwordResetPanel");
+
+const backToLogin =
+document.getElementById("backToLogin");
+
+const employerLoginForm =
+document.getElementById("employerLoginForm");
+
+
+// ======================================
+// SHOW PASSWORD RESET
+// ======================================
+
+forgotPasswordLink.addEventListener("click", () => {
+
+    employerLoginForm.style.display = "none";
+
+    passwordResetPanel.style.display = "block";
+
+    document.getElementById("resetEmail").value = "";
+
+    document.getElementById("resetOTP").value = "";
+
+    document.getElementById("newPassword").value = "";
+
+    document.getElementById("confirmPassword").value = "";
+
+    document.getElementById("resetStep1").style.display = "block";
+
+    document.getElementById("resetStep2").style.display = "none";
+
+    document.getElementById("resetStep3").style.display = "none";
+
+    document.getElementById("resetStepDescription").innerText =
+        "Enter your registered email address to receive an OTP.";
+
+});
+
+
+// ======================================
+// BACK TO LOGIN
+// ======================================
+
+backToLogin.addEventListener("click", () => {
+
+    passwordResetPanel.style.display = "none";
+
+    employerLoginForm.style.display = "block";
+
+});
+
+
+// ======================================
+// SEND OTP
+// ======================================
+
+document
+.getElementById("sendOTPBtn")
+.addEventListener("click", async () => {
+
+    const email =
+        document.getElementById("resetEmail")
+        .value
+        .trim();
+
+    const message =
+        document.getElementById("resetMessage");
+
+    if(email === ""){
+
+        message.innerHTML =
+            '<div class="alert alert-danger">Please enter your registered email address.</div>';
+
+        return;
+
+    }
+
+    const btn =
+        document.getElementById("sendOTPBtn");
+
+    const text =
+        document.getElementById("sendOTPText");
+
+    const loader =
+        document.getElementById("sendOTPLoader");
+
+    btn.disabled = true;
+
+    text.style.display = "none";
+
+    loader.style.display = "inline";
+
+    message.innerHTML = "";
+
+    try{
+
+        const response =
+            await API.requestEmployerPasswordReset({
+
+                email: email
+
+            });
+
+
+        if(response.success){
+
+            message.innerHTML =
+                '<div class="alert alert-success">' +
+                response.message +
+                '</div>';
+
+            document
+            .getElementById("resetStep1")
+            .style.display = "none";
+
+            document
+            .getElementById("resetStep2")
+            .style.display = "block";
+
+            document
+            .getElementById("resetStepDescription")
+            .innerText =
+                "Enter the 6-digit OTP sent to your email address.";
+
+        }
+
+        else{
+
+            message.innerHTML =
+                '<div class="alert alert-danger">' +
+                response.message +
+                '</div>';
+
+        }
+
+    }
+
+    catch(error){
+
+        message.innerHTML =
+            '<div class="alert alert-danger">' +
+            "Unable to connect to server. Please try again." +
+            '</div>';
+
+    }
+
+
+    btn.disabled = false;
+
+    text.style.display = "inline";
+
+    loader.style.display = "none";
+
+});
+
+
+// ======================================
+// VERIFY OTP
+// ======================================
+
+document
+.getElementById("verifyOTPBtn")
+.addEventListener("click", async () => {
+
+    const email =
+        document.getElementById("resetEmail")
+        .value
+        .trim();
+
+    const otp =
+        document.getElementById("resetOTP")
+        .value
+        .trim();
+
+    const message =
+        document.getElementById("otpMessage");
+
+
+    if(otp === ""){
+
+        message.innerHTML =
+            '<div class="alert alert-danger">Please enter the OTP.</div>';
+
+        return;
+
+    }
+
+
+    if(!/^\d{6}$/.test(otp)){
+
+        message.innerHTML =
+            '<div class="alert alert-danger">Please enter a valid 6-digit OTP.</div>';
+
+        return;
+
+    }
+
+
+    const btn =
+        document.getElementById("verifyOTPBtn");
+
+    const text =
+        document.getElementById("verifyOTPText");
+
+    const loader =
+        document.getElementById("verifyOTPLoader");
+
+
+    btn.disabled = true;
+
+    text.style.display = "none";
+
+    loader.style.display = "inline";
+
+    message.innerHTML = "";
+
+
+    try{
+
+        const response =
+            await API.verifyEmployerPasswordResetOTP({
+
+                email: email,
+
+                otp: otp
+
+            });
+
+
+        if(response.success){
+
+            message.innerHTML =
+                '<div class="alert alert-success">' +
+                response.message +
+                '</div>';
+
+            document
+            .getElementById("resetStep2")
+            .style.display = "none";
+
+            document
+            .getElementById("resetStep3")
+            .style.display = "block";
+
+            document
+            .getElementById("resetStepDescription")
+            .innerText =
+                "Create a new password for your employer account.";
+
+        }
+
+        else{
+
+            message.innerHTML =
+                '<div class="alert alert-danger">' +
+                response.message +
+                '</div>';
+
+        }
+
+    }
+
+    catch(error){
+
+        message.innerHTML =
+            '<div class="alert alert-danger">' +
+            "Unable to connect to server. Please try again." +
+            '</div>';
+
+    }
+
+
+    btn.disabled = false;
+
+    text.style.display = "inline";
+
+    loader.style.display = "none";
+
+});
+
+
+// ======================================
+// RESET PASSWORD
+// ======================================
+
+document
+.getElementById("resetPasswordBtn")
+.addEventListener("click", async () => {
+
+    const email =
+        document.getElementById("resetEmail")
+        .value
+        .trim();
+
+    const newPassword =
+        document.getElementById("newPassword")
+        .value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword")
+        .value;
+
+    const message =
+        document.getElementById("passwordResetMessage");
+
+
+    if(newPassword === ""){
+
+        message.innerHTML =
+            '<div class="alert alert-danger">Please enter a new password.</div>';
+
+        return;
+
+    }
+
+
+    if(newPassword.length < 8){
+
+        message.innerHTML =
+            '<div class="alert alert-danger">Password must be at least 8 characters long.</div>';
+
+        return;
+
+    }
+
+
+    if(newPassword !== confirmPassword){
+
+        message.innerHTML =
+            '<div class="alert alert-danger">Passwords do not match.</div>';
+
+        return;
+
+    }
+
+
+    const btn =
+        document.getElementById("resetPasswordBtn");
+
+    const text =
+        document.getElementById("resetPasswordText");
+
+    const loader =
+        document.getElementById("resetPasswordLoader");
+
+
+    btn.disabled = true;
+
+    text.style.display = "none";
+
+    loader.style.display = "inline";
+
+    message.innerHTML = "";
+
+
+    try{
+
+        const response =
+            await API.resetEmployerPassword({
+
+                email: email,
+
+                newPassword: newPassword
+
+            });
+
+
+        if(response.success){
+
+            message.innerHTML =
+                '<div class="alert alert-success">' +
+                response.message +
+                '</div>';
+
+            document
+            .getElementById("resetPasswordBtn")
+            .style.display = "none";
+
+            setTimeout(() => {
+
+                passwordResetPanel.style.display = "none";
+
+                employerLoginForm.style.display = "block";
+
+                document.getElementById("email").value = email;
+
+            }, 2000);
+
+        }
+
+        else{
+
+            message.innerHTML =
+                '<div class="alert alert-danger">' +
+                response.message +
+                '</div>';
+
+        }
+
+    }
+
+    catch(error){
+
+        message.innerHTML =
+            '<div class="alert alert-danger">' +
+            "Unable to connect to server. Please try again." +
+            '</div>';
+
+    }
+
+
+    btn.disabled = false;
+
+    text.style.display = "inline";
+
+    loader.style.display = "none";
 
 });
 
