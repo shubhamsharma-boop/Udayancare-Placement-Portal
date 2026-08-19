@@ -412,6 +412,33 @@ resetPassword(data) {
 
 },
 
+    requestEmployerPasswordReset(data) {
+
+    return this.call(
+        "requestEmployerPasswordReset",
+        data
+    );
+
+},
+
+verifyEmployerPasswordResetOTP(data) {
+
+    return this.call(
+        "verifyEmployerPasswordResetOTP",
+        data
+    );
+
+},
+
+resetEmployerPassword(data) {
+
+    return this.call(
+        "resetEmployerPassword",
+        data
+    );
+
+},
+
     // ======================================
     // CONTACT
     // ======================================
