@@ -508,120 +508,533 @@ let selectedJob = "";
 let currentPage = 1;
 const pageSize = 10;
 
+
+// ===================================
+// PAGE LOAD
+// ===================================
+
 document.addEventListener("DOMContentLoaded", async () => {
 
-employer =
-JSON.parse(localStorage.getItem("employer"));
+    employer =
+        JSON.parse(localStorage.getItem("employer"));
 
-if (!employer) {
+    if(!employer){
 
-location.href = "employer-login.html";
+        location.href = "employer-login.html";
 
-return;
+        return;
 
-}
+    }
 
-// ===================================
-// Logout
-// ===================================
 
-const logoutBtn = document.getElementById("logoutBtn");
+    // ===================================
+    // LOGOUT
+    // ===================================
 
-if (logoutBtn) {
+    const logoutBtn =
+        document.getElementById("logoutBtn");
 
-logoutBtn.onclick = function () {
+    if(logoutBtn){
 
-localStorage.removeItem("employer");
+        logoutBtn.onclick = function(){
 
-location.href = "employer-login.html";
+            localStorage.removeItem("employer");
 
-};
+            localStorage.removeItem("employerID");
 
-}
+            localStorage.removeItem("companyName");
 
-// ===================================
-// Load Everything
-// ===================================
+            localStorage.removeItem("lastLogin");
 
-await loadApplications();
+            location.href =
+                "employer-login.html";
+
+        };
+
+    }
+
+
+    // ===================================
+    // PAGINATION
+    // ===================================
+
+    document
+        .getElementById("prevPage")
+        .onclick = function(){
+
+            if(currentPage > 1){
+
+                currentPage--;
+
+                renderCandidateTable();
+
+            }
+
+        };
+
+
+    document
+        .getElementById("nextPage")
+        .onclick = function(){
+
+            const totalPages =
+                Math.ceil(
+                    filteredApplications.length /
+                    pageSize
+                );
+
+            if(currentPage < totalPages){
+
+                currentPage++;
+
+                renderCandidateTable();
+
+            }
+
+        };
+
+
+    // ===================================
+    // CLOSE MODAL
+    // ===================================
+
+    const closeModal =
+        document.getElementById("closeModal");
+
+    if(closeModal){
+
+        closeModal.onclick = function(){
+
+            document
+                .getElementById("candidateModal")
+                .style.display = "none";
+
+        };
+
+    }
+
+
+    // ===================================
+    // SEARCH BUTTON
+    // ===================================
+
+    document
+        .getElementById("searchBtn")
+        .onclick = function(){
+
+            const btn =
+                document.getElementById("searchBtn");
+
+            const originalHTML =
+                btn.innerHTML;
+
+            btn.disabled = true;
+
+            btn.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Searching...';
+
+
+            setTimeout(() => {
+
+                applyApplicationFilters();
+
+                btn.disabled = false;
+
+                btn.innerHTML = originalHTML;
+
+            }, 150);
+
+        };
+
+
+    // ===================================
+    // ENTER KEY SEARCH
+    // ===================================
+
+    document
+        .getElementById("searchApplication")
+        .addEventListener(
+            "keypress",
+            function(e){
+
+                if(e.key === "Enter"){
+
+                    e.preventDefault();
+
+                    applyApplicationFilters();
+
+                }
+
+            }
+        );
+
+
+    // ===================================
+    // EXCEL - ALL APPLICATIONS
+    // ===================================
+
+    const downloadAllBtn =
+        document.getElementById(
+            "downloadAllApplications"
+        );
+
+    if(downloadAllBtn){
+
+        downloadAllBtn.onclick = function(){
+
+            downloadApplicationsExcel(
+
+                allApplications,
+
+                "UCPP_All_Applications.xlsx"
+
+            );
+
+        };
+
+    }
+
+
+    // ===================================
+    // STATUS BUTTONS
+    // ===================================
+
+    document
+        .querySelectorAll(".status-btn")
+        .forEach(btn => {
+
+            btn.onclick = async function(){
+
+                const status =
+                    this.dataset.status;
+
+                const remarks =
+                    document
+                        .getElementById(
+                            "employerRemarks"
+                        )
+                        .value;
+
+
+                const response =
+                    await API.updateApplicationStatus({
+
+                        applicationID:
+                            window.currentApplicationID,
+
+                        status:
+                            status,
+
+                        remarks:
+                            remarks
+
+                    });
+
+
+                if(response.success){
+
+                    alert(
+                        "Status Updated Successfully."
+                    );
+
+
+                    document
+                        .getElementById(
+                            "candidateModal"
+                        )
+                        .style.display = "none";
+
+
+                    await loadApplications();
+
+
+                    if(selectedJob){
+
+                        viewApplications(
+                            selectedJob
+                        );
+
+                    }
+
+                }
+                else{
+
+                    alert(
+                        response.message
+                    );
+
+                }
+
+            };
+
+        });
+
+
+    // ===================================
+    // LOAD APPLICATIONS
+    // ===================================
+
+    await loadApplications();
 
 });
 
-    // ===================================
+
+// ===================================
 // LOAD APPLICATIONS
 // ===================================
 
-async function loadApplications() {
+async function loadApplications(){
 
-try {
+    try{
 
-const response =
-await API.getEmployerApplications({
+        const response =
+            await API.getEmployerApplications({
 
-employerID: employer.employerID
+                employerID:
+                    employer.employerID
 
-});
+            });
 
-if (!response.success) {
 
-alert(response.message);
+        if(!response.success){
 
-return;
+            alert(
+                response.message
+            );
+
+            return;
+
+        }
+
+
+        allApplications =
+            response.applications || [];
+
+
+        filteredApplications =
+            [...allApplications];
+
+
+        selectedJob = "";
+
+        currentPage = 1;
+
+
+        // ===================================
+        // SUMMARY
+        // ===================================
+
+        document
+            .getElementById("totalApplications")
+            .textContent =
+                allApplications.length;
+
+
+        document
+            .getElementById("shortlistedCount")
+            .textContent =
+                allApplications.filter(
+                    a =>
+                        a.applicationStatus ===
+                        "Shortlisted"
+                ).length;
+
+
+        document
+            .getElementById("rejectedCount")
+            .textContent =
+                allApplications.filter(
+                    a =>
+                        a.applicationStatus ===
+                        "Rejected"
+                ).length;
+
+
+        document
+            .getElementById("pendingCount")
+            .textContent =
+                allApplications.filter(
+                    a =>
+                        a.applicationStatus ===
+                            "Applied" ||
+
+                        a.applicationStatus ===
+                            "Viewed"
+                ).length;
+
+
+        // ===================================
+        // TOTAL JOBS
+        // ===================================
+
+        const uniqueJobs =
+            [
+                ...new Set(
+                    allApplications.map(
+                        a => a.jobID
+                    )
+                )
+            ];
+
+
+        document
+            .getElementById("totalJobs")
+            .textContent =
+                uniqueJobs.length;
+
+
+        // ===================================
+        // JOB FILTER
+        // ===================================
+
+        fillJobFilter();
+
+
+        // ===================================
+        // JOB TABLE
+        // ===================================
+
+        renderJobTable();
+
+
+        // ===================================
+        // RESET APPLICATION TABLE
+        // ===================================
+
+        document
+            .getElementById(
+                "selectedJobTitle"
+            )
+            .textContent =
+                "Applications";
+
+
+        document
+            .getElementById(
+                "candidateApplicationTable"
+            )
+            .innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="6"
+                        class="text-center">
+
+                        Select a Job to View Applications
+
+                    </td>
+
+                </tr>
+
+            `;
+
+
+        renderPagination();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to load applications."
+        );
+
+    }
 
 }
 
-allApplications = response.applications || [];
 
-filteredApplications = [...allApplications];
+// ===================================
+// FILL JOB FILTER
+// ===================================
 
-// ===============================
-// Dashboard Counts
-// ===============================
+function fillJobFilter(){
 
-document.getElementById("totalApplications").textContent =
-allApplications.length;
+    const jobFilter =
+        document.getElementById(
+            "jobFilter"
+        );
 
-document.getElementById("shortlistedCount").textContent =
-allApplications.filter(a =>
-a.applicationStatus === "Shortlisted").length;
 
-document.getElementById("rejectedCount").textContent =
-allApplications.filter(a =>
-a.applicationStatus === "Rejected").length;
+    jobFilter.innerHTML =
+        '<option value="">All Jobs</option>';
 
-document.getElementById("pendingCount").textContent =
-allApplications.filter(a =>
-a.applicationStatus === "Applied" ||
-a.applicationStatus === "Viewed").length;
 
-// ===============================
-// Total Jobs
-// ===============================
+    const jobs = {};
 
-const uniqueJobs =
-[...new Set(allApplications.map(a => a.jobID))];
 
-document.getElementById("totalJobs").textContent =
-uniqueJobs.length;
+    allApplications.forEach(app => {
 
-// ===============================
-// Fill Job Filter
-// ===============================
+        if(!jobs[app.jobID]){
 
-fillJobFilter();
+            jobs[app.jobID] = {
 
-// ===============================
-// Render Job Table
-// ===============================
+                jobID:
+                    app.jobID,
 
-function renderJobTable(jobsSource = allApplications){
+                jobTitle:
+                    app.jobTitle,
+
+                count:
+                    0
+
+            };
+
+        }
+
+
+        jobs[app.jobID].count++;
+
+    });
+
+
+    Object.values(jobs).forEach(job => {
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+
+        option.value =
+            job.jobID;
+
+
+        option.textContent =
+            `${job.jobTitle} (${job.count})`;
+
+
+        jobFilter.appendChild(
+            option
+        );
+
+    });
+
+}
+
+
+// ===================================
+// RENDER JOB TABLE
+// ===================================
+
+function renderJobTable(
+    jobsSource = allApplications
+){
 
     const tbody =
-        document.getElementById("jobApplicationTable");
+        document.getElementById(
+            "jobApplicationTable"
+        );
+
 
     tbody.innerHTML = "";
 
+
     const jobs = {};
+
 
     jobsSource.forEach(app => {
 
@@ -629,15 +1042,19 @@ function renderJobTable(jobsSource = allApplications){
 
             jobs[app.jobID] = {
 
-                jobID: app.jobID,
+                jobID:
+                    app.jobID,
 
-                jobTitle: app.jobTitle,
+                jobTitle:
+                    app.jobTitle,
 
-                count: 0
+                count:
+                    0
 
             };
 
         }
+
 
         jobs[app.jobID].count++;
 
@@ -648,59 +1065,70 @@ function renderJobTable(jobsSource = allApplications){
 
         tbody.innerHTML += `
 
-        <tr>
+            <tr>
 
-            <td>${job.jobTitle}</td>
+                <td>
+                    ${job.jobTitle || "-"}
+                </td>
 
-            <td>${job.jobID}</td>
+                <td>
+                    ${job.jobID || "-"}
+                </td>
 
-            <td>${job.count}</td>
+                <td>
+                    ${job.count}
+                </td>
 
-            <td>
+                <td>
 
-                <button
-                    class="btn btn-primary btn-sm"
-                    onclick="viewApplications('${job.jobID}')">
+                    <button
+                        class="btn btn-primary btn-sm"
+                        onclick="viewApplications('${job.jobID}')">
 
-                    <i class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-eye"></i>
 
-                    View
+                        View
 
-                </button>
+                    </button>
 
-                <button
-                    class="btn btn-success btn-sm"
-                    onclick="downloadJobApplications('${job.jobID}')"
-                    style="margin-left:5px;">
 
-                    <i class="fa-solid fa-file-excel"></i>
+                    <button
+                        class="btn btn-success btn-sm"
+                        onclick="downloadJobApplications('${job.jobID}')"
+                        style="margin-left:5px;">
 
-                    Excel
+                        <i class="fa-solid fa-file-excel"></i>
 
-                </button>
+                        Excel
 
-            </td>
+                    </button>
 
-        </tr>
+                </td>
+
+            </tr>
 
         `;
 
     });
 
 
-    if(Object.keys(jobs).length === 0){
+    if(
+        Object.keys(jobs).length === 0
+    ){
 
         tbody.innerHTML = `
 
-        <tr>
+            <tr>
 
-            <td colspan="4" class="text-center">
+                <td
+                    colspan="4"
+                    class="text-center">
 
-                No matching jobs found.
+                    No matching jobs found.
 
-            </td>
+                </td>
 
-        </tr>
+            </tr>
 
         `;
 
@@ -708,199 +1136,82 @@ function renderJobTable(jobsSource = allApplications){
 
 }
 
-// ===================================
-// FILL JOB FILTER
-// ===================================
-
-function fillJobFilter(){
-
-const jobFilter =
-document.getElementById("jobFilter");
-
-jobFilter.innerHTML =
-'<option value="">All Jobs</option>';
-
-const jobs = {};
-
-allApplications.forEach(app=>{
-
-if(!jobs[app.jobID]){
-
-jobs[app.jobID]={
-
-jobID:app.jobID,
-
-jobTitle:app.jobTitle,
-
-count:0
-
-};
-
-}
-
-jobs[app.jobID].count++;
-
-});
-
-Object.values(jobs).forEach(job=>{
-
-const option =
-document.createElement("option");
-
-option.value = job.jobID;
-
-option.textContent =
-`${job.jobTitle} (${job.count})`;
-
-jobFilter.appendChild(option);
-
-});
-
-}
-
-
 
 // ===================================
-// RENDER JOB TABLE
-// ===================================
-
-function renderJobTable(){
-
-const tbody =
-document.getElementById("jobApplicationTable");
-
-tbody.innerHTML="";
-
-const jobs = {};
-
-allApplications.forEach(app=>{
-
-if(!jobs[app.jobID]){
-
-jobs[app.jobID]={
-
-jobID:app.jobID,
-
-jobTitle:app.jobTitle,
-
-count:0
-
-};
-
-}
-
-jobs[app.jobID].count++;
-
-});
-
-Object.values(jobs).forEach(job=>{
-
-tbody.innerHTML += `
-
-<tr>
-
-<td>${job.jobTitle}</td>
-
-<td>${job.jobID}</td>
-
-<td>
-
-${job.count}
-
-</td>
-
-<td>
-
-<button
-class="btn btn-primary btn-sm"
-onclick="viewApplications('${job.jobID}')">
-
-<i class="fa-solid fa-eye"></i>
-
-View
-
-</button>
-
-<button
-class="btn btn-success btn-sm"
-onclick="downloadJobApplications('${job.jobID}')"
-style="margin-left:5px;">
-
-<i class="fa-solid fa-file-excel"></i>
-
-Excel
-
-</button>
-
-</td>
-
-</tr>
-
-`;
-
-});
-
-if(Object.keys(jobs).length===0){
-
-tbody.innerHTML=`
-
-<tr>
-
-<td colspan="4"
-
-class="text-center">
-
-No Jobs Found
-
-</td>
-
-</tr>
-
-`;
-
-}
-
-}
-    // ===================================
-// VIEW APPLICATIONS OF SELECTED JOB
+// VIEW JOB APPLICATIONS
 // ===================================
 
 function viewApplications(jobID){
 
-selectedJob = jobID;
+    selectedJob =
+        jobID;
 
-currentPage = 1;
 
-// Filter only selected Job
+    currentPage =
+        1;
 
-filteredApplications =
 
-allApplications.filter(app=>app.jobID===jobID);
+    filteredApplications =
+        allApplications.filter(
+            app =>
+                app.jobID === jobID
+        );
 
-// Update Heading
 
-document.getElementById("selectedJobTitle").innerHTML =
+    const job =
+        allApplications.find(
+            app =>
+                app.jobID === jobID
+        );
 
-`Applications (${filteredApplications.length})`;
 
-    renderJobTable(filteredApplications);
+    document
+        .getElementById(
+            "selectedJobTitle"
+        )
+        .textContent =
+            `${job ? job.jobTitle : "Applications"} (${filteredApplications.length})`;
+
+
+    // Show only selected job
+    renderJobTable(
+        filteredApplications
+    );
+
 
     renderCandidateTable();
 
+
     setTimeout(() => {
 
-    document
-        .querySelector(".application-details")
-        .scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
+        const section =
+            document.querySelector(
+                ".application-details"
+            );
 
-}, 100);
+
+        if(section){
+
+            section.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "start"
+
+            });
+
+        }
+
+    }, 100);
 
 }
 
-window.viewApplications = viewApplications;
+
+window.viewApplications =
+    viewApplications;
+
 
 // ===================================
 // RENDER CANDIDATE TABLE
@@ -908,352 +1219,406 @@ window.viewApplications = viewApplications;
 
 function renderCandidateTable(){
 
-const tbody =
+    const tbody =
+        document.getElementById(
+            "candidateApplicationTable"
+        );
 
-document.getElementById("candidateApplicationTable");
 
-tbody.innerHTML = "";
+    tbody.innerHTML = "";
 
-if(filteredApplications.length===0){
 
-tbody.innerHTML = `
+    if(
+        filteredApplications.length === 0
+    ){
 
-<tr>
+        tbody.innerHTML = `
 
-<td colspan="6"
+            <tr>
 
-class="text-center">
+                <td
+                    colspan="6"
+                    class="text-center">
 
-No Applications Found
+                    No Applications Found
 
-</td>
+                </td>
 
-</tr>
+            </tr>
 
-`;
+        `;
 
-return;
+
+        renderPagination();
+
+        return;
+
+    }
+
+
+    const start =
+        (currentPage - 1) *
+        pageSize;
+
+
+    const end =
+        start + pageSize;
+
+
+    const data =
+        filteredApplications.slice(
+            start,
+            end
+        );
+
+
+    data.forEach(app => {
+
+        let badge = "";
+
+
+        switch(
+            app.applicationStatus
+        ){
+
+            case "Applied":
+
+                badge =
+                    '<span class="status-badge status-applied">Applied</span>';
+
+                break;
+
+
+            case "Viewed":
+
+                badge =
+                    '<span class="status-badge status-viewed">Viewed</span>';
+
+                break;
+
+
+            case "Shortlisted":
+
+                badge =
+                    '<span class="status-badge status-shortlisted">Shortlisted</span>';
+
+                break;
+
+
+            case "Rejected":
+
+                badge =
+                    '<span class="status-badge status-rejected">Rejected</span>';
+
+                break;
+
+
+            case "Interview":
+
+                badge =
+                    '<span class="status-badge status-interview">Interview</span>';
+
+                break;
+
+
+            default:
+
+                badge =
+                    app.applicationStatus ||
+                    "-";
+
+        }
+
+
+        tbody.innerHTML += `
+
+            <tr>
+
+                <td>
+                    ${app.candidateName || "-"}
+                </td>
+
+                <td>
+                    ${app.candidateMobile || "-"}
+                </td>
+
+                <td>
+                    ${app.candidateEmail || "-"}
+                </td>
+
+                <td>
+                    ${app.qualification || "-"}
+                </td>
+
+                <td>
+                    ${badge}
+                </td>
+
+                <td>
+
+                    <button
+                        class="btn btn-primary btn-sm"
+                        onclick="viewCandidateProfile('${app.applicationID}')">
+
+                        <i class="fa-solid fa-id-card"></i>
+
+                        View Profile
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    renderPagination();
 
 }
 
-const start =
 
-(currentPage-1)*pageSize;
-
-const end =
-
-start + pageSize;
-
-const data =
-
-filteredApplications.slice(start,end);
-
-data.forEach(app=>{
-
-let badge="";
-
-switch(app.applicationStatus){
-
-case "Applied":
-
-badge='<span class="status-badge status-applied">Applied</span>';
-
-break;
-
-case "Viewed":
-
-badge='<span class="status-badge status-viewed">Viewed</span>';
-
-break;
-
-case "Shortlisted":
-
-badge='<span class="status-badge status-shortlisted">Shortlisted</span>';
-
-break;
-
-case "Rejected":
-
-badge='<span class="status-badge status-rejected">Rejected</span>';
-
-break;
-
-case "Interview":
-
-badge='<span class="status-badge status-interview">Interview</span>';
-
-break;
-
-default:
-
-badge=app.applicationStatus;
-
-}
-
-tbody.innerHTML += `
-<tr>
-
-<td>${app.candidateName}</td>
-
-<td>${app.candidateMobile}</td>
-
-<td>${app.candidateEmail}</td>
-
-<td>${app.qualification || "-"}</td>
-
-<td>${badge}</td>
-
-<td>
-
-<button
-class="btn btn-primary btn-sm"
-onclick="viewCandidateProfile('${app.applicationID}')">
-
-<i class="fa-solid fa-id-card"></i>
-
-View Profile
-
-</button>
-
-</td>
-
-</tr>
-`;
-    
-});
-
-renderPagination();
-
-}
-    // ===================================
+// ===================================
 // PAGINATION
 // ===================================
 
 function renderPagination(){
 
-const totalPages =
-Math.ceil(filteredApplications.length / pageSize);
+    const totalPages =
+        Math.ceil(
+            filteredApplications.length /
+            pageSize
+        );
 
-document.getElementById("pageNumbers").textContent =
-currentPage + " / " + (totalPages || 1);
 
-document.getElementById("prevPage").disabled =
-(currentPage===1);
+    document
+        .getElementById(
+            "pageNumbers"
+        )
+        .textContent =
+            currentPage +
+            " / " +
+            (totalPages || 1);
 
-document.getElementById("nextPage").disabled =
-(currentPage>=totalPages);
 
-}
+    document
+        .getElementById(
+            "prevPage"
+        )
+        .disabled =
+            currentPage === 1;
 
-document.getElementById("prevPage").onclick=function(){
 
-if(currentPage>1){
-
-currentPage--;
-
-renderCandidateTable();
-
-}
-
-};
-
-document.getElementById("nextPage").onclick=function(){
-
-const totalPages=
-Math.ceil(filteredApplications.length/pageSize);
-
-if(currentPage<totalPages){
-
-currentPage++;
-
-renderCandidateTable();
+    document
+        .getElementById(
+            "nextPage"
+        )
+        .disabled =
+            currentPage >=
+            totalPages;
 
 }
 
-};
-
 
 // ===================================
-// OPEN CANDIDATE MODAL
+// CANDIDATE PROFILE
 // ===================================
 
-function openCandidateModal(applicationID){
+function openCandidateModal(
+    applicationID
+){
 
-const app =
-allApplications.find(a=>a.applicationID===applicationID);
+    const app =
+        allApplications.find(
+            a =>
+                a.applicationID ===
+                applicationID
+        );
 
-if(!app) return;
 
-window.currentApplicationID =
-applicationID;
+    if(!app){
 
-document.getElementById("viewCandidateName").textContent =
-app.candidateName;
+        return;
 
-document.getElementById("viewShaliniID").textContent =
-app.shaliniID;
+    }
 
-document.getElementById("viewEmail").textContent =
-app.candidateEmail;
 
-document.getElementById("viewMobile").textContent =
-app.candidateMobile;
+    window.currentApplicationID =
+        applicationID;
 
-document.getElementById("viewQualification").textContent =
-app.qualification || "-";
 
-document.getElementById("viewExperience").textContent =
-app.experience || "-";
+    document
+        .getElementById(
+            "viewCandidateName"
+        )
+        .textContent =
+            app.candidateName || "-";
 
-document.getElementById("viewLocation").textContent =
-app.location || "-";
 
-document.getElementById("viewStatus").textContent =
-app.applicationStatus;
+    document
+        .getElementById(
+            "viewShaliniID"
+        )
+        .textContent =
+            app.shaliniID || "-";
 
-document.getElementById("employerRemarks").value =
-app.employerRemarks || "";
 
-document.getElementById("candidateModal").style.display="flex";
+    document
+        .getElementById(
+            "viewEmail"
+        )
+        .textContent =
+            app.candidateEmail || "-";
+
+
+    document
+        .getElementById(
+            "viewMobile"
+        )
+        .textContent =
+            app.candidateMobile || "-";
+
+
+    document
+        .getElementById(
+            "viewQualification"
+        )
+        .textContent =
+            app.qualification || "-";
+
+
+    document
+        .getElementById(
+            "viewExperience"
+        )
+        .textContent =
+            app.experience || "-";
+
+
+    document
+        .getElementById(
+            "viewLocation"
+        )
+        .textContent =
+            app.location || "-";
+
+
+    document
+        .getElementById(
+            "viewStatus"
+        )
+        .textContent =
+            app.applicationStatus || "-";
+
+
+    document
+        .getElementById(
+            "employerRemarks"
+        )
+        .value =
+            app.employerRemarks || "";
+
+
+    document
+        .getElementById(
+            "candidateModal"
+        )
+        .style.display =
+            "flex";
 
 }
 
-window.openCandidateModal = openCandidateModal;
 
-    
+window.openCandidateModal =
+    openCandidateModal;
+
 
 // ===================================
-// CLOSE MODAL
+// VIEW CANDIDATE PROFILE
 // ===================================
 
-document.getElementById("closeModal").onclick=function(){
-
-document.getElementById("candidateModal").style.display="none";
-
-};
-
-function viewCandidateProfile(applicationID){
+function viewCandidateProfile(
+    applicationID
+){
 
     window.open(
+
         `candidate-profile-view.html?applicationID=${applicationID}`,
+
         "_blank"
+
     );
 
 }
 
-window.viewCandidateProfile = viewCandidateProfile;    
+
+window.viewCandidateProfile =
+    viewCandidateProfile;
+
 
 // ===================================
-// STATUS UPDATE
+// EXCEL DATA
 // ===================================
 
-document.querySelectorAll(".status-btn").forEach(btn=>{
+function prepareApplicationExcelData(
+    applications
+){
 
-btn.onclick = async function(){
+    return applications.map(
+        app => ({
 
-const status =
-this.dataset.status;
+            "Application ID":
+                app.applicationID || "",
 
-const remarks =
-document.getElementById("employerRemarks").value;
+            "Job ID":
+                app.jobID || "",
 
-const response =
-await API.updateApplicationStatus({
+            "Job Title":
+                app.jobTitle || "",
 
-applicationID:
-window.currentApplicationID,
+            "Candidate ID":
+                app.candidateID || "",
 
-status:status,
+            "Shalini ID":
+                app.shaliniID || "",
 
-remarks:remarks
+            "Candidate Name":
+                app.candidateName || "",
 
-});
+            "Candidate Email":
+                app.candidateEmail || "",
 
-if(response.success){
+            "Candidate Mobile":
+                app.candidateMobile || "",
 
-alert("Status Updated Successfully.");
+            "Qualification":
+                app.qualification || "",
 
-document.getElementById("candidateModal").style.display="none";
+            "Current City":
+                app.location || "",
 
-await loadApplications();
+            "Experience":
+                app.experience || "",
 
-if(selectedJob){
+            "Skills":
+                app.skills || "",
 
-viewApplications(selectedJob);
+            "Expected Salary":
+                app.expectedSalary || "",
 
-}
+            "Applied Date":
+                app.appliedDate || "",
 
-}else{
+            "Application Status":
+                app.applicationStatus || "",
 
-alert(response.message);
+            "Employer Remarks":
+                app.employerRemarks || ""
 
-}
-
-};
-
-});
-
-// ===================================
-// EXCEL EXPORT
-// ===================================
-
-// ===================================
-// PREPARE APPLICATION DATA
-// ===================================
-
-function prepareApplicationExcelData(applications){
-
-    return applications.map(app => ({
-
-        "Application ID":
-            app.applicationID || "",
-
-        "Job ID":
-            app.jobID || "",
-
-        "Job Title":
-            app.jobTitle || "",
-
-        "Candidate ID":
-            app.candidateID || "",
-
-        "Shalini ID":
-            app.shaliniID || "",
-
-        "Candidate Name":
-            app.candidateName || "",
-
-        "Candidate Email":
-            app.candidateEmail || "",
-
-        "Candidate Mobile":
-            app.candidateMobile || "",
-
-        "Qualification":
-            app.qualification || "",
-
-        "Current City":
-            app.location || "",
-
-        "Experience":
-            app.experience || "",
-
-        "Skills":
-            app.skills || "",
-
-        "Expected Salary":
-            app.expectedSalary || "",
-
-        "Applied Date":
-            app.appliedDate || "",
-
-        "Application Status":
-            app.applicationStatus || "",
-
-        "Employer Remarks":
-            app.employerRemarks || ""
-
-    }));
+        })
+    );
 
 }
 
@@ -1262,17 +1627,28 @@ function prepareApplicationExcelData(applications){
 // DOWNLOAD EXCEL
 // ===================================
 
-function downloadApplicationsExcel(applications, fileName){
+function downloadApplicationsExcel(
+    applications,
+    fileName
+){
 
-    if(!applications || applications.length === 0){
+    if(
+        !applications ||
+        applications.length === 0
+    ){
 
-        alert("No applications available to download.");
+        alert(
+            "No applications available to download."
+        );
 
         return;
 
     }
 
-    if(typeof XLSX === "undefined"){
+
+    if(
+        typeof XLSX === "undefined"
+    ){
 
         alert(
             "Excel download library could not be loaded. Please refresh the page and try again."
@@ -1284,16 +1660,16 @@ function downloadApplicationsExcel(applications, fileName){
 
 
     const excelData =
-        prepareApplicationExcelData(applications);
+        prepareApplicationExcelData(
+            applications
+        );
 
 
     const worksheet =
-        XLSX.utils.json_to_sheet(excelData);
+        XLSX.utils.json_to_sheet(
+            excelData
+        );
 
-
-    // ===================================
-    // COLUMN WIDTHS
-    // ===================================
 
     worksheet["!cols"] = [
 
@@ -1322,54 +1698,49 @@ function downloadApplicationsExcel(applications, fileName){
 
 
     XLSX.utils.book_append_sheet(
+
         workbook,
+
         worksheet,
+
         "Applications"
+
     );
 
 
     XLSX.writeFile(
+
         workbook,
+
         fileName
+
     );
 
 }
 
 
 // ===================================
-// DOWNLOAD ALL APPLICATIONS
+// DOWNLOAD JOB-WISE EXCEL
 // ===================================
 
-document
-.getElementById("downloadAllApplications")
-.addEventListener("click", function(){
-
-    downloadApplicationsExcel(
-
-        allApplications,
-
-        "UCPP_All_Applications.xlsx"
-
-    );
-
-});
-
-
-// ===================================
-// DOWNLOAD JOB-WISE APPLICATIONS
-// ===================================
-
-function downloadJobApplications(jobID){
+function downloadJobApplications(
+    jobID
+){
 
     const jobApplications =
         allApplications.filter(
-            app => app.jobID === jobID
+            app =>
+                app.jobID === jobID
         );
 
 
-    if(jobApplications.length === 0){
+    if(
+        jobApplications.length === 0
+    ){
 
-        alert("No applications found for this job.");
+        alert(
+            "No applications found for this job."
+        );
 
         return;
 
@@ -1377,13 +1748,20 @@ function downloadJobApplications(jobID){
 
 
     const jobTitle =
-        jobApplications[0].jobTitle || "Job";
+        jobApplications[0].jobTitle ||
+        "Job";
 
 
     const safeJobTitle =
         jobTitle
-        .replace(/[\\\/:*?"<>|]/g, "")
-        .replace(/\s+/g, "_");
+            .replace(
+                /[\\\/:*?"<>|]/g,
+                ""
+            )
+            .replace(
+                /\s+/g,
+                "_"
+            );
 
 
     const fileName =
@@ -1406,183 +1784,278 @@ function downloadJobApplications(jobID){
 window.downloadJobApplications =
     downloadJobApplications;
 
-    // ===================================
-// APPLICATION SEARCH & FILTER
+
+// ===================================
+// SEARCH & FILTER
 // ===================================
 
 function applyApplicationFilters(){
 
     const searchText =
-        document.getElementById("searchApplication")
-        .value
-        .trim()
-        .toLowerCase();
+        document
+            .getElementById(
+                "searchApplication"
+            )
+            .value
+            .trim()
+            .toLowerCase();
+
 
     const jobFilter =
-        document.getElementById("jobFilter").value;
+        document
+            .getElementById(
+                "jobFilter"
+            )
+            .value;
+
 
     const statusFilter =
-        document.getElementById("statusFilter").value;
+        document
+            .getElementById(
+                "statusFilter"
+            )
+            .value;
+
 
     const dateFilter =
-        document.getElementById("dateFilter").value;
+        document
+            .getElementById(
+                "dateFilter"
+            )
+            .value;
 
 
-    filteredApplications = allApplications.filter(app => {
-
-        // ===============================
-        // SEARCH
-        // ===============================
-
-        const searchFields = [
-
-            app.candidateName,
-            app.candidateEmail,
-            app.candidateMobile,
-            app.jobTitle,
-            app.jobID,
-            app.candidateID,
-            app.shaliniID
-
-        ];
-
-        const searchMatch =
-            searchText === "" ||
-            searchFields.some(value =>
-                String(value || "")
-                .toLowerCase()
-                .includes(searchText)
-            );
+    filteredApplications =
+        allApplications.filter(
+            app => {
 
 
-        // ===============================
-        // JOB
-        // ===============================
+                // ===============================
+                // SEARCH
+                // ===============================
 
-        const jobMatch =
-            jobFilter === "" ||
-            String(app.jobID || "") === jobFilter;
+                const searchFields = [
+
+                    app.candidateName,
+
+                    app.candidateEmail,
+
+                    app.candidateMobile,
+
+                    app.jobTitle,
+
+                    app.jobID,
+
+                    app.candidateID,
+
+                    app.shaliniID
+
+                ];
 
 
-        // ===============================
-        // STATUS
-        // ===============================
+                const searchMatch =
+                    searchText === "" ||
 
-        const statusMatch =
-            statusFilter === "" ||
-            String(app.applicationStatus || "") === statusFilter;
+                    searchFields.some(
+                        value =>
+
+                            String(
+                                value || ""
+                            )
+                            .toLowerCase()
+                            .includes(
+                                searchText
+                            )
+                    );
 
 
-        // ===============================
-        // DATE
-        // ===============================
+                // ===============================
+                // JOB
+                // ===============================
 
-        let dateMatch = true;
+                const jobMatch =
+                    jobFilter === "" ||
 
-        if(dateFilter){
+                    String(
+                        app.jobID || ""
+                    ) === jobFilter;
 
-            const rawDate =
-                app.appliedDate ||
-                app.applied_date ||
-                app.appliedDateTime ||
-                "";
 
-            if(rawDate){
+                // ===============================
+                // STATUS
+                // ===============================
 
-                const d = new Date(rawDate);
+                const statusMatch =
+                    statusFilter === "" ||
 
-                if(!isNaN(d.getTime())){
+                    String(
+                        app.applicationStatus || ""
+                    ) === statusFilter;
 
-                    const formattedDate =
-                        d.getFullYear() +
-                        "-" +
-                        String(d.getMonth()+1).padStart(2,"0") +
-                        "-" +
-                        String(d.getDate()).padStart(2,"0");
 
-                    dateMatch =
-                        formattedDate === dateFilter;
+                // ===============================
+                // DATE
+                // ===============================
+
+                let dateMatch =
+                    true;
+
+
+                if(dateFilter){
+
+                    const rawDate =
+
+                        app.appliedDate ||
+
+                        app.applied_date ||
+
+                        app.appliedDateTime ||
+
+                        "";
+
+
+                    if(rawDate){
+
+                        const d =
+                            new Date(
+                                rawDate
+                            );
+
+
+                        if(
+                            !isNaN(
+                                d.getTime()
+                            )
+                        ){
+
+                            const formattedDate =
+
+                                d.getFullYear() +
+                                "-" +
+
+                                String(
+                                    d.getMonth() + 1
+                                ).padStart(
+                                    2,
+                                    "0"
+                                ) +
+
+                                "-" +
+
+                                String(
+                                    d.getDate()
+                                ).padStart(
+                                    2,
+                                    "0"
+                                );
+
+
+                            dateMatch =
+                                formattedDate ===
+                                dateFilter;
+
+                        }
+                        else{
+
+                            dateMatch =
+                                false;
+
+                        }
+
+                    }
+                    else{
+
+                        dateMatch =
+                            false;
+
+                    }
 
                 }
 
+
+                return (
+
+                    searchMatch &&
+
+                    jobMatch &&
+
+                    statusMatch &&
+
+                    dateMatch
+
+                );
+
             }
-
-        }
-
-
-        return (
-            searchMatch &&
-            jobMatch &&
-            statusMatch &&
-            dateMatch
         );
 
-    });
+
+    currentPage =
+        1;
 
 
-    currentPage = 1;
+    selectedJob =
+        "";
 
 
-    document.getElementById("selectedJobTitle").textContent =
-        "Applications (" +
-        filteredApplications.length +
-        ")";
+    // ===================================
+    // UPDATE HEADING
+    // ===================================
 
+    document
+        .getElementById(
+            "selectedJobTitle"
+        )
+        .textContent =
+            "Filtered Applications (" +
+            filteredApplications.length +
+            ")";
+
+
+    // ===================================
+    // SHOW ONLY MATCHING JOBS
+    // ===================================
+
+    renderJobTable(
+        filteredApplications
+    );
+
+
+    // ===================================
+    // SHOW MATCHING APPLICATIONS
+    // ===================================
 
     renderCandidateTable();
 
-}
 
-
-// ===================================
-// SEARCH BUTTON
-// ===================================
-
-document.getElementById("searchBtn").onclick =
-function(){
-
-    const btn =
-        document.getElementById("searchBtn");
-
-    const originalHTML =
-        btn.innerHTML;
-
-    btn.disabled = true;
-
-    btn.innerHTML =
-        '<i class="fa-solid fa-spinner fa-spin"></i> Searching...';
+    // ===================================
+    // SCROLL TO RESULTS
+    // ===================================
 
     setTimeout(() => {
 
-        applyApplicationFilters();
-
-        btn.disabled = false;
-
-        btn.innerHTML = originalHTML;
-
-    }, 150);
-
-};
+        const section =
+            document.querySelector(
+                ".application-details"
+            );
 
 
-// ===================================
-// ENTER KEY SEARCH
-// ===================================
+        if(section){
 
-document.getElementById("searchApplication").addEventListener(
-    "keypress",
-    function(e){
+            section.scrollIntoView({
 
-        if(e.key === "Enter"){
+                behavior:
+                    "smooth",
 
-            e.preventDefault();
+                block:
+                    "start"
 
-            applyApplicationFilters();
+            });
 
         }
 
-    }
-);
+    }, 100);
+
+}
 
 
 // ===================================
@@ -1591,27 +2064,87 @@ document.getElementById("searchApplication").addEventListener(
 
 function clearApplicationFilters(){
 
-    document.getElementById("searchApplication").value = "";
+    document
+        .getElementById(
+            "searchApplication"
+        )
+        .value = "";
 
-    document.getElementById("jobFilter").value = "";
 
-    document.getElementById("statusFilter").value = "";
+    document
+        .getElementById(
+            "jobFilter"
+        )
+        .value = "";
 
-    document.getElementById("dateFilter").value = "";
 
-    filteredApplications = [...allApplications];
+    document
+        .getElementById(
+            "statusFilter"
+        )
+        .value = "";
 
-    currentPage = 1;
 
-    document.getElementById("selectedJobTitle").textContent =
-        "Applications (" +
-        filteredApplications.length +
-        ")";
+    document
+        .getElementById(
+            "dateFilter"
+        )
+        .value = "";
 
-    renderCandidateTable();
+
+    selectedJob =
+        "";
+
+
+    filteredApplications =
+        [...allApplications];
+
+
+    currentPage =
+        1;
+
+
+    document
+        .getElementById(
+            "selectedJobTitle"
+        )
+        .textContent =
+            "Applications";
+
+
+    renderJobTable();
+
+
+    document
+        .getElementById(
+            "candidateApplicationTable"
+        )
+        .innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="6"
+                    class="text-center">
+
+                    Select a Job to View Applications
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+    renderPagination();
 
 }
-</script>
 
+
+window.clearApplicationFilters =
+    clearApplicationFilters;
+
+</script>
+    
 </body>
 </html>
