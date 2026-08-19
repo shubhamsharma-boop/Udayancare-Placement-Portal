@@ -1792,6 +1792,43 @@ if(saveExperienceBtn){
 }
 
     // ==================================
+// FORMAT EXPERIENCE DATE
+// ==================================
+
+function formatExperienceDate(value){
+
+    if(!value){
+
+        return "";
+
+    }
+
+    const str = String(value);
+
+    // ISO / timestamp date
+    const match =
+        str.match(/^(\d{4})-(\d{2})-(\d{2})/);
+
+    if(match){
+
+        return match[3] + "-" +
+               match[2] + "-" +
+               match[1];
+
+    }
+
+    // Already DD-MM-YYYY
+    if(/^\d{2}-\d{2}-\d{4}$/.test(str)){
+
+        return str;
+
+    }
+
+    return str;
+
+}
+
+    // ==================================
 // RENDER EXPERIENCE
 // ==================================
 
@@ -1871,19 +1908,22 @@ function renderCandidateExperience(experiences){
                     <p style="margin-top:8px;">
 
                         ${escapeHTML(
-                            experience.startDate || ""
-                        )}
+    formatExperienceDate(
+        experience.startDate
+    )
+)}
 
-                        -
+-
 
-                        ${
-                            experience.currentlyWorking === "Yes"
-                            ? "Present"
-                            : escapeHTML(
-                                experience.endDate || ""
-                            )
-                        }
-
+${
+    experience.currentlyWorking === "Yes"
+    ? "Present"
+    : escapeHTML(
+        formatExperienceDate(
+            experience.endDate
+        )
+    )
+}
                     </p>
 
                 </div>
@@ -2034,16 +2074,18 @@ function editExperience(experience){
 
 
     document.getElementById(
-        "experienceStartDate"
-    ).value =
-        experience.startDate || "";
+    "experienceStartDate"
+).value =
+    formatExperienceDateForInput(
+        experience.startDate
+    );
 
-
-    document.getElementById(
-        "experienceEndDate"
-    ).value =
-        experience.endDate || "";
-
+document.getElementById(
+    "experienceEndDate"
+).value =
+    formatExperienceDateForInput(
+        experience.endDate
+    );
 
     document.getElementById(
         "experienceCurrentlyWorking"
@@ -2199,6 +2241,45 @@ async function deleteExperience(experience){
 
 saveExperienceBtn.innerHTML =
     '<i class="fa-solid fa-floppy-disk"></i> Save Experience';
+
+    // ==================================
+// FORMAT EXPERIENCE DATE FOR INPUT
+// ==================================
+
+function formatExperienceDateForInput(value){
+
+    if(!value){
+
+        return "";
+
+    }
+
+    const str = String(value);
+
+    const match =
+        str.match(/^(\d{4})-(\d{2})-(\d{2})/);
+
+    if(match){
+
+        return match[1] + "-" +
+               match[2] + "-" +
+               match[3];
+
+    }
+
+    if(/^\d{2}-\d{2}-\d{4}$/.test(str)){
+
+        const parts = str.split("-");
+
+        return parts[2] + "-" +
+               parts[1] + "-" +
+               parts[0];
+
+    }
+
+    return "";
+
+}
 
 
     // ==================================
