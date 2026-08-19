@@ -8415,3 +8415,25 @@ font-size:14px;
     }
 
 }
+
+/* ======================================
+   PAGINATION
+====================================== */
+
+.pagination .page-link{
+    background:#fff;
+    color:#000;
+    border-color:#dee2e6;
+}
+
+.pagination .page-link:hover{
+    background:#2563eb;
+    color:#fff;
+    border-color:#2563eb;
+}
+
+.pagination .page-item.active .page-link{
+    background:#2563eb;
+    color:#fff;
+    border-color:#2563eb;
+}
