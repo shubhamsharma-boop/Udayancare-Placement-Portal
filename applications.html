@@ -1316,227 +1316,188 @@ window.downloadJobApplications =
 // APPLICATION SEARCH & FILTER
 // ===================================
 
-document
-.getElementById("searchBtn")
-.addEventListener("click", function(){
-
-    applyApplicationFilters();
-
-});
-
-
-// ===================================
-// APPLY FILTERS
-// ===================================
-
 function applyApplicationFilters(){
 
     const searchText =
-        document
-        .getElementById("searchApplication")
+        document.getElementById("searchApplication")
         .value
         .trim()
         .toLowerCase();
 
-    const jobID =
-        document
-        .getElementById("jobFilter")
-        .value;
+    const jobFilter =
+        document.getElementById("jobFilter").value;
 
-    const status =
-        document
-        .getElementById("statusFilter")
-        .value;
+    const statusFilter =
+        document.getElementById("statusFilter").value;
 
-    const date =
-        document
-        .getElementById("dateFilter")
-        .value;
+    const dateFilter =
+        document.getElementById("dateFilter").value;
 
 
-    filteredApplications =
-        allApplications.filter(app => {
+    filteredApplications = allApplications.filter(app => {
 
-            // =================================
-            // SEARCH CANDIDATE / JOB
-            // =================================
+        // ===============================
+        // SEARCH
+        // ===============================
 
-            const candidateName =
-                (app.candidateName || "")
-                .toLowerCase();
+        const searchFields = [
 
-            const candidateEmail =
-                (app.candidateEmail || "")
-                .toLowerCase();
+            app.candidateName,
+            app.candidateEmail,
+            app.candidateMobile,
+            app.jobTitle,
+            app.jobID,
+            app.candidateID,
+            app.shaliniID
 
-            const candidateMobile =
-                (app.candidateMobile || "")
-                .toLowerCase();
+        ];
 
-            const jobTitle =
-                (app.jobTitle || "")
-                .toLowerCase();
-
-            const currentJobID =
-                (app.jobID || "")
-                .toLowerCase();
-
-
-            const matchesSearch =
-                searchText === "" ||
-
-                candidateName.includes(searchText) ||
-
-                candidateEmail.includes(searchText) ||
-
-                candidateMobile.includes(searchText) ||
-
-                jobTitle.includes(searchText) ||
-
-                currentJobID.includes(searchText);
+        const searchMatch =
+            searchText === "" ||
+            searchFields.some(value =>
+                String(value || "")
+                .toLowerCase()
+                .includes(searchText)
+            );
 
 
-            // =================================
-            // JOB FILTER
-            // =================================
+        // ===============================
+        // JOB
+        // ===============================
 
-            const matchesJob =
-                jobID === "" ||
-                app.jobID === jobID;
-
-
-            // =================================
-            // STATUS FILTER
-            // =================================
-
-            const matchesStatus =
-                status === "" ||
-                app.applicationStatus === status;
+        const jobMatch =
+            jobFilter === "" ||
+            String(app.jobID || "") === jobFilter;
 
 
-            // =================================
-            // DATE FILTER
-            // =================================
+        // ===============================
+        // STATUS
+        // ===============================
 
-            let matchesDate = true;
+        const statusMatch =
+            statusFilter === "" ||
+            String(app.applicationStatus || "") === statusFilter;
 
-            if(date){
 
-                const applicationDate =
-                    formatApplicationDateForFilter(
-                        app.appliedDate
-                    );
+        // ===============================
+        // DATE
+        // ===============================
 
-                matchesDate =
-                    applicationDate === date;
+        let dateMatch = true;
+
+        if(dateFilter){
+
+            const rawDate =
+                app.appliedDate ||
+                app.applied_date ||
+                app.appliedDateTime ||
+                "";
+
+            if(rawDate){
+
+                const d = new Date(rawDate);
+
+                if(!isNaN(d.getTime())){
+
+                    const formattedDate =
+                        d.getFullYear() +
+                        "-" +
+                        String(d.getMonth()+1).padStart(2,"0") +
+                        "-" +
+                        String(d.getDate()).padStart(2,"0");
+
+                    dateMatch =
+                        formattedDate === dateFilter;
+
+                }
 
             }
 
-
-            return (
-
-                matchesSearch &&
-
-                matchesJob &&
-
-                matchesStatus &&
-
-                matchesDate
-
-            );
-
-        });
+        }
 
 
-    // =================================
-    // RESET PAGE
-    // =================================
+        return (
+            searchMatch &&
+            jobMatch &&
+            statusMatch &&
+            dateMatch
+        );
+
+    });
+
 
     currentPage = 1;
 
 
-    // =================================
-    // UPDATE SELECTED JOB VIEW
-    // =================================
-
-    renderCandidateTable();
-
-
-    // =================================
-    // UPDATE HEADING
-    // =================================
-
-    document.getElementById(
-        "selectedJobTitle"
-    ).textContent =
-        "Filtered Applications (" +
+    document.getElementById("selectedJobTitle").textContent =
+        "Applications (" +
         filteredApplications.length +
         ")";
 
+
+    renderCandidateTable();
+
 }
 
 
 // ===================================
-// DATE FORMATTER
+// SEARCH BUTTON
 // ===================================
 
-function formatApplicationDateForFilter(value){
+document.getElementById("searchBtn").onclick =
+function(){
 
-    if(!value){
+    applyApplicationFilters();
 
-        return "";
-
-    }
-
-
-    // If already YYYY-MM-DD
-
-    if(/^\d{4}-\d{2}-\d{2}$/.test(value)){
-
-        return value;
-
-    }
+};
 
 
-    const date =
-        new Date(value);
+// ===================================
+// ENTER KEY SEARCH
+// ===================================
 
+document.getElementById("searchApplication").addEventListener(
+    "keypress",
+    function(e){
 
-    if(isNaN(date.getTime())){
+        if(e.key === "Enter"){
 
-        return "";
+            e.preventDefault();
+
+            applyApplicationFilters();
+
+        }
 
     }
+);
 
 
-    const year =
-        date.getFullYear();
+// ===================================
+// CLEAR FILTERS
+// ===================================
 
+function clearApplicationFilters(){
 
-    const month =
-        String(
-            date.getMonth() + 1
-        ).padStart(2,"0");
+    document.getElementById("searchApplication").value = "";
 
+    document.getElementById("jobFilter").value = "";
 
-    const day =
-        String(
-            date.getDate()
-        ).padStart(2,"0");
+    document.getElementById("statusFilter").value = "";
 
+    document.getElementById("dateFilter").value = "";
 
-    return (
+    filteredApplications = [...allApplications];
 
-        year +
-        "-" +
-        month +
-        "-" +
-        day
+    currentPage = 1;
 
-    );
+    document.getElementById("selectedJobTitle").textContent =
+        "Applications (" +
+        filteredApplications.length +
+        ")";
+
+    renderCandidateTable();
 
 }
-
 </script>
 
 </body>
