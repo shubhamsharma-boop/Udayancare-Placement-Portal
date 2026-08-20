@@ -8466,3 +8466,33 @@ font-size:14px;
 }
 
 #pagination .page-btn{ background: #fff; color: var(--dark); } #pagination .page-btn:hover, #pagination .page-btn:focus, #pagination .page-btn.active{ background: var(--primary); color: #fff; }
+
+/* Global pagination color fix - add this in your main/global stylesheet (after other CSS) */
+
+/* Inactive / Normal: white bg, dark text */
+.pagination .page-link,
+.pagination li a,
+.pagination a {
+  background-color: #ffffff;
+  color: #111111;
+  -webkit-text-fill-color: #111111;
+}
+
+/* Hover: blue bg + white text */
+.pagination .page-link:hover,
+.pagination li a:hover,
+.pagination a:hover {
+  background-color: #007bff; /* replace with exact blue from job.html if different */
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
+/* Active page: blue bg + white text */
+.pagination .page-item.active .page-link,
+.pagination li.active a,
+.pagination .active a {
+  background-color: #007bff; /* same blue */
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  border-color: #007bff; /* if borders are used */
+}
